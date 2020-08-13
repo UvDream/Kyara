@@ -4,4 +4,37 @@
     align-items    : center;
     justify-content: space-around;
     color          : var(--textColor);
+    position       : relative;
+
+    &-song {
+        width           : 320px;
+        position        : absolute;
+        top             : 50px;
+        right           : 0;
+        min-height      : 300px;
+        box-shadow      : 0 2px 6px rgba(0, 0, 0, .1);
+        border-radius   : 8px;
+        padding         : 8px;
+        z-index         : 100;
+        background-color: var(--bgColor2);
+    }
+}
+
+.swing-bottom-bck {
+    animation: swing-bottom-bck .8s forwards;
+}
+
+@keyframes swing-bottom-bck {
+    0% {
+        transform: scale(1) rotateX(0);
+    }
+
+    50% {
+        transform: scale(1) rotateX(-90deg);
+    }
+
+    100% {
+        transform: scale(1) rotateX(0deg);
+    }
+
 }
