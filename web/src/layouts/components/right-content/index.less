@@ -1,0 +1,52 @@
+.message {
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  &-title {
+    font-size: 20px;
+    color: var(--textColor);
+  }
+
+  &-tag {
+    background-color: #cfdadd;
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 4px;
+    font-size: 12px;
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+      margin: 4px;
+    }
+  }
+
+  &-content {
+    width: 90%;
+    margin: 10px auto;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 5px 0;
+
+    &-icon {
+      margin-right: 10px;
+    }
+
+    & > section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px;
+    }
+  }
+}
+
+.r-foot {
+  height: 50px;
+  width: 100%;
+  background-color: var(--bgColor);
+}
