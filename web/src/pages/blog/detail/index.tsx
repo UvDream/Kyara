@@ -30,7 +30,6 @@ const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
             markdown: {
                 toc: true
             },
-
             transform: (html: string) => {
                 parseDom(html).forEach(element => {
                     if (element.nodeName == "H1" || element.nodeName == "H2" || element.nodeName == "H3") {
