@@ -30,14 +30,25 @@ const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
             markdown: {
                 toc: true
             },
-            parse: function (element: any) {
-                console.log(element);
-            },
+
+            transform: (html: string) => {
+                parseDom(html).forEach(element => {
+                    if (element.nodeName == "H1" || element.nodeName == "H2" || element.nodeName == "H3") {
+                        console.log(element, element.id, element.firstChild)
+                    }
+                })
+                return html
+            }
         })
     }, [])
     const { name } = index;
     const { count } = index;
     const [visible, setVisible] = useState(false)
+    const parseDom = (arg: any) => {
+        let objE = document.createElement("div");
+        objE.innerHTML = arg;
+        return objE.childNodes;
+    }
     const editTitle = () => {
         dispatch({
             type: "index/save"
@@ -46,9 +57,7 @@ const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
     const [markdownContent] = useState('# P01:课程介绍和环境搭建\n' +
         '[ **M** ] arkdown + E [ **ditor** ] = **Mditor**  \n' +
         '> Mditor 是一个简洁、易于集成、方便扩展、期望舒服的编写 markdown 的编辑器，仅此而已... \n\n' +
-        '```\n' +
-        'console.log("呵呵")' +
-        '```\n' +
+
         '**这是加粗的文字**\n\n' +
         '*这是倾斜的文字*`\n\n' +
         '***这是斜体加粗的文字***\n\n' +
