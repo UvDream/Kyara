@@ -31,11 +31,19 @@ const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
                 toc: true
             },
             transform: (html: string) => {
+                let arr: { children: { id: (element: ChildNode, id: any, firstChild: ChildNode | null) => any; title: ChildNode | null; children: never[]; }[]; }[] = []
                 parseDom(html).forEach(element => {
                     if (element.nodeName == "H1" || element.nodeName == "H2" || element.nodeName == "H3") {
-                        console.log(element, element.id, element.firstChild)
+                        let obj = { id: element.id, title: element.firstChild, children: [] }
+                        if (element.nodeName == "H1") {
+                            arr.push(obj)
+                        }
+                        if (element.nodeName == "H2") {
+                            arr[arr.length - 1].children.push(obj)
+                        }
                     }
                 })
+                console.log(arr)
                 return html
             }
         })
