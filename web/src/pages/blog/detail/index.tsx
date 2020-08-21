@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { IndexModelState, ConnectRC, connect } from 'umi';
 import './index.less';
 import Praise from "./components/praise.tsx"
@@ -6,7 +6,7 @@ import { Button } from 'antd';
 import { createFromIconfontCN } from '@ant-design/icons';
 // import MarkDown from "./components/markdown"
 import { dynamic } from 'umi'
-import AsyncMarkdown from"./components/async-markdown"
+import AsyncMarkdown from "./components/async-markdown"
 const IconFont = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_1762601_mkiqfjs1yth.js',
 });
@@ -103,7 +103,7 @@ const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
             </div>
         </div>
         <div style={{ backgroundImage: `url(https://gitee.com/Uvdream/images/raw/master/images/20200806150710.png)` }} className="detail-img"></div>
-        <AsyncMarkdown  content={markdownContent} />
+        <AsyncMarkdown content={markdownContent} />
         <div className="detail-praise">
             <div className="detail-praise-time">
                 <section>

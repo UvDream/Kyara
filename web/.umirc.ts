@@ -1,6 +1,6 @@
 import { defineConfig } from 'umi';
 export default defineConfig({
-  ssr: {},
+  // ssr: {},
   dva: {
     immer: true,
   },
