@@ -11,10 +11,14 @@ type SysArticle struct {
 	Introduction string `json:"introduction" gorm:"comment:'文章摘要'"`
 	// 作者id
 	UserID string `json:"user_id" gorm:"comment:'作者id'"`
+	// ---作者名---
+	UserName string `json:"user_name" gorm:"-"`
 	// 评论id
 	CommentID string `json:"comment_id" gorm:"comment:'评论id'"`
 	// icon
 	Icon string `json:"icon" gorm:"comment:'icon'"`
+	// icon颜色
+	IconColor string `json:"icon_color" gorm:"comment:'icon颜色'"`
 	// 图片地址
 	ImgURL string `json:"img_url" gorm:"comment:'图片地址'"`
 	// 文章内容
