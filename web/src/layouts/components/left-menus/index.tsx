@@ -4,6 +4,7 @@ import LeftFooter from './left-footer';
 import Avatar from './avatar';
 import Navigation from './navigation';
 import Logo from '../../../components/header/logo';
+// @ts-ignore
 import OtherNavigation from "./other-navigation.tsx"
 const LeftMenus = () => {
   return (

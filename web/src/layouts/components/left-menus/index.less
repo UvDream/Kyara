@@ -82,3 +82,31 @@
     }
   }
 }
+//菜单
+.menu{
+  user-select:none;
+  width: 100%;
+  &-children{
+    padding-left: 10px;
+    box-sizing: content-box;
+  }
+  &-list{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    &:hover{
+      background-color: rgb(236, 236, 236);
+    }
+    &-icon{
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding:0px 10px;
+    }
+    &-text{
+      margin: 0 5px;
+    }
+  }
+}
