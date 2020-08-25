@@ -46,5 +46,5 @@ type SysArticle struct {
 	// 封面类型
 	CoverType string `json:"cover_type" gorm:"comment:'封面类型';default:'0'"`
 	// 是否置顶
-	Top string `json:"top" gorm:"comment:'是否置顶';default:'false'"`
+	Top string `json:"top" gorm:"comment:'是否置顶';default:'0'"`
 }

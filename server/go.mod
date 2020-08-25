@@ -48,7 +48,7 @@ require (
 	golang.org/x/crypto v0.0.0-20200323165209-0ec3e9974c59 // indirect
 	golang.org/x/net v0.0.0-20200320220750-118fecf932d8 // indirect
 	golang.org/x/sys v0.0.0-20200610111108-226ff32320da // indirect
-	golang.org/x/tools v0.0.0-20200324003944-a576cf524670 // indirect
+	golang.org/x/tools v0.0.0-20200324003944-a576cf524670
 	google.golang.org/protobuf v1.24.0 // indirect
 	gopkg.in/ini.v1 v1.55.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect

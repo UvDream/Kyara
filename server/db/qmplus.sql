@@ -632,7 +632,7 @@ CREATE TABLE `sys_users`  (
   `deleted_at` timestamp(0) NULL DEFAULT NULL,
   `uuid` varbinary(255) NULL DEFAULT NULL COMMENT 'uuid',
   `nick_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'QMPlusUser' COMMENT '用户昵称',
-  `header_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'http://www.henrongyi.top/avatar/lufu.jpg' COMMENT '用户头像',
+  `header_img` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'https://gitee.com/Uvdream/images/raw/master/images/20200825150341.png' COMMENT '用户头像',
   `authority_id` double NULL DEFAULT 888 COMMENT '用户角色',
   `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登录用户名',
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登录密码',
@@ -644,8 +644,8 @@ CREATE TABLE `sys_users`  (
 -- ----------------------------
 -- Records of sys_users
 -- ----------------------------
-INSERT INTO `sys_users` VALUES (10, '2019-09-13 17:23:46', '2020-06-26 21:17:50', NULL, 0x63653064363638352D633135662D343132362D613562342D383930626339643233353664, '超级管理员', 'http://qmplusimg.henrongyi.top/1571627762timg.jpg', 888, 'admin', 'e10adc3949ba59abbe56e057f20f883e');
-INSERT INTO `sys_users` VALUES (11, '2019-09-13 17:27:29', '2019-09-13 17:27:29', NULL, 0x66643665663739622D393434632D343838382D383337372D616265326432363038383538, 'QMPlusUser', 'http://qmplusimg.henrongyi.top/1572075907logo.png', 9528, 'a303176530', '3ec063004a6f31642261936a379fde3d');
+INSERT INTO `sys_users` VALUES (10, '2019-09-13 17:23:46', '2020-06-26 21:17:50', NULL, 0x63653064363638352D633135662D343132362D613562342D383930626339643233353664, '超级管理员', 'https://gitee.com/Uvdream/images/raw/master/images/20200825150341.png', 888, 'admin', 'e10adc3949ba59abbe56e057f20f883e');
+INSERT INTO `sys_users` VALUES (11, '2019-09-13 17:27:29', '2019-09-13 17:27:29', NULL, 0x66643665663739622D393434632D343838382D383337372D616265326432363038383538, 'QMPlusUser', 'https://gitee.com/Uvdream/images/raw/master/images/20200825150341.png', 9528, 'a303176530', '3ec063004a6f31642261936a379fde3d');
 
 -- ----------------------------
 -- Table structure for sys_workflow_step_infos

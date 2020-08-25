@@ -38,6 +38,8 @@ func Routers() *gin.Engine {
 	router.InitSysDictionaryDetailRouter(ApiGroup)   // 字典详情管理
 	router.InitSysDictionaryRouter(ApiGroup)         // 字典管理
 	router.InitSysOperationRecordRouter(ApiGroup)    // 操作记录
-	global.GVA_LOG.Info("router register success")
+	//-------------
+	router.InitArticles(ApiGroup)					 //文章相关
+	global.GVA_LOG.Info("路由注册成功!")
 	return Router
 }
