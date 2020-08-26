@@ -26,19 +26,19 @@ const List = (props: any) => {
   return (
     <>
       {/*  置顶单图*/}
-      {props.data.type === 'top' ? (
+      {props.data.cover_type === '2' ? (
         <div
           className="list-img"
-          style={{ backgroundImage: `url(${props.data.img})` }}
+          style={{ backgroundImage: `url(${props.data.img_url})` }}
           onClick={toDetail}
         >
-          {/*<img src={props.data.img} alt=""/>*/}
+          {/*<img src={props.data.img_url} alt=""/>*/}
           <header className="list-header">
             <div className="list-title">
               <span>置顶</span>
               {props.data.title}
             </div>
-            <div className="list-summary">{props.data.summary}</div>
+            <div className="list-summary">{props.data.introduction}</div>
           </header>
         </div>
       ) : (
@@ -46,7 +46,7 @@ const List = (props: any) => {
         )}
 
       {/*  Icon */}
-      {props.data.type === 'icon' ? (
+      {props.data.cover_type === '1' ? (
         <div className="list-normal" onClick={toDetail}>
           <div className="list-normal-top">
             <div className="list-normal-top-icon">
@@ -54,7 +54,7 @@ const List = (props: any) => {
             </div>
             <h2 className="list-normal-top-title">{props.data.title}</h2>
             <p className="list-normal-top-summary text-ellipsis-two">
-              {props.data.summary}
+              {props.data.introduction}
             </p>
           </div>
           <div className="list-normal-split"></div>
@@ -80,17 +80,17 @@ const List = (props: any) => {
           ''
         )}
       {/* 左图右文 */}
-      {props.data.type === 'leftImg' ? (
+      {props.data.cover_type === '3' ? (
         <div className="list-leftImg" onClick={toDetail}>
-          {/* <img src={props.data.img} alt="" /> */}
+          {/* <img src={props.data.img_url} alt="" /> */}
           <div
             className="list-leftImg-img"
-            style={{ backgroundImage: `url(${props.data.img})` }}
+            style={{ backgroundImage: `url(${props.data.img_url})` }}
           ></div>
           <div className="list-leftImg-content">
             <h2>{props.data.title}</h2>
             <p className="list-leftImg-content-summary text-ellipsis-two">
-              {props.data.summary}
+              {props.data.introduction}
             </p>
             <div className="list-normal-split"></div>
             <div className="list-normal-bottom ">
@@ -116,11 +116,11 @@ const List = (props: any) => {
           ''
         )}
       {/* 正常文字 */}
-      {props.data.type === 'normal' ? (
+      {props.data.cover_type === '0' ? (
         <div className="list-text" onClick={toDetail}>
           <h2>{props.data.title}</h2>
           <p className="text-ellipsis-two list-text-summary">
-            {props.data.summary}
+            {props.data.introduction}
           </p>
           <div className="list-normal-split"></div>
           <div className="list-normal-bottom">
@@ -145,15 +145,15 @@ const List = (props: any) => {
           ''
         )}
       {/*  上图下文*/}
-      {props.data.type === 'topImg' ? (
+      {props.data.cover_type === '4' ? (
         <div className="list-topImg" onClick={toDetail}>
           <div
             className="list-topImg-img"
-            style={{ backgroundImage: `url(${props.data.img})` }}
+            style={{ backgroundImage: `url(${props.data.img_url})` }}
           ></div>
           <div className="list-topImg-content">
             <h2>{props.data.title}</h2>
-            <p className="text-ellipsis-two">{props.data.summary}</p>
+            <p className="text-ellipsis-two">{props.data.introduction}</p>
             <div className="list-normal-split"></div>
             <div className="list-normal-bottom">
               <IconFont
