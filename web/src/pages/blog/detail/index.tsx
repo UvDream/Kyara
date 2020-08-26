@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IndexModelState, ConnectRC, connect } from 'umi';
 import './index.less';
-import Praise from "./components/praise.tsx"
+import Praise from "./components/praise"
 import { Button } from 'antd';
 import { createFromIconfontCN } from '@ant-design/icons';
 // import MarkDown from "./components/markdown"
-import { dynamic } from 'umi'
 import AsyncMarkdown from "./components/async-markdown"
+import $axios from "../../../api/request"
 const IconFont = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_1762601_mkiqfjs1yth.js',
 });
@@ -16,11 +16,14 @@ interface PageProps {
 }
 
 const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
-
+    useEffect(() => {
+        getDetail()
+    }, [])
     const { name } = index;
     const { count } = index;
     const [visible, setVisible] = useState(false)
-
+    const getDetail = () => {
+    }
     const editTitle = () => {
         dispatch({
             type: "index/save"
@@ -140,5 +143,5 @@ const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
     </div>;
 };
 export default connect(({ index }: { index: IndexModelState }) => ({
-    index,
+    index
 }))(Detail);

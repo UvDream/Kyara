@@ -4,11 +4,17 @@ import { initTheme } from '@/utils/theme';
 import './index.less';
 import List from './components/list';
 import { Pagination } from 'antd';
-
+import ArticleApi from "@/api/blog/index"
 const Home = (props: any) => {
   useEffect(() => {
     initTheme(true);
+    getData();
   }, []);
+  const getData = () => {
+    ArticleApi.Detail().then((res: any) => {
+      console.log(res)
+    })
+  }
   const [data] = useState({
     id: 1,
     type: 'top',
