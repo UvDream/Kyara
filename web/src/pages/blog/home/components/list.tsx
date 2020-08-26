@@ -19,7 +19,7 @@ const List = (props: any) => {
     history.push({
       pathname: '/index/detail',
       query: {
-        id: props.data.id,
+        id: props.data.ID,
       },
     });
   }
