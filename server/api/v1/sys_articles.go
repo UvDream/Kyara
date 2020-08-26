@@ -20,7 +20,7 @@ func ArticleList(c *gin.Context)  {
 	 err,msg,Total:=service.ArticleList(R)
 	 if err!=nil{
 	 }else {
-		 response.OkDetailed(resp.SysArticleListResponse{Data:msg,TotalCount:Total},"获取成功",c)
+		 response.OkDetailed(resp.SysArticleListResponse{Msg:msg,TotalCount:Total},"获取成功",c)
 	 }
 }
 //获取文章详情
