@@ -8,7 +8,8 @@ import (
 func InitArticles(Router *gin.RouterGroup)(R gin.IRouter)  {
 	ArticleRouter:=Router.Group("article")
 	{
-		ArticleRouter.POST("articleList",v1.ArticleList)
+		ArticleRouter.POST("articleList",v1.ArticleList) //文章列表
+		ArticleRouter.GET("articleDetail",v1.GetArticleDetail) // 文章详情
 	}
 	return ArticleRouter
 }

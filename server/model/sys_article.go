@@ -1,6 +1,9 @@
 package model
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/jinzhu/gorm"
+	uuid "github.com/satori/go.uuid"
+)
 
 // SysArticle 文章数据表
 type SysArticle struct {
@@ -10,7 +13,7 @@ type SysArticle struct {
 	// 文章摘要
 	Introduction string `json:"introduction" gorm:"comment:'文章摘要'"`
 	// 作者id
-	UserID string `json:"user_id" gorm:"comment:'作者id'"`
+	UserID  uuid.UUID  `json:"user_id" gorm:"comment:'作者id'"`
 	// ---作者名---
 	UserName string `json:"user_name" gorm:"-"`
 	// 评论id
@@ -23,6 +26,8 @@ type SysArticle struct {
 	ImgURL string `json:"img_url" gorm:"comment:'图片地址'"`
 	// 文章内容
 	ArticleContent string `json:"article_content" gorm:"comment:'文章内容';type:longtext "`
+	//---------html内容
+	ArticleHtml string `json:"article_html" gorm:"-"`
 	// 浏览量
 	ViewCount string `json:"view_count" gorm:"comment:'浏览量'"`
 	// 原文链接
