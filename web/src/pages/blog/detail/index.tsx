@@ -6,7 +6,7 @@ import { Button } from 'antd';
 import { createFromIconfontCN } from '@ant-design/icons';
 // import MarkDown from "./components/markdown"
 import AsyncMarkdown from "./components/async-markdown"
-import $axios from "../../../api/request"
+import ArticleApi from "@/api/blog/index"
 const IconFont = createFromIconfontCN({
     scriptUrl: '//at.alicdn.com/t/font_1762601_mkiqfjs1yth.js',
 });
@@ -14,59 +14,18 @@ interface PageProps {
     index: IndexModelState;
     loading: boolean;
 }
-
-const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
-    useEffect(() => {
-        getDetail()
-    }, [])
-    const { name } = index;
-    const { count } = index;
+const Detail = (props: any) => {
+    const [markdownContent, setMarkdown] = useState()
+    const [htmlContent, setHtml] = useState()
     const [visible, setVisible] = useState(false)
-    const getDetail = () => {
-    }
-    const editTitle = () => {
-        dispatch({
-            type: "index/save"
-        })
-    }
-    const [markdownContent] = useState('# P01:课程介绍和环境搭建\n' +
-        '[ **M** ] arkdown + E [ **ditor** ] = **Mditor**  \n' +
-        '> Mditor 是一个简洁、易于集成、方便扩展、期望舒服的编写 markdown 的编辑器，仅此而已... \n\n' +
-        '## 这是加粗的文字\n\n' +
-        '### 这是加粗的文字\n\n' +
-        '**这是加粗的文字**\n\n' +
-        '*这是倾斜的文字*`\n\n' +
-        '***这是斜体加粗的文字***\n\n' +
-        '~~这是加删除线的文字~~ \n\n' +
-        '\`console.log(111)\` \n\n' +
-        '# p02:来个Hello World 初始Vue3.0\n' +
-        '> aaaaaaaaa\n' +
-        '>> bbbbbbbbb\n' +
-        '>>> cccccccccc\n' +
-        '***\n\n\n' +
-        '# p03:Vue3.0基础知识讲解\n' +
-        '> aaaaaaaaa\n' +
-        '>> bbbbbbbbb\n' +
-        '>>> cccccccccc\n\n' +
-        '# p04:Vue3.0基础知识讲解\n' +
-        '> aaaaaaaaa\n' +
-        '>> bbbbbbbbb\n' +
-        '>>> cccccccccc\n\n' +
-        '#5 p05:Vue3.0基础知识讲解\n' +
-        '> aaaaaaaaa\n' +
-        '>> bbbbbbbbb\n' +
-        '>>> cccccccccc\n\n' +
-        '# p06:Vue3.0基础知识讲解\n' +
-        '> aaaaaaaaa\n' +
-        '>> bbbbbbbbb\n' +
-        '>>> cccccccccc\n\n' +
-        '# p07:Vue3.0基础知识讲解\n' +
-        '> aaaaaaaaa\n' +
-        '>> bbbbbbbbb\n' +
-        '>>> cccccccccc\n\n' +
-        '``` var a=11; ```'
-    )
-    return <div className="detail" onClick={editTitle}>
+    useEffect(() => {
+        if (props?.data?.msg) {
+            setMarkdown(props.data.msg.article_content)
+            setHtml(props.data.msg.article_html)
+        }
+    }, [markdownContent, htmlContent])
+
+    return <div className="detail" >
         <div className="detail-title">
             <div className="detail-title-top">
                 <h1>这是文章的标题</h1>
@@ -107,6 +66,7 @@ const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
         </div>
         <div style={{ backgroundImage: `url(https://gitee.com/Uvdream/images/raw/master/images/20200806150710.png)` }} className="detail-img"></div>
         <AsyncMarkdown content={markdownContent} />
+        <div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
         <div className="detail-praise">
             <div className="detail-praise-time">
                 <section>
@@ -141,7 +101,20 @@ const Detail: ConnectRC<PageProps> = ({ index, dispatch }) => {
             <p onClick={() => { dispatch({ type: 'index/add' }) }}>{count}</p>
         </div> */}
     </div>;
-};
-export default connect(({ index }: { index: IndexModelState }) => ({
-    index
-}))(Detail);
+}
+Detail.getInitialProps = (async (ctx: any) => {
+    let msg = ""
+    console.log("获取", ctx)
+    let res = await ArticleApi.Detail({ id: ctx.history.location.query.id })
+    if (res.code == 0) {
+        msg = res.data
+        return Promise.resolve({
+            data: {
+                title: '文章详情页',
+                msg: msg
+            }
+        })
+    }
+
+})
+export default Detail

@@ -41,22 +41,18 @@ class HttpRequest {
     // 响应拦截
     instance.interceptors.response.use(
       (res: AxiosResponse) => {
-        if (url) {
-          this.destroy(url);
-        }
-        const { data, status } = res;
-        if (data.type == 'application/octet-stream') {
-          return Object.assign(
-            {},
-            {
-              data,
-              status,
-            },
-            { header: res.headers },
-          );
+        let data;
+        if (res.data == undefined) {
+          data = res.request.responseText;
         } else {
-          return { data, status };
+          data = res.data;
         }
+        switch (data.code) {
+          case '110':
+            break;
+          default:
+        }
+        return data;
       },
       (error: any) => {
         if (url) {

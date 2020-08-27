@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import Vditor from 'vditor'
 import "../../../../styles/vditor.css"
 import "../../../../styles/vditor.less"
-const MarkDown=(props:Object)=>{
+const MarkDown = (props: Object) => {
   const parseDom = (arg: any) => {
     let objE = document.createElement("div");
     objE.innerHTML = arg;
     return objE.childNodes;
   }
+
   useEffect(() => {
     Vditor.preview(document.getElementById("htmlView"), props.content, {
       speech: {
@@ -38,12 +39,12 @@ const MarkDown=(props:Object)=>{
             }
           }
         })
-        console.log(arr)
+        console.log("目录树结构", arr)
         return html
       }
     })
-  }, [])
-  return(
+  }, [props.content])
+  return (
     <>
       <div id="htmlView" className="detail-content"></div>
     </>
