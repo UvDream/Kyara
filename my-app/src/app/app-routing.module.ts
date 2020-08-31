@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlogComponent } from './blog/blog.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './blog/home/home.component';
+import { DetailComponent } from './blog/detail/detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/blog', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/blog/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
+      { path: 'detail', component: DetailComponent },
     ],
   },
   { path: 'admin', component: AdminComponent },
