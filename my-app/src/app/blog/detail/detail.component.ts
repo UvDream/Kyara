@@ -27,7 +27,7 @@ export class DetailComponent implements OnInit {
       this.htmlContent = res.data.article_html;
       console.log(res.data);
       this.markDown = res.data.article_content;
-      const mainElement = <HTMLDivElement> document.getElementById('vditor');
+      const mainElement = document.getElementById('vditor') as HTMLDivElement;
       Vditor.preview(mainElement, this.markDown, {
         speech: {
           enable: true,
