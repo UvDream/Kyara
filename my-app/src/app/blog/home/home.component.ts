@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,13 +9,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   public list: Array<any>;
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient, private titleService: Title) {}
   ngOnInit(): void {
     this.getData();
+    this.setTitle('首页');
   }
-  // tslint:disable-next-line:typedef
-  getData() {
+  getData = () => {
     this.http
       .post('http://127.0.0.1:3000/article/articleList', {
         search: '',
@@ -24,5 +25,9 @@ export class HomeComponent implements OnInit {
         console.log(res);
         this.list = res.data.msg;
       });
+  };
+  // tslint:disable-next-line:typedef
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 }
