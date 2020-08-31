@@ -83,3 +83,521 @@
 [GIN-debug] GET    /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
 [GIN-debug] HEAD   /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
 [GIN-VUE-ADMIN]2020/08/31 - 10:34:24.070 D:/code/github/blog/Kyara/server/core/server.go:30 ▶ [DEBUG] server run success on  :3000
+[GIN] 2020/08/31 - 10:35:33 | 200 |       9.998ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:35:33 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 10:35:33 | 200 |      7.9774ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:35:41 | 200 |      4.9868ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:35:41 | 204 |         996µs |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 10:35:41 | 200 |      7.8496ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:36:11 | 200 |      4.9361ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:36:11 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 10:36:11 | 200 |      7.9775ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:36:42 | 200 |      7.9784ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:36:43 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 10:36:43 | 200 |      5.9855ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:37:00 | 200 |      5.9843ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:37:04 | 200 |      5.9846ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:37:15 | 200 |      4.9861ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:37:20 | 200 |      5.9818ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:37:46 | 200 |      5.9838ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:38:19 | 200 |      5.9822ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:40:06 | 200 |      6.9814ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:40:18 | 200 |      5.9515ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:40:24 | 200 |       5.985ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:40:31 | 200 |      5.9835ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:40:37 | 200 |      4.9865ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:40:46 | 200 |      5.9828ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:40:47 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 10:40:47 | 200 |      6.9814ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:43:02 | 200 |     10.4793ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:44:05 | 200 |      6.9801ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 10:44:37 | 200 |      6.9803ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN-VUE-ADMIN]2020/08/31 - 11:11:20.008 D:/code/github/blog/Kyara/server/initialize/db_table.go:27 ▶ [DEBUG] 注册成功!
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-VUE-ADMIN]2020/08/31 - 11:11:20.012 D:/code/github/blog/Kyara/server/initialize/router.go:18 ▶ [DEBUG] use middleware logger
+[GIN-VUE-ADMIN]2020/08/31 - 11:11:20.012 D:/code/github/blog/Kyara/server/initialize/router.go:21 ▶ [DEBUG] use middleware cors
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 11:11:20.012 D:/code/github/blog/Kyara/server/initialize/router.go:23 ▶ [DEBUG] register swagger handler
+[GIN-debug] POST   /user/changePassword      --> gin-vue-admin/api/v1.ChangePassword (7 handlers)
+[GIN-debug] POST   /user/uploadHeaderImg     --> gin-vue-admin/api/v1.UploadHeaderImg (7 handlers)
+[GIN-debug] POST   /user/getUserList         --> gin-vue-admin/api/v1.GetUserList (7 handlers)
+[GIN-debug] POST   /user/setUserAuthority    --> gin-vue-admin/api/v1.SetUserAuthority (7 handlers)
+[GIN-debug] DELETE /user/deleteUser          --> gin-vue-admin/api/v1.DeleteUser (7 handlers)
+[GIN-debug] POST   /base/register            --> gin-vue-admin/api/v1.Register (4 handlers)
+[GIN-debug] POST   /base/login               --> gin-vue-admin/api/v1.Login (4 handlers)
+[GIN-debug] POST   /base/captcha             --> gin-vue-admin/api/v1.Captcha (4 handlers)
+[GIN-debug] POST   /menu/getMenu             --> gin-vue-admin/api/v1.GetMenu (6 handlers)
+[GIN-debug] POST   /menu/getMenuList         --> gin-vue-admin/api/v1.GetMenuList (6 handlers)
+[GIN-debug] POST   /menu/addBaseMenu         --> gin-vue-admin/api/v1.AddBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/getBaseMenuTree     --> gin-vue-admin/api/v1.GetBaseMenuTree (6 handlers)
+[GIN-debug] POST   /menu/addMenuAuthority    --> gin-vue-admin/api/v1.AddMenuAuthority (6 handlers)
+[GIN-debug] POST   /menu/getMenuAuthority    --> gin-vue-admin/api/v1.GetMenuAuthority (6 handlers)
+[GIN-debug] POST   /menu/deleteBaseMenu      --> gin-vue-admin/api/v1.DeleteBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/updateBaseMenu      --> gin-vue-admin/api/v1.UpdateBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/getBaseMenuById     --> gin-vue-admin/api/v1.GetBaseMenuById (6 handlers)
+[GIN-debug] POST   /authority/createAuthority --> gin-vue-admin/api/v1.CreateAuthority (7 handlers)
+[GIN-debug] POST   /authority/deleteAuthority --> gin-vue-admin/api/v1.DeleteAuthority (7 handlers)
+[GIN-debug] PUT    /authority/updateAuthority --> gin-vue-admin/api/v1.UpdateAuthority (7 handlers)
+[GIN-debug] POST   /authority/copyAuthority  --> gin-vue-admin/api/v1.CopyAuthority (7 handlers)
+[GIN-debug] POST   /authority/getAuthorityList --> gin-vue-admin/api/v1.GetAuthorityList (7 handlers)
+[GIN-debug] POST   /authority/setDataAuthority --> gin-vue-admin/api/v1.SetDataAuthority (7 handlers)
+[GIN-debug] POST   /api/createApi            --> gin-vue-admin/api/v1.CreateApi (6 handlers)
+[GIN-debug] POST   /api/deleteApi            --> gin-vue-admin/api/v1.DeleteApi (6 handlers)
+[GIN-debug] POST   /api/getApiList           --> gin-vue-admin/api/v1.GetApiList (6 handlers)
+[GIN-debug] POST   /api/getApiById           --> gin-vue-admin/api/v1.GetApiById (6 handlers)
+[GIN-debug] POST   /api/updateApi            --> gin-vue-admin/api/v1.UpdateApi (6 handlers)
+[GIN-debug] POST   /api/getAllApis           --> gin-vue-admin/api/v1.GetAllApis (6 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/upload --> gin-vue-admin/api/v1.UploadFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/getFileList --> gin-vue-admin/api/v1.GetFileList (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/deleteFile --> gin-vue-admin/api/v1.DeleteFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/breakpointContinue --> gin-vue-admin/api/v1.BreakpointContinue (4 handlers)
+[GIN-debug] GET    /fileUploadAndDownload/findFile --> gin-vue-admin/api/v1.FindFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/breakpointContinueFinish --> gin-vue-admin/api/v1.BreakpointContinueFinish (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/removeChunk --> gin-vue-admin/api/v1.RemoveChunk (4 handlers)
+[GIN-debug] POST   /workflow/createWorkFlow  --> gin-vue-admin/api/v1.CreateWorkFlow (6 handlers)
+[GIN-debug] POST   /casbin/updateCasbin      --> gin-vue-admin/api/v1.UpdateCasbin (7 handlers)
+[GIN-debug] POST   /casbin/getPolicyPathByAuthorityId --> gin-vue-admin/api/v1.GetPolicyPathByAuthorityId (7 handlers)
+[GIN-debug] GET    /casbin/casbinTest/:pathParam --> gin-vue-admin/api/v1.CasbinTest (7 handlers)
+[GIN-debug] POST   /jwt/jsonInBlacklist      --> gin-vue-admin/api/v1.JsonInBlacklist (6 handlers)
+[GIN-debug] POST   /system/getSystemConfig   --> gin-vue-admin/api/v1.GetSystemConfig (6 handlers)
+[GIN-debug] POST   /system/setSystemConfig   --> gin-vue-admin/api/v1.SetSystemConfig (6 handlers)
+[GIN-debug] POST   /customer/customer        --> gin-vue-admin/api/v1.CreateExaCustomer (7 handlers)
+[GIN-debug] PUT    /customer/customer        --> gin-vue-admin/api/v1.UpdateExaCustomer (7 handlers)
+[GIN-debug] DELETE /customer/customer        --> gin-vue-admin/api/v1.DeleteExaCustomer (7 handlers)
+[GIN-debug] GET    /customer/customer        --> gin-vue-admin/api/v1.GetExaCustomer (7 handlers)
+[GIN-debug] GET    /customer/customerList    --> gin-vue-admin/api/v1.GetExaCustomerList (7 handlers)
+[GIN-debug] POST   /autoCode/createTemp      --> gin-vue-admin/api/v1.CreateTemp (7 handlers)
+[GIN-debug] GET    /autoCode/getTables       --> gin-vue-admin/api/v1.GetTables (7 handlers)
+[GIN-debug] GET    /autoCode/getDB           --> gin-vue-admin/api/v1.GetDB (7 handlers)
+[GIN-debug] GET    /autoCode/getColume       --> gin-vue-admin/api/v1.GetColume (7 handlers)
+[GIN-debug] POST   /sysDictionaryDetail/createSysDictionaryDetail --> gin-vue-admin/api/v1.CreateSysDictionaryDetail (7 handlers)
+[GIN-debug] DELETE /sysDictionaryDetail/deleteSysDictionaryDetail --> gin-vue-admin/api/v1.DeleteSysDictionaryDetail (7 handlers)
+[GIN-debug] PUT    /sysDictionaryDetail/updateSysDictionaryDetail --> gin-vue-admin/api/v1.UpdateSysDictionaryDetail (7 handlers)
+[GIN-debug] GET    /sysDictionaryDetail/findSysDictionaryDetail --> gin-vue-admin/api/v1.FindSysDictionaryDetail (7 handlers)
+[GIN-debug] GET    /sysDictionaryDetail/getSysDictionaryDetailList --> gin-vue-admin/api/v1.GetSysDictionaryDetailList (7 handlers)
+[GIN-debug] POST   /sysDictionary/createSysDictionary --> gin-vue-admin/api/v1.CreateSysDictionary (7 handlers)
+[GIN-debug] DELETE /sysDictionary/deleteSysDictionary --> gin-vue-admin/api/v1.DeleteSysDictionary (7 handlers)
+[GIN-debug] PUT    /sysDictionary/updateSysDictionary --> gin-vue-admin/api/v1.UpdateSysDictionary (7 handlers)
+[GIN-debug] GET    /sysDictionary/findSysDictionary --> gin-vue-admin/api/v1.FindSysDictionary (7 handlers)
+[GIN-debug] GET    /sysDictionary/getSysDictionaryList --> gin-vue-admin/api/v1.GetSysDictionaryList (7 handlers)
+[GIN-debug] POST   /sysOperationRecord/createSysOperationRecord --> gin-vue-admin/api/v1.CreateSysOperationRecord (6 handlers)
+[GIN-debug] DELETE /sysOperationRecord/deleteSysOperationRecord --> gin-vue-admin/api/v1.DeleteSysOperationRecord (6 handlers)
+[GIN-debug] DELETE /sysOperationRecord/deleteSysOperationRecordByIds --> gin-vue-admin/api/v1.DeleteSysOperationRecordByIds (6 handlers)
+[GIN-debug] PUT    /sysOperationRecord/updateSysOperationRecord --> gin-vue-admin/api/v1.UpdateSysOperationRecord (6 handlers)
+[GIN-debug] GET    /sysOperationRecord/findSysOperationRecord --> gin-vue-admin/api/v1.FindSysOperationRecord (6 handlers)
+[GIN-debug] GET    /sysOperationRecord/getSysOperationRecordList --> gin-vue-admin/api/v1.GetSysOperationRecordList (6 handlers)
+[GIN-debug] POST   /article/articleList      --> gin-vue-admin/api/v1.ArticleList (4 handlers)
+[GIN-debug] GET    /article/articleDetail    --> gin-vue-admin/api/v1.GetArticleDetail (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 11:11:20.014 D:/code/github/blog/Kyara/server/initialize/router.go:43 ▶ [INFO] 路由注册成功!
+[GIN-debug] GET    /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 11:11:20.015 D:/code/github/blog/Kyara/server/core/server.go:30 ▶ [DEBUG] server run success on  :3000
+[GIN] 2020/08/31 - 11:11:35 | 404 |            0s |             ::1 | GET      "/"
+[GIN] 2020/08/31 - 11:11:36 | 404 |            0s |             ::1 | GET      "/favicon.ico"
+[GIN-VUE-ADMIN]2020/08/31 - 11:12:59.247 D:/code/github/blog/Kyara/server/initialize/db_table.go:27 ▶ [DEBUG] 注册成功!
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-VUE-ADMIN]2020/08/31 - 11:12:59.251 D:/code/github/blog/Kyara/server/initialize/router.go:18 ▶ [DEBUG] use middleware logger
+[GIN-VUE-ADMIN]2020/08/31 - 11:12:59.251 D:/code/github/blog/Kyara/server/initialize/router.go:21 ▶ [DEBUG] use middleware cors
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 11:12:59.251 D:/code/github/blog/Kyara/server/initialize/router.go:23 ▶ [DEBUG] register swagger handler
+[GIN-debug] POST   /user/changePassword      --> gin-vue-admin/api/v1.ChangePassword (7 handlers)
+[GIN-debug] POST   /user/uploadHeaderImg     --> gin-vue-admin/api/v1.UploadHeaderImg (7 handlers)
+[GIN-debug] POST   /user/getUserList         --> gin-vue-admin/api/v1.GetUserList (7 handlers)
+[GIN-debug] POST   /user/setUserAuthority    --> gin-vue-admin/api/v1.SetUserAuthority (7 handlers)
+[GIN-debug] DELETE /user/deleteUser          --> gin-vue-admin/api/v1.DeleteUser (7 handlers)
+[GIN-debug] POST   /base/register            --> gin-vue-admin/api/v1.Register (4 handlers)
+[GIN-debug] POST   /base/login               --> gin-vue-admin/api/v1.Login (4 handlers)
+[GIN-debug] POST   /base/captcha             --> gin-vue-admin/api/v1.Captcha (4 handlers)
+[GIN-debug] POST   /menu/getMenu             --> gin-vue-admin/api/v1.GetMenu (6 handlers)
+[GIN-debug] POST   /menu/getMenuList         --> gin-vue-admin/api/v1.GetMenuList (6 handlers)
+[GIN-debug] POST   /menu/addBaseMenu         --> gin-vue-admin/api/v1.AddBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/getBaseMenuTree     --> gin-vue-admin/api/v1.GetBaseMenuTree (6 handlers)
+[GIN-debug] POST   /menu/addMenuAuthority    --> gin-vue-admin/api/v1.AddMenuAuthority (6 handlers)
+[GIN-debug] POST   /menu/getMenuAuthority    --> gin-vue-admin/api/v1.GetMenuAuthority (6 handlers)
+[GIN-debug] POST   /menu/deleteBaseMenu      --> gin-vue-admin/api/v1.DeleteBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/updateBaseMenu      --> gin-vue-admin/api/v1.UpdateBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/getBaseMenuById     --> gin-vue-admin/api/v1.GetBaseMenuById (6 handlers)
+[GIN-debug] POST   /authority/createAuthority --> gin-vue-admin/api/v1.CreateAuthority (7 handlers)
+[GIN-debug] POST   /authority/deleteAuthority --> gin-vue-admin/api/v1.DeleteAuthority (7 handlers)
+[GIN-debug] PUT    /authority/updateAuthority --> gin-vue-admin/api/v1.UpdateAuthority (7 handlers)
+[GIN-debug] POST   /authority/copyAuthority  --> gin-vue-admin/api/v1.CopyAuthority (7 handlers)
+[GIN-debug] POST   /authority/getAuthorityList --> gin-vue-admin/api/v1.GetAuthorityList (7 handlers)
+[GIN-debug] POST   /authority/setDataAuthority --> gin-vue-admin/api/v1.SetDataAuthority (7 handlers)
+[GIN-debug] POST   /api/createApi            --> gin-vue-admin/api/v1.CreateApi (6 handlers)
+[GIN-debug] POST   /api/deleteApi            --> gin-vue-admin/api/v1.DeleteApi (6 handlers)
+[GIN-debug] POST   /api/getApiList           --> gin-vue-admin/api/v1.GetApiList (6 handlers)
+[GIN-debug] POST   /api/getApiById           --> gin-vue-admin/api/v1.GetApiById (6 handlers)
+[GIN-debug] POST   /api/updateApi            --> gin-vue-admin/api/v1.UpdateApi (6 handlers)
+[GIN-debug] POST   /api/getAllApis           --> gin-vue-admin/api/v1.GetAllApis (6 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/upload --> gin-vue-admin/api/v1.UploadFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/getFileList --> gin-vue-admin/api/v1.GetFileList (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/deleteFile --> gin-vue-admin/api/v1.DeleteFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/breakpointContinue --> gin-vue-admin/api/v1.BreakpointContinue (4 handlers)
+[GIN-debug] GET    /fileUploadAndDownload/findFile --> gin-vue-admin/api/v1.FindFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/breakpointContinueFinish --> gin-vue-admin/api/v1.BreakpointContinueFinish (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/removeChunk --> gin-vue-admin/api/v1.RemoveChunk (4 handlers)
+[GIN-debug] POST   /workflow/createWorkFlow  --> gin-vue-admin/api/v1.CreateWorkFlow (6 handlers)
+[GIN-debug] POST   /casbin/updateCasbin      --> gin-vue-admin/api/v1.UpdateCasbin (7 handlers)
+[GIN-debug] POST   /casbin/getPolicyPathByAuthorityId --> gin-vue-admin/api/v1.GetPolicyPathByAuthorityId (7 handlers)
+[GIN-debug] GET    /casbin/casbinTest/:pathParam --> gin-vue-admin/api/v1.CasbinTest (7 handlers)
+[GIN-debug] POST   /jwt/jsonInBlacklist      --> gin-vue-admin/api/v1.JsonInBlacklist (6 handlers)
+[GIN-debug] POST   /system/getSystemConfig   --> gin-vue-admin/api/v1.GetSystemConfig (6 handlers)
+[GIN-debug] POST   /system/setSystemConfig   --> gin-vue-admin/api/v1.SetSystemConfig (6 handlers)
+[GIN-debug] POST   /customer/customer        --> gin-vue-admin/api/v1.CreateExaCustomer (7 handlers)
+[GIN-debug] PUT    /customer/customer        --> gin-vue-admin/api/v1.UpdateExaCustomer (7 handlers)
+[GIN-debug] DELETE /customer/customer        --> gin-vue-admin/api/v1.DeleteExaCustomer (7 handlers)
+[GIN-debug] GET    /customer/customer        --> gin-vue-admin/api/v1.GetExaCustomer (7 handlers)
+[GIN-debug] GET    /customer/customerList    --> gin-vue-admin/api/v1.GetExaCustomerList (7 handlers)
+[GIN-debug] POST   /autoCode/createTemp      --> gin-vue-admin/api/v1.CreateTemp (7 handlers)
+[GIN-debug] GET    /autoCode/getTables       --> gin-vue-admin/api/v1.GetTables (7 handlers)
+[GIN-debug] GET    /autoCode/getDB           --> gin-vue-admin/api/v1.GetDB (7 handlers)
+[GIN-debug] GET    /autoCode/getColume       --> gin-vue-admin/api/v1.GetColume (7 handlers)
+[GIN-debug] POST   /sysDictionaryDetail/createSysDictionaryDetail --> gin-vue-admin/api/v1.CreateSysDictionaryDetail (7 handlers)
+[GIN-debug] DELETE /sysDictionaryDetail/deleteSysDictionaryDetail --> gin-vue-admin/api/v1.DeleteSysDictionaryDetail (7 handlers)
+[GIN-debug] PUT    /sysDictionaryDetail/updateSysDictionaryDetail --> gin-vue-admin/api/v1.UpdateSysDictionaryDetail (7 handlers)
+[GIN-debug] GET    /sysDictionaryDetail/findSysDictionaryDetail --> gin-vue-admin/api/v1.FindSysDictionaryDetail (7 handlers)
+[GIN-debug] GET    /sysDictionaryDetail/getSysDictionaryDetailList --> gin-vue-admin/api/v1.GetSysDictionaryDetailList (7 handlers)
+[GIN-debug] POST   /sysDictionary/createSysDictionary --> gin-vue-admin/api/v1.CreateSysDictionary (7 handlers)
+[GIN-debug] DELETE /sysDictionary/deleteSysDictionary --> gin-vue-admin/api/v1.DeleteSysDictionary (7 handlers)
+[GIN-debug] PUT    /sysDictionary/updateSysDictionary --> gin-vue-admin/api/v1.UpdateSysDictionary (7 handlers)
+[GIN-debug] GET    /sysDictionary/findSysDictionary --> gin-vue-admin/api/v1.FindSysDictionary (7 handlers)
+[GIN-debug] GET    /sysDictionary/getSysDictionaryList --> gin-vue-admin/api/v1.GetSysDictionaryList (7 handlers)
+[GIN-debug] POST   /sysOperationRecord/createSysOperationRecord --> gin-vue-admin/api/v1.CreateSysOperationRecord (6 handlers)
+[GIN-debug] DELETE /sysOperationRecord/deleteSysOperationRecord --> gin-vue-admin/api/v1.DeleteSysOperationRecord (6 handlers)
+[GIN-debug] DELETE /sysOperationRecord/deleteSysOperationRecordByIds --> gin-vue-admin/api/v1.DeleteSysOperationRecordByIds (6 handlers)
+[GIN-debug] PUT    /sysOperationRecord/updateSysOperationRecord --> gin-vue-admin/api/v1.UpdateSysOperationRecord (6 handlers)
+[GIN-debug] GET    /sysOperationRecord/findSysOperationRecord --> gin-vue-admin/api/v1.FindSysOperationRecord (6 handlers)
+[GIN-debug] GET    /sysOperationRecord/getSysOperationRecordList --> gin-vue-admin/api/v1.GetSysOperationRecordList (6 handlers)
+[GIN-debug] POST   /article/articleList      --> gin-vue-admin/api/v1.ArticleList (4 handlers)
+[GIN-debug] GET    /article/articleDetail    --> gin-vue-admin/api/v1.GetArticleDetail (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 11:12:59.253 D:/code/github/blog/Kyara/server/initialize/router.go:43 ▶ [INFO] 路由注册成功!
+[GIN-debug] GET    /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 11:12:59.255 D:/code/github/blog/Kyara/server/core/server.go:30 ▶ [DEBUG] server run success on  :3001
+[GIN] 2020/08/31 - 11:18:25 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:18:25 | 200 |     13.9659ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:18:34 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:18:34 | 200 |      7.9785ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:19:06 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:19:06 | 200 |      7.9782ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:19:11 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:19:11 | 200 |      5.9839ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:20:23 | 200 |      4.9868ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:20:44 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:20:44 | 200 |      8.9759ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:21:39 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:21:39 | 200 |     10.9723ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:21:50 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:21:50 | 200 |      8.9774ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:21:59 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:21:59 | 200 |      6.9816ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:22:12 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:22:12 | 200 |      6.9813ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:22:49 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:22:49 | 200 |      7.9783ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:27:26 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:27:26 | 200 |     11.9686ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:29:31 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:29:31 | 200 |     10.9712ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:30:03 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 11:30:03 | 200 |     10.9708ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 11:30:07 | 200 |      8.9767ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN-VUE-ADMIN]2020/08/31 - 13:35:53.735 D:/code/github/blog/Kyara/server/initialize/db_table.go:27 ▶ [DEBUG] 注册成功!
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-VUE-ADMIN]2020/08/31 - 13:35:53.740 D:/code/github/blog/Kyara/server/initialize/router.go:18 ▶ [DEBUG] use middleware logger
+[GIN-VUE-ADMIN]2020/08/31 - 13:35:53.740 D:/code/github/blog/Kyara/server/initialize/router.go:21 ▶ [DEBUG] use middleware cors
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 13:35:53.740 D:/code/github/blog/Kyara/server/initialize/router.go:23 ▶ [DEBUG] register swagger handler
+[GIN-debug] POST   /user/changePassword      --> gin-vue-admin/api/v1.ChangePassword (7 handlers)
+[GIN-debug] POST   /user/uploadHeaderImg     --> gin-vue-admin/api/v1.UploadHeaderImg (7 handlers)
+[GIN-debug] POST   /user/getUserList         --> gin-vue-admin/api/v1.GetUserList (7 handlers)
+[GIN-debug] POST   /user/setUserAuthority    --> gin-vue-admin/api/v1.SetUserAuthority (7 handlers)
+[GIN-debug] DELETE /user/deleteUser          --> gin-vue-admin/api/v1.DeleteUser (7 handlers)
+[GIN-debug] POST   /base/register            --> gin-vue-admin/api/v1.Register (4 handlers)
+[GIN-debug] POST   /base/login               --> gin-vue-admin/api/v1.Login (4 handlers)
+[GIN-debug] POST   /base/captcha             --> gin-vue-admin/api/v1.Captcha (4 handlers)
+[GIN-debug] POST   /menu/getMenu             --> gin-vue-admin/api/v1.GetMenu (6 handlers)
+[GIN-debug] POST   /menu/getMenuList         --> gin-vue-admin/api/v1.GetMenuList (6 handlers)
+[GIN-debug] POST   /menu/addBaseMenu         --> gin-vue-admin/api/v1.AddBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/getBaseMenuTree     --> gin-vue-admin/api/v1.GetBaseMenuTree (6 handlers)
+[GIN-debug] POST   /menu/addMenuAuthority    --> gin-vue-admin/api/v1.AddMenuAuthority (6 handlers)
+[GIN-debug] POST   /menu/getMenuAuthority    --> gin-vue-admin/api/v1.GetMenuAuthority (6 handlers)
+[GIN-debug] POST   /menu/deleteBaseMenu      --> gin-vue-admin/api/v1.DeleteBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/updateBaseMenu      --> gin-vue-admin/api/v1.UpdateBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/getBaseMenuById     --> gin-vue-admin/api/v1.GetBaseMenuById (6 handlers)
+[GIN-debug] POST   /authority/createAuthority --> gin-vue-admin/api/v1.CreateAuthority (7 handlers)
+[GIN-debug] POST   /authority/deleteAuthority --> gin-vue-admin/api/v1.DeleteAuthority (7 handlers)
+[GIN-debug] PUT    /authority/updateAuthority --> gin-vue-admin/api/v1.UpdateAuthority (7 handlers)
+[GIN-debug] POST   /authority/copyAuthority  --> gin-vue-admin/api/v1.CopyAuthority (7 handlers)
+[GIN-debug] POST   /authority/getAuthorityList --> gin-vue-admin/api/v1.GetAuthorityList (7 handlers)
+[GIN-debug] POST   /authority/setDataAuthority --> gin-vue-admin/api/v1.SetDataAuthority (7 handlers)
+[GIN-debug] POST   /api/createApi            --> gin-vue-admin/api/v1.CreateApi (6 handlers)
+[GIN-debug] POST   /api/deleteApi            --> gin-vue-admin/api/v1.DeleteApi (6 handlers)
+[GIN-debug] POST   /api/getApiList           --> gin-vue-admin/api/v1.GetApiList (6 handlers)
+[GIN-debug] POST   /api/getApiById           --> gin-vue-admin/api/v1.GetApiById (6 handlers)
+[GIN-debug] POST   /api/updateApi            --> gin-vue-admin/api/v1.UpdateApi (6 handlers)
+[GIN-debug] POST   /api/getAllApis           --> gin-vue-admin/api/v1.GetAllApis (6 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/upload --> gin-vue-admin/api/v1.UploadFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/getFileList --> gin-vue-admin/api/v1.GetFileList (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/deleteFile --> gin-vue-admin/api/v1.DeleteFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/breakpointContinue --> gin-vue-admin/api/v1.BreakpointContinue (4 handlers)
+[GIN-debug] GET    /fileUploadAndDownload/findFile --> gin-vue-admin/api/v1.FindFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/breakpointContinueFinish --> gin-vue-admin/api/v1.BreakpointContinueFinish (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/removeChunk --> gin-vue-admin/api/v1.RemoveChunk (4 handlers)
+[GIN-debug] POST   /workflow/createWorkFlow  --> gin-vue-admin/api/v1.CreateWorkFlow (6 handlers)
+[GIN-debug] POST   /casbin/updateCasbin      --> gin-vue-admin/api/v1.UpdateCasbin (7 handlers)
+[GIN-debug] POST   /casbin/getPolicyPathByAuthorityId --> gin-vue-admin/api/v1.GetPolicyPathByAuthorityId (7 handlers)
+[GIN-debug] GET    /casbin/casbinTest/:pathParam --> gin-vue-admin/api/v1.CasbinTest (7 handlers)
+[GIN-debug] POST   /jwt/jsonInBlacklist      --> gin-vue-admin/api/v1.JsonInBlacklist (6 handlers)
+[GIN-debug] POST   /system/getSystemConfig   --> gin-vue-admin/api/v1.GetSystemConfig (6 handlers)
+[GIN-debug] POST   /system/setSystemConfig   --> gin-vue-admin/api/v1.SetSystemConfig (6 handlers)
+[GIN-debug] POST   /customer/customer        --> gin-vue-admin/api/v1.CreateExaCustomer (7 handlers)
+[GIN-debug] PUT    /customer/customer        --> gin-vue-admin/api/v1.UpdateExaCustomer (7 handlers)
+[GIN-debug] DELETE /customer/customer        --> gin-vue-admin/api/v1.DeleteExaCustomer (7 handlers)
+[GIN-debug] GET    /customer/customer        --> gin-vue-admin/api/v1.GetExaCustomer (7 handlers)
+[GIN-debug] GET    /customer/customerList    --> gin-vue-admin/api/v1.GetExaCustomerList (7 handlers)
+[GIN-debug] POST   /autoCode/createTemp      --> gin-vue-admin/api/v1.CreateTemp (7 handlers)
+[GIN-debug] GET    /autoCode/getTables       --> gin-vue-admin/api/v1.GetTables (7 handlers)
+[GIN-debug] GET    /autoCode/getDB           --> gin-vue-admin/api/v1.GetDB (7 handlers)
+[GIN-debug] GET    /autoCode/getColume       --> gin-vue-admin/api/v1.GetColume (7 handlers)
+[GIN-debug] POST   /sysDictionaryDetail/createSysDictionaryDetail --> gin-vue-admin/api/v1.CreateSysDictionaryDetail (7 handlers)
+[GIN-debug] DELETE /sysDictionaryDetail/deleteSysDictionaryDetail --> gin-vue-admin/api/v1.DeleteSysDictionaryDetail (7 handlers)
+[GIN-debug] PUT    /sysDictionaryDetail/updateSysDictionaryDetail --> gin-vue-admin/api/v1.UpdateSysDictionaryDetail (7 handlers)
+[GIN-debug] GET    /sysDictionaryDetail/findSysDictionaryDetail --> gin-vue-admin/api/v1.FindSysDictionaryDetail (7 handlers)
+[GIN-debug] GET    /sysDictionaryDetail/getSysDictionaryDetailList --> gin-vue-admin/api/v1.GetSysDictionaryDetailList (7 handlers)
+[GIN-debug] POST   /sysDictionary/createSysDictionary --> gin-vue-admin/api/v1.CreateSysDictionary (7 handlers)
+[GIN-debug] DELETE /sysDictionary/deleteSysDictionary --> gin-vue-admin/api/v1.DeleteSysDictionary (7 handlers)
+[GIN-debug] PUT    /sysDictionary/updateSysDictionary --> gin-vue-admin/api/v1.UpdateSysDictionary (7 handlers)
+[GIN-debug] GET    /sysDictionary/findSysDictionary --> gin-vue-admin/api/v1.FindSysDictionary (7 handlers)
+[GIN-debug] GET    /sysDictionary/getSysDictionaryList --> gin-vue-admin/api/v1.GetSysDictionaryList (7 handlers)
+[GIN-debug] POST   /sysOperationRecord/createSysOperationRecord --> gin-vue-admin/api/v1.CreateSysOperationRecord (6 handlers)
+[GIN-debug] DELETE /sysOperationRecord/deleteSysOperationRecord --> gin-vue-admin/api/v1.DeleteSysOperationRecord (6 handlers)
+[GIN-debug] DELETE /sysOperationRecord/deleteSysOperationRecordByIds --> gin-vue-admin/api/v1.DeleteSysOperationRecordByIds (6 handlers)
+[GIN-debug] PUT    /sysOperationRecord/updateSysOperationRecord --> gin-vue-admin/api/v1.UpdateSysOperationRecord (6 handlers)
+[GIN-debug] GET    /sysOperationRecord/findSysOperationRecord --> gin-vue-admin/api/v1.FindSysOperationRecord (6 handlers)
+[GIN-debug] GET    /sysOperationRecord/getSysOperationRecordList --> gin-vue-admin/api/v1.GetSysOperationRecordList (6 handlers)
+[GIN-debug] POST   /article/articleList      --> gin-vue-admin/api/v1.ArticleList (4 handlers)
+[GIN-debug] GET    /article/articleDetail    --> gin-vue-admin/api/v1.GetArticleDetail (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 13:35:53.742 D:/code/github/blog/Kyara/server/initialize/router.go:43 ▶ [INFO] 路由注册成功!
+[GIN-debug] GET    /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 13:35:53.744 D:/code/github/blog/Kyara/server/core/server.go:30 ▶ [DEBUG] server run success on  :3001
+[GIN] 2020/08/31 - 13:37:28 | 404 |            0s |       127.0.0.1 | GET      "/"
+[GIN] 2020/08/31 - 13:37:35 | 404 |            0s |       127.0.0.1 | GET      "/"
+[GIN] 2020/08/31 - 13:37:50 | 404 |            0s |       127.0.0.1 | GET      "/"
+[GIN] 2020/08/31 - 13:38:06 | 404 |            0s |       127.0.0.1 | GET      "/"
+[GIN] 2020/08/31 - 13:38:27 | 404 |            0s |       127.0.0.1 | GET      "/"
+[GIN] 2020/08/31 - 13:38:31 | 404 |            0s |       127.0.0.1 | GET      "/"
+[GIN] 2020/08/31 - 13:38:35 | 404 |            0s |       127.0.0.1 | GET      "/"
+[GIN] 2020/08/31 - 13:38:47 | 204 |            0s |       127.0.0.1 | OPTIONS  "/"
+[GIN] 2020/08/31 - 13:38:47 | 404 |            0s |       127.0.0.1 | POST     "/"
+[GIN] 2020/08/31 - 13:38:49 | 404 |            0s |       127.0.0.1 | POST     "/"
+[GIN] 2020/08/31 - 13:40:17 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 13:40:17 | 200 |     10.9701ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:40:51 | 200 |      5.9837ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:40:56 | 200 |      6.9489ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:41:13 | 200 |      6.9803ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:41:23 | 200 |      6.9569ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:41:33 | 200 |      6.9817ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:41:40 | 200 |      4.9521ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:41:41 | 200 |      6.9826ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:41:58 | 200 |      5.9845ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:42:41 | 200 |      6.9816ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:43:03 | 200 |      5.9849ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:43:52 | 200 |      8.9774ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:44:08 | 200 |      6.9813ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:44:41 | 200 |     30.9176ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:44:59 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 13:44:59 | 200 |      5.9858ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:45:02 | 200 |      5.0118ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:45:09 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 13:45:09 | 200 |      4.9879ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:46:46 | 200 |      5.9833ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:46:48 | 200 |      5.9834ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:47:48 | 200 |      5.9847ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:47:59 | 200 |      6.9827ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:48:09 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 13:48:09 | 200 |      5.9836ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:48:42 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 13:48:42 | 200 |      6.0153ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:48:50 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 13:48:50 | 200 |       6.982ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:48:54 | 200 |      5.9841ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:49:04 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 13:49:04 | 200 |      6.9816ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:49:56 | 200 |      6.0158ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 13:50:46 | 200 |      7.0033ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:45:24 | 200 |     14.9621ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:48:54 | 200 |     11.9671ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:49:36 | 200 |      4.9858ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:49:36 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 14:49:36 | 200 |      9.9324ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:51:56 | 200 |     11.9673ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:51:56 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 14:51:56 | 200 |      6.9805ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:03 | 200 |      6.9833ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:03 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 14:52:03 | 200 |      8.9806ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:17 | 200 |       6.985ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:17 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 14:52:17 | 200 |      7.9768ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:23 | 200 |      6.9483ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:23 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 14:52:23 | 200 |         8.5ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:35 | 200 |      5.9841ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:35 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 14:52:35 | 200 |       7.979ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:43 | 200 |      6.9829ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:44 | 200 |      7.9787ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:44 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 14:52:44 | 200 |       5.985ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:45 | 200 |      6.9789ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:52:45 | 200 |      7.9828ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN-VUE-ADMIN]2020/08/31 - 14:54:59.981 D:/code/github/blog/Kyara/server/initialize/db_table.go:27 ▶ [DEBUG] 注册成功!
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-VUE-ADMIN]2020/08/31 - 14:54:59.985 D:/code/github/blog/Kyara/server/initialize/router.go:18 ▶ [DEBUG] use middleware logger
+[GIN-VUE-ADMIN]2020/08/31 - 14:54:59.985 D:/code/github/blog/Kyara/server/initialize/router.go:21 ▶ [DEBUG] use middleware cors
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 14:54:59.986 D:/code/github/blog/Kyara/server/initialize/router.go:23 ▶ [DEBUG] register swagger handler
+[GIN-debug] POST   /user/changePassword      --> gin-vue-admin/api/v1.ChangePassword (7 handlers)
+[GIN-debug] POST   /user/uploadHeaderImg     --> gin-vue-admin/api/v1.UploadHeaderImg (7 handlers)
+[GIN-debug] POST   /user/getUserList         --> gin-vue-admin/api/v1.GetUserList (7 handlers)
+[GIN-debug] POST   /user/setUserAuthority    --> gin-vue-admin/api/v1.SetUserAuthority (7 handlers)
+[GIN-debug] DELETE /user/deleteUser          --> gin-vue-admin/api/v1.DeleteUser (7 handlers)
+[GIN-debug] POST   /base/register            --> gin-vue-admin/api/v1.Register (4 handlers)
+[GIN-debug] POST   /base/login               --> gin-vue-admin/api/v1.Login (4 handlers)
+[GIN-debug] POST   /base/captcha             --> gin-vue-admin/api/v1.Captcha (4 handlers)
+[GIN-debug] POST   /menu/getMenu             --> gin-vue-admin/api/v1.GetMenu (6 handlers)
+[GIN-debug] POST   /menu/getMenuList         --> gin-vue-admin/api/v1.GetMenuList (6 handlers)
+[GIN-debug] POST   /menu/addBaseMenu         --> gin-vue-admin/api/v1.AddBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/getBaseMenuTree     --> gin-vue-admin/api/v1.GetBaseMenuTree (6 handlers)
+[GIN-debug] POST   /menu/addMenuAuthority    --> gin-vue-admin/api/v1.AddMenuAuthority (6 handlers)
+[GIN-debug] POST   /menu/getMenuAuthority    --> gin-vue-admin/api/v1.GetMenuAuthority (6 handlers)
+[GIN-debug] POST   /menu/deleteBaseMenu      --> gin-vue-admin/api/v1.DeleteBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/updateBaseMenu      --> gin-vue-admin/api/v1.UpdateBaseMenu (6 handlers)
+[GIN-debug] POST   /menu/getBaseMenuById     --> gin-vue-admin/api/v1.GetBaseMenuById (6 handlers)
+[GIN-debug] POST   /authority/createAuthority --> gin-vue-admin/api/v1.CreateAuthority (7 handlers)
+[GIN-debug] POST   /authority/deleteAuthority --> gin-vue-admin/api/v1.DeleteAuthority (7 handlers)
+[GIN-debug] PUT    /authority/updateAuthority --> gin-vue-admin/api/v1.UpdateAuthority (7 handlers)
+[GIN-debug] POST   /authority/copyAuthority  --> gin-vue-admin/api/v1.CopyAuthority (7 handlers)
+[GIN-debug] POST   /authority/getAuthorityList --> gin-vue-admin/api/v1.GetAuthorityList (7 handlers)
+[GIN-debug] POST   /authority/setDataAuthority --> gin-vue-admin/api/v1.SetDataAuthority (7 handlers)
+[GIN-debug] POST   /api/createApi            --> gin-vue-admin/api/v1.CreateApi (6 handlers)
+[GIN-debug] POST   /api/deleteApi            --> gin-vue-admin/api/v1.DeleteApi (6 handlers)
+[GIN-debug] POST   /api/getApiList           --> gin-vue-admin/api/v1.GetApiList (6 handlers)
+[GIN-debug] POST   /api/getApiById           --> gin-vue-admin/api/v1.GetApiById (6 handlers)
+[GIN-debug] POST   /api/updateApi            --> gin-vue-admin/api/v1.UpdateApi (6 handlers)
+[GIN-debug] POST   /api/getAllApis           --> gin-vue-admin/api/v1.GetAllApis (6 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/upload --> gin-vue-admin/api/v1.UploadFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/getFileList --> gin-vue-admin/api/v1.GetFileList (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/deleteFile --> gin-vue-admin/api/v1.DeleteFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/breakpointContinue --> gin-vue-admin/api/v1.BreakpointContinue (4 handlers)
+[GIN-debug] GET    /fileUploadAndDownload/findFile --> gin-vue-admin/api/v1.FindFile (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/breakpointContinueFinish --> gin-vue-admin/api/v1.BreakpointContinueFinish (4 handlers)
+[GIN-debug] POST   /fileUploadAndDownload/removeChunk --> gin-vue-admin/api/v1.RemoveChunk (4 handlers)
+[GIN-debug] POST   /workflow/createWorkFlow  --> gin-vue-admin/api/v1.CreateWorkFlow (6 handlers)
+[GIN-debug] POST   /casbin/updateCasbin      --> gin-vue-admin/api/v1.UpdateCasbin (7 handlers)
+[GIN-debug] POST   /casbin/getPolicyPathByAuthorityId --> gin-vue-admin/api/v1.GetPolicyPathByAuthorityId (7 handlers)
+[GIN-debug] GET    /casbin/casbinTest/:pathParam --> gin-vue-admin/api/v1.CasbinTest (7 handlers)
+[GIN-debug] POST   /jwt/jsonInBlacklist      --> gin-vue-admin/api/v1.JsonInBlacklist (6 handlers)
+[GIN-debug] POST   /system/getSystemConfig   --> gin-vue-admin/api/v1.GetSystemConfig (6 handlers)
+[GIN-debug] POST   /system/setSystemConfig   --> gin-vue-admin/api/v1.SetSystemConfig (6 handlers)
+[GIN-debug] POST   /customer/customer        --> gin-vue-admin/api/v1.CreateExaCustomer (7 handlers)
+[GIN-debug] PUT    /customer/customer        --> gin-vue-admin/api/v1.UpdateExaCustomer (7 handlers)
+[GIN-debug] DELETE /customer/customer        --> gin-vue-admin/api/v1.DeleteExaCustomer (7 handlers)
+[GIN-debug] GET    /customer/customer        --> gin-vue-admin/api/v1.GetExaCustomer (7 handlers)
+[GIN-debug] GET    /customer/customerList    --> gin-vue-admin/api/v1.GetExaCustomerList (7 handlers)
+[GIN-debug] POST   /autoCode/createTemp      --> gin-vue-admin/api/v1.CreateTemp (7 handlers)
+[GIN-debug] GET    /autoCode/getTables       --> gin-vue-admin/api/v1.GetTables (7 handlers)
+[GIN-debug] GET    /autoCode/getDB           --> gin-vue-admin/api/v1.GetDB (7 handlers)
+[GIN-debug] GET    /autoCode/getColume       --> gin-vue-admin/api/v1.GetColume (7 handlers)
+[GIN-debug] POST   /sysDictionaryDetail/createSysDictionaryDetail --> gin-vue-admin/api/v1.CreateSysDictionaryDetail (7 handlers)
+[GIN-debug] DELETE /sysDictionaryDetail/deleteSysDictionaryDetail --> gin-vue-admin/api/v1.DeleteSysDictionaryDetail (7 handlers)
+[GIN-debug] PUT    /sysDictionaryDetail/updateSysDictionaryDetail --> gin-vue-admin/api/v1.UpdateSysDictionaryDetail (7 handlers)
+[GIN-debug] GET    /sysDictionaryDetail/findSysDictionaryDetail --> gin-vue-admin/api/v1.FindSysDictionaryDetail (7 handlers)
+[GIN-debug] GET    /sysDictionaryDetail/getSysDictionaryDetailList --> gin-vue-admin/api/v1.GetSysDictionaryDetailList (7 handlers)
+[GIN-debug] POST   /sysDictionary/createSysDictionary --> gin-vue-admin/api/v1.CreateSysDictionary (7 handlers)
+[GIN-debug] DELETE /sysDictionary/deleteSysDictionary --> gin-vue-admin/api/v1.DeleteSysDictionary (7 handlers)
+[GIN-debug] PUT    /sysDictionary/updateSysDictionary --> gin-vue-admin/api/v1.UpdateSysDictionary (7 handlers)
+[GIN-debug] GET    /sysDictionary/findSysDictionary --> gin-vue-admin/api/v1.FindSysDictionary (7 handlers)
+[GIN-debug] GET    /sysDictionary/getSysDictionaryList --> gin-vue-admin/api/v1.GetSysDictionaryList (7 handlers)
+[GIN-debug] POST   /sysOperationRecord/createSysOperationRecord --> gin-vue-admin/api/v1.CreateSysOperationRecord (6 handlers)
+[GIN-debug] DELETE /sysOperationRecord/deleteSysOperationRecord --> gin-vue-admin/api/v1.DeleteSysOperationRecord (6 handlers)
+[GIN-debug] DELETE /sysOperationRecord/deleteSysOperationRecordByIds --> gin-vue-admin/api/v1.DeleteSysOperationRecordByIds (6 handlers)
+[GIN-debug] PUT    /sysOperationRecord/updateSysOperationRecord --> gin-vue-admin/api/v1.UpdateSysOperationRecord (6 handlers)
+[GIN-debug] GET    /sysOperationRecord/findSysOperationRecord --> gin-vue-admin/api/v1.FindSysOperationRecord (6 handlers)
+[GIN-debug] GET    /sysOperationRecord/getSysOperationRecordList --> gin-vue-admin/api/v1.GetSysOperationRecordList (6 handlers)
+[GIN-debug] POST   /article/articleList      --> gin-vue-admin/api/v1.ArticleList (4 handlers)
+[GIN-debug] GET    /article/articleDetail    --> gin-vue-admin/api/v1.GetArticleDetail (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 14:54:59.987 D:/code/github/blog/Kyara/server/initialize/router.go:43 ▶ [INFO] 路由注册成功!
+[GIN-debug] GET    /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /form-generator/*filepath --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-VUE-ADMIN]2020/08/31 - 14:54:59.989 D:/code/github/blog/Kyara/server/core/server.go:30 ▶ [DEBUG] server run success on  :3000
+[GIN] 2020/08/31 - 14:55:00 | 404 |            0s |       127.0.0.1 | GET      "/_loading/sse"
+[GIN] 2020/08/31 - 14:55:03 | 200 |      6.9797ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:55:11 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:55:27 | 200 |      4.9871ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:55:36 | 200 |      5.9833ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 14:55:42 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:56:13 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:56:44 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:57:15 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:57:46 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:58:17 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:58:48 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:59:19 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 14:59:50 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:00:00 | 200 |     10.9632ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 15:00:01 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 15:00:01 | 200 |      4.9854ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 15:00:21 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:00:22 | 200 |      5.9838ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 15:00:52 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:01:14 | 200 |      6.9813ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 15:01:15 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 15:01:15 | 200 |      7.0715ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 15:01:23 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:01:54 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:02:25 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:02:56 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:03:27 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:03:58 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:04:29 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:05:00 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:05:31 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:06:02 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:06:33 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:07:04 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:07:35 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:07:49 | 200 |     11.9707ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 15:07:49 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 15:07:49 | 200 |       5.983ms |       127.0.0.1 | POST     "/article/articleList"
+[GIN] 2020/08/31 - 15:07:52 | 200 |      5.9838ms |       127.0.0.1 | GET      "/article/articleDetail?id=1"
+[GIN] 2020/08/31 - 15:07:54 | 200 |      5.9831ms |       127.0.0.1 | GET      "/article/articleDetail?id=1"
+[GIN] 2020/08/31 - 15:08:06 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:08:37 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:09:08 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:09:39 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:10:10 | 404 |            0s |             ::1 | GET      "/__webpack_hmr/client"
+[GIN] 2020/08/31 - 15:10:25 | 204 |            0s |       127.0.0.1 | OPTIONS  "/article/articleList"
+[GIN] 2020/08/31 - 15:10:25 | 200 |     11.9694ms |       127.0.0.1 | POST     "/article/articleList"

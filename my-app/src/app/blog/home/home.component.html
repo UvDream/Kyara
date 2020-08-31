@@ -1,4 +1,6 @@
 <div>
   home works!
-  <div *ngFor="let item of list">{{ item.title }}</div>
+  <div *ngFor="let item of list" routerLink="/blog/detail/{{ item.ID }}">
+    {{ item.title }}
+  </div>
 </div>

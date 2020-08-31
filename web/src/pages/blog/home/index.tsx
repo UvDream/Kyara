@@ -7,17 +7,14 @@ import List from './components/list';
 import { Pagination } from 'antd';
 import ArticleApi from "@/api/blog/index"
 const Home = (props: any) => {
-  const [articleList, setArticleList] = useState([]);
+  const [articleList, setArticleList] = useState(props.data.articleList);
   useEffect(() => {
     initTheme(true);
-    if (props?.data?.articleList) {
-      setArticleList(props.data.articleList)
-    }
   }, []);
-
 
   const pageChange = (page: number, pageSize: number) => {
   }
+
   return (
     <div className="home">
       {
@@ -38,7 +35,7 @@ const Home = (props: any) => {
   );
 };
 
-Home.getInitialProps = (async (ctx) => {
+Home.getInitialState = (async (ctx) => {
   let msg
   let res = await ArticleApi.List({
     "search": "",

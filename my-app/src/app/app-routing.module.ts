@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/blog/home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
-      { path: 'detail', component: DetailComponent },
+      { path: 'detail/:id', component: DetailComponent },
     ],
   },
   { path: 'admin', component: AdminComponent },
