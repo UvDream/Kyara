@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
         pageSize: 5,
       })
       .subscribe((res: any) => {
+        console.log(res);
         this.list = res.data.msg;
       });
   };

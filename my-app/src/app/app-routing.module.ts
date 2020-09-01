@@ -9,12 +9,13 @@ const routes: Routes = [
   { path: '', redirectTo: '/blog', pathMatch: 'full' },
   {
     path: 'blog',
-    component: BlogComponent,
-    children: [
-      { path: '', redirectTo: '/blog/home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
-      { path: 'detail/:id', component: DetailComponent },
-    ],
+    loadChildren: () => import('./blog/blog.module').then((m) => m.BlogModule),
+    // component: BlogComponent,
+    // children: [
+    //   { path: '', redirectTo: '/blog/home', pathMatch: 'full' },
+    //   { path: 'home', component: HomeComponent },
+    //   { path: 'detail/:id', component: DetailComponent },
+    // ],
   },
   { path: 'admin', component: AdminComponent },
 ];
