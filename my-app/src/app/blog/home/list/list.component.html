@@ -18,7 +18,6 @@
 <div class="list-normal" *ngIf="data.cover_type == 1">
   <div class="list-normal-top">
     <div class="list-normal-top-icon">
-      <!-- <IconFont type={data.icon} /> -->
       <span class="iconfont" [ngClass]="data.icon"></span>
     </div>
     <h2 class="list-normal-top-title">{{ data.title }}</h2>
@@ -28,14 +27,11 @@
   </div>
   <div class="list-normal-split"></div>
   <div class="list-normal-bottom">
-    <span class="iconfont uv-person-outline"></span>
-    <span>{{ data.auth }}</span>
-
-    <span class="iconfont uv-time-outline"></span>
-
+    <span class="iconfont uv-person-outline margin-right-10"></span>
+    <span>{{ data.user_name }}</span>
+    <span class="iconfont uv-time-outline margin-left-right-10"></span>
     <span>{{ data.time }}</span>
-
-    <span class="iconfont uv-chatbubble-outline"></span>
+    <span class="iconfont uv-chatbubble-outline margin-left-right-10"></span>
     <span>{{ data.comment }}条评论</span>
   </div>
 </div>
@@ -52,24 +48,11 @@
     </p>
     <div class="list-normal-split"></div>
     <div class="list-normal-bottom">
-      <!-- <IconFont
-        type="uv-person-outline"
-        class="list-normal-bottom-iconO"
-      /> -->
-      <span class="iconfont uv-person-outline"></span>
-      <span>{{ data.auth }}</span>
-      <!-- <IconFont
-        type="uv-time-outline"
-        class="list-normal-bottom-icon"
-      /> -->
-      <span class="iconfont uv-time-outline"></span>
-
+      <span class="iconfont uv-person-outline margin-right-10"></span>
+      <span>{{ data.user_name }}</span>
+      <span class="iconfont uv-time-outline margin-left-right-10"></span>
       <span>{{ data.time }}</span>
-      <!-- <IconFont
-        type="uv-chatbubble-outline"
-        class="list-normal-bottom-icon"
-      /> -->
-      <span class="iconfont uv-chatbubble-outline"></span>
+      <span class="iconfont uv-chatbubble-outline margin-left-right-10"></span>
       <span>{{ data.comment }}条评论</span>
     </div>
   </div>
@@ -82,25 +65,11 @@
   </p>
   <div class="list-normal-split"></div>
   <div class="list-normal-bottom">
-    <!-- <IconFont
-      type="uv-person-outline"
-      class="list-normal-bottom-iconO"
-    /> -->
-    <span class="iconfont uv-person-outline"></span>
-
-    <span>{{ data.auth }}</span>
-    <!-- <IconFont
-      type="uv-time-outline"
-      class="list-normal-bottom-icon"
-    /> -->
-    <span class="iconfont uv-time-outline"></span>
-
+    <span class="iconfont uv-person-outline margin-right-10"></span>
+    <span>{{ data.user_name }}</span>
+    <span class="iconfont uv-time-outline margin-left-right-10"></span>
     <span>{{ data.time }}</span>
-    <!-- <IconFont
-      type="uv-chatbubble-outline"
-      class="list-normal-bottom-icon"
-    /> -->
-    <span class="iconfont uv-chatbubble-outline"></span>
+    <span class="iconfont uv-chatbubble-outline margin-left-right-10"></span>
     <span>{{ data.comment }}条评论</span>
   </div>
 </div>
