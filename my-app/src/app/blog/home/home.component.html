@@ -1,8 +1,6 @@
-<div>
-  home works!
-  <button nz-button nzType="primary">Primary</button>
-
-  <div *ngFor="let item of list" routerLink="/blog/detail/{{ item.ID }}">
+<div class="home">
+  <app-list *ngFor="let item of list" [data]="item"></app-list>
+  <!-- <div *ngFor="let item of list" routerLink="/blog/detail/{{ item.ID }}">
     {{ item.title }}
-  </div>
+  </div> -->
 </div>

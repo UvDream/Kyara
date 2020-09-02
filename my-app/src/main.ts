@@ -3,12 +3,17 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-
+import { loadStyle } from './util/util';
+import { iconfontUrl, iconfontVersion } from './config/env';
 if (environment.production) {
   enableProdMode();
 }
+iconfontVersion.forEach((ele: any) => {
+  loadStyle(iconfontUrl.replace('$key', ele));
+});
 
 document.addEventListener('DOMContentLoaded', () => {
-  platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch((err) => console.error(err));
 });

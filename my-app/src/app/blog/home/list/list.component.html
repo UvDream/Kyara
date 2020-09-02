@@ -1,0 +1,41 @@
+<!-- 置顶单图 -->
+<div
+  class="list-img"
+  *ngIf="data.cover_type == 2"
+  [ngStyle]="{ 'background-image': 'url(' + data.img_url + ')' }"
+>
+  <header class="list-header">
+    <div class="list-title">
+      <span>置顶</span>
+      {{ data.title }}
+    </div>
+    <div class="list-summary">
+      {{ data.introduction }}
+    </div>
+  </header>
+</div>
+<!-- Icon -->
+<div class="list-normal" *ngIf="data.cover_type == 1">
+  <div class="list-normal-top">
+    <div class="list-normal-top-icon">
+      <!-- <IconFont type={data.icon} /> -->
+      <span class="iconfont" [ngClass]="data.icon"></span>
+    </div>
+    <h2 class="list-normal-top-title">{{ data.title }}</h2>
+    <p class="list-normal-top-summary text-ellipsis-two">
+      {{ data.introduction }}
+    </p>
+  </div>
+  <div class="list-normal-split"></div>
+  <div class="list-normal-bottom">
+    <span class="iconfont uv-person-outline"></span>
+    <span>{{ data.auth }}</span>
+
+    <span class="iconfont uv-time-outline"></span>
+
+    <span>{{ data.time }}</span>
+
+    <span class="iconfont uv-chatbubble-outline"></span>
+    <span>{{ data.comment }}条评论</span>
+  </div>
+</div>
