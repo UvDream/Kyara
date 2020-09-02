@@ -4,7 +4,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { loadStyle } from './util/util';
-import { iconfontUrl, iconfontVersion } from './config/env';
+import { iconfontUrl, iconfontVersion } from './environments/env';
 if (environment.production) {
   enableProdMode();
 }

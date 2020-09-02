@@ -33,7 +33,8 @@
               }
             ],
             "styles": [
-              "src/styles.less"
+              "src/styles.less",
+              "src/styles/index.less"
             ],
             "scripts": []
           },
