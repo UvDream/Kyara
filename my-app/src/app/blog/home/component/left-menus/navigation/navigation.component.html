@@ -1,0 +1,9 @@
+<div class="nav">
+  <div class="nav-title">导航</div>
+  <ul>
+    <li *ngFor="let item of menus">
+      <span class="iconfont nav-icon" [ngClass]="item.icon"></span>
+      <span> {{ item.title }}</span>
+    </li>
+  </ul>
+</div>
