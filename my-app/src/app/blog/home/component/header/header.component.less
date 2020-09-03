@@ -4,9 +4,18 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 4px 1px;
     position  : relative;
     z-index   : 10;
+    display   : flex;
 
     &-logo {
         width : 220px;
         height: 50px;
+    }
+
+    &-block {
+        outline: 1px solid red;
+    }
+
+    &-right {
+        width: ~'calc(100% - 220px)';
     }
 }
