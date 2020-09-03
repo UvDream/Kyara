@@ -1,1 +1,17 @@
-<div class="main-right">haha1</div>
+<div class="main-right">
+  <!-- tabs -->
+  <nz-tabset>
+    <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate">
+      <ng-template #titleTemplate>
+        <div class="main-right-tab">
+          <span class="iconfont" [ngClass]="tab.icon"> </span>
+        </div>
+      </ng-template>
+      {{ tab.name }}
+    </nz-tab>
+  </nz-tabset>
+  <!-- 博客信息 -->
+  <app-blog-message></app-blog-message>
+  <!-- 标签 -->
+  <app-tags></app-tags>
+</div>

@@ -14,8 +14,17 @@ import { FooterComponent } from './home/component/footer/footer.component';
 import { AvatarComponent } from './home/component/left-menus/avatar/avatar.component';
 import { NavigationComponent } from './home/component/left-menus/navigation/navigation.component';
 import { LeftFooterComponent } from './home/component/left-menus/left-footer/left-footer.component';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { BlogMessageComponent } from './home/component/right-content/blog-message/blog-message.component';
+import { TagsComponent } from './home/component/right-content/tags/tags.component';
 @NgModule({
-  imports: [CommonModule, BlogRoutingModule, NzButtonModule, NzGridModule],
+  imports: [
+    CommonModule,
+    BlogRoutingModule,
+    NzButtonModule,
+    NzGridModule,
+    NzTabsModule,
+  ],
   exports: [BlogComponent],
   declarations: [
     BlogComponent,
@@ -29,6 +38,8 @@ import { LeftFooterComponent } from './home/component/left-menus/left-footer/lef
     AvatarComponent,
     NavigationComponent,
     LeftFooterComponent,
+    BlogMessageComponent,
+    TagsComponent,
   ],
   providers: [],
 })
