@@ -40,7 +40,19 @@
     >
       <span class="iconfont uv-pulse-outline"></span>
     </div> -->
-    <div style="width: 50px" class="header-dynamic">哈哈</div>
+
+    <div style="width: 60px" class="header-dynamic text-center">
+      <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+        <span class="iconfont uv-pulse-outline"></span>
+        <span class="iconfont uv-chevron-down-sharp"></span>
+      </div>
+    </div>
+    <!-- 动态展示栏 -->
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        呵呵
+      </ul>
+    </nz-dropdown-menu>
     <!-- 搜索 -->
     <div class="header-search">搜索</div>
     <div class="header-video">音乐播放器</div>

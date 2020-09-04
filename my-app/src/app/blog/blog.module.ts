@@ -17,6 +17,7 @@ import { LeftFooterComponent } from './home/component/left-menus/left-footer/lef
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { BlogMessageComponent } from './home/component/right-content/blog-message/blog-message.component';
 import { TagsComponent } from './home/component/right-content/tags/tags.component';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,6 +25,7 @@ import { TagsComponent } from './home/component/right-content/tags/tags.componen
     NzButtonModule,
     NzGridModule,
     NzTabsModule,
+    NzDropDownModule,
   ],
   exports: [BlogComponent],
   declarations: [
