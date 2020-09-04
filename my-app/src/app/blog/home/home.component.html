@@ -21,6 +21,7 @@
   (nzOnCancel)="modalFunc(false)"
 >
   <ng-template #modalContent>
+    <p style="color: red">*此文章为加密文章,需要访问密码</p>
     <nz-input-group [nzSuffix]="suffixTemplate">
       <input
         [type]="passwordVisible ? 'text' : 'password'"

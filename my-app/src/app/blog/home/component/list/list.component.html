@@ -31,9 +31,11 @@
       <span class="iconfont uv-person-outline margin-right-10"></span>
       <span>{{ data.user_name }}</span>
       <span class="iconfont uv-time-outline margin-left-right-10"></span>
-      <span>{{ data.time }}</span>
+      <span>{{ data.UpdatedAt }}</span>
       <span class="iconfont uv-chatbubble-outline margin-left-right-10"></span>
-      <span>{{ data.comment }}条评论</span>
+      <span>{{
+        data.comment_count === "" ? "暂无评论" : data.comment_count + "条评论"
+      }}</span>
     </div>
   </div>
   <!-- 左图右文 -->
@@ -52,11 +54,13 @@
         <span class="iconfont uv-person-outline margin-right-10"></span>
         <span>{{ data.user_name }}</span>
         <span class="iconfont uv-time-outline margin-left-right-10"></span>
-        <span>{{ data.time }}</span>
+        <span>{{ data.UpdatedAt }}</span>
         <span
           class="iconfont uv-chatbubble-outline margin-left-right-10"
         ></span>
-        <span>{{ data.comment }}条评论</span>
+        <span>{{
+          data.comment_count === "" ? "暂无评论" : data.comment_count + "条评论"
+        }}</span>
       </div>
     </div>
   </div>
@@ -71,9 +75,11 @@
       <span class="iconfont uv-person-outline margin-right-10"></span>
       <span>{{ data.user_name }}</span>
       <span class="iconfont uv-time-outline margin-left-right-10"></span>
-      <span>{{ data.time }}</span>
+      <span>{{ data.UpdatedAt }}</span>
       <span class="iconfont uv-chatbubble-outline margin-left-right-10"></span>
-      <span>{{ data.comment }}条评论</span>
+      <span>{{
+        data.comment_count === "" ? "暂无评论" : data.comment_count + "条评论"
+      }}</span>
     </div>
   </div>
 </div>

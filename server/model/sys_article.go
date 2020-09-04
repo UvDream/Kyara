@@ -19,7 +19,7 @@ type SysArticle struct {
 	// 评论id
 	CommentID string `json:"comment_id" gorm:"comment:'评论id'"`
 	// icon
-	Icon string `json:"icon" gorm:"comment:'icon'"`
+	Icon string `json:"icon" gorm:"comment:'icon';default:'uv-newspaper-outline'"`
 	// icon颜色
 	IconColor string `json:"icon_color" gorm:"comment:'icon颜色'"`
 	// 图片地址
