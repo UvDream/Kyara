@@ -14,7 +14,7 @@ export const homeRoutes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'detail/:id',
+        path: 'detail',
         component: DetailComponent,
       },
     ],
@@ -25,4 +25,4 @@ export const homeRoutes: Routes = [
   imports: [RouterModule.forChild(homeRoutes)],
   exports: [RouterModule],
 })
-export class BlogRoutingModule {}
+export class BlogRoutingModule { }

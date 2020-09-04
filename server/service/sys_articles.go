@@ -40,7 +40,7 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 func GetArticleDetail(c *gin.Context) (err error,article model.SysArticle) {
 	db := global.GVA_DB
 	id:=c.Query("id")
-	 article =model.SysArticle{}
+	article =model.SysArticle{}
 	err = db.Where("id=? ", id).Find(&article).Error
 	luteEngine := lute.New()
 	article.ArticleHtml=luteEngine.MarkdownStr("uvdrem",article.ArticleContent)

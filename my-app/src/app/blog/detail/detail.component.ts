@@ -35,11 +35,17 @@ export class DetailComponent implements OnInit {
   public imgUrl = this.tabList[0].imgUrl;
   public activeId = this.tabList[0].id;
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.getDetail(id);
+    let id = '';
+    let password = '';
+    this.route.queryParams.subscribe(params => {
+      id = params.id;
+      password = params.password;
+      if (password === undefined) { password = ''; }
+    });
+    this.getDetail(id, password);
   }
-  getDetail = (id) => {
-    const url = 'http://127.0.0.1:3000/article/articleDetail?id=' + id;
+  getDetail = (id, password) => {
+    const url = 'http://127.0.0.1:3000/article/articleDetail?id=' + id + '&password=' + password;
     this.http.get(url).subscribe((res: any) => {
       this.htmlContent = res.data.article_html;
       this.markDown = res.data.article_content;

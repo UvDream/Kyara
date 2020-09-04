@@ -1,7 +1,9 @@
 package v1
 
 import (
+	"gin-vue-admin/global"
 	"gin-vue-admin/global/response"
+	"gin-vue-admin/model"
 	resp "gin-vue-admin/model/response"
 
 	"gin-vue-admin/model/request"
@@ -26,6 +28,14 @@ func ArticleList(c *gin.Context)  {
 //获取文章详情
 func GetArticleDetail(c *gin.Context)  {
 	id:=c.Query("id")
+	password:=c.Query("password")
+	db := global.GVA_DB
+	article :=model.SysArticle{}
+	err := db.Where("id=? ", id).Find(&article).Error
+	if article.ViewPassword!=password{
+		response.FailWithMessage("密码错误", c)
+		return
+	}
 	if id=="" {
 		response.FailWithMessage("请携带文章id", c)
 		return

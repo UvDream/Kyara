@@ -37,7 +37,7 @@
     </div>
   </div>
   <!-- 左图右文 -->
-  <div class="list-leftImg" onClick="{toDetail}" *ngIf="data.cover_type == 3">
+  <div class="list-leftImg" *ngIf="data.cover_type == 3">
     <div
       class="list-leftImg-img"
       [ngStyle]="{ 'background-image': 'url(' + data.img_url + ')' }"
@@ -61,7 +61,7 @@
     </div>
   </div>
   <!-- 正常文字 -->
-  <div class="list-text" onClick="{toDetail}" *ngIf="data.cover_type == 0">
+  <div class="list-text" *ngIf="data.cover_type == 0">
     <h2>{{ data.title }}</h2>
     <p class="text-ellipsis-two list-text-summary">
       {{ data.introduction }}
