@@ -1,9 +1,8 @@
 package v1
 
 import (
-	"gin-vue-admin/global"
+	"fmt"
 	"gin-vue-admin/global/response"
-	"gin-vue-admin/model"
 	resp "gin-vue-admin/model/response"
 
 	"gin-vue-admin/model/request"
@@ -29,11 +28,9 @@ func ArticleList(c *gin.Context)  {
 func GetArticleDetail(c *gin.Context)  {
 	id:=c.Query("id")
 	password:=c.Query("password")
-	db := global.GVA_DB
-	article :=model.SysArticle{}
-	err := db.Where("id=? ", id).Find(&article).Error
-	if article.ViewPassword!=password{
-		response.FailWithMessage("密码错误", c)
+	error,message:=service.CheckPassword(id,password)
+	if !error{
+		response.FailWithMessage(message, c)
 		return
 	}
 	if id=="" {
@@ -43,5 +40,17 @@ func GetArticleDetail(c *gin.Context)  {
 	err,msg:=service.GetArticleDetail(c)
 	if err==nil{
 		response.OkDetailed(msg, "获取详情成功", c)
+	}
+}
+//验证密码是否正确
+func CheckPassword(c *gin.Context)  {
+	id:=c.Query("id")
+	password:=c.Query("password")
+	err,message:=service.CheckPassword(id,password)
+	fmt.Println(err)
+	if err{
+		response.OkDetailed("",message,c)
+	}else{
+		response.FailWithMessage(message, c)
 	}
 }

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
@@ -20,6 +21,9 @@ import { TagsComponent } from './home/component/right-content/tags/tags.componen
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 @NgModule({
   imports: [
     CommonModule,
@@ -29,7 +33,11 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
     NzTabsModule,
     NzDropDownModule,
     NzModalModule,
-    NzPaginationModule
+    NzPaginationModule,
+    NzInputModule,
+    FormsModule,
+    NzMessageModule,
+    NzIconModule
   ],
   exports: [BlogComponent],
   declarations: [

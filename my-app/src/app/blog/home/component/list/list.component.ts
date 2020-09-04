@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,13 +9,14 @@ import { Router } from '@angular/router';
 export class ListComponent implements OnInit {
   constructor(private router: Router) { }
   @Input() data: any;
+  @Output() HavePassword = new EventEmitter();
   ngOnInit(): void { }
-  // tslint:disable-next-line:typedef
-  toDetail(data) {
+  toDetail = (data) => {
     if (data.is_password === '1') {
-      console.log('需要密码');
+      this.HavePassword.emit(data.ID);
     } else {
       this.router.navigate(['/detail'], { queryParams: { id: data.ID } });
     }
   }
+
 }

@@ -46,3 +46,13 @@ func GetArticleDetail(c *gin.Context) (err error,article model.SysArticle) {
 	article.ArticleHtml=luteEngine.MarkdownStr("uvdrem",article.ArticleContent)
 	return err,article
 }
+//验证密码
+func CheckPassword(id string,password string) (error bool ,msg string) {
+	article :=model.SysArticle{}
+	db := global.GVA_DB
+	err := db.Where("id=? ", id).Find(&article).Error
+	if article.ViewPassword!=password && err==nil{
+		return  false,"密码错误"
+	}
+	return true,"密码正确"
+}
