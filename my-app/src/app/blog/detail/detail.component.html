@@ -55,10 +55,53 @@
       </section>
     </div>
     <div class="detail-praise-text">
-      <button nz-button nzType="primary" nzShape="round" nzDanger>赞赏</button>
+      <button
+        nz-button
+        nzType="primary"
+        nzShape="round"
+        nzDanger
+        (click)="showModal(true)"
+      >
+        赞赏
+      </button>
       <p>如果觉得我的文章对你有用，请随意赞赏</p>
     </div>
   </div>
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="赞赏作者"
+    [nzContent]="modalContent"
+    [nzFooter]="modalFooter"
+    nzWidth="400"
+    (nzOnCancel)="showModal(false)"
+  >
+    <ng-template #modalContent>
+      <div class="detail-modal-img">
+        <div class="detail-modal-img-tab">
+          <section
+            *ngFor="let item of tabList"
+            (click)="tabClick(item)"
+            [ngClass]="{ active: activeId == item.id }"
+          >
+            {{ item.title }}
+          </section>
+        </div>
+        <img [src]="imgUrl" alt="" />
+      </div>
+    </ng-template>
+    <ng-template #modalFooter>
+      <div class="detail-modal-footer">
+        <button
+          nz-button
+          nzType="primary"
+          nzShape="round"
+          (click)="showModal(false)"
+        >
+          确认
+        </button>
+      </div>
+    </ng-template>
+  </nz-modal>
   <div class="detail-btn">
     <button nz-button nzType="default" nzShape="round">上一篇</button>
     <button nz-button nzType="default" nzShape="round">下一篇</button>

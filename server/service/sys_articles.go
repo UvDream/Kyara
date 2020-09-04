@@ -18,13 +18,11 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 	err = db.Find(&articleList).Count(&total).Error
 	// 先查询置顶文章
 	err = db.Where(&model.SysArticle{Top: "1"}).Find(&topArticle).Error
-
-	err = db.Where(&model.SysArticle{Top: "1"}).Find(&topArticle).Error
 	topLen := len(topArticle)
 	//再查其他
-	limit := u.PageSize - topLen
+	u.PageSize=u.PageSize-topLen
+	limit := u.PageSize
 	offset := u.PageSize * (u.Page - 1)
-
 	err = db.Where("top=? ", "0").Limit(limit).Offset(offset).Find(&articleList).Error
 
 	articleList = append(topArticle, articleList...)

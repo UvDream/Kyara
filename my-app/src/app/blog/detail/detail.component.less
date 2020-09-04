@@ -3,6 +3,43 @@
     margin       : 15px;
     border-radius: 8px;
 
+    &-modal {
+        &-footer {
+            text-align: center;
+        }
+
+        &-img {
+            text-align: center;
+
+            &-tab {
+                display        : flex;
+                justify-content: center;
+
+                &>section {
+                    width       : 50%;
+                    margin-right: 10px;
+                    text-align  : center;
+                    cursor      : pointer;
+                    border-right: 1px solid #ccc;
+                }
+
+                &>section:last-child {
+                    border-right: none;
+                }
+
+
+
+
+            }
+
+            img {
+                margin-top: 10px;
+            }
+
+
+        }
+    }
+
     &-title {
         padding         : 20px;
         background-color: #f9f9f9;
@@ -68,4 +105,8 @@
         margin         : 0 auto;
         padding        : 20px;
     }
+}
+
+.active {
+    color: #1890ff;
 }

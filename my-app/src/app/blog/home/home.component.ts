@@ -9,24 +9,31 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
   public list: Array<any>;
-  constructor(private http: HttpClient, private titleService: Title) {}
+  public form = {
+    search: '',
+    page: 1,
+    pageSize: 10,
+  };
+  public totalCount = 0;
+  constructor(private http: HttpClient, private titleService: Title) { }
   ngOnInit(): void {
     this.getData();
     this.setTitle('首页');
   }
   getData = () => {
     this.http
-      .post('http://127.0.0.1:3000/article/articleList', {
-        search: '',
-        page: 1,
-        pageSize: 5,
-      })
+      .post('http://127.0.0.1:3000/article/articleList', this.form)
       .subscribe((res: any) => {
         this.list = res.data.msg;
+        this.totalCount = res.data.totalCount;
       });
-  };
+  }
   // tslint:disable-next-line:typedef
   public setTitle(newTitle: string) {
     this.titleService.setTitle(newTitle);
   }
+  pageChange = () => {
+    this.getData();
+  }
 }
+

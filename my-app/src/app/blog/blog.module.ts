@@ -18,6 +18,8 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { BlogMessageComponent } from './home/component/right-content/blog-message/blog-message.component';
 import { TagsComponent } from './home/component/right-content/tags/tags.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,6 +28,8 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     NzGridModule,
     NzTabsModule,
     NzDropDownModule,
+    NzModalModule,
+    NzPaginationModule
   ],
   exports: [BlogComponent],
   declarations: [
@@ -45,4 +49,4 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
   ],
   providers: [],
 })
-export class BlogModule {}
+export class BlogModule { }
