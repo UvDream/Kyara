@@ -1,10 +1,15 @@
 .header {
-    height    : 50px;
-    border    : 1px solid transparent;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 4px 1px;
-    position  : relative;
-    z-index   : 10;
-    display   : flex;
+    height     : 50px;
+    line-height: 50px;
+    border     : 1px solid transparent;
+    box-shadow : rgba(0, 0, 0, 0.05) 0px 1px 4px 1px;
+    position   : relative;
+    z-index    : 10;
+    display    : flex;
+
+    &-right {
+        display: flex;
+    }
 
     &-logo {
         width : 220px;
@@ -15,7 +20,25 @@
         outline: 1px solid red;
     }
 
-    &-right {
-        width: ~'calc(100% - 220px)';
+    &-search {
+        width  : ~'calc(100% - 400px)';
+        outline: 1px solid red;
     }
+
+    &-video {
+        width  : 250px;
+        outline: 1px solid yellow;
+    }
+
+    &-user {
+        display: flex;
+        width  : 100px;
+
+        section {
+            width     : 50%;
+            text-align: center;
+        }
+    }
+
+
 }
