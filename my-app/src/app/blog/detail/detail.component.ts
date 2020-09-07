@@ -47,6 +47,7 @@ export class DetailComponent implements OnInit {
   }
   getDetail = async (id, password) => {
     const res = await this.request.getDetail({ id, password });
+    if (res.code !== 200) { return; }
     this.htmlContent = res.data.article_html;
     this.markDown = res.data.article_content;
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
