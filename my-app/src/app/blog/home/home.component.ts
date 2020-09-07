@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ArticleService } from '../../service/article.service'
+import { ArticleService } from '../../service/article.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   public passwordVal: string;
   private articleId: string;
   passwordVisible = false;
-  // tslint:disable-next-line:max-line-length
   constructor(
     private http: HttpClient,
     private titleService: Title,
@@ -41,8 +40,7 @@ export class HomeComponent implements OnInit {
     }
 
   }
-  // tslint:disable-next-line:typedef
-  public setTitle(newTitle: string) {
+  public setTitle = (newTitle: string) => {
     this.titleService.setTitle(newTitle);
   }
   pageChange = () => {
