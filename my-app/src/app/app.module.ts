@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminComponent } from './admin/admin.component';
+// import { AdminComponent } from './admin/admin.component';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -15,10 +15,11 @@ import { zh_CN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { BlogModule } from './blog/blog.module';
-
+import { AdminModule } from './admin/admin.module';
+import { LoginModule } from './login/login.module';
 registerLocaleData(zh);
 @NgModule({
-  declarations: [AppComponent, AdminComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
@@ -29,6 +30,8 @@ registerLocaleData(zh);
     FormsModule,
     BrowserAnimationsModule,
     BlogModule,
+    AdminModule,
+    LoginModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],

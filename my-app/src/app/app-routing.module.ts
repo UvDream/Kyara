@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BlogComponent } from './blog/blog.component';
-import { AdminComponent } from './admin/admin.component';
-import { HomeComponent } from './blog/home/home.component';
-import { DetailComponent } from './blog/detail/detail.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/blog', pathMatch: 'full' },
@@ -17,7 +14,8 @@ const routes: Routes = [
     //   { path: 'detail/:id', component: DetailComponent },
     // ],
   },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule) },
+  { path: 'login', loadChildren: () => import('./login/login.module').then((m) => m.LoginModule) },
 ];
 
 @NgModule({
@@ -28,4 +26,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
