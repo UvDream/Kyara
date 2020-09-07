@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { ArticleService } from "../../service/article.service"
 interface TabItem {
   id: number;
   title: string;
@@ -13,7 +14,7 @@ interface TabItem {
 })
 export class DetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private request: ArticleService) { }
   public htmlContent: any;
   public markDown: any;
   @ViewChild('vditor') myDom: HTMLDivElement;
@@ -44,29 +45,27 @@ export class DetailComponent implements OnInit {
     });
     this.getDetail(id, password);
   }
-  getDetail = (id, password) => {
-    const url = 'http://127.0.0.1:3000/article/articleDetail?id=' + id + '&password=' + password;
-    this.http.get(url).subscribe((res: any) => {
-      this.htmlContent = res.data.article_html;
-      this.markDown = res.data.article_content;
-      const mainElement = document.getElementById('vditor') as HTMLDivElement;
-      import('vditor').then((Vditor: any) =>
-        Vditor.preview(mainElement, this.markDown, {
-          speech: {
-            enable: true,
-          },
-          anchor: 0,
-          hljs: {
-            enable: true,
-            lineNumber: true,
-            style: 'native',
-          },
-          markdown: {
-            toc: true,
-          },
-        })
-      );
-    });
+  getDetail = async (id, password) => {
+    const res = await this.request.getDetail({ id, password });
+    this.htmlContent = res.data.article_html;
+    this.markDown = res.data.article_content;
+    const mainElement = document.getElementById('vditor') as HTMLDivElement;
+    import('vditor').then((Vditor: any) =>
+      Vditor.preview(mainElement, this.markDown, {
+        speech: {
+          enable: true,
+        },
+        anchor: 0,
+        hljs: {
+          enable: true,
+          lineNumber: true,
+          style: 'native',
+        },
+        markdown: {
+          toc: true,
+        },
+      })
+    );
   }
   showModal = (data: boolean) => {
     this.isVisible = data;

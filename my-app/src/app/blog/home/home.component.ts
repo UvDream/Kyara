@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { ArticleService } from '../../service/article.service'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,18 +21,22 @@ export class HomeComponent implements OnInit {
   public passwordVal: string;
   private articleId: string;
   passwordVisible = false;
-  constructor(private http: HttpClient, private titleService: Title, private router: Router, private message: NzMessageService) { }
+  // tslint:disable-next-line:max-line-length
+  constructor(
+    private http: HttpClient,
+    private titleService: Title,
+    private router: Router,
+    private message: NzMessageService,
+    private articleService: ArticleService
+  ) { }
   ngOnInit(): void {
     this.getData();
     this.setTitle('首页');
   }
-  getData = () => {
-    this.http
-      .post('http://127.0.0.1:3000/article/articleList', this.form)
-      .subscribe((res: any) => {
-        this.list = res.data.msg;
-        this.totalCount = res.data.totalCount;
-      });
+  getData = async () => {
+    const res = await this.articleService.articleList(this.form);
+    this.list = res.data.msg;
+    this.totalCount = res.data.totalCount;
   }
   // tslint:disable-next-line:typedef
   public setTitle(newTitle: string) {
@@ -47,21 +52,19 @@ export class HomeComponent implements OnInit {
   modalFunc = (data: boolean) => {
     this.isVisible = data;
   }
-  sureModal = () => {
-    const url = 'http://127.0.0.1:3000/article/articlePassword?id=' + this.articleId + '&password=' + this.passwordVal;
-    this.http.get(url).subscribe((res: any) => {
-      if (res.code === 200) {
-        this.message.success(res.msg, {
-          nzDuration: 1000
-        });
-        this.isVisible = false;
-        this.router.navigate(['/detail'], { queryParams: { id: this.articleId, password: this.passwordVal } });
-      } else {
-        this.message.error(res.msg, {
-          nzDuration: 1000
-        });
-      }
-    });
+  sureModal = async () => {
+    const res = await this.articleService.surePassword({ id: this.articleId, password: this.passwordVal });
+    if (res.code === 200) {
+      this.message.success(res.msg, {
+        nzDuration: 1000
+      });
+      this.isVisible = false;
+      this.router.navigate(['/detail'], { queryParams: { id: this.articleId, password: this.passwordVal } });
+    } else {
+      this.message.error(res.msg, {
+        nzDuration: 1000
+      });
+    }
   }
 }
 
