@@ -35,8 +35,11 @@ export class HomeComponent implements OnInit {
   }
   getData = async () => {
     const res = await this.articleService.articleList(this.form);
-    this.list = res.data.msg;
-    this.totalCount = res.data.totalCount;
+    if (res.code === 200) {
+      this.list = res.data.msg;
+      this.totalCount = res.data.totalCount;
+    }
+
   }
   // tslint:disable-next-line:typedef
   public setTitle(newTitle: string) {
