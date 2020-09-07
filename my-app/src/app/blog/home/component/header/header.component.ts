@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.less'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   toHome = () => {
     this.router.navigate(['/home']);
-  };
+  }
 }
