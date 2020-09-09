@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ArticleService } from '../../service/article.service';
+import { ArticleCatalogService } from '../../service/article-catalog.service';
 interface TabItem {
   id: number;
   title: string;
@@ -14,7 +15,12 @@ interface TabItem {
 })
 export class DetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private request: ArticleService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private request: ArticleService,
+    private articleCat: ArticleCatalogService,
+  ) { }
   public htmlContent: any;
   public markDown: any;
   @ViewChild('vditor') myDom: HTMLDivElement;
@@ -65,8 +71,34 @@ export class DetailComponent implements OnInit {
         markdown: {
           toc: true,
         },
+        transform: (html: string) => {
+          this.parseDom(html).forEach(element => {
+            if (element.nodeName === 'H1' || element.nodeName === 'H2' || element.nodeName === 'H3') {
+              // tslint:disable-next-line:no-string-literal
+              const obj = { id: element['id'], title: element.firstChild, children: [] };
+              const arr = this.articleCat.ArticleCatList;
+              if (element.nodeName === 'H1') {
+                arr.push(obj);
+              }
+              if (element.nodeName === 'H2') {
+                arr[arr.length - 1].children.push(obj);
+              }
+              if (element.nodeName === 'H3') {
+                arr[arr.length - 1].children[arr[arr.length - 1].children.length - 1].children.push(obj);
+              }
+
+            }
+          });
+
+          return html;
+        }
       })
     );
+  }
+  parseDom = (arg: any) => {
+    const objE = document.createElement('div');
+    objE.innerHTML = arg;
+    return objE.childNodes;
   }
   showModal = (data: boolean) => {
     this.isVisible = data;
