@@ -29,6 +29,14 @@ export class DetailComponent implements OnInit {
   public author: string;
   // 时间
   public time: string;
+  // 文章字数
+  public wordCount: string;
+  // 浏览次数
+  public viewCount: string;
+  // 评论数
+  public commentCount: string;
+  // 图片
+  public topImg: string;
   @ViewChild('vditor') myDom: HTMLDivElement;
   isVisible = false;
   public tabList = [
@@ -67,6 +75,10 @@ export class DetailComponent implements OnInit {
     this.title = res.data.title;
     this.author = res.data.user_name;
     this.time = res.data.UpdatedAt;
+    this.wordCount = res.data.word_count;
+    this.viewCount = res.data.view_count;
+    this.commentCount = res.data.comment_count;
+    this.topImg = res.data.img_url;
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
     import('vditor').then((Vditor: any) =>
       Vditor.preview(mainElement, this.markDown, {

@@ -52,4 +52,6 @@ type SysArticle struct {
 	CoverType string `json:"cover_type" gorm:"comment:'封面类型';default:'0'"`
 	// 是否置顶
 	Top string `json:"top" gorm:"comment:'是否置顶';default:'0'"`
+	// 字数
+	WordCount  string `json:"word_count" gorm:"comment:'文章字数';"`
 }

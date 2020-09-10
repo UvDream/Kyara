@@ -12,32 +12,33 @@
       </div>
     </div>
     <div>
-      <span class="iconfont uv-person-outline margin-right-10"></span>
+      <span class="iconfont uv-person-outline" style="margin: 0 5px 0 0"></span>
 
       <span>{{ author }}</span>
 
-      <span class="iconfont uv-time-outline margin-left-right-5"></span>
-
+      <span
+        class="iconfont uv-time-outline"
+        style="margin: 0 5px 0 10px"
+      ></span>
       <span>{{ time }}</span>
-
-      <span class="iconfont uv-chatbubble-outline margin-left-right-5"></span>
-
-      <span>1220条评论</span>
-
-      <span class="iconfont uv-eye-outline margin-left-right-5"></span>
-
-      <span>1220次浏览</span>
-      <span class="iconfont uv-information-outline margin-left-right-5"></span>
-      <span>122字数</span>
+      <span
+        class="iconfont uv-chatbubble-outline"
+        style="margin: 0 5px 0 10px"
+      ></span>
+      <span>{{ commentCount }}条评论</span>
+      <span class="iconfont uv-eye-outline" style="margin: 0 5px 0 10px"></span>
+      <span>{{ viewCount }}次浏览</span>
+      <span
+        class="iconfont uv-information-outline"
+        style="margin: 0 5px 0 10px"
+      ></span>
+      <span>{{ wordCount }}字数</span>
     </div>
   </div>
   <div
     class="detail-img"
     [ngStyle]="{
-      'background-image':
-        'url(' +
-        'https://gitee.com/Uvdream/images/raw/master/images/20200806150710.png' +
-        ')'
+      'background-image': 'url(' + topImg + ')'
     }"
   ></div>
   <div #vditor id="vditor" class="detail-content"></div>
