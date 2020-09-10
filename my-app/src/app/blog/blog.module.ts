@@ -24,6 +24,8 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { CatalogComponent } from './home/component/right-content/catalog/catalog.component';
+import { NzAnchorModule } from 'ng-zorro-antd/anchor';
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     NzInputModule,
     FormsModule,
     NzMessageModule,
-    NzIconModule
+    NzIconModule,
+    NzAnchorModule
   ],
   exports: [BlogComponent],
   declarations: [
@@ -54,6 +57,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
     LeftFooterComponent,
     BlogMessageComponent,
     TagsComponent,
+    CatalogComponent,
   ],
   providers: [],
 })

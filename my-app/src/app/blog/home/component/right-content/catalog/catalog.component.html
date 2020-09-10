@@ -1,0 +1,18 @@
+<div class="catalog">
+  <div class="catalog-title">目录</div>
+  <div class="catalog-content">
+    <nz-anchor>
+      <nz-link
+        *ngFor="let item of list"
+        [nzHref]="'#' + item.id"
+        [nzTitle]="item.title"
+      >
+        <nz-link
+          *ngFor="let child of item.children"
+          [nzHref]="'#' + child.id"
+          [nzTitle]="child.title"
+        ></nz-link>
+      </nz-link>
+    </nz-anchor>
+  </div>
+</div>

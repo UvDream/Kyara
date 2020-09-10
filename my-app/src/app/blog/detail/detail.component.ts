@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ArticleService } from '../../service/article.service';
 import { ArticleCatalogService } from '../../service/article-catalog.service';
+import { stringify } from '@angular/compiler/src/util';
 interface TabItem {
   id: number;
   title: string;
@@ -74,8 +75,13 @@ export class DetailComponent implements OnInit {
         transform: (html: string) => {
           this.parseDom(html).forEach(element => {
             if (element.nodeName === 'H1' || element.nodeName === 'H2' || element.nodeName === 'H3') {
-              // tslint:disable-next-line:no-string-literal
-              const obj = { id: element['id'], title: element.firstChild, children: [] };
+              const obj = {
+                // tslint:disable-next-line:no-string-literal
+                id: element['id'],
+                // tslint:disable-next-line:no-string-literal
+                title: element['innerText'],
+                children: []
+              };
               const arr = this.articleCat.ArticleCatList;
               if (element.nodeName === 'H1') {
                 arr.push(obj);
