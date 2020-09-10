@@ -23,6 +23,7 @@ func DBTables() {
 		model.ExaCustomer{},
 		model.SysOperationRecord{},
 		model.SysArticle{},
+		model.SysComment{},
 	)
 	global.GVA_LOG.Debug("注册成功!")
 }

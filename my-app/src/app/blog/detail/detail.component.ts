@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../../service/article.service';
 import { ArticleCatalogService } from '../../service/article-catalog.service';
+import { Title } from '@angular/platform-browser';
+
 interface TabItem {
   id: number;
   title: string;
@@ -13,12 +15,12 @@ interface TabItem {
   styleUrls: ['./detail.component.less'],
 })
 export class DetailComponent implements OnInit {
-
   constructor(
     private route: ActivatedRoute,
     private request: ArticleService,
     private articleCat: ArticleCatalogService,
-  ) { }
+    private titleService: Title
+  ) {}
   // 文章标题
   public title: string;
   // html内容
@@ -58,17 +60,21 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     let id = '';
     let password = '';
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       id = params.id;
       password = params.password;
-      if (password === undefined) { password = ''; }
+      if (password === undefined) {
+        password = '';
+      }
     });
     this.getDetail(id, password);
   }
   // 获取文章详情
   getDetail = async (id, password) => {
     const res = await this.request.getDetail({ id, password });
-    if (res.code !== 200) { return; }
+    if (res.code !== 200) {
+      return;
+    }
     this.htmlContent = res.data.article_html;
     this.markDown = res.data.article_content;
     console.log(res.data);
@@ -79,6 +85,7 @@ export class DetailComponent implements OnInit {
     this.viewCount = res.data.view_count;
     this.commentCount = res.data.comment_count;
     this.topImg = res.data.img_url;
+    this.setTitle(this.title + '(汪中杰的个人博客)');
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
     import('vditor').then((Vditor: any) =>
       Vditor.preview(mainElement, this.markDown, {
@@ -96,14 +103,18 @@ export class DetailComponent implements OnInit {
         },
         transform: (html: string) => {
           const arr = [];
-          this.parseDom(html).forEach(element => {
-            if (element.nodeName === 'H1' || element.nodeName === 'H2' || element.nodeName === 'H3') {
+          this.parseDom(html).forEach((element) => {
+            if (
+              element.nodeName === 'H1' ||
+              element.nodeName === 'H2' ||
+              element.nodeName === 'H3'
+            ) {
               const obj = {
                 // tslint:disable-next-line:no-string-literal
                 id: element['id'],
                 // tslint:disable-next-line:no-string-literal
                 title: element['innerText'],
-                children: []
+                children: [],
               };
               if (element.nodeName === 'H1') {
                 arr.push(obj);
@@ -112,26 +123,31 @@ export class DetailComponent implements OnInit {
                 arr[arr.length - 1].children.push(obj);
               }
               if (element.nodeName === 'H3') {
-                arr[arr.length - 1].children[arr[arr.length - 1].children.length - 1].children.push(obj);
+                arr[arr.length - 1].children[
+                  arr[arr.length - 1].children.length - 1
+                ].children.push(obj);
               }
             }
           });
           this.articleCat.SetCatLog(arr);
 
           return html;
-        }
+        },
       })
     );
-  }
+  };
   parseDom = (arg: any) => {
     const objE = document.createElement('div');
     objE.innerHTML = arg;
     return objE.childNodes;
-  }
+  };
   showModal = (data: boolean) => {
     this.isVisible = data;
-  }
+  };
   tabClick = (data: TabItem) => {
     this.activeId = data.id;
-  }
+  };
+  public setTitle = (newTitle: string) => {
+    this.titleService.setTitle(newTitle);
+  };
 }
