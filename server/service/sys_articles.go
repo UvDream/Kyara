@@ -44,6 +44,9 @@ func GetArticleDetail(c *gin.Context) (err error,article model.SysArticle) {
 	err = db.Where("id=? ", id).Find(&article).Error
 	luteEngine := lute.New()
 	article.ArticleHtml=luteEngine.MarkdownStr("uvdrem",article.ArticleContent)
+	a := model.SysUser{}
+	err = db.Where("UUID=?", article.UserID).Find(&a).Error
+	article.UserName=a.NickName
 	return err,article
 }
 //验证密码

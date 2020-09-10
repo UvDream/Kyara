@@ -19,8 +19,16 @@ export class DetailComponent implements OnInit {
     private request: ArticleService,
     private articleCat: ArticleCatalogService,
   ) { }
+  // 文章标题
+  public title: string;
+  // html内容
   public htmlContent: any;
+  // markdown内容
   public markDown: any;
+  // 作者
+  public author: string;
+  // 时间
+  public time: string;
   @ViewChild('vditor') myDom: HTMLDivElement;
   isVisible = false;
   public tabList = [
@@ -49,11 +57,16 @@ export class DetailComponent implements OnInit {
     });
     this.getDetail(id, password);
   }
+  // 获取文章详情
   getDetail = async (id, password) => {
     const res = await this.request.getDetail({ id, password });
     if (res.code !== 200) { return; }
     this.htmlContent = res.data.article_html;
     this.markDown = res.data.article_content;
+    console.log(res.data);
+    this.title = res.data.title;
+    this.author = res.data.user_name;
+    this.time = res.data.UpdatedAt;
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
     import('vditor').then((Vditor: any) =>
       Vditor.preview(mainElement, this.markDown, {

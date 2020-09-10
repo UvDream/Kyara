@@ -2,7 +2,7 @@
   <!-- 上面 -->
   <div class="detail-title">
     <div class="detail-title-top">
-      <h1>这是文章的标题</h1>
+      <h1>{{ title }}</h1>
       <div>
         <span
           class="iconfont uv-caret-forward-circle-outline margin-left-right-5"
@@ -14,11 +14,11 @@
     <div>
       <span class="iconfont uv-person-outline margin-right-10"></span>
 
-      <span>作者</span>
+      <span>{{ author }}</span>
 
       <span class="iconfont uv-time-outline margin-left-right-5"></span>
 
-      <span>2020年10月1日</span>
+      <span>{{ time }}</span>
 
       <span class="iconfont uv-chatbubble-outline margin-left-right-5"></span>
 
@@ -50,7 +50,6 @@
       </section>
       <section>
         <span class="iconfont uv-alert-circle-outline"></span>
-
         允许转载
       </section>
     </div>
