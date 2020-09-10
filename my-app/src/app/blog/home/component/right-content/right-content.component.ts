@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-right-content',
   templateUrl: './right-content.component.html',
@@ -23,7 +24,14 @@ export class RightContentComponent implements OnInit {
       icon: 'uv-star-outline',
     },
   ];
-  constructor() {}
+  public pathName = '';
+  location: Location;
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.router.events.subscribe(res => {
+      this.pathName = location.pathname;
+    });
+  }
+
 }

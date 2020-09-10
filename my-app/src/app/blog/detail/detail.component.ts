@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { ArticleService } from '../../service/article.service';
 import { ArticleCatalogService } from '../../service/article-catalog.service';
-import { stringify } from '@angular/compiler/src/util';
 interface TabItem {
   id: number;
   title: string;
@@ -18,7 +16,6 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient,
     private request: ArticleService,
     private articleCat: ArticleCatalogService,
   ) { }
@@ -73,6 +70,7 @@ export class DetailComponent implements OnInit {
           toc: true,
         },
         transform: (html: string) => {
+          const arr = [];
           this.parseDom(html).forEach(element => {
             if (element.nodeName === 'H1' || element.nodeName === 'H2' || element.nodeName === 'H3') {
               const obj = {
@@ -82,7 +80,6 @@ export class DetailComponent implements OnInit {
                 title: element['innerText'],
                 children: []
               };
-              const arr = this.articleCat.ArticleCatList;
               if (element.nodeName === 'H1') {
                 arr.push(obj);
               }
@@ -92,9 +89,9 @@ export class DetailComponent implements OnInit {
               if (element.nodeName === 'H3') {
                 arr[arr.length - 1].children[arr[arr.length - 1].children.length - 1].children.push(obj);
               }
-
             }
           });
+          this.articleCat.SetCatLog(arr);
 
           return html;
         }

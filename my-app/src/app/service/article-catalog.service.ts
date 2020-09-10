@@ -6,5 +6,7 @@ import { Injectable } from '@angular/core';
 export class ArticleCatalogService {
   public ArticleCatList = [];
   constructor() { }
-
+  SetCatLog = (arr: any) => {
+    this.ArticleCatList = arr;
+  }
 }
