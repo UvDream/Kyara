@@ -24,6 +24,8 @@ func DBTables() {
 		model.SysOperationRecord{},
 		model.SysArticle{},
 		model.SysComment{},
+		model.SysTag{},
+		model.SysClassify{},
 	)
 	global.GVA_LOG.Debug("注册成功!")
 }

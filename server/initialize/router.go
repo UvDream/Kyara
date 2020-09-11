@@ -40,6 +40,7 @@ func Routers() *gin.Engine {
 	router.InitSysOperationRecordRouter(ApiGroup)    // 操作记录
 	//-------------
 	router.InitArticles(ApiGroup)					 //文章相关
+	router.InitOuterImages(ApiGroup)				// 图床相关
 	global.GVA_LOG.Info("路由注册成功!")
 	return Router
 }

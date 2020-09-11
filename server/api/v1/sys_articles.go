@@ -54,3 +54,13 @@ func CheckPassword(c *gin.Context)  {
 		response.FailWithMessage(message, c)
 	}
 }
+// 文章分类
+func ArticleClassify(c *gin.Context)  {
+	err,msg:=service.ArticleClassify()
+	fmt.Println(err,msg)
+	if err!=nil{
+		response.FailWithMessage("获取分类失败", c)
+	}else{
+		response.OkDetailed(msg, "获取文章分类成功", c)
+	}
+}

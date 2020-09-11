@@ -59,3 +59,30 @@ func CheckPassword(id string,password string) (error bool ,msg string) {
 	}
 	return true,"密码正确"
 }
+
+//查询分类
+func ArticleClassify() (err error,a []model.SysClassify) {
+	db := global.GVA_DB
+	//查询一级
+	err = db.Where("parent_id=? ", "").Find(&a).Error
+	if err!=nil{
+		return
+	}
+	for k,i:=range a {
+		a[k].Children=findChildren(i)
+	}
+	return err,a
+}
+//递归寻找分类
+func findChildren(parent model.SysClassify)(children []model.SysClassify)  {
+	db := global.GVA_DB
+	var c []model.SysClassify
+	err := db.Where("parent_id=? ", parent.ID).Find(&c).Error
+	if err!=nil{
+		return
+	}
+	for k,i :=range c{
+		c[k].Children=findChildren(i)
+	}
+	return c
+}

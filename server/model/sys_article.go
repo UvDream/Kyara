@@ -34,6 +34,8 @@ type SysArticle struct {
 	OriginalLink string `json:"original_link" gorm:"comment:'原文链接'"`
 	// 标签id
 	TagID string `json:"tag_id" gorm:"comment:'标签id'"`
+	// 标签
+	TagArray []string `json:"tag_array" gorm:"-"`
 	// 分类id
 	ClassificationID string `json:"classification_id" gorm:"comment:'分类id'"`
 	// 阅读密码
@@ -54,4 +56,18 @@ type SysArticle struct {
 	Top string `json:"top" gorm:"comment:'是否置顶';default:'0'"`
 	// 字数
 	WordCount  string `json:"word_count" gorm:"comment:'文章字数';"`
+}
+//文章分类
+type SysClassify struct{
+	gorm.Model
+	TypeName string `json:"type_name" gorm:"comment:'分类名称'"`
+	Icon string `json:"icon"`
+	ParentID string `json:"parent_id"`
+	Children []SysClassify `json:"children"`
+	IconColor string `json:"icon_color" gorm:"comment:'icon颜色';default:'#2d8cf0'"`
+}
+// 文章标签
+type SysTag struct{
+	gorm.Model
+	TagName	string `json:"tag_name"`
 }
