@@ -1,8 +1,9 @@
 package router
 
 import (
-	"gin-vue-admin/api/v1"
+	v1 "gin-vue-admin/api/v1"
 	"gin-vue-admin/middleware"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -19,5 +20,6 @@ func InitMenuRouter(Router *gin.RouterGroup) (R gin.IRoutes) {
 		MenuRouter.POST("updateBaseMenu", v1.UpdateBaseMenu)     // 更新菜单
 		MenuRouter.POST("getBaseMenuById", v1.GetBaseMenuById)   // 根据id获取菜单
 	}
+
 	return MenuRouter
 }

@@ -47,9 +47,9 @@ require (
 	github.com/swaggo/swag v1.6.5
 	github.com/tebeka/strftime v0.1.3 // indirect
 	github.com/unrolled/secure v1.0.7
-	golang.org/x/crypto v0.0.0-20200323165209-0ec3e9974c59 // indirect
-	golang.org/x/net v0.0.0-20200320220750-118fecf932d8 // indirect
-	golang.org/x/tools v0.0.0-20200324003944-a576cf524670
+	github.com/uudashr/gopkgs v0.0.0-20200214083640-4d0f738b8305 // indirect
+	golang.org/x/tools v0.0.0-20200729181040-64cdafbe085c
+	golang.org/x/tools/gopls v0.4.4 // indirect
 	google.golang.org/protobuf v1.24.0 // indirect
 	gopkg.in/ini.v1 v1.55.0 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
