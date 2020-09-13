@@ -5,7 +5,7 @@
       class="margin-left-10"
       nz-input
       placeholder="输入文章标题"
-      [(ngModel)]="value"
+      [(ngModel)]="form.title"
       style="width: 350px"
     />
     <label class="margin-left-10" nz-checkbox [(ngModel)]="form.top"
@@ -33,7 +33,7 @@
   <div class="edit-textarea">
     <textarea
       class="edit-textarea-left"
-      [(ngModel)]="markdownContent"
+      [(ngModel)]="form.article_content"
       nz-input
       placeholder="文章内容"
       [nzAutosize]="{ minRows: 30 }"
@@ -51,7 +51,7 @@
       style="width: 70%"
       nz-input
       placeholder="请输入文章概要"
-      [(ngModel)]="value"
+      [(ngModel)]="form.introduction"
     />
   </div>
   <!-- 封面类型 -->
@@ -61,21 +61,38 @@
       class="margin-left-10"
       style="width: 200px"
       nzPlaceHolder="请选择封面类型"
+      [(ngModel)]="form.cover_type"
     >
       <nz-option nzValue="0" nzLabel="正常文字"></nz-option>
       <nz-option nzValue="1" nzLabel="Icon文字"></nz-option>
       <nz-option nzValue="2" nzLabel="置顶单图"></nz-option>
       <nz-option nzValue="3" nzLabel="左图右文"></nz-option>
-      <nz-option nzValue="4" nzLabel="上吐下文"></nz-option>
+      <nz-option nzValue="4" nzLabel="上图下文"></nz-option>
     </nz-select>
-    <div class="margin-left-10">Icon:</div>
+    <div class="margin-left-10" *ngIf="form.cover_type == '1'">Icon:</div>
     <input
+      *ngIf="form.cover_type == '1'"
       class="margin-left-10"
       nz-input
+      [(ngModel)]="form.icon"
       placeholder="输入Icon图标"
       style="width: 200px"
     />
-    <div class="margin-left-10">封面图片:</div>
+    <span
+      class="iconfont margin-left-10"
+      [class]="form.icon"
+      *ngIf="form.cover_type == '1'"
+    ></span>
+    <div
+      class="margin-left-10"
+      *ngIf="
+        form.cover_type == '2' ||
+        form.cover_type == '3' ||
+        form.cover_type == '4'
+      "
+    >
+      封面图片:
+    </div>
   </div>
   <!-- 转载规则 -->
   <div class="edit-type">
@@ -92,9 +109,11 @@
       <nz-option nzValue="3" nzLabel="转载他站"></nz-option>
       <nz-option nzValue="4" nzLabel="来自互联网"></nz-option>
     </nz-select>
-    <div class="margin-left-10" *ngIf="form.transfer_rules == 3">原文链接:</div>
+    <div class="margin-left-10" *ngIf="form.transfer_rules == '3'">
+      原文链接:
+    </div>
     <input
-      *ngIf="form.transfer_rules == 3"
+      *ngIf="form.transfer_rules == '3'"
       class="margin-left-10"
       nz-input
       placeholder="输入原文链接"

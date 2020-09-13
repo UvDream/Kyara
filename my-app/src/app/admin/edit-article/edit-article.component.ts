@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-article.component.less'],
 })
 export class EditArticleComponent implements OnInit {
-  markdownContent?: string;
   value?: string;
   // 是否置顶
   public form = {
+    // 标题
+    title: '',
+    // 摘要
+    introduction: '',
+    // 封面类型
+    cover_type: '0',
+    // 文章类容
+    article_content: '',
     // 置顶
     top: false,
     // 访问密码
@@ -18,14 +25,14 @@ export class EditArticleComponent implements OnInit {
     // 是否开启评论
     is_comment: true,
     // 转载规则
-    transfer_rules: 0
+    transfer_rules: '0',
+    // icon
+    icon: ''
   };
   constructor() { }
   ngOnInit(): void { }
   textChange = () => {
-    console.log('改变');
-    console.log(this.markdownContent);
-    this.markdownToHtml(this.markdownContent);
+    this.markdownToHtml(this.form.article_content);
   }
   // 渲染markdown
   markdownToHtml = (data) => {
