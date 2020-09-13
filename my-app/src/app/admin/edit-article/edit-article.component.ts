@@ -8,6 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class EditArticleComponent implements OnInit {
   markdownContent?: string;
   value?: string;
+  // 是否置顶
+  public form = {
+    // 置顶
+    top: false,
+    // 访问密码
+    is_password: false,
+    view_password: '',
+    // 是否开启评论
+    is_comment: true,
+    // 转载规则
+    transfer_rules: 0
+  };
   constructor() { }
   ngOnInit(): void { }
   textChange = () => {

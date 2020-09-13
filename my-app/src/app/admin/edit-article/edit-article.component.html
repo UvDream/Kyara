@@ -1,12 +1,104 @@
 <div class="edit">
   <div class="edit-title">
-    文章标题
-    <input nz-input placeholder="输入文章标题"  [(ngModel)]="value"  style="width: 400px;" />
+    文章标题:
+    <input
+      class="margin-left-10"
+      nz-input
+      placeholder="输入文章标题"
+      [(ngModel)]="value"
+      style="width: 350px"
+    />
+    <label class="margin-left-10" nz-checkbox [(ngModel)]="form.top"
+      >是否置顶</label
+    >
+    <label class="margin-left-10" nz-checkbox [(ngModel)]="form.is_password"
+      >是否需要访问密码</label
+    >
+    <input
+      class="margin-left-10"
+      nz-input
+      placeholder="输入访问密码"
+      [disabled]="!form.is_password"
+      [(ngModel)]="form.view_password"
+      style="width: 300px"
+    />
+    <label class="margin-left-10" nz-checkbox [(ngModel)]="form.is_comment"
+      >是否开启评论</label
+    >
+    <button class="margin-left-10" nz-button nzType="primary" nzShape="round">
+      发表
+    </button>
   </div>
+  <!-- 编辑器 -->
   <div class="edit-textarea">
-    <textarea class="edit-textarea-left"   [(ngModel)]="markdownContent"  nz-input placeholder="文章内容" [nzAutosize]="{ minRows: 30}" (ngModelChange)="textChange()"></textarea>
+    <textarea
+      class="edit-textarea-left"
+      [(ngModel)]="markdownContent"
+      nz-input
+      placeholder="文章内容"
+      [nzAutosize]="{ minRows: 30 }"
+      (ngModelChange)="textChange()"
+    ></textarea>
     <div class="edit-textarea-right">
-    <div id="vditor" ></div>
+      <div id="vditor"></div>
     </div>
+  </div>
+  <!-- 摘要 -->
+  <div class="edit-type">
+    <div>文章摘要:</div>
+    <input
+      class="margin-left-10"
+      style="width: 70%"
+      nz-input
+      placeholder="请输入文章概要"
+      [(ngModel)]="value"
+    />
+  </div>
+  <!-- 封面类型 -->
+  <div class="edit-type">
+    <div>封面类型:</div>
+    <nz-select
+      class="margin-left-10"
+      style="width: 200px"
+      nzPlaceHolder="请选择封面类型"
+    >
+      <nz-option nzValue="0" nzLabel="正常文字"></nz-option>
+      <nz-option nzValue="1" nzLabel="Icon文字"></nz-option>
+      <nz-option nzValue="2" nzLabel="置顶单图"></nz-option>
+      <nz-option nzValue="3" nzLabel="左图右文"></nz-option>
+      <nz-option nzValue="4" nzLabel="上吐下文"></nz-option>
+    </nz-select>
+    <div class="margin-left-10">Icon:</div>
+    <input
+      class="margin-left-10"
+      nz-input
+      placeholder="输入Icon图标"
+      style="width: 200px"
+    />
+    <div class="margin-left-10">封面图片:</div>
+  </div>
+  <!-- 转载规则 -->
+  <div class="edit-type">
+    <div>转载规则:</div>
+    <nz-select
+      class="margin-left-10"
+      style="width: 200px"
+      nzPlaceHolder="请选择转载规则"
+      [(ngModel)]="form.transfer_rules"
+    >
+      <nz-option nzValue="0" nzLabel="允许规范转载"></nz-option>
+      <nz-option nzValue="1" nzLabel="允许付费转载"></nz-option>
+      <nz-option nzValue="2" nzLabel="禁止转载"></nz-option>
+      <nz-option nzValue="3" nzLabel="转载他站"></nz-option>
+      <nz-option nzValue="4" nzLabel="来自互联网"></nz-option>
+    </nz-select>
+    <div class="margin-left-10" *ngIf="form.transfer_rules == 3">原文链接:</div>
+    <input
+      *ngIf="form.transfer_rules == 3"
+      class="margin-left-10"
+      nz-input
+      placeholder="输入原文链接"
+      style="width: 450px"
+    />
   </div>
 </div>

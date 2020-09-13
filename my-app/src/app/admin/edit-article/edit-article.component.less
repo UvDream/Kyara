@@ -1,5 +1,11 @@
 .edit {
-    &-title {}
+    background-color: #ffffff;
+    padding         : 10px;
+    border-radius   : 8px;
+
+    &-title {
+        margin: 10px 0;
+    }
 
     &-textarea {
         display         : flex;
@@ -14,6 +20,13 @@
         &-right {
             width  : 50%;
             padding: 15px;
+            border : 1px solid #ccc;
         }
+    }
+
+    &-type {
+        display    : flex;
+        align-items: center;
+        margin     : 10px 0;
     }
 }
