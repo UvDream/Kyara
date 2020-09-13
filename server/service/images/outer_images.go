@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gin-vue-admin/model/request"
 	"github.com/kirinlabs/HttpRequest"
+	gojsonq "github.com/thedevsaddam/gojsonq/v2"
 )
 type res struct {
 	Code string `json:"code"`
@@ -26,5 +27,7 @@ func GetImagesToken( r request.ImagesStruct)(interface{})  {
 		fmt.Println(res,err,body)
 		fmt.Println(res.Json(body))
 	}
+	token:=gojsonq.New().FromString(string(body)).Find("data.token")
+	fmt.Println(token)
 	return string(body)
 }

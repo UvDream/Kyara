@@ -17,7 +17,7 @@ require (
 	github.com/go-openapi/swag v0.19.8 // indirect
 	github.com/go-playground/validator/v10 v10.3.0 // indirect
 	github.com/go-redis/redis v6.15.7+incompatible
-	github.com/go-sql-driver/mysql v1.5.0
+	github.com/go-sql-driver/mysql v1.5.0 // indirect
 	github.com/golang/protobuf v1.4.2 // indirect
 	github.com/jehiah/go-strftime v0.0.0-20171201141054-1d33003b3869 // indirect
 	github.com/jinzhu/gorm v1.9.12
@@ -36,7 +36,7 @@ require (
 	github.com/pelletier/go-toml v1.6.0 // indirect
 	github.com/piexlmax/gvaplug v0.0.8
 	github.com/qiniu/api.v7/v7 v7.4.1
-	github.com/qiniu/x v1.10.5
+	github.com/qiniu/x v1.10.5 // indirect
 	github.com/satori/go.uuid v1.2.0
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
@@ -46,9 +46,9 @@ require (
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.5
 	github.com/tebeka/strftime v0.1.3 // indirect
+	github.com/thedevsaddam/gojsonq/v2 v2.5.2
 	github.com/unrolled/secure v1.0.7
 	github.com/uudashr/gopkgs v0.0.0-20200214083640-4d0f738b8305 // indirect
-	golang.org/x/tools v0.0.0-20200729181040-64cdafbe085c
 	golang.org/x/tools/gopls v0.4.4 // indirect
 	google.golang.org/protobuf v1.24.0 // indirect
 	gopkg.in/ini.v1 v1.55.0 // indirect

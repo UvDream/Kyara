@@ -2,7 +2,7 @@ package model
 import (
 	"github.com/jinzhu/gorm"
 )
-//评论model
+// SysComment 评论model
 type SysComment struct{
 	gorm.Model
 	CommentContent string `json:"comment_content" gorm:"comment:'评论内容'"`
