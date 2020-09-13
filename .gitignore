@@ -6,3 +6,4 @@ server/log/
 my-app/node_modules/
 my-app/dist/
 server/log/
+server/latest_log
