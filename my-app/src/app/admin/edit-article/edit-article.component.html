@@ -1,4 +1,12 @@
 <div class="edit">
-  文章编辑界面
-  <div id="vditor"></div>
+  <div class="edit-title">
+    文章标题
+    <input nz-input placeholder="输入文章标题"  [(ngModel)]="value"  style="width: 400px;" />
+  </div>
+  <div class="edit-textarea">
+    <textarea class="edit-textarea-left"   [(ngModel)]="markdownContent"  nz-input placeholder="文章内容" [nzAutosize]="{ minRows: 30}" (ngModelChange)="textChange()"></textarea>
+    <div class="edit-textarea-right">
+    <div id="vditor" ></div>
+    </div>
+  </div>
 </div>
