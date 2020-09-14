@@ -1,19 +1,24 @@
 package v1
 
 import (
+	"gin-vue-admin/global/response"
 	"gin-vue-admin/model/request"
 	service "gin-vue-admin/service/images"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-// GetImagesToken 获取图床token
+// GetImagesToken 获取白熊图床token
 func GetImagesToken(c *gin.Context) {
 	var R request.ImagesStruct
 	_ = c.ShouldBindJSON(&R)
-	R.Email = "913906565@qq.com"
-	R.Password = "11165wzj"
 	msg := service.GetImagesToken(R)
-	c.JSON(http.StatusOK, msg)
+	response.OkDetailed(msg,"获取成功",c)
+}
+//获取图片列表
+func GetImagesList(c *gin.Context)  {
+	var R request.ImagesListStruct
+	_ = c.ShouldBindJSON(&R)
+	msg:=service.GetImagesList(R)
+	response.OkDetailed(msg,"获取成功",c)
 }
