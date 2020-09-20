@@ -1,4 +1,5 @@
 package response
+//白熊图床相关返回结构体
 type BxResponse struct {
 	Code int `json:"code"`
 	Msg string `json:"msg"`
@@ -10,9 +11,13 @@ type bxMsg struct {
 	Data []bxData `json:"data"`
 }
 type bxData struct {
-	id int `json:"id"`
+	ID int `json:"id"`
+	//地址
 	URL string `json:"url"`
-	UploadTime string `json:"upload_time"`
+	//上传时间
 	UploadDate string `json:"upload_date"`
+	//名称
 	Name string `json:"name"`
+	//大小
+	Size string `json:"size"`
 }

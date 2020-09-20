@@ -42,27 +42,29 @@ func GetImagesToken( r request.ImagesStruct)(interface{})  {
 	return token
 }
 //获取图片列表
-func GetImagesList(r request.ImagesListStruct)(interface{})  {
+func GetImagesList(r request.ImagesListStruct)(msg interface{},err error)  {
 	//获取用户配置
 	db := global.GVA_DB
 	sys:=model.SysConfig{}
-	err:=db.Find(&sys).Error
+	err=db.Find(&sys).Error
 	if err!=nil{
-		return "获取错误"
+		return "获取错误",err
 	}
 	if sys.ImgurType == "0"{
 		fmt.Println("如优")
-		return getRyImgurList(r,sys.ImgurToken)
+		msg,err=getRyImgurList(r,sys.ImgurToken)
+		return msg,err
 	}else if sys.ImgurType=="1"{
 		fmt.Println("白熊图床")
-		return getBxImgurList(r,sys.ImgurToken)
+		 msg,err=getBxImgurList(r,sys.ImgurToken)
+		return msg,err
 	}
-	return ""
+	return "",err
 }
 
 
 //获取白熊图床图片列表
-func getBxImgurList(r request.ImagesListStruct,token string) (data response.BxResponse)  {
+func getBxImgurList(r request.ImagesListStruct,token string) (data response.BxResponse ,err error)  {
 	url:="https://pic.baixiongz.com/api/images"
 	payload:=strings.NewReader("page="+r.Page+"&rows="+r.Limit)
 	req,_:=http.NewRequest("POST",url,payload)
@@ -70,15 +72,14 @@ func getBxImgurList(r request.ImagesListStruct,token string) (data response.BxRe
 	req.Header.Set("token",token)
 	res, _ := http.DefaultClient.Do(req)
 	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
+	body, err:= ioutil.ReadAll(res.Body)
 	var msg response.BxResponse
 	temp := []byte(body)
 	json.Unmarshal(temp, &msg)
 	fmt.Println(msg)
-	//list:=gojsonq.New().FromString(string(body)).Find("data")
-	return msg
+	return msg,err
 }
-func getRyImgurList(r request.ImagesListStruct,token string)(interface{})  {
+func getRyImgurList(r request.ImagesListStruct,token string)(list interface{},err error)  {
 	//用token获取列表
 	req:=HttpRequest.NewRequest()
 	req.SetHeaders(map[string]string{"Content-Type": "application/json"})
@@ -90,8 +91,8 @@ func getRyImgurList(r request.ImagesListStruct,token string)(interface{})  {
 	})
 	body, err := res.Body()
 	if err!=nil {
-		return "获取如优图床错误"
+		return "获取如优图床错误",err
 	}
-	list:=gojsonq.New().FromString(string(body)).Find("data")
-	return list
+	list=gojsonq.New().FromString(string(body)).Find("data")
+	return list,err
 }
