@@ -10,7 +10,7 @@ func InitOuterImages(Router *gin.RouterGroup) (R gin.IRoutes){
 	ImagesRouter:=Router.Group("images")
 	{
 		ImagesRouter.POST("getToken",v1.GetImagesToken) // 白熊图床获取token
-		ImagesRouter.POST("getImagesList",v1.GetImagesList)
+		ImagesRouter.POST("getImagesList",v1.GetImagesList) //图床获取图片列表
 	}
 	return ImagesRouter
 }

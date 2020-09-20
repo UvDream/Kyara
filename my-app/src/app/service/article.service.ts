@@ -30,5 +30,13 @@ export class ArticleService {
       params
     });
   }
+  // 获取文章分类
+  getArticleClassification = (params?: any) => {
+    return this.http.request({
+      method: 'get',
+      url: '/article/articleClassify',
+      params
+    });
+  }
 
 }
