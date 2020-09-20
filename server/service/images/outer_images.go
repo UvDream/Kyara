@@ -1,10 +1,12 @@
 package service
 
 import (
+	"encoding/json"
 	"fmt"
 	"gin-vue-admin/global"
 	"gin-vue-admin/model"
 	"gin-vue-admin/model/request"
+	"gin-vue-admin/model/response"
 	"github.com/kirinlabs/HttpRequest"
 	gojsonq "github.com/thedevsaddam/gojsonq/v2"
 	"io/ioutil"
@@ -57,30 +59,24 @@ func GetImagesList(r request.ImagesListStruct)(interface{})  {
 	}
 	return ""
 }
+
+
 //获取白熊图床图片列表
-func getBxImgurList(r request.ImagesListStruct,token string) (interface{})  {
-	//fmt.Println(r)
-	//req:=HttpRequest.NewRequest()
-	//req.SetHeaders(map[string]string{"Content-Type": "multipart/form-data","token":token})
-	//res,_:=req.Post("https://pic.baixiongz.com/api/images",map[string]interface{}{
-	//	"page":r.Page,
-	//	"rows":r.Limit,
-	//})
-	//body, err := res.Body()
-	//fmt.Println(res,body,err)
+func getBxImgurList(r request.ImagesListStruct,token string) (data response.BxResponse)  {
 	url:="https://pic.baixiongz.com/api/images"
 	payload:=strings.NewReader("page="+r.Page+"&rows="+r.Limit)
 	req,_:=http.NewRequest("POST",url,payload)
-	req.Header.Set("Content-Type","multipart/form-data")
+	req.Header.Set("Content-Type","application/x-www-form-urlencoded")
 	req.Header.Set("token",token)
 	res, _ := http.DefaultClient.Do(req)
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
-	s := string(body)
-	fmt.Println(res)
-	fmt.Println(string(body),s)
-	list:=gojsonq.New().FromString(string(body)).Find("data")
-	return list
+	var msg response.BxResponse
+	temp := []byte(body)
+	json.Unmarshal(temp, &msg)
+	fmt.Println(msg)
+	//list:=gojsonq.New().FromString(string(body)).Find("data")
+	return msg
 }
 func getRyImgurList(r request.ImagesListStruct,token string)(interface{})  {
 	//用token获取列表
