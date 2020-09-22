@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../service/article.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 interface TreeItem {
   key: string;
   title: string;
@@ -12,11 +13,13 @@ interface TreeItem {
   styleUrls: ['./edit-article.component.less'],
 })
 export class EditArticleComponent implements OnInit {
-  constructor(private httpService: ArticleService) { }
-
+  constructor(private httpService: ArticleService, private message: NzMessageService) { }
+  isPassword = false;
+  isTop = false;
   value?: string;
   // 是否置顶
   public form = {
+    article_id: 0,
     // 标题
     title: '',
     // 摘要
@@ -26,9 +29,9 @@ export class EditArticleComponent implements OnInit {
     // 文章类容
     article_content: '',
     // 置顶
-    top: false,
+    top: '0',
     // 访问密码
-    is_password: false,
+    is_password: '0',
     view_password: '',
     // 是否开启评论
     is_comment: true,
@@ -89,5 +92,17 @@ export class EditArticleComponent implements OnInit {
       data.push(obj);
     });
     return data;
+  }
+  // 提交
+  submitFunc = async () => {
+    console.log('提交', this.form);
+    this.isPassword ? this.form.is_password = '1' : this.form.is_password = '0';
+    this.isTop ? this.form.top = '1' : this.form.top = '0';
+    const res = await this.httpService.addArticle(this.form);
+    console.log(res);
+    if (res.code === 200) {
+      this.form.article_id = res.data.ID;
+      this.message.info(res.msg);
+    }
   }
 }

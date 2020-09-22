@@ -17,24 +17,30 @@
       nzPlaceHolder="请选择分类"
     >
     </nz-tree-select>
-    <label class="margin-left-10" nz-checkbox [(ngModel)]="form.top"
+    <label class="margin-left-10" nz-checkbox [(ngModel)]="isTop"
       >是否置顶</label
     >
-    <label class="margin-left-10" nz-checkbox [(ngModel)]="form.is_password"
+    <label class="margin-left-10" nz-checkbox [(ngModel)]="isPassword"
       >是否需要访问密码</label
     >
     <input
       class="margin-left-10"
       nz-input
       placeholder="输入访问密码"
-      [disabled]="!form.is_password"
+      [disabled]="!isPassword"
       [(ngModel)]="form.view_password"
       style="width: 300px"
     />
     <label class="margin-left-10" nz-checkbox [(ngModel)]="form.is_comment"
       >是否开启评论</label
     >
-    <button class="margin-left-10" nz-button nzType="primary" nzShape="round">
+    <button
+      class="margin-left-10"
+      nz-button
+      nzType="primary"
+      nzShape="round"
+      (click)="submitFunc()"
+    >
       发表
     </button>
   </div>

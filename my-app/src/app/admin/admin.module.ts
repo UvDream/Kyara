@@ -13,6 +13,8 @@ import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { UploadComponent } from './edit-article/components/upload/upload.component';
 import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +27,9 @@ import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
     NzUploadModule,
     NzCheckboxModule,
     NzButtonModule,
-    NzTreeSelectModule
+    NzTreeSelectModule,
+    NzIconModule,
+    NzMessageModule
   ],
   declarations: [AdminComponent, EditArticleComponent, UploadComponent],
   exports: [AdminComponent],

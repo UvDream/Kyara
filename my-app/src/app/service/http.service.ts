@@ -22,10 +22,11 @@ export class HttpService {
     }
   }
   public get = (url: string, params: any) => {
+
     return this.http.get(baseUrl + url, { params }).toPromise().then(this.handleSuccess).catch(this.handleError);
   }
   public post = (url: string, data: Params) => {
-    return this.http.post(baseUrl + url, { data }).toPromise().then(this.handleSuccess).catch(this.handleError);
+    return this.http.post(baseUrl + url, data).toPromise().then(this.handleSuccess).catch(this.handleError);
   }
   private handleSuccess = (res: Response) => {
     switch (res.code) {

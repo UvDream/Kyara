@@ -21,6 +21,7 @@ import (
 func GetMenu(c *gin.Context) {
 	claims, _ := c.Get("claims")
 	waitUse := claims.(*request.CustomClaims)
+	fmt.Println(waitUse )
 	err, menus := service.GetMenuTree(waitUse.AuthorityId)
 	if err != nil {
 		response.FailWithMessage(fmt.Sprintf("获取失败，%v", err), c)

@@ -10,14 +10,14 @@ import (
 // 添加文章
 func AddArticle(c *gin.Context) {
 	var R model.SysArticle
-	err := c.ShouldBind(&R)
+	err := c.ShouldBindJSON(&R)
 	if err != nil {
 		//	参数获取失败
 	}
-	err, msg := service.AddArticle(R)
+	err, msg ,data:= service.AddArticle(R,c)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
-		response.OkWithMessage(msg, c)
+		response.OkDetailed(data,msg, c)
 	}
 }

@@ -9,7 +9,7 @@ import (
 type SysArticle struct {
 	gorm.Model
 	//文章id
-	ArticleID string `json:"article_id" gorm:"-"`
+	ArticleID int `json:"article_id" gorm:"-"`
 	// 文章标题
 	Title string `json:"title" gorm:"comment:'文章标题'"`
 	// 文章摘要

@@ -38,5 +38,13 @@ export class ArticleService {
       params
     });
   }
+  // 保存文章
+  addArticle = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/adminArticle/add',
+      data
+    });
+  }
 
 }
