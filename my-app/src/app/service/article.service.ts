@@ -7,7 +7,7 @@ export class ArticleService {
 
   constructor(private http: HttpService) { }
   // 文章列表
-  articleList = (data: any) => {
+  articleList = (data?: any) => {
     return this.http.request({
       method: 'post',
       url: '/article/articleList',

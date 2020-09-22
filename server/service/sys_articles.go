@@ -9,7 +9,7 @@ import (
 )
 
 //文章列表服务
-func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticle, totalCount int64) {
+func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticle, totalCount int64,msg string) {
 	db := global.GVA_DB
 	var articleList []model.SysArticle
 	var topArticle []model.SysArticle
@@ -31,10 +31,13 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 		a := model.SysUser{}
 		//	根据userId查询作者姓名
 		err = db.Where("UUID=?", k.UserID).Find(&a).Error
+		if err!=nil{
+			return err,articleList,0,"获取用户错误"
+		}
 		articleList[i].UserName = a.NickName
 	}
 
-	return err, articleList, total
+	return err, articleList, total,msg
 }
 //文章详情服务
 func GetArticleDetail(c *gin.Context) (err error,article model.SysArticle) {

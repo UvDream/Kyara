@@ -18,8 +18,10 @@ import (
 func ArticleList(c *gin.Context)  {
 	var R request.ArticleListStruct
 	_ = c.ShouldBindJSON(&R)
-	 err,msg,Total:=service.ArticleList(R)
+	 err,msg,Total,errMsg:=service.ArticleList(R)
 	 if err!=nil{
+	 	fmt.Println("获取文章列表错误")
+	 	response.FailWithMessage(errMsg,c)
 	 }else {
 		 response.OkDetailed(resp.SysArticleListResponse{Msg:msg,TotalCount:Total},"获取成功",c)
 	 }
