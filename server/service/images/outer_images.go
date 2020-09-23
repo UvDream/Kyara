@@ -7,6 +7,7 @@ import (
 	"gin-vue-admin/model"
 	"gin-vue-admin/model/request"
 	"gin-vue-admin/model/response"
+	"github.com/gin-gonic/gin"
 	"github.com/kirinlabs/HttpRequest"
 	gojsonq "github.com/thedevsaddam/gojsonq/v2"
 	"io/ioutil"
@@ -95,4 +96,21 @@ func getRyImgurList(r request.ImagesListStruct,token string)(list interface{},er
 	}
 	list=gojsonq.New().FromString(string(body)).Find("data")
 	return list,err
+}
+
+//文件上传
+func UploadImage(c *gin.Context)  {
+	db := global.GVA_DB
+	sys:=model.SysConfig{}
+	err:=db.Find(&sys).Error
+	fmt.Println(err)
+	_, q, err := c.Request.FormFile("image")
+	req:=HttpRequest.NewRequest()
+	res,_:=req.Post("https://pic.baixiongz.com/api/upload",map[string]interface{}{
+		"image":q.Header,
+		"token":sys.ImgurToken,
+	})
+	body, err := res.Body()
+	fmt.Println(body)
+
 }

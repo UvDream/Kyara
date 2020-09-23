@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"gin-vue-admin/global/response"
 	"gin-vue-admin/model/request"
 	service "gin-vue-admin/service/images"
@@ -25,4 +26,13 @@ func GetImagesList(c *gin.Context)  {
 		response.FailWithMessage("获取错误",c)
 	}
 	c.JSON(http.StatusOK,msg)
+}
+//上传图片
+func UploadImage(c *gin.Context)  {
+	_, header, err := c.Request.FormFile("image")
+	fmt.Println(header,err)
+	if err != nil {
+		response.FailWithMessage(fmt.Sprintf("上传文件失败，%v", err), c)
+	}
+	service.UploadImage(c)
 }
