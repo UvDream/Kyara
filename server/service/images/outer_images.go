@@ -1,6 +1,7 @@
 package service
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"gin-vue-admin/global"
@@ -10,7 +11,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/kirinlabs/HttpRequest"
 	gojsonq "github.com/thedevsaddam/gojsonq/v2"
+	"io"
 	"io/ioutil"
+	"mime/multipart"
 	"net/http"
 	"strings"
 )
@@ -104,13 +107,30 @@ func UploadImage(c *gin.Context)  {
 	sys:=model.SysConfig{}
 	err:=db.Find(&sys).Error
 	fmt.Println(err)
-	_, q, err := c.Request.FormFile("image")
-	req:=HttpRequest.NewRequest()
-	res,_:=req.Post("https://pic.baixiongz.com/api/upload",map[string]interface{}{
-		"image":q.Header,
-		"token":sys.ImgurToken,
-	})
-	body, err := res.Body()
-	fmt.Println(body)
+	if sys.ImgurType == "0"{
+		fmt.Println("如优")
+	}else if sys.ImgurType=="1"{
+		fmt.Println("白熊图床")
+		uploadBx(c,sys.ImgurToken)
+	}
 
+
+}
+//白熊图床上传
+func uploadBx(c *gin.Context,token string)  {
+	file,fileHeader, err := c.Request.FormFile("image")
+	fmt.Println(file,fileHeader,err)
+	url:="https://pic.baixiongz.com/api/upload"
+	bodyBuf:=bytes.NewBufferString("")
+	bodyWriter:=multipart.NewWriter(bodyBuf)
+	_,err=bodyWriter.CreateFormFile("image",fileHeader.Filename)
+	boundary:=bodyWriter.Boundary()
+	closBuf:=bytes.NewBufferString(fmt.Sprintf("\r\n--%s--\r\n",boundary))
+	requestReader:=io.MultiReader(bodyBuf,file,closBuf)
+	req,_:= http.NewRequest("post", url,requestReader)
+	req.Header.Set("token",token)
+	res, _ := http.DefaultClient.Do(req)
+	defer res.Body.Close()
+	body, err:= ioutil.ReadAll(res.Body)
+	fmt.Println(body)
 }
