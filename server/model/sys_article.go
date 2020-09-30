@@ -2,7 +2,6 @@ package model
 
 import (
 	"github.com/jinzhu/gorm"
-	uuid "github.com/satori/go.uuid"
 )
 
 // SysArticle 文章数据表
@@ -15,7 +14,7 @@ type SysArticle struct {
 	// 文章摘要
 	Introduction string `json:"introduction" gorm:"comment:'文章摘要'"`
 	// 作者id
-	UserID  uuid.UUID  `json:"user_id" gorm:"comment:'作者id'"`
+	UserID  string  `json:"user_id" gorm:"comment:'作者id'"`
 	// ---作者名---
 	UserName string `json:"user_name" gorm:"-"`
 	// 评论id

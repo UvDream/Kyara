@@ -20,6 +20,9 @@ func AddArticle(r model.SysArticle,c *gin.Context) (err error, msg string,data m
 	if r.ImgURL==""{
 		r.ImgURL="https://gitee.com/UvDream/images/raw/master/images/20200826195538.png"
 	}
+	if r.UserID==""{
+		r.UserID="ce0d6685-c15f-4126-a5b4-890bc9d2356d"
+	}
 
 	if r.ArticleID == 0 {
 		//增加文章
