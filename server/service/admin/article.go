@@ -25,6 +25,7 @@ func AddArticle(r model.SysArticle,c *gin.Context) (err error, msg string,data m
 		//增加文章
 		err := db.Create(&r).Error
 		fmt.Println(r)
+		fmt.Println(err)
 		if err != nil {
 			return err, "文章创建失败",r
 		}else{

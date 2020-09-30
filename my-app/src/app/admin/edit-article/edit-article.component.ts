@@ -38,7 +38,9 @@ export class EditArticleComponent implements OnInit {
     // 转载规则
     transfer_rules: '0',
     // icon
-    icon: ''
+    icon: '',
+    // 图片地址
+    img_url: '',
   };
   expandKeys = ['100', '1001'];
   public nodes = [
