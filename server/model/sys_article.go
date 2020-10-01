@@ -14,7 +14,7 @@ type SysArticle struct {
 	// 文章摘要
 	Introduction string `json:"introduction" gorm:"comment:'文章摘要'"`
 	// 作者id
-	UserID  string  `json:"user_id" gorm:"comment:'作者id'"`
+	UserID string `json:"user_id" gorm:"comment:'作者id'"`
 	// ---作者名---
 	UserName string `json:"user_name" gorm:"-"`
 	// 评论id
@@ -56,19 +56,30 @@ type SysArticle struct {
 	// 是否置顶
 	Top string `json:"top" gorm:"comment:'是否置顶';default:'0'"`
 	// 字数
-	WordCount  string `json:"word_count" gorm:"comment:'文章字数';"`
+	WordCount string `json:"word_count" gorm:"comment:'文章字数';"`
+	// 点赞数
+	LikeCount string `json:"like_count" gorm:"comment:'点赞数'"`
 }
+
 //文章分类
-type SysClassify struct{
+type SysClassify struct {
 	gorm.Model
-	TypeName string `json:"type_name" gorm:"comment:'分类名称'"`
-	Icon string `json:"icon"`
-	ParentID string `json:"parent_id"`
-	Children []SysClassify `json:"children"`
-	IconColor string `json:"icon_color" gorm:"comment:'icon颜色';default:'#2d8cf0'"`
+	TypeName  string        `json:"type_name" gorm:"comment:'分类名称'"`
+	Icon      string        `json:"icon"`
+	ParentID  string        `json:"parent_id"`
+	Children  []SysClassify `json:"children"`
+	IconColor string        `json:"icon_color" gorm:"comment:'icon颜色';default:'#2d8cf0'"`
 }
+
 // 文章标签
-type SysTag struct{
+type SysTag struct {
 	gorm.Model
-	TagName	string `json:"tag_name"`
+	TagName string `json:"tag_name"`
+}
+
+//点赞表
+type SysLike struct {
+	gorm.Model
+	UserID    string `json:"user_id" gorm:"comment:'点赞用户'"`
+	ArticleID string `json:"article_id" gorm:"comment:'文章id'"`
 }

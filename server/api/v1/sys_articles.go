@@ -66,3 +66,12 @@ func ArticleClassify(c *gin.Context)  {
 		response.OkDetailed(msg, "获取文章分类成功", c)
 	}
 }
+//热门文章
+func HotArticle(c *gin.Context){
+ err,list:=service.HotArticle()
+ if err!=nil{
+	 response.FailWithMessage("获取文章失败", c)
+ }else{
+	 response.OkDetailed(list, "获取文章成功", c)
+ }
+}

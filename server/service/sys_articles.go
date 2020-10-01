@@ -89,3 +89,15 @@ func findChildren(parent model.SysClassify)(children []model.SysClassify)  {
 	}
 	return c
 }
+//热门文章
+func HotArticle()(err error,list []model.SysArticle){
+	db := global.GVA_DB
+	var arr []model.SysArticle
+	err =db.Order("like_count desc").Find(&arr).Error
+	for k,i:=range arr{
+		if k < 5 {
+			list=append(list,i)
+		}
+	}
+	return err,list
+}
