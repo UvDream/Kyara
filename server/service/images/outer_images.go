@@ -1,7 +1,6 @@
 package service
 
 import (
-	"encoding/json"
 	"fmt"
 	"gin-vue-admin/global"
 	"gin-vue-admin/model"
@@ -11,9 +10,6 @@ import (
 	"github.com/imroc/req"
 	"github.com/kirinlabs/HttpRequest"
 	gojsonq "github.com/thedevsaddam/gojsonq/v2"
-	"io/ioutil"
-	"net/http"
-	"strings"
 )
 type res struct {
 	Code string `json:"code"`
@@ -68,17 +64,16 @@ func GetImagesList(r request.ImagesListStruct)(msg interface{},err error)  {
 //获取白熊图床图片列表
 func getBxImgurList(r request.ImagesListStruct,token string) (data response.BxResponse ,err error)  {
 	url:="https://pic.baixiongz.com/api/images"
-	payload:=strings.NewReader("page="+r.Page+"&rows="+r.Limit)
-	req,_:=http.NewRequest("POST",url,payload)
-	req.Header.Set("Content-Type","application/x-www-form-urlencoded")
-	req.Header.Set("token",token)
-	res, _ := http.DefaultClient.Do(req)
-	defer res.Body.Close()
-	body, err:= ioutil.ReadAll(res.Body)
-	var msg response.BxResponse
-	temp := []byte(body)
-	json.Unmarshal(temp, &msg)
-	fmt.Println(msg)
+	header := req.Header{
+		"token": token,
+	}
+	param := req.Param{
+		"page":  r.Page,
+		"rows": r.Limit,
+	}
+	c, err := req.Post(url, header, param)
+	var  msg response.BxResponse
+	c.ToJSON(&msg)
 	return msg,err
 }
 func getRyImgurList(r request.ImagesListStruct,token string)(list interface{},err error)  {
