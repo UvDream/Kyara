@@ -34,5 +34,10 @@ func UploadImage(c *gin.Context)  {
 	if err != nil {
 		response.FailWithMessage(fmt.Sprintf("上传文件失败，%v", err), c)
 	}
-	service.UploadImage(c)
+	_,err=service.UploadImage(c)
+	if err!=nil{
+		response.FailWithMessage(fmt.Sprintf("上传文件失败，%v", err), c)
+	}else{
+		response.OkWithMessage("上传成功",c)
+	}
 }
