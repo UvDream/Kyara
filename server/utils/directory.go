@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"gin-vue-admin/global"
+	"server/global"
 	"os"
 )
 

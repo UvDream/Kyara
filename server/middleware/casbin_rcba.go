@@ -1,11 +1,11 @@
 package middleware
 
 import (
-	"gin-vue-admin/global"
-	"gin-vue-admin/global/response"
-	"gin-vue-admin/model/request"
-	"gin-vue-admin/service"
 	"github.com/gin-gonic/gin"
+	"server/global"
+	"server/global/response"
+	"server/model/request"
+	"server/service"
 )
 
 // 拦截器

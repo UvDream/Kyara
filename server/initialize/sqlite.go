@@ -6,7 +6,7 @@ package initialize
 
 // import (
 // 	"fmt"
-// 	"gin-vue-admin/global"
+// 	"server/global"
 // 	"github.com/jinzhu/gorm"
 // 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 // )

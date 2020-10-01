@@ -1,7 +1,7 @@
 package router
 
 import (
-	v1 "gin-vue-admin/api/v1"
+	v1 "server/api/v1"
 	"github.com/gin-gonic/gin"
 )
 // 图床相关路由

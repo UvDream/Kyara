@@ -2,14 +2,14 @@ package service
 
 import (
 	"fmt"
-	"gin-vue-admin/global"
-	"gin-vue-admin/model"
-	"gin-vue-admin/model/request"
-	"gin-vue-admin/model/response"
 	"github.com/gin-gonic/gin"
 	"github.com/imroc/req"
 	"github.com/kirinlabs/HttpRequest"
 	gojsonq "github.com/thedevsaddam/gojsonq/v2"
+	"server/global"
+	"server/model"
+	"server/model/request"
+	"server/model/response"
 )
 type res struct {
 	Code string `json:"code"`
@@ -17,29 +17,37 @@ type res struct {
 	Data interface{} `json:"data"`
 }
 //获取token
-func GetImagesToken( r request.ImagesStruct)(interface{})  {
-	fmt.Println(r)
-	req:=HttpRequest.NewRequest()
-	req.SetHeaders(map[string]string{"Content-Type": "application/json"})
-	fmt.Println(req)
-	res,_:=req.Post("https://pic.baixiongz.com/api/token",map[string]interface{}{
-		"email":r.UserName,
-		"password":r.Password,
-	})
-	body, err := res.Body()
-	if err!=nil {
-		return "获取token失败"
-	}
-	token:=gojsonq.New().FromString(string(body)).Find("data.token")
+func GetImagesToken( r request.ImagesStruct)(msg string ,err error) {
 	db := global.GVA_DB
 	sys:=model.SysConfig{}
-	err=db.Model(&sys).Update(model.SysConfig{ImgurToken:token .(string),ImgurType:r.Type,ImgurUserName: r.UserName,ImgurPassword: r.Password}).Error
-	if err!=nil {
-		return "更新配置失败"
+	err=db.Find(&sys).Error
+	if sys.ImgurType == "0"{
+		fmt.Println("如优")
+	}else if sys.ImgurType=="1"{
+		fmt.Println("白熊图床")
+		msg,err=getTokenBX(r)
 	}
-	return token
+	return msg,err
 }
-//获取图片列表
+//白熊图床获取token
+func getTokenBX(r request.ImagesStruct)(data string ,er error){
+	url:="https://pic.baixiongz.com/api/token"
+	param := req.Param{
+		"email":  r.UserName,
+		"password": r.Password,
+	}
+	c,err:=req.Post(url,param)
+	var msg response.BxTokenResponse
+	c.ToJSON(&msg)
+	db := global.GVA_DB
+	sys:=model.SysConfig{}
+	err=db.Model(&sys).Update(model.SysConfig{ImgurToken:msg.Data.Token,ImgurType:r.Type,ImgurUserName: r.UserName,ImgurPassword: r.Password}).Error
+	if err!=nil {
+		return "更新token失败",err
+	}
+	return msg.Data.Token,err
+}
+//---------------------------------------获取图片列表-----------------------------------
 func GetImagesList(r request.ImagesListStruct)(msg interface{},err error)  {
 	//获取用户配置
 	db := global.GVA_DB

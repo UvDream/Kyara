@@ -1,9 +1,9 @@
 package router
 
 import (
-	"gin-vue-admin/api/v1"
-	"gin-vue-admin/middleware"
 	"github.com/gin-gonic/gin"
+	"server/api/v1"
+	"server/middleware"
 )
 
 func InitCustomerRouter(Router *gin.RouterGroup) {

@@ -1,10 +1,10 @@
 package service
 
 import (
-	"gin-vue-admin/config"
-	"gin-vue-admin/global"
-	"gin-vue-admin/model"
-	"gin-vue-admin/utils"
+	"server/config"
+	"server/global"
+	"server/model"
+	"server/utils"
 )
 
 // @title    GetSystemConfig

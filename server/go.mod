@@ -1,4 +1,4 @@
-module gin-vue-admin
+module server
 
 go 1.12
 

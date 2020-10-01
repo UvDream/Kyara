@@ -2,11 +2,11 @@ package middleware
 
 import (
 	"errors"
-	"gin-vue-admin/global"
-	"gin-vue-admin/global/response"
-	"gin-vue-admin/model"
-	"gin-vue-admin/model/request"
-	"gin-vue-admin/service"
+	"server/global"
+	"server/global/response"
+	"server/model"
+	"server/model/request"
+	"server/service"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"time"

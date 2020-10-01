@@ -2,10 +2,10 @@ package service
 
 import (
 	"errors"
-	"gin-vue-admin/global"
-	"gin-vue-admin/model"
-	"gin-vue-admin/model/request"
-	"gin-vue-admin/utils"
+	"server/global"
+	"server/model"
+	"server/model/request"
+	"server/utils"
 	uuid "github.com/satori/go.uuid"
 )
 

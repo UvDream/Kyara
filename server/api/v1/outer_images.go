@@ -2,11 +2,10 @@ package v1
 
 import (
 	"fmt"
-	"gin-vue-admin/global/response"
-	"gin-vue-admin/model/request"
-	service "gin-vue-admin/service/images"
+	"server/global/response"
+	"server/model/request"
+	service "server/service/images"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,8 +13,13 @@ import (
 func GetImagesToken(c *gin.Context) {
 	var R request.ImagesStruct
 	_ = c.ShouldBindJSON(&R)
-	msg := service.GetImagesToken(R)
-	response.OkDetailed(msg,"获取成功",c)
+	 msg ,err:=service.GetImagesToken(R)
+	if err!=nil {
+		response.FailWithMessage(msg,c)
+	}else{
+		response.OkWithMessage(msg,c)
+	}
+
 }
 // 获取图片列表
 func GetImagesList(c *gin.Context)  {

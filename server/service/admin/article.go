@@ -2,8 +2,8 @@ package service
 
 import (
 	"fmt"
-	"gin-vue-admin/global"
-	"gin-vue-admin/model"
+	"server/global"
+	"server/model"
 	"github.com/gin-gonic/gin"
 )
 

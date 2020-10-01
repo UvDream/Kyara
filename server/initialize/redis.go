@@ -1,7 +1,7 @@
 package initialize
 
 import (
-	"gin-vue-admin/global"
+	"server/global"
 	"github.com/go-redis/redis"
 )
 

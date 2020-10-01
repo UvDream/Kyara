@@ -2,10 +2,10 @@ package service
 
 import (
 	"errors"
-	"gin-vue-admin/global"
-	"gin-vue-admin/model"
-	"gin-vue-admin/model/request"
-	"gin-vue-admin/model/response"
+	"server/global"
+	"server/model"
+	"server/model/request"
+	"server/model/response"
 	"strconv"
 )
 

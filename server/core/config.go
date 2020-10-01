@@ -2,8 +2,8 @@ package core
 
 import (
 	"fmt"
-	"gin-vue-admin/global"
-	_ "gin-vue-admin/packfile"
+	"server/global"
+	_ "server/packfile"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )

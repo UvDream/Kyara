@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gin-vue-admin/core"
-	"gin-vue-admin/global"
-	"gin-vue-admin/initialize"
+	"server/core"
+	"server/global"
+	"server/initialize"
 	//"runtime"
 )
 

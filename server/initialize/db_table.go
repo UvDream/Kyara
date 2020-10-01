@@ -1,8 +1,8 @@
 package initialize
 
 import (
-	"gin-vue-admin/global"
-	"gin-vue-admin/model"
+	"server/global"
+	"server/model"
 )
 
 // 注册数据库表专用

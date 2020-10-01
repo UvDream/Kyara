@@ -1,9 +1,9 @@
 package v1
 
 import (
-	"gin-vue-admin/global/response"
-	"gin-vue-admin/model"
-	service "gin-vue-admin/service/admin"
+	"server/global/response"
+	"server/model"
+	service "server/service/admin"
 	"github.com/gin-gonic/gin"
 )
 

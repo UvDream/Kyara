@@ -2,8 +2,8 @@ package core
 
 import (
 	"fmt"
-	"gin-vue-admin/global"
-	"gin-vue-admin/initialize"
+	"server/global"
+	"server/initialize"
 	"time"
 )
 

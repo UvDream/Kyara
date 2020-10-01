@@ -1,6 +1,6 @@
 package response
 
-import "gin-vue-admin/model"
+import "server/model"
 
 type SysAuthorityResponse struct {
 	Authority model.SysAuthority `json:"authority"`

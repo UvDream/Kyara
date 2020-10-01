@@ -1,11 +1,11 @@
 package global
 
 import (
-	"gin-vue-admin/config"
 	"github.com/go-redis/redis"
 	"github.com/jinzhu/gorm"
 	oplogging "github.com/op/go-logging"
 	"github.com/spf13/viper"
+	"server/config"
 )
 
 var (

@@ -1,8 +1,8 @@
 package router
 
 import (
-	v1 "gin-vue-admin/api/v1/admin"
 	"github.com/gin-gonic/gin"
+	v1 "server/api/v1/admin"
 )
 
 func InitAdminArticle(Router *gin.RouterGroup)(R gin.IRouter)  {

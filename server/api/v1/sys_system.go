@@ -2,10 +2,10 @@ package v1
 
 import (
 	"fmt"
-	"gin-vue-admin/global/response"
-	"gin-vue-admin/model"
-	resp "gin-vue-admin/model/response"
-	"gin-vue-admin/service"
+	"server/global/response"
+	"server/model"
+	resp "server/model/response"
+	"server/service"
 	"github.com/gin-gonic/gin"
 )
 

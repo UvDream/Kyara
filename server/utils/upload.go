@@ -3,7 +3,7 @@ package utils
 import (
 	"context"
 	"fmt"
-	"gin-vue-admin/global"
+	"server/global"
 	"github.com/qiniu/api.v7/v7/auth/qbox"
 	"github.com/qiniu/api.v7/v7/storage"
 	"mime/multipart"

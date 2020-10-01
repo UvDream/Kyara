@@ -1,4 +1,4 @@
-# Gin-Vue-Admin Global Configuration
+# server Global Configuration
 
 # casbin configuration
 casbin:
@@ -55,7 +55,7 @@ captcha:
 
 # logger configuration
 log:
-  prefix: "[GIN-VUE-ADMIN]"
+  prefix: "[server]"
   log-file: true
   stdout: "DEBUG"
   file: "DEBUG"
