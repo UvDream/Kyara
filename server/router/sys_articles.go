@@ -12,7 +12,8 @@ func InitArticles(Router *gin.RouterGroup)(R gin.IRouter)  {
 		ArticleRouter.GET("articleDetail",v1.GetArticleDetail) // 文章详情
 		ArticleRouter.GET("articlePassword",v1.CheckPassword)//验证文章密码是否正确
 	    ArticleRouter.GET("articleClassify",v1.ArticleClassify) //文章分类
-	    ArticleRouter.GET("hotArticle",v1.HotArticle)
+	    ArticleRouter.GET("hotArticle",v1.HotArticle)//热门文章
+	    ArticleRouter.GET("tag",v1.AllTag)//tag获取
 	}
 	return ArticleRouter
 }

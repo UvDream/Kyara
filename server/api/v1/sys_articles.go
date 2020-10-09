@@ -75,3 +75,12 @@ func HotArticle(c *gin.Context){
 	 response.OkDetailed(list, "获取文章成功", c)
  }
 }
+//获取所有tag
+func AllTag(c *gin.Context)  {
+	err,list,msg:=service.AllTag(c)
+	if err!=nil{
+		response.FailWithMessage(msg, c)
+	}else{
+		response.OkDetailed(list, msg, c)
+	}
+}

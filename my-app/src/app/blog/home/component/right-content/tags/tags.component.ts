@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ArticleService} from '../../../../../service/article.service';
+interface TagInterface {
+  ID: number;
+  tag_name: string;
+}
 @Component({
   selector: 'app-tags',
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.less'],
 })
 export class TagsComponent implements OnInit {
-  constructor() {}
-  public tags = [
-    { id: 1, name: '前端' },
-    { id: 2, name: 'web' },
-    { id: 3, name: '后端' },
-    { id: 4, name: '前端' },
-    { id: 5, name: 'web' },
-    { id: 6, name: '后端' },
-  ];
-  ngOnInit(): void {}
+  constructor(private service: ArticleService) {}
+  public tags: Array<TagInterface>;
+  ngOnInit(): void {
+    this.getAllTag();
+  }
+  getAllTag = async () => {
+    const res = await this.service.getTag();
+    if (res.code === 200){
+      this.tags = res.data;
+    }
+  }
 }

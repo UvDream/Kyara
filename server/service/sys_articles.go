@@ -1,11 +1,11 @@
 package service
 
 import (
+	"github.com/88250/lute"
+	"github.com/gin-gonic/gin"
 	"server/global"
 	"server/model"
 	"server/model/request"
-	"github.com/88250/lute"
-	"github.com/gin-gonic/gin"
 )
 
 //文章列表服务
@@ -101,4 +101,13 @@ func HotArticle()(err error,list []model.SysArticle){
 		}
 	}
 	return err,list
+}
+//所有tag
+func AllTag(c *gin.Context) (err error ,tagArr []model.SysTag,msg string) {
+	db := global.GVA_DB
+	err =db.Find(&tagArr).Error
+	if err!=nil{
+		return err,tagArr,"获取tag失败"
+	}
+	return err,tagArr,"获取tag成功"
 }
