@@ -1,0 +1,19 @@
+<div class="hot">
+  <div class="hot-title">
+    热门文章
+  </div>
+  <ul class="hot-article">
+    <li class="hot-article-block" *ngFor="let item of list" (click)="toDetail(item.ID)">
+      <img [src]="item.avatar" alt="">
+      <div class="hot-article-block-right">
+        <h4 class="hot-article-block-title text-ellipsis-two">
+          {{item.title}}
+        </h4>
+        <div class="hot-article-block-like">
+          <span class="iconfont uv-thumbs-up-outline"></span>
+          <span class="hot-article-block-like-span">{{item.like_count}}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

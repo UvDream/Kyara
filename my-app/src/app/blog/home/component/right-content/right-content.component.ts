@@ -33,5 +33,4 @@ export class RightContentComponent implements OnInit {
       this.pathName = location.pathname;
     });
   }
-
 }

@@ -26,6 +26,7 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { CatalogComponent } from './home/component/right-content/catalog/catalog.component';
 import { NzAnchorModule } from 'ng-zorro-antd/anchor';
+import { HotArticleComponent } from './home/component/right-content/hot-article/hot-article.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -58,6 +59,7 @@ import { NzAnchorModule } from 'ng-zorro-antd/anchor';
     BlogMessageComponent,
     TagsComponent,
     CatalogComponent,
+    HotArticleComponent,
   ],
   providers: [],
 })

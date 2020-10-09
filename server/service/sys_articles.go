@@ -96,6 +96,7 @@ func HotArticle()(err error,list []model.SysArticle){
 	err =db.Order("like_count desc").Find(&arr).Error
 	for k,i:=range arr{
 		if k < 5 {
+			i.ArticleContent=""
 			list=append(list,i)
 		}
 	}
