@@ -22,7 +22,7 @@ export class CatalogComponent implements OnInit {
     this.pathName = location.pathname;
     setTimeout(() => {
       this.list = this.catalog.ArticleCatList;
-    }, 100);
+    }, 500);
   }
 
 

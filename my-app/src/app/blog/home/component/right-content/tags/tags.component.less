@@ -1,29 +1,30 @@
 .message {
-    margin-top  : 15px;
-    margin-left : 10px;
-    margin-right: 10px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
 
-    &-title {
-        font-size: 20px;
-        color    : var(--textColor);
+  &-title {
+    font-size: 20px;
+    color: var(--textColor);
+  }
+
+  &-tag {
+    background-color: #cfdadd;
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 4px;
+    font-size: 12px;
+  }
+
+  &-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    span {
+      margin: 4px;
     }
-
-    &-tag {
-        background-color: #cfdadd;
-        color           : #fff;
-        border-radius   : 4px;
-        padding         : 1px 4px;
-        font-size       : 12px;
-    }
-
-    &-tags {
-        display  : flex;
-        flex-wrap: wrap;
-
-        span {
-            margin: 4px;
-        }
-    }
+  }
 
 
 }
