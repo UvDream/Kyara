@@ -10,17 +10,17 @@ export class RightContentComponent implements OnInit {
   tabs = [
     {
       active: true,
-      name: 'Tab 1',
+      name: '1',
       icon: 'uv-thumbs-up-outline',
     },
     {
       active: false,
-      name: 'Tab 2',
+      name: '2',
       icon: 'uv-chatbubble-ellipses-outline',
     },
     {
       active: false,
-      name: 'Tab 2',
+      name: '3',
       icon: 'uv-star-outline',
     },
   ];

@@ -8,7 +8,7 @@
         </div>
       </ng-template>
 <!--      {{ tab.name }}-->
-      <app-hot-article></app-hot-article>
+      <app-hot-article *ngIf="tab.name==='1'"></app-hot-article>
     </nz-tab>
   </nz-tabset>
   <!-- 博客信息 -->
