@@ -33,8 +33,6 @@ type SysArticle struct {
 	ViewCount string `json:"view_count" gorm:"comment:'浏览量'"`
 	// 原文链接
 	OriginalLink string `json:"original_link" gorm:"comment:'原文链接'"`
-	// 标签id
-	TagID []string `json:"tag_id" gorm:"comment:'标签id';default:[]"`
 	// 标签
 	TagArray []string `json:"tag_array" gorm:"-"`
 	// 分类id
@@ -82,4 +80,10 @@ type SysLike struct {
 	gorm.Model
 	UserID    string `json:"user_id" gorm:"comment:'点赞用户'"`
 	ArticleID string `json:"article_id" gorm:"comment:'文章id'"`
+}
+//文章以及tag关联表
+type SysArticleTag struct {
+	gorm.Model
+	ArticleID uint `json:"article_id"`
+	TagID uint `json:"tag_id"`
 }

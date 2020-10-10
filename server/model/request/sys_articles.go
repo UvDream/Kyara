@@ -6,6 +6,8 @@ type ArticleListStruct struct{
 	Search string `json:"search"`
 	Page     int `json:"page" form:"page"`
 	PageSize int `json:"pageSize" form:"pageSize"`
+	ClassificationID string `json:"classification_id"`//分类
+	Tag string `json:"tag"`
 }
 // 获取图床token结构体
 type ImagesStruct struct{

@@ -15,16 +15,33 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 	var topArticle []model.SysArticle
 	var total int64
 	//查询总数
-	err = db.Find(&articleList).Count(&total).Error
-	// 先查询置顶文章
-	err = db.Where(&model.SysArticle{Top: "1"}).Find(&topArticle).Error
-	topLen := len(topArticle)
-	//再查其他
-	u.PageSize=u.PageSize-topLen
-	limit := u.PageSize
-	offset := u.PageSize * (u.Page - 1)
-	err = db.Where("top=? ", "0").Limit(limit).Offset(offset).Find(&articleList).Error
+	err = db.Table("sys_articles").Count(&total).Error
 
+		// 先查询置顶文章
+	if u.ClassificationID=="" && u.Tag=="" {
+		err = db.Where(&model.SysArticle{Top: "1"}).Find(&topArticle).Error
+	}
+	if u.ClassificationID!="" {
+		err = db.Where(&model.SysArticle{Top: "1",ClassificationID: u.ClassificationID}).Find(&topArticle).Error
+	}
+	if u.Tag!="" {
+		topArticle,err=tagToArticle(u.Tag,"1")
+	}
+	topLen := len(topArticle)
+		//再查其他
+		u.PageSize=u.PageSize-topLen
+		limit := u.PageSize
+		offset := u.PageSize * (u.Page - 1)
+	if u.ClassificationID=="" && u.Tag=="" {
+		err = db.Where("top=? ", "0").Limit(limit).Offset(offset).Find(&articleList).Error
+	}
+	if u.ClassificationID!="" {
+		err = db.Where("top=? AND classification_id=?", "0",u.ClassificationID).Limit(limit).Offset(offset).Find(&articleList).Error
+	}
+	if u.Tag!="" {
+		// 根据tag查询文章
+		articleList,err=tagToArticle(u.Tag,"0")
+	}
 	articleList = append(topArticle, articleList...)
 	//查询作者名
 	for i, k := range articleList {
@@ -38,6 +55,22 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 	}
 
 	return err, articleList, total,msg
+}
+//根据tag_id 查询文章
+func tagToArticle(tag string,top string)(articleList []model.SysArticle,err error)  {
+	db := global.GVA_DB
+	//	先去查询中间表
+	var tagLink []model.SysArticleTag
+	err=db.Where("tag_id=?",tag).Find(&tagLink).Error
+	//根据结果查询文章
+	for _,i:=range tagLink{
+		article :=model.SysArticle{}
+		err = db.Where("id=? AND top=?", i.ArticleID,top).Find(&article).Error
+		if err==nil {
+			articleList=append(articleList,article)
+		}
+	}
+	return articleList,err
 }
 //文章详情服务
 func GetArticleDetail(c *gin.Context) (err error,article model.SysArticle) {
