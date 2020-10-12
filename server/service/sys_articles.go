@@ -142,5 +142,14 @@ func AllTag(c *gin.Context) (err error ,tagArr []model.SysTag,msg string) {
 	if err!=nil{
 		return err,tagArr,"获取tag失败"
 	}
+	for i,k:=range tagArr{
+	//	用tagID查询文章tag中间表
+		var total int64
+		err=db.Where("tag_id=?",k.ID).Table("sys_article_tags").Count(&total).Error
+		if err!=nil {
+			return err,tagArr,"查询tag数量错误"
+		}
+		tagArr[i].TagCount=total
+	}
 	return err,tagArr,"获取tag成功"
 }

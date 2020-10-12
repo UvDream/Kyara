@@ -73,6 +73,7 @@ type SysClassify struct {
 type SysTag struct {
 	gorm.Model
 	TagName string `json:"tag_name"`
+	TagCount int64 `json:"tag_count" gorm:"-"`
 }
 
 //点赞表

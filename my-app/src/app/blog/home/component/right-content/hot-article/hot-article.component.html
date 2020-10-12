@@ -6,12 +6,12 @@
     <li class="hot-article-block" *ngFor="let item of list" (click)="toDetail(item.ID)">
       <img [src]="item.avatar" alt="">
       <div class="hot-article-block-right">
-        <h4 class="hot-article-block-title text-ellipsis-two">
+        <h4 class="hot-article-block-title text-ellipsis-two" [title]="item.title">
           {{item.title}}
         </h4>
         <div class="hot-article-block-like">
           <span class="iconfont uv-thumbs-up-outline"></span>
-          <span class="hot-article-block-like-span">{{item.like_count}}</span>
+          <span class="hot-article-block-like-span">{{item.like_count| numberFormat}}</span>
         </div>
       </div>
     </li>
