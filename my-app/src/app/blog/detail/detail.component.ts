@@ -20,7 +20,7 @@ export class DetailComponent implements OnInit {
     private request: ArticleService,
     private articleCat: ArticleCatalogService,
     private titleService: Title
-  ) {}
+  ) { }
   // 文章标题
   public title: string;
   // html内容
@@ -77,7 +77,7 @@ export class DetailComponent implements OnInit {
     }
     this.htmlContent = res.data.article_html;
     this.markDown = res.data.article_content;
-    console.log(res.data);
+    // console.log(res.data);
     this.title = res.data.title;
     this.author = res.data.user_name;
     this.time = res.data.UpdatedAt;

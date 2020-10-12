@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Location } from '@angular/common';
 import { ArticleCatalogService } from '../../../../../service/article-catalog.service';
 @Component({
@@ -7,23 +6,28 @@ import { ArticleCatalogService } from '../../../../../service/article-catalog.se
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.less']
 })
-export class CatalogComponent implements OnInit {
+export class CatalogComponent implements OnInit, DoCheck {
 
   constructor(
     private catalog: ArticleCatalogService,
-    private route: ActivatedRoute,
   ) {
 
   }
+
   public list = [];
   location: Location;
   public pathName = '';
   ngOnInit(): void {
     this.pathName = location.pathname;
-    setTimeout(() => {
-      this.list = this.catalog.ArticleCatList;
-    }, 500);
   }
+
+
+  ngDoCheck(): void {
+    if (this.list !== this.catalog.ArticleCatList) {
+      this.list = this.catalog.ArticleCatList;
+    }
+  }
+
 
 
 }

@@ -4,6 +4,8 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ArticleService } from '../../service/article.service';
+import { ArticleCatalogService } from '../../service/article-catalog.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,7 +24,7 @@ export class HomeComponent implements OnInit {
   private articleId: string;
   passwordVisible = false;
   constructor(
-    private http: HttpClient,
+    private catalog: ArticleCatalogService,
     private titleService: Title,
     private router: Router,
     private message: NzMessageService,
@@ -31,6 +33,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
     this.setTitle('首页');
+    this.catalog.SetCatLog([]);
   }
   getData = async () => {
     const res = await this.articleService.articleList(this.form);

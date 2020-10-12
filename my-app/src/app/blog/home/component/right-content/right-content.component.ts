@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { ArticleCatalogService } from '../../../../service/article-catalog.service';
+
 @Component({
   selector: 'app-right-content',
   templateUrl: './right-content.component.html',
   styleUrls: ['./right-content.component.less'],
 })
-export class RightContentComponent implements OnInit {
+export class RightContentComponent implements OnInit, DoCheck {
   tabs = [
     {
       active: true,
@@ -25,12 +26,14 @@ export class RightContentComponent implements OnInit {
     },
   ];
   public pathName = '';
-  location: Location;
-  constructor(private router: Router) { }
+  constructor(private service: ArticleCatalogService) { }
 
   ngOnInit(): void {
-    this.router.events.subscribe(res => {
-      this.pathName = location.pathname;
-    });
+    this.pathName = this.service.pathName;
+  }
+  ngDoCheck(): void {
+    if (this.service.pathName !== this.pathName) {
+      this.pathName = this.service.pathName;
+    }
   }
 }
