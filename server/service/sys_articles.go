@@ -62,7 +62,7 @@ func tagToArticle(tag string,top string)(articleList []model.SysArticle,err erro
 	//	先去查询中间表
 	var tagLink []model.SysArticleTag
 	err=db.Where("tag_id=?",tag).Find(&tagLink).Error
-	//根据结果查询文章
+	// 再根据结果查询文章
 	for _,i:=range tagLink{
 		article :=model.SysArticle{}
 		err = db.Where("id=? AND top=?", i.ArticleID,top).Find(&article).Error
@@ -79,7 +79,7 @@ func GetArticleDetail(c *gin.Context) (err error,article model.SysArticle) {
 	article =model.SysArticle{}
 	err = db.Where("id=? ", id).Find(&article).Error
 	luteEngine := lute.New()
-	article.ArticleHtml=luteEngine.MarkdownStr("uvdrem",article.ArticleContent)
+	article.ArticleHtml=luteEngine.MarkdownStr("UvDream",article.ArticleContent)
 	a := model.SysUser{}
 	err = db.Where("UUID=?", article.UserID).Find(&a).Error
 	article.UserName=a.NickName
@@ -136,7 +136,7 @@ func HotArticle()(err error,list []model.SysArticle){
 	return err,list
 }
 //所有tag
-func AllTag(c *gin.Context) (err error ,tagArr []model.SysTag,msg string) {
+func AllTag() (err error ,tagArr []model.SysTag,msg string) {
 	db := global.GVA_DB
 	err =db.Find(&tagArr).Error
 	if err!=nil{
