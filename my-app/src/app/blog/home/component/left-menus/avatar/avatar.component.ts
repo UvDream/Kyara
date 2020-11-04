@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { BlogConfigService } from '../../../../../service/blog-config.service';
 @Component({
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvatarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public config: BlogConfigService) { }
 
   ngOnInit(): void {
   }

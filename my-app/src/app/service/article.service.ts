@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {HttpService} from './http.service';
+import { Injectable } from '@angular/core';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -49,18 +49,25 @@ export class ArticleService {
       data
     });
   }
-//  热门文章
+  //  热门文章
   hotArticle = () => {
     return this.http.request({
       method: 'get',
       url: '/article/hotArticle',
     });
   }
-//  获取所有tag
+  //  获取所有tag
   getTag = () => {
     return this.http.request({
       method: 'get',
       url: '/article/tag',
+    });
+  }
+  // 获取配置
+  getConfig = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/article/config',
     });
   }
 

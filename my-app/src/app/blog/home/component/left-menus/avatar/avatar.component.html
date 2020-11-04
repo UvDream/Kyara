@@ -1,12 +1,12 @@
 <div class="avatar">
   <div class="avatar-img">
     <img
-      src="https://gitee.com/Uvdream/images/raw/master/images/20200724164740.png"
+      [src]="config.AuthorAvatar"
       alt=""
     />
   </div>
   <div class="avatar-person">
-    <div class="avatar-person-name">WangZhongJie</div>
-    <div class="avatar-person-introduction">让技术产生价值</div>
+    <div class="avatar-person-name">{{config.AuthorName}}</div>
+    <div class="avatar-person-introduction">{{config.AuthorMotto}}</div>
   </div>
 </div>
