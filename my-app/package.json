@@ -25,6 +25,7 @@
     "@angular/platform-server": "~10.0.0",
     "@angular/router": "~10.0.0",
     "@nguniversal/express-engine": "^10.0.2",
+    "dayjs": "^1.9.4",
     "express": "^4.15.2",
     "ng-zorro-antd": "^9.3.0",
     "rxjs": "~6.5.5",
