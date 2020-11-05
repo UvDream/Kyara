@@ -13,7 +13,7 @@ export class BlogConfigService {
   public BlogLogo = '';
   public AuthorAvatar = '';
   public ArticleCount = '';
-  public BlogTime = '';
+  public BlogTime = ''; 
   public ActiveTime = '';
   getConfig = async () => {
     const res = await this.httpService.getConfig();
