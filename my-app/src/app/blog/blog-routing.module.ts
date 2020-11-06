@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BlogComponent } from './blog.component';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
+import { GithubComponent } from './github/github.component';
 export const homeRoutes: Routes = [
   {
     path: '',
@@ -16,6 +17,10 @@ export const homeRoutes: Routes = [
       {
         path: 'detail',
         component: DetailComponent,
+      },
+      {
+        path: 'github',
+        component: GithubComponent,
       },
     ],
   },

@@ -28,6 +28,7 @@ import { CatalogComponent } from './home/component/right-content/catalog/catalog
 import { NzAnchorModule } from 'ng-zorro-antd/anchor';
 import { HotArticleComponent } from './home/component/right-content/hot-article/hot-article.component';
 import { NumberFormatPipe } from '../pipes/number-format.pipe';
+import { GithubComponent } from './github/github.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -61,7 +62,8 @@ import { NumberFormatPipe } from '../pipes/number-format.pipe';
     TagsComponent,
     CatalogComponent,
     HotArticleComponent,
-    NumberFormatPipe
+    NumberFormatPipe,
+    GithubComponent,
   ],
   providers: [],
 })
