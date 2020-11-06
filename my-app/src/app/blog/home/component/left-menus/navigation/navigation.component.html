@@ -1,7 +1,7 @@
 <div class="nav">
   <div class="nav-title">导航</div>
   <ul>
-    <li *ngFor="let item of menus" (click)="navFunc(item)">
+    <li *ngFor="let item of menus" (click)="navFunc(item)" [ngClass]="{active: ActiveMenus==item.id}">
       <span class="iconfont nav-icon" [ngClass]="item.icon"></span>
       <span> {{ item.title }}</span>
     </li>

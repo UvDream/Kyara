@@ -12,18 +12,20 @@ interface MenuItem {
   styleUrls: ['./navigation.component.less'],
 })
 export class NavigationComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
   public menus = [
     { title: '首页', id: 1, icon: 'uv-home-outline', url: '/home' },
     { title: '仓库', id: 2, icon: 'uv-git-merge-outline', url: '/github' },
-    { title: '相册', id: 6, icon: 'uv-image-outline', url: '/home' },
-    { title: '归档', id: 3, icon: 'uv-file-tray-full-outline', url: '/home' },
-    { title: '留言', id: 4, icon: 'uv-at-sharp', url: '/home' },
-    { title: '关于', id: 5, icon: 'uv-cafe-outline', url: '/home' },
+    { title: '相册', id: 6, icon: 'uv-image-outline', url: '/photo' },
+    { title: '归档', id: 3, icon: 'uv-file-tray-full-outline', url: '/archives ' },
+    { title: '留言', id: 4, icon: 'uv-at-sharp', url: '/comment' },
+    { title: '关于', id: 5, icon: 'uv-cafe-outline', url: '/about' },
   ];
-  ngOnInit(): void {}
+  public ActiveMenus = 1;
+  ngOnInit(): void { }
   // tslint:disable-next-line:typedef
   navFunc(item: MenuItem) {
+    this.ActiveMenus = item.id;
     this.router.navigate([item.url]);
   }
 }

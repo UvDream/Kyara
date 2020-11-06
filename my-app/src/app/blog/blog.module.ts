@@ -29,6 +29,10 @@ import { NzAnchorModule } from 'ng-zorro-antd/anchor';
 import { HotArticleComponent } from './home/component/right-content/hot-article/hot-article.component';
 import { NumberFormatPipe } from '../pipes/number-format.pipe';
 import { GithubComponent } from './github/github.component';
+import { ArchivesComponent } from './archives/archives.component';
+import { PhotosComponent } from './photos/photos.component';
+import { CommentComponent } from './comment/comment.component';
+import { AboutComponent } from './about/about.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -64,6 +68,10 @@ import { GithubComponent } from './github/github.component';
     HotArticleComponent,
     NumberFormatPipe,
     GithubComponent,
+    ArchivesComponent,
+    PhotosComponent,
+    CommentComponent,
+    AboutComponent,
   ],
   providers: [],
 })

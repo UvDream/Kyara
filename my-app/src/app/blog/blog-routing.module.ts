@@ -4,6 +4,9 @@ import { BlogComponent } from './blog.component';
 import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
 import { GithubComponent } from './github/github.component';
+import { PhotosComponent } from './photos/photos.component';
+import { CommentComponent } from './comment/comment.component';
+import { AboutComponent } from './about/about.component';
 export const homeRoutes: Routes = [
   {
     path: '',
@@ -21,6 +24,18 @@ export const homeRoutes: Routes = [
       {
         path: 'github',
         component: GithubComponent,
+      },
+      {
+        path: 'photos',
+        component: PhotosComponent,
+      },
+      {
+        path: 'comment',
+        component: CommentComponent,
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
       },
     ],
   },
