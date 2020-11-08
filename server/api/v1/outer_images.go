@@ -44,4 +44,4 @@ func UploadImage(c *gin.Context)  {
 	}else{
 		response.OkWithMessage("上传成功",c)
 	}
-}
+} 

@@ -1,3 +1,34 @@
-<div style="text-align:center">
-    <img width="90%"  src="https://gitee.com/Uvdream/images/raw/master/images/20201106144838.png" alt="">
+<div class="github">
+    <div nz-row [nzGutter]="[16, 10]" class="github-list">
+        <div nz-col class="gutter-row " nzXXl="8" *ngFor="let item of [1,2,3,4,5]">
+            <div class="github-list-block">
+                <!-- 仓库名称 -->
+                <div class="github-list-block-title">
+                    Flutter
+                </div>
+                <!-- 点星 -->
+                <div class="github-list-block-star">
+                    <span class="iconfont uv-star-outline"></span>
+                    <span class="github-list-block-star-count">1</span>
+                    start/
+                    <span class="iconfont uv-git-network-outline"></span>
+                    <span class="github-list-block-star-count">2</span>
+                    fork
+                </div>
+                <!-- 描述 -->
+                <div class="github-list-block-desc">
+                    这是仓库的描述
+                </div>
+                <!-- 按钮 -->
+                <button nz-button nzType="primary" [nzSize]="size" nzShape="round" class="github-list-block-btn">
+                    <div class="github-list-block-btn-content"><span class="iconfont uv-heart-outline"></span>
+                        访问</div>
+                </button>
+                <!-- 语言 -->
+                <div class="github-list-block-lang">
+                    typescript
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
