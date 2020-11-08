@@ -99,3 +99,13 @@ func GetConfig(c *gin.Context)  {
 		response.OkDetailed(msg,"获取成功配置", c)
 	}
 }
+//获取github配置
+func GetGithub(c *gin.Context)  {
+	msg,err:=service.GetGithub()
+	if err != nil {
+		response.FailWithMessage("获取github仓库失败", c)
+	} else {
+		response.OkDetailed(msg, "获取github仓库成功", c)
+	}
+	
+}

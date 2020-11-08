@@ -15,6 +15,7 @@ func InitArticles(Router *gin.RouterGroup)(R gin.IRouter)  {
 	    ArticleRouter.GET("hotArticle",v1.HotArticle)//热门文章
 	    ArticleRouter.GET("tag",v1.AllTag)//tag获取
 	    ArticleRouter.GET("config",v1.GetConfig)//获取博客配置
+	    ArticleRouter.GET("github",v1.GetGithub)
 	}
 	return ArticleRouter
 }

@@ -3,6 +3,7 @@ package service
 import (
 	"github.com/88250/lute"
 	"github.com/gin-gonic/gin"
+	"github.com/imroc/req"
 	"server/global"
 	"server/model"
 	"server/model/request"
@@ -180,4 +181,13 @@ func GetConfig() (err error, res response.SysConfigsResponse) {
 	//查询文章数量
 	err=db.Table("sys_articles").Count(&res.ArticleCount).Error
 	return err, res
+}
+//获取github仓库列表
+func GetGithub()(githubList []response.GithubList,err error)  {
+	blogConfig:= model.SysConfig{}
+	db := global.GVA_DB
+	err=db.Find(&blogConfig).Error
+	r,err:=req.Get("https://api.github.com/users/"+blogConfig.GithubUserName+"/repos")
+	r.ToJSON(&githubList)
+	return githubList,err
 }

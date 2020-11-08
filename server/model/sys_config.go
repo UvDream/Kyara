@@ -26,6 +26,8 @@ type SysConfig struct {
 	ImgurToken string `json:"imgur_token" gorm:"comment:'图床token'"`
 	ImgurURL string `json:"imgur_url" gorm:"comment:'图床连接'"`
 	ImgurType string `json:"imgur_type" gorm:"comment:'图床类型';default:'0'"`
+	// github
+	GithubUserName string `json:"github_user_name" gorm:"comment:'github用户名'"`
 }
 //打赏库
 type Rewards struct {
