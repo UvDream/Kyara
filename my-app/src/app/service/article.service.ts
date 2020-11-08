@@ -70,5 +70,12 @@ export class ArticleService {
       url: '/article/config',
     });
   }
+  // 获取github仓库
+  getGithub = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/article/github',
+    });
+  }
 
 }

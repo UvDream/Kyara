@@ -37,7 +37,7 @@ type GithubList struct {
 	//	star数量
 	StargazersCount string `json:"stargazers_count"`
 	//地址
-	URL string `json:"url"`
+	HtmlURL string `json:"html_url"`
 	//	语言
 	Language string `json:"language"`
 }

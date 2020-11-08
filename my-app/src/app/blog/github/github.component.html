@@ -1,3 +1,36 @@
-<div style="text-align:center">
-    <img width="90%"  src="https://gitee.com/Uvdream/images/raw/master/images/20201106144838.png" alt="">
+<div class="github">
+    <div nz-row [nzGutter]="[16, 10]" class="github-list">
+        <div nz-col class="gutter-row " nzXl="6" nzXXl="8" *ngFor="let item of GithubList">
+            <div class="github-list-block">
+                <!-- 仓库名称 -->
+                <div class="github-list-block-title text-ellipsis-one">
+                    {{item.name}}
+                </div>
+                <!-- 点星 -->
+                <div class="github-list-block-star">
+                    <span class="iconfont uv-star-outline"></span>
+                    <span class="github-list-block-star-count">{{item.stargazers_count}}</span>
+                    start/
+                    <span class="iconfont uv-git-network-outline"></span>
+                    <span class="github-list-block-star-count">{{item.forks_count}}</span>
+                    fork
+                </div>
+                <!-- 描述 -->
+                <div class="github-list-block-desc text-ellipsis-one">
+                    {{item.description===''?'暂无描述':item.description}}
+                </div>
+                <!-- 按钮 -->
+                <a [href]="item.html_url" target="_blank">
+                    <button nz-button nzType="primary" [nzSize]="size" nzShape="round" class="github-list-block-btn">
+                        <div class="github-list-block-btn-content"><span class="iconfont uv-heart-outline"></span>
+                            访问</div>
+                    </button>
+                </a>
+                <!-- 语言 -->
+                <div class="github-list-block-lang">
+                    {{item.language===''?'暂无':item.language}}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
