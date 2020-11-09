@@ -16,8 +16,8 @@ export class NavigationComponent implements OnInit {
   public menus = [
     { title: '首页', id: 1, icon: 'uv-home-outline', url: '/home' },
     { title: '仓库', id: 2, icon: 'uv-git-merge-outline', url: '/github' },
-    { title: '相册', id: 6, icon: 'uv-image-outline', url: '/photo' },
-    { title: '归档', id: 3, icon: 'uv-file-tray-full-outline', url: '/archives ' },
+    { title: '相册', id: 6, icon: 'uv-image-outline', url: '/photos' },
+    { title: '归档', id: 3, icon: 'uv-file-tray-full-outline', url: '/archives' },
     { title: '留言', id: 4, icon: 'uv-at-sharp', url: '/comment' },
     { title: '关于', id: 5, icon: 'uv-cafe-outline', url: '/about' },
   ];

@@ -7,6 +7,8 @@ import { GithubComponent } from './github/github.component';
 import { PhotosComponent } from './photos/photos.component';
 import { CommentComponent } from './comment/comment.component';
 import { AboutComponent } from './about/about.component';
+import { ArchivesComponent } from './archives/archives.component';
+
 export const homeRoutes: Routes = [
   {
     path: '',
@@ -36,6 +38,10 @@ export const homeRoutes: Routes = [
       {
         path: 'about',
         component: AboutComponent,
+      },
+      {
+        path: 'archives',
+        component: ArchivesComponent,
       },
     ],
   },
