@@ -33,6 +33,7 @@ import { ArchivesComponent } from './archives/archives.component';
 import { PhotosComponent } from './photos/photos.component';
 import { CommentComponent } from './comment/comment.component';
 import { AboutComponent } from './about/about.component';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 @NgModule({
   imports: [
     CommonModule,
@@ -47,7 +48,8 @@ import { AboutComponent } from './about/about.component';
     FormsModule,
     NzMessageModule,
     NzIconModule,
-    NzAnchorModule
+    NzAnchorModule,
+    NzSpinModule
   ],
   exports: [BlogComponent],
   declarations: [
