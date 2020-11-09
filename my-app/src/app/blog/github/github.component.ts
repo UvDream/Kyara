@@ -23,7 +23,7 @@ export class GithubComponent implements OnInit {
 
   constructor(private http: ArticleService,  private titleService: Title) { }
   public GithubList: Array<GithubItem>;
-  public Loading = true;
+  public Loading = false;
   public ColorObject = {
     TypeScript: {
       color: '#2b7489',
