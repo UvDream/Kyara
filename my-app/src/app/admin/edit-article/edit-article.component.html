@@ -17,7 +17,7 @@
       nzPlaceHolder="请选择分类"
     >
     </nz-tree-select>
-    <label class="margin-left-10" nz-checkbox [(ngModel)]="isTop"
+    <label class="margin-left-10" nz-checkbox [(ngModel)]="isTop" (ngModelChange)="checkChange()"
       >是否置顶</label
     >
     <label class="margin-left-10" nz-checkbox [(ngModel)]="isPassword"
@@ -75,6 +75,7 @@
     <nz-select
       class="margin-left-10"
       style="width: 200px"
+      [nzDisabled]="coverTypeDisabled"
       nzPlaceHolder="请选择封面类型"
       [(ngModel)]="form.cover_type"
     >

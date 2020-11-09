@@ -16,6 +16,7 @@ export class EditArticleComponent implements OnInit {
   constructor(private httpService: ArticleService, private message: NzMessageService) { }
   isPassword = false;
   isTop = false;
+  coverTypeDisabled = false;
   value?: string;
   // 是否置顶
   public form = {
@@ -105,6 +106,14 @@ export class EditArticleComponent implements OnInit {
     if (res.code === 200) {
       this.form.article_id = res.data.ID;
       this.message.info(res.msg);
+    }
+  }
+  checkChange = () => {
+    if (this.isTop) {
+      this.form.cover_type = '2';
+      this.coverTypeDisabled = true;
+    } else {
+      this.coverTypeDisabled = false;
     }
   }
 }
