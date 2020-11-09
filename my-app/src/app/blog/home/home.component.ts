@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -32,7 +31,7 @@ export class HomeComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.getData();
-    this.setTitle('首页');
+    this.setTitle('汪中杰的个人博客-首页');
     this.catalog.SetCatLog([]);
   }
   getData = async () => {

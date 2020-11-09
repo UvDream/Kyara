@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../service/article.service';
+import { Title } from '@angular/platform-browser';
+
 interface GithubItem {
   name: string;
   full_name: string;
@@ -19,7 +21,7 @@ interface GithubItem {
 })
 export class GithubComponent implements OnInit {
 
-  constructor(private http: ArticleService) { }
+  constructor(private http: ArticleService,  private titleService: Title) { }
   public GithubList: Array<GithubItem>;
   public Loading = true;
   public ColorObject = {
@@ -81,6 +83,7 @@ export class GithubComponent implements OnInit {
     //   color: '#b07219'
     // }];
     this.getGithub();
+    this.titleService.setTitle('github仓库列表-汪中杰的个人博客');
 
   }
   getGithub = async () => {
