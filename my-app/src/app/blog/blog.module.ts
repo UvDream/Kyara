@@ -34,6 +34,7 @@ import { PhotosComponent } from './photos/photos.component';
 import { CommentComponent } from './comment/comment.component';
 import { AboutComponent } from './about/about.component';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 @NgModule({
   imports: [
     CommonModule,
@@ -49,7 +50,8 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
     NzMessageModule,
     NzIconModule,
     NzAnchorModule,
-    NzSpinModule
+    NzSpinModule,
+    NzTimelineModule
   ],
   exports: [BlogComponent],
   declarations: [
