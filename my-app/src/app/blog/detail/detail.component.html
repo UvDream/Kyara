@@ -36,12 +36,11 @@
     </div>
   </div>
   <!-- 图片 -->
-  <div class="detail-img" >
-    <!-- class="detail-img"
+  <div class="detail-img" 
+    class="detail-img"
     [ngStyle]="{
       'background-image': 'url(' + topImg + ')'
-    }" -->
-    <img [src]="topImg" alt="">
+    }">
 </div>
   <div #vditor id="vditor" class="detail-content"></div>
   <div [innerHTML]="htmlContent" style="display: none"></div>
