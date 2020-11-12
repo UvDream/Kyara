@@ -49,3 +49,10 @@ func AddArticle(r model.SysArticle,c *gin.Context) (err error, msg string,data m
 	}
 	return nil, "",r
 }
+//查询文章详情
+func GetArticleDetail(id string)(err error,article model.SysArticle)  {
+	article =model.SysArticle{}
+	db := global.GVA_DB
+	err = db.Where("id=? ", id).Find(&article).Error
+	return err,article
+}

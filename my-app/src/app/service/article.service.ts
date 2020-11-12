@@ -77,5 +77,12 @@ export class ArticleService {
       url: '/article/github',
     });
   }
+  // admin 获取详情
+  getArticleDetail = (id: string) => {
+    return this.http.request({
+      method: 'get',
+      url: '/adminArticle/articleDetail?id=' + id,
+    });
+  }
 
 }

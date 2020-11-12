@@ -1,4 +1,4 @@
-package router
+package admin
 
 import (
 	v1 "server/api/v1"

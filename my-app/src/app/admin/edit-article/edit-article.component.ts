@@ -15,7 +15,7 @@ interface TreeItem {
   styleUrls: ['./edit-article.component.less'],
 })
 export class EditArticleComponent implements OnInit {
-  constructor(private route: ActivatedRoute,private httpService: ArticleService, private message: NzMessageService) { }
+  constructor(private route: ActivatedRoute, private httpService: ArticleService, private message: NzMessageService) { }
   isPassword = false;
   isTop = false;
   coverTypeDisabled = false;
@@ -53,6 +53,7 @@ export class EditArticleComponent implements OnInit {
     this.getClassify();
     this.route.queryParams.subscribe((params) => {
       console.log(params);
+      this.getArticleDetail(params.id);
     });
   }
   textChange = () => {
@@ -119,6 +120,15 @@ export class EditArticleComponent implements OnInit {
       this.coverTypeDisabled = true;
     } else {
       this.coverTypeDisabled = false;
+    }
+  }
+  async getArticleDetail(id: string): Promise<void> {
+    const res = await this.httpService.getArticleDetail(id);
+    console.log(res);
+    if (res.code === 200) {
+      this.form = res.data;
+      this.form.article_id = res.data.ID;
+      this.markdownToHtml(this.form.article_content);
     }
   }
 }

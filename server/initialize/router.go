@@ -1,13 +1,14 @@
 package initialize
 
 import (
+	"github.com/gin-gonic/gin"
+	"github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 	_ "server/docs"
 	"server/global"
 	"server/middleware"
 	"server/router"
-	"github.com/gin-gonic/gin"
-	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
+	"server/router/admin"
 )
 
 // 初始化总路由
@@ -39,9 +40,9 @@ func Routers() *gin.Engine {
 	router.InitSysDictionaryRouter(ApiGroup)         // 字典管理
 	router.InitSysOperationRecordRouter(ApiGroup)    // 操作记录
 	//-------------
-	router.InitArticles(ApiGroup)					 //文章相关
-	router.InitOuterImages(ApiGroup)				 //图床相关
-	router.InitAdminArticle(ApiGroup)   			 //添加文章相关
+	router.InitArticles(ApiGroup)    //文章相关
+	admin.InitOuterImages(ApiGroup)  //图床相关
+	admin.InitAdminArticle(ApiGroup) //添加文章相关
 	global.GVA_LOG.Info("路由注册成功!")
 	return Router
 }
