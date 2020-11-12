@@ -12,7 +12,7 @@
       nzXXl="0"
       class="text-center"
     >
-      <span class="iconfont uv-menu-outline"></span>
+      <span class="iconfont uv-menu-outline" (click)="open()"></span>
     </div>
     <div
       nz-col
@@ -65,4 +65,7 @@
       </section>
     </div>
   </div>
+  <nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="left" (nzOnClose)="close()" >
+    <app-left-menus (click)="close()"></app-left-menus>
+  </nz-drawer>
 </header>

@@ -45,9 +45,9 @@
       <div class="list-normal-split"></div>
       <div class="list-normal-bottom">
         <span class="iconfont uv-person-outline margin-right-10"></span>
-        <span>{{ data.user_name }}</span>
+        <span class="text-ellipsis-one">{{ data.user_name }}</span>
         <span class="iconfont uv-time-outline margin-left-right-10"></span>
-        <span>{{ data.UpdatedAt| date:"y-d-MM HH:mm " }}</span>
+        <span class="text-ellipsis-one">{{ data.UpdatedAt| date:"y-d-MM HH:mm " }}</span>
         <span class="iconfont uv-chatbubble-outline margin-left-right-10 comment"></span>
         <span class="comment">{{
           data.comment_count === "" ? "暂无评论" : data.comment_count + "条评论"
@@ -93,6 +93,5 @@
       }}</span>
       </div>
     </div>
-
   </div>
 </div>
