@@ -15,6 +15,8 @@ import { UploadComponent } from './edit-article/components/upload/upload.compone
 import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { ArticleListComponent } from './article-list/article-list.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
 @NgModule({
   imports: [
     CommonModule,
@@ -29,9 +31,10 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     NzButtonModule,
     NzTreeSelectModule,
     NzIconModule,
-    NzMessageModule
+    NzMessageModule,
+    NzTableModule
   ],
-  declarations: [AdminComponent, EditArticleComponent, UploadComponent],
+  declarations: [AdminComponent, EditArticleComponent, UploadComponent, ArticleListComponent],
   exports: [AdminComponent],
 })
 export class AdminModule { }

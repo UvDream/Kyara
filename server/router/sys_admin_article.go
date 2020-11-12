@@ -9,6 +9,7 @@ func InitAdminArticle(Router *gin.RouterGroup)(R gin.IRouter)  {
 	AdminArticleRouter:=Router.Group("adminArticle")
 	{
 		AdminArticleRouter.POST("add",v1.AddArticle) // 添加文章
+		
 	}
 	return AdminArticleRouter
 }

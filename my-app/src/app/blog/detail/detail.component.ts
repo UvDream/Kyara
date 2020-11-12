@@ -135,19 +135,19 @@ export class DetailComponent implements OnInit {
         },
       })
     );
-  };
+  }
   parseDom = (arg: any) => {
     const objE = document.createElement('div');
     objE.innerHTML = arg;
     return objE.childNodes;
-  };
+  }
   showModal = (data: boolean) => {
     this.isVisible = data;
-  };
+  }
   tabClick = (data: TabItem) => {
     this.activeId = data.id;
-  };
+  }
   public setTitle = (newTitle: string) => {
     this.titleService.setTitle(newTitle);
-  };
+  }
 }

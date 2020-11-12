@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
+import { ArticleListComponent } from './article-list/article-list.component';
 
 export const adminRoutes: Routes = [
   {
@@ -10,6 +11,7 @@ export const adminRoutes: Routes = [
     children: [
       { path: '', redirectTo: '/editArticle', pathMatch: 'full' },
       { path: 'editArticle', component: EditArticleComponent },
+      { path: 'articleList', component: ArticleListComponent },
     ],
   },
 ];

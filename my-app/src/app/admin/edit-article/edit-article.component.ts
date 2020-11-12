@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../service/article.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { ActivatedRoute } from '@angular/router';
+
 interface TreeItem {
   key: string;
   title: string;
@@ -13,7 +15,7 @@ interface TreeItem {
   styleUrls: ['./edit-article.component.less'],
 })
 export class EditArticleComponent implements OnInit {
-  constructor(private httpService: ArticleService, private message: NzMessageService) { }
+  constructor(private route: ActivatedRoute,private httpService: ArticleService, private message: NzMessageService) { }
   isPassword = false;
   isTop = false;
   coverTypeDisabled = false;
@@ -49,6 +51,9 @@ export class EditArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.getClassify();
+    this.route.queryParams.subscribe((params) => {
+      console.log(params);
+    });
   }
   textChange = () => {
     this.markdownToHtml(this.form.article_content);
