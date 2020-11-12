@@ -11,6 +11,7 @@ import { ArticleCatalogService } from '../../service/article-catalog.service';
   styleUrls: ['./home.component.less'],
 })
 export class HomeComponent implements OnInit {
+  Loading = false;
   public list: Array<any>;
   public form = {
     search: '',
@@ -35,8 +36,10 @@ export class HomeComponent implements OnInit {
     this.catalog.SetCatLog([]);
   }
   getData = async () => {
+    this.Loading = true;
     const res = await this.articleService.articleList(this.form);
     if (res.code === 200) {
+      this.Loading = false;
       this.list = res.data.msg;
       this.totalCount = res.data.totalCount;
     }

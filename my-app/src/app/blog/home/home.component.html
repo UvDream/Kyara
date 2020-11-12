@@ -1,9 +1,14 @@
 <div class="home">
-  <app-list
+  <div class="home-skeleton" *ngIf="Loading">
+    <nz-skeleton></nz-skeleton>
+  </div>
+  <div *ngIf="!Loading">
+    <app-list
     *ngFor="let item of list"
     [data]="item"
     (HavePassword)="havePassword($event)"
   ></app-list>
+  </div>
   <div class="home-page">
     <nz-pagination
       [(nzPageIndex)]="form.page"
