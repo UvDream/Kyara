@@ -129,12 +129,18 @@
         background-color: #fff;
 
         &-img {
-            display                  : inline-block;
-            width                    : 35%;
+            display: inline-block;
+            width  : 30%;
+
+            // 手机
+            @media screen and (max-width: 576px) {
+                width: 150px;
+            }
+
             border-bottom-left-radius: 8px;
             border-top-left-radius   : 8px;
-            background-size          : cover;
             background-position      : 50% 50%;
+            background-size          : cover;
         }
 
         &-content {
