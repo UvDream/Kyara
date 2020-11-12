@@ -59,3 +59,30 @@ html {
         border-radius: 8px;
     }
 }
+
+.keyframes(@name) {
+    @keyframes @name {
+      0% {
+        transform: rotate(0deg);
+      }
+  
+      50% {
+        transform: rotate(180deg);
+      }
+  
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  
+  .animation(@animation-name, @animation-duration, @animation-timing-function, @animation-delay,
+    @animation-direction) {
+    animation: @arguments;
+  }
+  
+  .keyframes(animation1_1);
+  
+  .imgRotate {
+    .animation(animation1_1, 6s, linear, 0s, infinite);
+  }
