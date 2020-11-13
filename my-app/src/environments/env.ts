@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-04-14 13:56:51
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2020-11-05 11:23:21
+ * @LastEditTime: 2020-11-13 11:23:52
  * @Description:配置文件
  * @Email: UvDream@163.com
  */
@@ -13,6 +13,6 @@ let baseUrl: any;
 if (!environment.production) {
     baseUrl = `http://localhost:3000`;
 } else {
-    baseUrl = `http://115.159.56.185:3000`;
+    baseUrl = `http://www.uvdream.cn/api`;
 }
 export { iconfontUrl, iconfontVersion, baseUrl };
