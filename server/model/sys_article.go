@@ -26,7 +26,7 @@ type SysArticle struct {
 	// 图片地址
 	ImgURL string `json:"img_url" gorm:"comment:'图片地址'"`
 	// 文章内容
-	ArticleContent string `json:"article_content" gorm:"comment:'文章内容';type:longtext "`
+	ArticleContent string `json:"article_content" gorm:"comment:'文章内容';type:longblob "`
 	//---------html内容
 	ArticleHtml string `json:"article_html" gorm:"-"`
 	// 浏览量
