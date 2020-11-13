@@ -37,6 +37,7 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   imports: [
     CommonModule,
@@ -81,6 +82,6 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
     CommentComponent,
     AboutComponent,
   ],
-  providers: [],
+  providers: [CookieService],
 })
 export class BlogModule { }

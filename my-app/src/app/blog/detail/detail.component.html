@@ -25,14 +25,14 @@
         class="iconfont uv-chatbubble-outline"
         style="margin: 0 5px 0 10px"
       ></span>
-      <span>{{ commentCount }}条评论</span>
+      <span>{{ commentCount===''?'暂无':commentCount+'条评论' }}</span>
       <span class="iconfont uv-eye-outline" style="margin: 0 5px 0 10px"></span>
-      <span>{{ viewCount }}次浏览</span>
+      <span>{{ viewCount===''?'暂无': viewCount+'次浏览'}}</span>
       <span
         class="iconfont uv-information-outline"
         style="margin: 0 5px 0 10px"
       ></span>
-      <span>{{ wordCount }}字数</span>
+      <span>{{ wordCount===''?'暂无统计':wordCount+'字数' }}</span>
     </div>
   </div>
   <!-- 图片 -->

@@ -8,6 +8,7 @@ import (
 	"server/model"
 	"server/model/request"
 	"server/model/response"
+	"strconv"
 )
 
 //文章列表服务
@@ -190,4 +191,35 @@ func GetGithub()(githubList []response.GithubList,err error)  {
 	r,err:=req.Get("https://api.github.com/users/"+blogConfig.GithubUserName+"/repos")
 	r.ToJSON(&githubList)
 	return githubList,err
+}
+//访问博客
+func ViewBlog(c *gin.Context)(err error,msg string)  {
+	db := global.GVA_DB
+	id := c.Query("id")
+	if id!=""{
+		article:=model.SysArticle{}
+		err=db.Where("id=?",id).Find(&article).Error
+		if err==nil{
+			num, err:= strconv.ParseInt(article.ViewCount, 10, 64)
+			num=num+1
+			article.ViewCount=strconv.FormatInt(num, 10)
+			err=db.Model(&article).Where("id=?",id).Update("view_count",article.ViewCount).Error
+			if err!=nil{
+				return err,"更新访问量失败"
+			}
+			return err,"更新访问量成功"
+		}
+	}else{
+		config:=model.SysConfig{}
+		err=db.Find(&config).Error
+		num, err:= strconv.ParseInt(config.BlogViewCount, 10, 64)
+		num=num+1
+		config.BlogViewCount=strconv.FormatInt(num, 10)
+		err=db.Model(&config).Update("blog_view_count",config.BlogViewCount).Error
+		if err!=nil{
+			return err,"更新访问量失败"
+		}
+		return err,"更新访问量成功"
+	}
+	return err,"更新访问量成功"
 }

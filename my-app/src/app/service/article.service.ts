@@ -84,5 +84,12 @@ export class ArticleService {
       url: '/adminArticle/articleDetail?id=' + id,
     });
   }
+  // 博客访问量
+  viewBlog = (id?: string) => {
+    return this.http.request({
+      method: 'get',
+      url: '/article/view?id=' + id,
+    });
+  }
 
 }

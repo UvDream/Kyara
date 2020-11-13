@@ -68,6 +68,7 @@ export class DetailComponent implements OnInit {
       }
     });
     this.getDetail(id, password);
+    this.viewArticle(id);
   }
   // 获取文章详情
   getDetail = async (id, password) => {
@@ -149,5 +150,8 @@ export class DetailComponent implements OnInit {
   }
   public setTitle = (newTitle: string) => {
     this.titleService.setTitle(newTitle);
+  }
+  async viewArticle(id: string): Promise<void> {
+    const res = await this.request.viewBlog(id);
   }
 }

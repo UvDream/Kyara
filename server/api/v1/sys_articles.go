@@ -109,3 +109,13 @@ func GetGithub(c *gin.Context)  {
 	}
 	
 }
+//博客访问量统计
+func ViewBlog(c *gin.Context)  {
+	//id := c.Query("id")
+	err,msg:=service.ViewBlog(c)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	} else {
+		response.OkWithMessage(msg,c)
+	}
+}
