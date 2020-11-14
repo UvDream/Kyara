@@ -6,12 +6,8 @@
         *ngFor="let item of list"
         [nzHref]="'#' + item.id"
         [nzTitle]="item.title"
+        [ngClass]="{'h2_title':item.name=='H2','h3_title':item.name=='H3'}"
       >
-        <nz-link
-          *ngFor="let child of item.children"
-          [nzHref]="'#' + child.id"
-          [nzTitle]="child.title"
-        ></nz-link>
       </nz-link>
     </nz-anchor>
   </div>

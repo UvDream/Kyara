@@ -115,19 +115,21 @@ export class DetailComponent implements OnInit {
                 id: element['id'],
                 // tslint:disable-next-line:no-string-literal
                 title: element['innerText'],
+                name: element.nodeName,
                 children: [],
               };
-              if (element.nodeName === 'H1') {
-                arr.push(obj);
-              }
-              if (element.nodeName === 'H2') {
-                arr[arr.length - 1].children.push(obj);
-              }
-              if (element.nodeName === 'H3') {
-                arr[arr.length - 1].children[
-                  arr[arr.length - 1].children.length - 1
-                ].children.push(obj);
-              }
+              arr.push(obj);
+              // if (element.nodeName === 'H1') {
+              //   arr.push(obj);
+              // }
+              // if (element.nodeName === 'H2') {
+              //   arr[arr.length - 1].children.push(obj);
+              // }
+              // if (element.nodeName === 'H3') {
+              //   arr[arr.length - 1].children[
+              //     arr[arr.length - 1].children.length - 1
+              //   ].children.push(obj);
+              // }
             }
           });
           this.articleCat.SetCatLog(arr);
