@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BlogConfigService } from '../../../../service/blog-config.service';
+import { BlogConfigService } from '@service/blog-config.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

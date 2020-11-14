@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ArticleService } from '../../service/article.service';
-import { ArticleCatalogService } from '../../service/article-catalog.service';
+import { ArticleService } from '@service/article.service';
+import { ArticleCatalogService } from '@service/article-catalog.service';
 import { Title } from '@angular/platform-browser';
 
 interface TabItem {

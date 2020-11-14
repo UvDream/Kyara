@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ArticleService } from '../../service/article.service';
-import { ArticleCatalogService } from '../../service/article-catalog.service';
+import { ArticleService } from '@service/article.service';
+import { ArticleCatalogService } from '@service/article-catalog.service';
 
 @Component({
   selector: 'app-home',

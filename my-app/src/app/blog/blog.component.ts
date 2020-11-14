@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogConfigService } from '../service/blog-config.service';
+import { BlogConfigService } from '@service/blog-config.service';
 import { CookieService } from 'ngx-cookie-service';
-import { ArticleService } from '../service/article.service';
+import { ArticleService } from '@service/article.service';
 @Component({
   selector: 'app-blog',
   templateUrl: './blog.component.html',

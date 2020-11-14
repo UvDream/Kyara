@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../../../../../service/article.service';
+import { ArticleService } from '@service/article.service';
 interface TagInterface {
   ID: number;
   tag_name: string;

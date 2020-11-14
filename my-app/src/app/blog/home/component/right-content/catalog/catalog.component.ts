@@ -1,6 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Location } from '@angular/common';
-import { ArticleCatalogService } from '../../../../../service/article-catalog.service';
+import { ArticleCatalogService } from '@service/article-catalog.service';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',

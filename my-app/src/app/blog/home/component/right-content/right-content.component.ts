@@ -1,5 +1,5 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { ArticleCatalogService } from '../../../../service/article-catalog.service';
+import { ArticleCatalogService } from '@service/article-catalog.service';
 
 @Component({
   selector: 'app-right-content',

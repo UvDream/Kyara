@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogConfigService } from '../../../../service/blog-config.service';
+import { BlogConfigService } from '@service/blog-config.service';
 
 @Component({
   selector: 'app-footer',

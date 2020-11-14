@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '../../service/article.service';
+import { ArticleService } from '@service/article.service';
 import { Router } from '@angular/router';
 interface ListItem {
   ID: number;
