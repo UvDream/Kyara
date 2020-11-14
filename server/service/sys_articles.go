@@ -179,6 +179,7 @@ func GetConfig() (err error, res response.SysConfigsResponse) {
 	res.BlogName = config.BlogName
 	res.BlogNotice = config.BlogNotice
 	res.BlogViewCount = config.BlogViewCount
+	res.FilingMsg=config.FilingMsg
 	//查询文章数量
 	err=db.Table("sys_articles").Count(&res.ArticleCount).Error
 	return err, res

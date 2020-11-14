@@ -16,6 +16,7 @@ export class BlogConfigService {
   public BlogTime = '';
   public ActiveTime = '';
   public BlogViewCount = '';
+  public FilingMsg = '';
   getConfig = async () => {
     const res = await this.httpService.getConfig();
     if (res.code !== 200) { return; }
@@ -26,6 +27,7 @@ export class BlogConfigService {
     this.AuthorAvatar = res.data.author_avatar;
     this.ArticleCount = res.data.article_count;
     this.BlogViewCount = res.data.blog_view_count;
+    this.FilingMsg = res.data.filing_msg;
     // 处理时间
     this.BlogTime = toTimeDH(res.data.blog_start_time, 'DD-HH');
     this.ActiveTime = toTimeDH(res.data.active_time, 'DD');

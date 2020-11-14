@@ -24,6 +24,8 @@ type SysConfigsResponse struct {
 	ActiveTime   time.Time `json:"active_time" gorm:"comment:'最近活动时间';default:'2020-09-12 15:04:05'"`
 	// 文章
 	ArticleCount string `json:"article_count"`
+	//备案信息
+	FilingMsg string `json:"filing_msg"`
 }
 
 //github Module
