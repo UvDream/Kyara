@@ -18,12 +18,11 @@ export class BlogComponent implements OnInit {
   ngOnInit(): void {
     this.http.getConfig();
     console.log(this.cookieService.get('blogView'), '获取时间');
-    if (this.cookieService.get('blogView') === '') {
+    if (this.cookieService.get('blogView') === '' && window) {
       this.viewBlog();
       this.cookieService.set('blogView', 'true', new Date(new Date().getTime() + this.time));
       console.log(new Date(new Date().getTime() + this.time), '过期时间');
     }
-
   }
   async viewBlog(): Promise<void> {
     const res = await this.articleHttp.viewBlog('blog');
