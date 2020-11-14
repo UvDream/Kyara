@@ -8,3 +8,4 @@ my-app/dist/
 server/log/
 server/latest_log
 server/config.yaml
+/server/config.yaml
