@@ -154,6 +154,7 @@ export class DetailComponent implements OnInit {
     this.titleService.setTitle(newTitle);
   }
   async viewArticle(id: string): Promise<void> {
+    console.log('文章访问');
     const res = await this.request.viewBlog(id);
   }
 }

@@ -196,7 +196,7 @@ func GetGithub()(githubList []response.GithubList,err error)  {
 func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 	db := global.GVA_DB
 	id := c.Query("id")
-	if id!=""{
+	if id!="blog"{
 		article:=model.SysArticle{}
 		err=db.Where("id=?",id).Find(&article).Error
 		if err==nil{
@@ -209,7 +209,8 @@ func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 			}
 			return err,"更新文章访问量成功"
 		}
-	}else{
+	}
+	if id=="blog"{
 		config:=model.SysConfig{}
 		err=db.Find(&config).Error
 		num, err:= strconv.ParseInt(config.BlogViewCount, 10, 64)

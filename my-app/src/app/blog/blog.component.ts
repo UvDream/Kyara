@@ -26,7 +26,7 @@ export class BlogComponent implements OnInit {
 
   }
   async viewBlog(): Promise<void> {
-    const res = await this.articleHttp.viewBlog('');
+    const res = await this.articleHttp.viewBlog('blog');
     console.log(res);
   }
 }
