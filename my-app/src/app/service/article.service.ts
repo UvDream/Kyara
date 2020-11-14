@@ -88,7 +88,7 @@ export class ArticleService {
   viewBlog = (id?: string) => {
     return this.http.request({
       method: 'get',
-      url: '/article/view?id=' + id,
+      url: '/article/views?id=' + id,
     });
   }
 

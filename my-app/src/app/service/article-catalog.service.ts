@@ -10,7 +10,6 @@ export class ArticleCatalogService {
   constructor() { }
   SetCatLog = (arr: any) => {
     this.pathName = location.pathname;
-    console.log('检测', this.pathName, arr)
     this.ArticleCatList = arr;
   }
 

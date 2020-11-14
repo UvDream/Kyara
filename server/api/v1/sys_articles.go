@@ -110,9 +110,9 @@ func GetGithub(c *gin.Context)  {
 	
 }
 //博客访问量统计
-func ViewBlog(c *gin.Context)  {
+func ViewBlogCount(c *gin.Context)  {
 	//id := c.Query("id")
-	err,msg:=service.ViewBlog(c)
+	err,msg:=service.ViewBlogCount(c)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {

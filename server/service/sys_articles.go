@@ -193,7 +193,7 @@ func GetGithub()(githubList []response.GithubList,err error)  {
 	return githubList,err
 }
 //访问博客
-func ViewBlog(c *gin.Context)(err error,msg string)  {
+func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 	db := global.GVA_DB
 	id := c.Query("id")
 	if id!=""{
@@ -205,9 +205,9 @@ func ViewBlog(c *gin.Context)(err error,msg string)  {
 			article.ViewCount=strconv.FormatInt(num, 10)
 			err=db.Model(&article).Where("id=?",id).Update("view_count",article.ViewCount).Error
 			if err!=nil{
-				return err,"更新访问量失败"
+				return err,"更新文章访问量失败"
 			}
-			return err,"更新访问量成功"
+			return err,"更新文章访问量成功"
 		}
 	}else{
 		config:=model.SysConfig{}
@@ -217,9 +217,9 @@ func ViewBlog(c *gin.Context)(err error,msg string)  {
 		config.BlogViewCount=strconv.FormatInt(num, 10)
 		err=db.Model(&config).Update("blog_view_count",config.BlogViewCount).Error
 		if err!=nil{
-			return err,"更新访问量失败"
+			return err,"更新博客访问量失败"
 		}
-		return err,"更新访问量成功"
+		return err,"更新博客访问量成功"
 	}
 	return err,"更新访问量成功"
 }

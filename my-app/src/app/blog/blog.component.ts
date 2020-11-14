@@ -8,7 +8,7 @@ import { ArticleService } from '../service/article.service';
   styleUrls: ['./blog.component.less'],
 })
 export class BlogComponent implements OnInit {
-  time: number = 2 * 60 * 60 * 1000;
+  time: number = 12 * 60 * 60 * 1000;
   constructor(
     private http: BlogConfigService,
     private cookieService: CookieService,
@@ -17,9 +17,11 @@ export class BlogComponent implements OnInit {
   title = '首页';
   ngOnInit(): void {
     this.http.getConfig();
+    console.log(this.cookieService.get('blogView'), '获取时间');
     if (this.cookieService.get('blogView') === '') {
       this.viewBlog();
       this.cookieService.set('blogView', 'true', new Date(new Date().getTime() + this.time));
+      console.log(new Date(new Date().getTime() + this.time), '过期时间');
     }
 
   }

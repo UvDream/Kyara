@@ -28,6 +28,8 @@ type SysConfig struct {
 	ImgurType string `json:"imgur_type" gorm:"comment:'图床类型';default:'0'"`
 	// github
 	GithubUserName string `json:"github_user_name" gorm:"comment:'github用户名';default:'uvdream'"`
+	// 备案信息
+	FilingMsg string `json:"filing_msg" gorm:"comment:'备案信息';default:'苏ICP备20016784号'"`
 }
 //打赏库
 type Rewards struct {
