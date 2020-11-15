@@ -190,7 +190,9 @@ func GetGithub()(githubList []response.GithubList,err error)  {
 	db := global.GVA_DB
 	err=db.Find(&blogConfig).Error
 	r,err:=req.Get("https://api.github.com/users/"+blogConfig.GithubUserName+"/repos")
-	r.ToJSON(&githubList)
+	if err==nil{
+		r.ToJSON(&githubList)
+	}
 	return githubList,err
 }
 //访问博客
