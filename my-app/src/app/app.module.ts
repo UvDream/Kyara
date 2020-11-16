@@ -16,6 +16,7 @@ import zh from '@angular/common/locales/zh';
 import { BlogModule } from './blog/blog.module';
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './login/login.module';
+
 registerLocaleData(zh);
 @NgModule({
   declarations: [AppComponent],

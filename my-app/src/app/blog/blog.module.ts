@@ -38,6 +38,8 @@ import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { CookieService } from 'ngx-cookie-service';
+import { BackTopComponent } from './components/back-top/back-top.component';
+import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 @NgModule({
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ import { CookieService } from 'ngx-cookie-service';
     NzSpinModule,
     NzTimelineModule,
     NzDrawerModule,
-    NzSkeletonModule
+    NzSkeletonModule,
+    NzBackTopModule
   ],
   exports: [BlogComponent],
   declarations: [
@@ -81,6 +84,7 @@ import { CookieService } from 'ngx-cookie-service';
     PhotosComponent,
     CommentComponent,
     AboutComponent,
+    BackTopComponent,
   ],
   providers: [CookieService],
 })
