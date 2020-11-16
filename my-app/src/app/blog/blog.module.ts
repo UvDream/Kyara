@@ -40,6 +40,7 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { CookieService } from 'ngx-cookie-service';
 import { BackTopComponent } from './components/back-top/back-top.component';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
+import { NoticeComponent } from './components/notice/notice.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -85,6 +86,7 @@ import { NzBackTopModule } from 'ng-zorro-antd/back-top';
     CommentComponent,
     AboutComponent,
     BackTopComponent,
+    NoticeComponent,
   ],
   providers: [CookieService],
 })
