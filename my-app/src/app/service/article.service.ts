@@ -45,7 +45,7 @@ export class ArticleService {
   addArticle = (data: object) => {
     return this.http.request({
       method: 'post',
-      url: '/adminArticle/add',
+      url: '/admin/add',
       data
     });
   }
@@ -81,7 +81,7 @@ export class ArticleService {
   getArticleDetail = (id: string) => {
     return this.http.request({
       method: 'get',
-      url: '/adminArticle/articleDetail?id=' + id,
+      url: '/admin/articleDetail?id=' + id,
     });
   }
   // 博客访问量

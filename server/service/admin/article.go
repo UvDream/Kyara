@@ -56,3 +56,21 @@ func GetArticleDetail(id string)(err error,article model.SysArticle)  {
 	err = db.Where("id=? ", id).Find(&article).Error
 	return err,article
 }
+
+//新增公告
+func AddNotice(r model.BlogNotice) (err error,msg string) {
+	db := global.GVA_DB
+	err = db.Create(&r).Error
+	fmt.Println(r)
+	if r.Show=="1"{
+		err=db.Model(&model.SysConfig{}).Update("blog_notice_id",r.ID).Error
+		if err!=nil {
+			return  err,"更新配置失败"
+		}
+	}
+	if err!=nil{
+		return err,"新增失败"
+	}
+	return err,"成功"
+
+}

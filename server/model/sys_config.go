@@ -44,5 +44,5 @@ type BlogNotice struct{
 	gorm.Model
 	Title string `json:"title" gorm:"comment:'公告标题'"`
 	Content string `json:"content" gorm:"comment:'博客公告具体内容'"`
-	Show string `json:"show"`
+	Show string `json:"show" gorm:"default:'0'"`
 }

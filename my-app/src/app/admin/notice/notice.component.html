@@ -1,4 +1,11 @@
-<div>   
+<div class="notice"> 
+    <div class="notice-search">
+        <div>
+            <input nz-input placeholder="输入搜索内容" [(ngModel)]="form.search" />
+            <button nz-button nzType="primary">搜索</button>
+        </div>
+        <button nz-button nzType="primary">添加</button>
+    </div>  
     <nz-table #basicTable nzShowPagination nzTableLayout="fixed" nzBordered  nzShowSizeChanger [nzLoading]="loading"  [nzFrontPagination]="false" [nzData]="list" [nzTotal]="totalCount"  (nzPageSizeChange)="onCurrentPageSizeChange($event)" (nzCurrentPageDataChange)="onCurrentPageDataChange">
         <thead>
           <tr >

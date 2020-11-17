@@ -1,5 +1,5 @@
 <div class="article-list">
-    <nz-table #basicTable nzShowPagination nzTableLayout="fixed" nzBordered  nzShowSizeChanger  [nzFrontPagination]="false" [nzData]="list" [nzTotal]="totalCount"  (nzPageSizeChange)="onCurrentPageSizeChange($event)" (nzCurrentPageDataChange)="onCurrentPageDataChange">
+    <nz-table #basicTable nzShowPagination nzTableLayout="fixed" [nzLoading]="loading"  nzBordered  nzShowSizeChanger  [nzFrontPagination]="false" [nzData]="list" [nzTotal]="totalCount"  (nzPageSizeChange)="onCurrentPageSizeChange($event)" (nzCurrentPageDataChange)="onCurrentPageDataChange">
         <thead>
           <tr >
             <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" nzWidth="50px"></th>

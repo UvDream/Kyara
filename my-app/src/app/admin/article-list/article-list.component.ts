@@ -24,6 +24,7 @@ export interface Data {
 })
 export class ArticleListComponent implements OnInit {
   list: ListItem[] = [];
+  loading = true;
   public form = {
     search: '',
     page: 1,
@@ -42,8 +43,10 @@ export class ArticleListComponent implements OnInit {
     this.getData();
   }
   getData = async () => {
+    this.loading = true;
     const res = await this.articleService.articleList(this.form);
     if (res.code === 200) {
+      this.loading = false;
       this.list = res.data.msg;
       this.totalCount = res.data.totalCount;
     }
