@@ -21,3 +21,9 @@ type ImagesListStruct struct {
 	Limit string `json:"limit"`
 	Folder string `json:"folder"`
 }
+//正常分页结构体
+type ListStruct struct{
+	Page int `json:"page"`
+	PageSize int `json:"page_size"`
+	Search string `json:"search"`
+}

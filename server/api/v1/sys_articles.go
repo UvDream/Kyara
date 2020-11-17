@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"server/global/response"
 	resp "server/model/response"
+	"server/service/article"
 
 	"github.com/gin-gonic/gin"
 	"server/model/request"
-	"server/service"
 )
 
 // @title    Article
@@ -19,7 +19,7 @@ import (
 func ArticleList(c *gin.Context) {
 	var R request.ArticleListStruct
 	_ = c.ShouldBindJSON(&R)
-	err, msg, Total, errMsg := service.ArticleList(R)
+	err, msg, Total, errMsg := article.ArticleList(R)
 	if err != nil {
 		fmt.Println("获取文章列表错误")
 		response.FailWithMessage(errMsg, c)
@@ -32,7 +32,7 @@ func ArticleList(c *gin.Context) {
 func GetArticleDetail(c *gin.Context) {
 	id := c.Query("id")
 	password := c.Query("password")
-	error, message := service.CheckPassword(id, password)
+	error, message := article.CheckPassword(id, password)
 	if !error {
 		response.FailWithMessage(message, c)
 		return
@@ -41,7 +41,7 @@ func GetArticleDetail(c *gin.Context) {
 		response.FailWithMessage("请携带文章id", c)
 		return
 	}
-	err, msg := service.GetArticleDetail(c)
+	err, msg := article.GetArticleDetail(c)
 	if err == nil {
 		response.OkDetailed(msg, "获取详情成功", c)
 	}
@@ -51,7 +51,7 @@ func GetArticleDetail(c *gin.Context) {
 func CheckPassword(c *gin.Context) {
 	id := c.Query("id")
 	password := c.Query("password")
-	err, message := service.CheckPassword(id, password)
+	err, message := article.CheckPassword(id, password)
 	fmt.Println(err)
 	if err {
 		response.OkDetailed("", message, c)
@@ -62,7 +62,7 @@ func CheckPassword(c *gin.Context) {
 
 // 文章分类
 func ArticleClassify(c *gin.Context) {
-	err, msg := service.ArticleClassify()
+	err, msg := article.ArticleClassify()
 	fmt.Println(err, msg)
 	if err != nil {
 		response.FailWithMessage("获取分类失败", c)
@@ -73,7 +73,7 @@ func ArticleClassify(c *gin.Context) {
 
 //热门文章
 func HotArticle(c *gin.Context) {
-	err, list := service.HotArticle()
+	err, list := article.HotArticle()
 	if err != nil {
 		response.FailWithMessage("获取文章失败", c)
 	} else {
@@ -83,7 +83,7 @@ func HotArticle(c *gin.Context) {
 
 //获取所有tag
 func AllTag(c *gin.Context) {
-	err, list, msg := service.AllTag()
+	err, list, msg := article.AllTag()
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
@@ -92,7 +92,7 @@ func AllTag(c *gin.Context) {
 }
 //获取博客配置
 func GetConfig(c *gin.Context)  {
-	err,data,msg:=service.GetConfig()
+	err,data,msg:= article.GetConfig()
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
@@ -101,7 +101,7 @@ func GetConfig(c *gin.Context)  {
 }
 //获取github配置
 func GetGithub(c *gin.Context)  {
-	msg,err:=service.GetGithub()
+	msg,err:= article.GetGithub()
 	if err != nil {
 		response.FailWithMessage("获取github仓库失败", c)
 	} else {
@@ -112,10 +112,21 @@ func GetGithub(c *gin.Context)  {
 //博客访问量统计
 func ViewBlogCount(c *gin.Context)  {
 	//id := c.Query("id")
-	err,msg:=service.ViewBlogCount(c)
+	err,msg:= article.ViewBlogCount(c)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
 		response.OkWithMessage(msg,c)
+	}
+}
+//获取公告
+func GetNotice(c *gin.Context)  {
+	var R request.ListStruct
+	_ = c.ShouldBindJSON(&R)
+	err,list,msg,total:= article.GetNotice(R)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	} else {
+		response.OkDetailed(resp.BlogNotice{List: list,TotalCount: total}, msg, c)
 	}
 }

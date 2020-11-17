@@ -9,6 +9,10 @@ type SysArticleListResponse struct {
 	Msg        []model.SysArticle `json:"msg"`
 	TotalCount int64              `json:"totalCount"`
 }
+type BlogNotice struct {
+	List []model.BlogNotice `json:"list"`
+	TotalCount int64 `json:"total_count"`
+}
 type SysConfigsResponse struct {
 	//博客相关设置
 	BlogName      string    `json:"blog_name" gorm:"comment:'博客名称';default:'U世界的V梦想'"`
