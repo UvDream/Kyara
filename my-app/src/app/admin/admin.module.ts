@@ -6,7 +6,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { NzInputModule } from 'ng-zorro-antd/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
@@ -18,6 +18,9 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NoticeComponent } from './notice/notice.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzFormModule } from 'ng-zorro-antd/form';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -33,7 +36,10 @@ import { NoticeComponent } from './notice/notice.component';
     NzTreeSelectModule,
     NzIconModule,
     NzMessageModule,
-    NzTableModule
+    NzTableModule,
+    NzModalModule,
+    NzFormModule,
+    ReactiveFormsModule
   ],
   declarations: [AdminComponent, EditArticleComponent, UploadComponent, ArticleListComponent, NoticeComponent],
   exports: [AdminComponent],

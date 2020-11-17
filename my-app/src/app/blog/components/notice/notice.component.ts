@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogConfigService } from '@service/blog-config.service'
+import { BlogConfigService } from '@service/blog-config.service';
 @Component({
   selector: 'app-notice',
   templateUrl: './notice.component.html',
@@ -7,7 +7,9 @@ import { BlogConfigService } from '@service/blog-config.service'
 })
 export class NoticeComponent implements OnInit {
   noticeShow = true;
-  constructor(public config: BlogConfigService) { }
+  constructor(public config: BlogConfigService) {
+
+  }
 
   ngOnInit(): void {
     this.noticeShow = true;
@@ -19,7 +21,8 @@ export class NoticeComponent implements OnInit {
       setInterval(() => {
         this.scrollFunc();
       }, 10);
-    }, 10);
+    }, 1000);
+
   }
 
   closeNotice(): void {

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '@service/article.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AdminService } from '@service/admin.service';
 interface ListItem {
   ID: number;
   title: string;
@@ -14,10 +16,19 @@ interface ListItem {
   styleUrls: ['./notice.component.less']
 })
 export class NoticeComponent implements OnInit {
+  // 验证表单
+  validateForm!: FormGroup;
+
+  constructor(
+    private articleService: ArticleService,
+    private fb: FormBuilder,
+    private adminService: AdminService
+  ) { }
   indeterminate = false;
   loading = true;
   checked = false;
   setOfCheckedId = new Set<number>();
+  isVisible = true;
   public form = {
     search: '',
     page: 1,
@@ -25,10 +36,13 @@ export class NoticeComponent implements OnInit {
   };
   public totalCount = 0;
   list: ListItem[] = [];
-  constructor(private articleService: ArticleService) { }
-
   ngOnInit(): void {
     this.getData();
+    this.validateForm = this.fb.group({
+      title: [null, [Validators.required]],
+      content: [null, [Validators.required]],
+      show: [null]
+    });
   }
   async getData(): Promise<void> {
     this.loading = true;
@@ -49,5 +63,42 @@ export class NoticeComponent implements OnInit {
   }
   edit(): void {
 
+  }
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    console.log('Button ok clicked!');
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
+
+
+  async submitForm(): Promise<void> {
+    // tslint:disable-next-line:forin
+    for (const i in this.validateForm.controls) {
+      this.validateForm.controls[i].markAsDirty();
+      this.validateForm.controls[i].updateValueAndValidity();
+    }
+    if (this.validateForm.valid) {
+      const obj = {
+        title: this.validateForm.value.title,
+        content: this.validateForm.value.content,
+        show: '0'
+      };
+      if (this.validateForm.value.show) {
+        obj.show = '1';
+      }
+      const res = await this.adminService.addNotice(obj);
+      if (res.code === 200) {
+        console.log('保存成功');
+        this.isVisible = false;
+      }
+    }
   }
 }
