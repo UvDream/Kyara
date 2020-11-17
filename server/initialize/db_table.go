@@ -30,6 +30,7 @@ func DBTables() {
 		model.Rewards{},
 		model.SysLike{},
 		model.SysArticleTag{},
+		model.BlogNotice{},
 	)
 	global.GVA_LOG.Debug("注册成功!")
 }

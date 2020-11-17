@@ -164,10 +164,13 @@ func AllTag() (err error, tagArr []model.SysTag, msg string) {
 }
 
 //获取博客配置
-func GetConfig() (err error, res response.SysConfigsResponse) {
+func GetConfig() (err error, res response.SysConfigsResponse,msg string) {
 	db := global.GVA_DB
 	config := model.SysConfig{}
 	err = db.Find(&config).Error
+	if err!=nil{
+		return err,res,"获取配置失败"
+	}
 	res.AuthorAvatar = config.AuthorAvatar
 	//时间
 	res.ActiveTime = config.ActiveTime
@@ -177,12 +180,21 @@ func GetConfig() (err error, res response.SysConfigsResponse) {
 	res.AuthorName = config.AuthorName
 	res.BlogLogo = config.BlogLogo
 	res.BlogName = config.BlogName
-	res.BlogNotice = config.BlogNotice
+	//查询博客公告信息
+	blogNotice:=model.BlogNotice{}
+	err=db.Where("id=?",config.BlogNoticeID).Find(&blogNotice).Error
+	if err!=nil{
+		return err,res,"获取博客公告失败"
+	}
+	res.BlogNotice = blogNotice.Title
 	res.BlogViewCount = config.BlogViewCount
 	res.FilingMsg=config.FilingMsg
 	//查询文章数量
 	err=db.Table("sys_articles").Count(&res.ArticleCount).Error
-	return err, res
+	if err!=nil{
+		return err,res,"获取文章数量失败"
+	}
+	return err, res,"获取配置成功"
 }
 //获取github仓库列表
 func GetGithub()(githubList []response.GithubList,err error)  {

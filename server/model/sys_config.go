@@ -11,6 +11,7 @@ type SysConfig struct {
 	//博客相关设置
 	BlogName string `json:"blog_name" gorm:"comment:'博客名称';default:'U世界的V梦想'"`
 	BlogLogo string `json:"blog_logo" gorm:"comment:'博客logo';default:'https://pic.baixiongz.com/2020/08/05/a46e139ec4236.png'"`
+	BlogNoticeID string `json:"blog_notice_id" gorm:"comment:'博客公告id'"`
 	BlogNotice string `json:"blog_notice" gorm:"comment:'博客公告'"`
 	BlogStartTime time.Time `json:"blog_start_time" gorm:"comment:'博客开始时间';default:'2015-01-02 15:04:05'"`
 	BlogViewCount string `json:"blog_view_count" gorm:"comment:'博客访问量'"`
@@ -37,4 +38,10 @@ type Rewards struct {
 	RewardName string `json:"reward_name" gorm:"comment:'打赏名称'"`
 	RewardImgURL string `json:"reward_img_url" gorm:"comment:'打赏码连接'"`
 	UserID string `json:"user_id" gorm:"comment:'用户id'"`
+}
+// 公告
+type BlogNotice struct{
+	gorm.Model
+	Title string `json:"title" gorm:"comment:'公告标题'"`
+	Content string `json:"content" gorm:"comment:'博客公告具体内容'"`
 }

@@ -92,11 +92,11 @@ func AllTag(c *gin.Context) {
 }
 //获取博客配置
 func GetConfig(c *gin.Context)  {
-	err,msg:=service.GetConfig()
+	err,data,msg:=service.GetConfig()
 	if err != nil {
-		response.FailWithMessage("获取配置失败", c)
+		response.FailWithMessage(msg, c)
 	} else {
-		response.OkDetailed(msg,"获取成功配置", c)
+		response.OkDetailed(data,msg, c)
 	}
 }
 //获取github配置

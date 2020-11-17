@@ -1,20 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-
+import { BlogConfigService } from '@service/blog-config.service'
 @Component({
   selector: 'app-notice',
   templateUrl: './notice.component.html',
   styleUrls: ['./notice.component.less']
 })
 export class NoticeComponent implements OnInit {
-
-  constructor() { }
+  noticeShow = true;
+  constructor(public config: BlogConfigService) { }
 
   ngOnInit(): void {
-    this.scrollLeft();
-    setInterval(() => {
-      this.scrollFunc();
+    this.noticeShow = true;
+    setTimeout(() => {
+      if (this.config.BlogNotice === '') {
+        this.noticeShow = false;
+      }
+      this.scrollLeft();
+      setInterval(() => {
+        this.scrollFunc();
+      }, 10);
     }, 10);
+  }
 
+  closeNotice(): void {
+    this.noticeShow = false;
   }
   scrollLeft(): void {
     const textMain = document.getElementById('text-main') as HTMLDivElement;
@@ -24,7 +33,7 @@ export class NoticeComponent implements OnInit {
     newNode.id = 'textCopy';
     newNode.style.width = textMain.offsetWidth + 'px';
     newNode.style.display = 'inline-block';
-    newNode.innerHTML = text.innerHTML;
+    newNode.innerHTML = this.config.BlogNotice;
     textMain.appendChild(newNode);
   }
   scrollFunc(): void {

@@ -26,6 +26,7 @@ type SysConfigsResponse struct {
 	ArticleCount string `json:"article_count"`
 	//备案信息
 	FilingMsg string `json:"filing_msg"`
+//
 }
 
 //github Module
