@@ -239,3 +239,12 @@ func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 	}
 	return err,"更新访问量成功"
 }
+//获取公告
+func GetNotice(c *gin.Context)(err error,list model.BlogNotice,msg string)  {
+	db := global.GVA_DB
+	err=db.Find(&list).Error
+	if err!=nil{
+		return err,list,"获取公告失败"
+	}
+	return  err,list,"获取公告成功"
+}

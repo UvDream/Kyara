@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { NoticeComponent } from './notice/notice.component';
 
 export const adminRoutes: Routes = [
   {
@@ -12,6 +13,7 @@ export const adminRoutes: Routes = [
       { path: '', redirectTo: '/editArticle', pathMatch: 'full' },
       { path: 'editArticle', component: EditArticleComponent },
       { path: 'articleList', component: ArticleListComponent },
+      { path: 'notice', component: NoticeComponent },
     ],
   },
 ];

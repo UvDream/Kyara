@@ -91,5 +91,13 @@ export class ArticleService {
       url: '/article/views?id=' + id,
     });
   }
+  // 获取公告
+  getNotice = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/article/noticeList',
+      data
+    });
+  }
 
 }

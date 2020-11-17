@@ -1,8 +1,8 @@
 <div class="article-list">
-    <nz-table #basicTable nzShowPagination nzTableLayout="fixed"  nzShowSizeChanger  [nzFrontPagination]="false" [nzData]="list" [nzTotal]="totalCount"  (nzPageSizeChange)="onCurrentPageSizeChange($event)" (nzCurrentPageDataChange)="onCurrentPageDataChange">
+    <nz-table #basicTable nzShowPagination nzTableLayout="fixed" nzBordered  nzShowSizeChanger  [nzFrontPagination]="false" [nzData]="list" [nzTotal]="totalCount"  (nzPageSizeChange)="onCurrentPageSizeChange($event)" (nzCurrentPageDataChange)="onCurrentPageDataChange">
         <thead>
           <tr >
-            <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" ></th>
+            <th [nzChecked]="checked" [nzIndeterminate]="indeterminate" nzWidth="50px"></th>
             <th nzAlign="center" >文章标题</th>
             <th nzAlign="center">文章摘要</th>
             <th nzAlign="center">文章创建时间</th>
@@ -19,8 +19,8 @@
           ></td>
             <td nzEllipsis nzAlign="center">{{ data.title }}</td>
             <td nzEllipsis nzAlign="center">{{ data.introduction }}</td>
-            <td nzEllipsis nzAlign="center">{{ data.CreatedAt }}</td>
-            <td nzEllipsis nzAlign="center">{{ data.UpdatedAt }}</td>
+            <td nzEllipsis nzAlign="center">{{ data.CreatedAt| date:"y-d-MM HH:mm:ss " }}</td>
+            <td nzEllipsis nzAlign="center">{{ data.UpdatedAt| date:"y-d-MM HH:mm:ss " }}</td>
             <td nzEllipsis nzAlign="center">{{data.user_name}}</td>
             <td nzEllipsis nzAlign="center">{{data.view_count}}</td>
             <td>

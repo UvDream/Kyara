@@ -17,6 +17,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NoticeComponent } from './notice/notice.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -34,7 +35,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     NzMessageModule,
     NzTableModule
   ],
-  declarations: [AdminComponent, EditArticleComponent, UploadComponent, ArticleListComponent],
+  declarations: [AdminComponent, EditArticleComponent, UploadComponent, ArticleListComponent, NoticeComponent],
   exports: [AdminComponent],
 })
 export class AdminModule { }

@@ -33,7 +33,7 @@ export class NoticeComponent implements OnInit {
     newNode.id = 'textCopy';
     newNode.style.width = textMain.offsetWidth + 'px';
     newNode.style.display = 'inline-block';
-    newNode.innerHTML = this.config.BlogNotice;
+    newNode.innerHTML = text.innerHTML;
     textMain.appendChild(newNode);
   }
   scrollFunc(): void {
