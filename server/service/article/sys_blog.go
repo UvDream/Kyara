@@ -31,9 +31,9 @@ func GetConfig() (err error, res response.SysConfigsResponse,msg string) {
 	//查询博客公告信息
 	blogNotice:=model.BlogNotice{}
 	err=db.Where("id=?",config.BlogNoticeID).Find(&blogNotice).Error
-	if err!=nil{
-		return err,res,"获取博客公告失败"
-	}
+	//if err!=nil{
+	//	return err,res,"获取博客公告失败"
+	//}
 	res.BlogNotice = blogNotice.Title
 	res.BlogViewCount = config.BlogViewCount
 	res.FilingMsg=config.FilingMsg

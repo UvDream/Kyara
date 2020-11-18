@@ -6,7 +6,7 @@ import { BlogConfigService } from '@service/blog-config.service';
   styleUrls: ['./notice.component.less']
 })
 export class NoticeComponent implements OnInit {
-  noticeShow = true;
+  noticeShow = false;
   constructor(public config: BlogConfigService) {
 
   }
@@ -42,7 +42,7 @@ export class NoticeComponent implements OnInit {
   scrollFunc(): void {
     const text = document.getElementById('text') as HTMLDivElement;
     const textMain = document.getElementById('text-main') as HTMLDivElement;
-    if (text.offsetWidth - textMain.scrollLeft <= 0) {
+    if (text.offsetWidth - textMain.scrollLeft <= 4) {
       textMain.scrollLeft = 0;
     } else {
       textMain.scrollLeft++;

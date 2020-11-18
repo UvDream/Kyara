@@ -28,11 +28,17 @@ export class NoticeComponent implements OnInit {
   loading = true;
   checked = false;
   setOfCheckedId = new Set<number>();
-  isVisible = true;
+  isVisible = false;
   public form = {
     search: '',
     page: 1,
     page_size: 10,
+  };
+  public data = {
+    ID: 0,
+    title: '',
+    content: '',
+    show: false,
   };
   public totalCount = 0;
   list: ListItem[] = [];
@@ -61,8 +67,13 @@ export class NoticeComponent implements OnInit {
     this.form.page = page;
     this.getData();
   }
-  edit(): void {
-
+  edit(data: ListItem): void {
+    console.log(data);
+    this.isVisible = true;
+    this.data.ID = data.ID;
+    this.data.title = data.title;
+    this.data.content = data.content;
+    data.show === '1' ? this.data.show = true : this.data.show = false;
   }
   showModal(): void {
     this.isVisible = true;
@@ -78,7 +89,15 @@ export class NoticeComponent implements OnInit {
     this.isVisible = false;
   }
 
-
+  add(): void {
+    this.data = {
+      ID: 0,
+      title: '',
+      content: '',
+      show: false
+    };
+    this.isVisible = true;
+  }
   async submitForm(): Promise<void> {
     // tslint:disable-next-line:forin
     for (const i in this.validateForm.controls) {
@@ -87,8 +106,9 @@ export class NoticeComponent implements OnInit {
     }
     if (this.validateForm.valid) {
       const obj = {
-        title: this.validateForm.value.title,
-        content: this.validateForm.value.content,
+        ID: this.data.ID,
+        title: this.data.title,
+        content: this.data.content,
         show: '0'
       };
       if (this.validateForm.value.show) {
@@ -97,6 +117,7 @@ export class NoticeComponent implements OnInit {
       const res = await this.adminService.addNotice(obj);
       if (res.code === 200) {
         console.log('保存成功');
+        this.getData();
         this.isVisible = false;
       }
     }

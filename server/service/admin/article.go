@@ -2,9 +2,9 @@ package service
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"server/global"
 	"server/model"
-	"github.com/gin-gonic/gin"
 )
 
 //新增文章
@@ -60,17 +60,39 @@ func GetArticleDetail(id string)(err error,article model.SysArticle)  {
 //新增公告
 func AddNotice(r model.BlogNotice) (err error,msg string) {
 	db := global.GVA_DB
-	err = db.Create(&r).Error
-	fmt.Println(r)
+
+	if r.Show=="1"{
+		updateNotice()
+	}
+	if r.ID!=0{
+		err=db.Model(&model.BlogNotice{}).Update(&r).Error
+	}else{
+		err = db.Create(&r).Error
+		if err!=nil{
+			return err,"新增失败"
+		}
+	}
 	if r.Show=="1"{
 		err=db.Model(&model.SysConfig{}).Update("blog_notice_id",r.ID).Error
 		if err!=nil {
 			return  err,"更新配置失败"
 		}
 	}
-	if err!=nil{
-		return err,"新增失败"
-	}
 	return err,"成功"
-
+}
+func updateNotice()(err error,msg string)  {
+	var notice []model.BlogNotice
+	db := global.GVA_DB
+	err=db.Find(&notice).Error
+	if err==nil {
+		for i,k:=range notice{
+			if k.Show=="1" {
+				notice[i].Show="0"
+			}
+		}
+		db.Model(&notice).UpdateColumn("show", "0")
+	}else{
+		return err,"更新数据失败"
+	}
+	return err,"更新成功"
 }

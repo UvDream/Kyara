@@ -37,18 +37,15 @@ func AddNotice(c *gin.Context)  {
 	var R model.BlogNotice
 	var api model.BlogNotice
 	err := c.ShouldBindJSON(&R)
-	ApiVerify := utils.Rules{
-		"title":        {utils.NotEmpty()},
-		"content": {utils.NotEmpty()},
-	}
-	ApiVerifyErr := utils.Verify(api, ApiVerify)
-	if ApiVerifyErr != nil {
-		response.FailWithMessage(ApiVerifyErr.Error(), c)
-		return
-	}
-	if err!=nil {
-		response.FailWithMessage("获取参数错误", c)
-	}
+		ApiVerify := utils.Rules{
+			"title":        {utils.NotEmpty()},
+			"content": {utils.NotEmpty()},
+		}
+		ApiVerifyErr := utils.Verify(api, ApiVerify)
+		if ApiVerifyErr != nil {
+			response.FailWithMessage(ApiVerifyErr.Error(), c)
+			return
+		}
 	err,msg:=service.AddNotice(R)
 	if err != nil {
 		response.FailWithMessage(msg, c)
