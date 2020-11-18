@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogConfigService } from '@service/blog-config.service';
+// import { Platform } from '@angular/cdk/platform';
 @Component({
   selector: 'app-notice',
   templateUrl: './notice.component.html',
@@ -7,7 +8,10 @@ import { BlogConfigService } from '@service/blog-config.service';
 })
 export class NoticeComponent implements OnInit {
   noticeShow = false;
-  constructor(public config: BlogConfigService) {
+  constructor(
+    public config: BlogConfigService,
+    // private platform: Platform,
+  ) {
 
   }
 
@@ -29,15 +33,15 @@ export class NoticeComponent implements OnInit {
     this.noticeShow = false;
   }
   scrollLeft(): void {
-    const textMain = document.getElementById('text-main') as HTMLDivElement;
-    const text = document.getElementById('text') as HTMLDivElement;
-    text.style.width = textMain.offsetWidth + 'px';
-    const newNode = document.createElement('div');
-    newNode.id = 'textCopy';
-    newNode.style.width = textMain.offsetWidth + 'px';
-    newNode.style.display = 'inline-block';
-    newNode.innerHTML = text.innerHTML;
-    textMain.appendChild(newNode);
+      const textMain = document.getElementById('text-main') as HTMLDivElement;
+      const text = document.getElementById('text') as HTMLDivElement;
+      text.style.width = textMain.offsetWidth + 'px';
+      const newNode = document.createElement('div');
+      newNode.id = 'textCopy';
+      newNode.style.width = textMain.offsetWidth + 'px';
+      newNode.style.display = 'inline-block';
+      newNode.innerHTML = text.innerHTML;
+      textMain.appendChild(newNode);
   }
   scrollFunc(): void {
     const text = document.getElementById('text') as HTMLDivElement;

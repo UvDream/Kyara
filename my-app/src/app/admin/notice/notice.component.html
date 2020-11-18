@@ -7,7 +7,7 @@
     <button nz-button nzType="primary" (click)="add()">添加</button>
   </div>
   <nz-table #basicTable nzShowPagination nzTableLayout="fixed" nzBordered nzShowSizeChanger [nzLoading]="loading"
-    [nzFrontPagination]="false" [nzData]="list" [nzTotal]="totalCount"
+    [nzFrontPagination]="false" [nzData]="list" [nzTotal]="totalCount" 
     (nzPageSizeChange)="onCurrentPageSizeChange($event)" (nzCurrentPageDataChange)="onCurrentPageDataChange">
     <thead>
       <tr>
