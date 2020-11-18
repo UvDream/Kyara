@@ -20,6 +20,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NoticeComponent } from './notice/notice.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { ClassifyComponent } from './classify/classify.component';
+import { TagsComponent } from './tags/tags.component';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 
 @NgModule({
   imports: [
@@ -39,9 +42,18 @@ import { NzFormModule } from 'ng-zorro-antd/form';
     NzTableModule,
     NzModalModule,
     NzFormModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzTagModule
   ],
-  declarations: [AdminComponent, EditArticleComponent, UploadComponent, ArticleListComponent, NoticeComponent],
+  declarations: [
+    AdminComponent,
+    EditArticleComponent,
+    UploadComponent,
+    ArticleListComponent,
+    NoticeComponent,
+    ClassifyComponent,
+    TagsComponent
+  ],
   exports: [AdminComponent],
 })
 export class AdminModule { }

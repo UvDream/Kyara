@@ -74,6 +74,7 @@ type SysTag struct {
 	gorm.Model
 	TagName string `json:"tag_name"`
 	TagCount int64 `json:"tag_count" gorm:"-"`
+	Color string `json:"color" gorm:"comment:'颜色';default:'#108ee9'"`
 }
 
 //点赞表

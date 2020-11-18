@@ -1,44 +1,50 @@
 <nz-layout class="layout">
   <nz-header>
-    <div class="logo"></div>
+    <div class="logo">U世界的V梦想</div>
   </nz-header>
   <nz-layout>
     <nz-sider nzWidth="200px" nzTheme="light">
       <ul nz-menu nzMode="inline" class="sider-menu">
-        <li nz-submenu nzOpen nzTitle="文章相关">
+        <li nz-submenu nzOpen>
+          <span title>
+            <span class="iconfont uv-book-outline"></span>
+            文章相关
+          </span>
           <ul>
-            <li nz-menu-item nzSelected routerLink="/editArticle">文章编写</li>
-            <li nz-menu-item routerLink="/articleList">文章列表</li>
-            <li nz-menu-item>文章分类管理</li>
+            <li nz-menu-item nzMatchRouter nzSelected [routerLink]="['/', 'editArticle']">文章编写</li>
+            <li nz-menu-item nzMatchRouter [routerLink]="['/', 'articleList']">文章列表</li>
+            <li nz-menu-item nzMatchRouter [routerLink]="['/', 'classify']">分类管理</li>
+            <li nz-menu-item nzMatchRouter [routerLink]="['/', 'tags']">标签管理</li>
           </ul>
         </li>
-        <li nz-submenu nzOpen nzTitle="博客相关">
-              <ul>
-                <li nz-menu-item routerLink="/notice">公告管理</li>
-                <li nz-menu-item>评论管理</li>
-                <li nz-menu-item>留言管理</li>
+        <li nz-submenu>
+          <span title>
+            <span class="iconfont uv-earth-outline"></span>
+            博客相关
+          </span>
+          <ul>
+            <li nz-menu-item nzMatchRouter routerLink="/notice">公告管理</li>
+            <li nz-menu-item nzMatchRouter>评论管理</li>
+            <li nz-menu-item nzMatchRouter>留言管理</li>
+            <li nz-menu-item nzMatchRouter>博客配置</li>
           </ul>
         </li>
-        <li nz-submenu nzOpen nzTitle="用户相关">
+        <li nz-submenu>
+          <span title>
+            <span class="iconfont uv-people-outline"></span>
+            用户相关
+          </span>
           <ul>
-            <li nz-menu-item>用户管理</li>
-            <li nz-menu-item>角色管理</li>
-            <li nz-menu-item>权限管理</li>
+            <li nz-menu-item nzMatchRouter>用户管理</li>
+            <li nz-menu-item nzMatchRouter>角色管理</li>
+            <li nz-menu-item nzMatchRouter>权限管理</li>
           </ul>
         </li>
-        <!-- <li nz-submenu nzTitle="subnav 3">
-          <ul>
-            <li nz-menu-item>option9</li>
-            <li nz-menu-item>option10</li>
-            <li nz-menu-item>option11</li>
-            <li nz-menu-item>option12</li>
-          </ul>
-        </li> -->
       </ul>
     </nz-sider>
     <nz-layout class="inner-layout">
-      <nz-content style="padding: 10px" >
-        <div class="content"> 
+      <nz-content style="padding: 10px">
+        <div class="content">
           <router-outlet></router-outlet>
         </div>
       </nz-content>

@@ -4,7 +4,8 @@ import { AdminComponent } from './admin.component';
 import { EditArticleComponent } from './edit-article/edit-article.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { NoticeComponent } from './notice/notice.component';
-
+import { ClassifyComponent } from './classify/classify.component';
+import { TagsComponent } from './tags/tags.component';
 export const adminRoutes: Routes = [
   {
     path: '',
@@ -14,6 +15,8 @@ export const adminRoutes: Routes = [
       { path: 'editArticle', component: EditArticleComponent },
       { path: 'articleList', component: ArticleListComponent },
       { path: 'notice', component: NoticeComponent },
+      { path: 'tags', component: TagsComponent },
+      { path: 'classify', component: ClassifyComponent },
     ],
   },
 ];
