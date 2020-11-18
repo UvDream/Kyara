@@ -2,7 +2,7 @@
   <div class="notice-search">
     <div>
       <input nz-input placeholder="输入搜索内容" [(ngModel)]="form.search" />
-      <button nz-button nzType="primary">搜索</button>
+      <button nz-button nzType="primary" (click)="getData()">搜索</button>
     </div>
     <button nz-button nzType="primary" (click)="add()">添加</button>
   </div>

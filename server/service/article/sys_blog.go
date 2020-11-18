@@ -91,7 +91,7 @@ func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 func GetNotice(r request.ListStruct)(err error,list []model.BlogNotice,msg string,total int64)  {
 	db := global.GVA_DB
 	offset:=r.PageSize*(r.Page-1)
-	err=db.Limit(r.PageSize).Offset(offset).Find(&list).Error
+	err=db.Limit(r.PageSize).Offset(offset).Where("title LIKE ?", "%"+r.Search+"%").Find(&list).Error
 	var config model.SysConfig
 	err=db.Find(&config).Error
 	if err!=nil{
@@ -107,7 +107,7 @@ func GetNotice(r request.ListStruct)(err error,list []model.BlogNotice,msg strin
 	if err!=nil{
 		return err,list,"获取公告失败",total
 	}
-	err = db.Table("blog_notices").Count(&total).Error
+	err = db.Where("title LIKE ?", "%"+r.Search+"%").Table("blog_notices").Count(&total).Error
 	if err!=nil{
 		return err,list,"获取公告总数失败",total
 	}
