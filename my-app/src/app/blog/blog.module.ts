@@ -41,6 +41,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { BackTopComponent } from './components/back-top/back-top.component';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 import { NoticeComponent } from './components/notice/notice.component';
+import { UpdateLogComponent } from './about/update-log/update-log.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -87,6 +88,7 @@ import { NoticeComponent } from './components/notice/notice.component';
     AboutComponent,
     BackTopComponent,
     NoticeComponent,
+    UpdateLogComponent,
   ],
   providers: [CookieService],
 })
