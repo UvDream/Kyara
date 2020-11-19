@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comment.component.less']
 })
 export class CommentComponent implements OnInit {
-
+ 
   constructor() { }
 
   ngOnInit(): void {
+
   }
+  
+
 
 }

@@ -1,3 +1,47 @@
-<div style="text-align:center">
-    <img width="90%"  src="https://gitee.com/Uvdream/images/raw/master/images/20201106144838.png" alt="">
+<div class="comments">
+    <div class="comments-title">
+        留言:
+        <span>*</span>
+    </div>
+    <div>
+        <textarea rows="4" nz-input></textarea>
+    </div>
+    <div class="comments-private">
+        <div>
+
+        </div>
+        <div>
+            是否私密
+            <nz-switch nzSize="small" [ngModel]="true"></nz-switch>
+        </div>
+    </div>
+    <div nz-row [nzGutter]="5">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12" nzXl="8" nzXXl="8">
+            <div class="comments-title">
+                昵称:
+                <span>*</span>
+            </div>
+            <nz-input-group [nzPrefix]="prefixTemplateUser">
+                <input type="text" nz-input placeholder="请输入你的昵称" />
+            </nz-input-group>
+            <ng-template #prefixTemplateUser><i nz-icon nzType="user"></i></ng-template>
+        </div>
+
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12" nzXl="8" nzXXl="8">
+            <div class="comments-title">
+                邮箱:
+                <span>*</span>
+            </div>
+            <input type="email" nz-input placeholder="输入邮箱(将保密)" />
+        </div>
+        <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="8" nzXXl="8">
+            <div class="comments-title">
+                网址:
+            </div>
+            <input type="text" nz-input placeholder="输入网址或者博客" />
+        </div>
+        <div class="comments-btn">
+            <button>留言</button>
+        </div>
+    </div>
 </div>
