@@ -3,6 +3,7 @@ package v1
 import (
 	"fmt"
 	"net"
+	"server/global"
 	"server/global/response"
 	resp "server/model/response"
 	"server/service/article"
@@ -115,6 +116,8 @@ func ViewBlogCount(c *gin.Context)  {
 	//id := c.Query("id")
 	fmt.Println(GetLocalIP(),"获取ip地址1")
 	fmt.Println(c.ClientIP(),"获取ip地址2")
+	global.GVA_LOG.Info(c.ClientIP())
+	global.GVA_LOG.Info(GetLocalIP())
 	err,msg:= article.ViewBlogCount(c)
 	if err != nil {
 		response.FailWithMessage(msg, c)
