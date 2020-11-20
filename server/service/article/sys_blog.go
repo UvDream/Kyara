@@ -1,8 +1,10 @@
 package article
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/imroc/req"
+	"net"
 	"server/global"
 	"server/model"
 	"server/model/request"
@@ -74,18 +76,55 @@ func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 		}
 	}
 	if id=="blog"{
-		config:=model.SysConfig{}
-		err=db.Find(&config).Error
-		num, err:= strconv.ParseInt(config.BlogViewCount, 10, 64)
-		num=num+1
-		config.BlogViewCount=strconv.FormatInt(num, 10)
-		err=db.Model(&config).Update("blog_view_count",config.BlogViewCount).Error
+		//获取ip地址
+		ipAddress:=GetLocalIP()
+		fmt.Println(ipAddress)
+		//根据ip地址查询此ip是否存在库中
+		var ipList model.BlogView
+		err=db.Where("ip=?",ipAddress).First(&ipList).Error
 		if err!=nil{
-			return err,"更新博客访问量失败"
+			//	不存在,就创建
+			ipList.IP=ipAddress
+			err=db.Create(&ipList).Error
+			//更新
+			UpdateBlogView()
+		}else{
+			//	存在
+			fmt.Println(ipList,"获取看看")
 		}
+
 		return err,"更新博客访问量成功"
 	}
 	return err,"更新访问量成功"
+}
+func UpdateBlogView() (err error,msg string) {
+	db := global.GVA_DB
+	config:=model.SysConfig{}
+	err=db.Find(&config).Error
+	num, err:= strconv.ParseInt(config.BlogViewCount, 10, 64)
+	num=num+1
+	config.BlogViewCount=strconv.FormatInt(num, 10)
+	err=db.Model(&config).Update("blog_view_count",config.BlogViewCount).Error
+	if err!=nil{
+		return err,"更新博客访问量失败"
+	}
+	return err,"更新博客访问量成功"
+}
+func GetLocalIP() string {
+	addrs, err := net.InterfaceAddrs()
+	if err != nil {
+		return ""
+	}
+
+	for _, address := range addrs {
+		// 检查ip地址判断是否回环地址
+		if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
+			if ipnet.IP.To4() != nil {
+				return ipnet.IP.String()
+			}
+		}
+	}
+	return ""
 }
 //获取公告
 func GetNotice(r request.ListStruct)(err error,list []model.BlogNotice,msg string,total int64)  {

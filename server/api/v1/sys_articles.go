@@ -2,8 +2,6 @@ package v1
 
 import (
 	"fmt"
-	"net"
-	"server/global"
 	"server/global/response"
 	resp "server/model/response"
 	"server/service/article"
@@ -114,32 +112,13 @@ func GetGithub(c *gin.Context)  {
 //博客访问量统计
 func ViewBlogCount(c *gin.Context)  {
 	//id := c.Query("id")
-	fmt.Println(GetLocalIP(),"获取ip地址1")
-	fmt.Println(c.ClientIP(),"获取ip地址2")
-	global.GVA_LOG.Info(c.ClientIP())
-	global.GVA_LOG.Info(GetLocalIP())
+	//global.GVA_LOG.Info(c.ClientIP())
 	err,msg:= article.ViewBlogCount(c)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
 		response.OkWithMessage(msg,c)
 	}
-}
-func GetLocalIP() string {
-	addrs, err := net.InterfaceAddrs()
-	if err != nil {
-		return ""
-	}
-
-	for _, address := range addrs {
-		// 检查ip地址判断是否回环地址
-		if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
-			if ipnet.IP.To4() != nil {
-				return ipnet.IP.String()
-			}
-		}
-	}
-	return ""
 }
 //获取公告
 func GetNotice(c *gin.Context)  {

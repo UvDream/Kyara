@@ -89,3 +89,10 @@ type SysArticleTag struct {
 	ArticleID uint `json:"article_id"`
 	TagID uint `json:"tag_id"`
 }
+//ip地址
+type BlogView struct{
+	gorm.Model
+	IP string `json:"ip"`
+	System string `json:"system" gorm:"comment:'系统'"`
+	Device string `json:"device" gorm:"comment:'设备类型'"`
+}
