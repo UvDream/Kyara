@@ -27,7 +27,6 @@ export class NoticeComponent implements OnInit {
   indeterminate = false;
   loading = true;
   checked = false;
-  setOfCheckedId = new Set<number>();
   isVisible = false;
   public form = {
     search: '',

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
@@ -42,6 +42,9 @@ import { BackTopComponent } from './components/back-top/back-top.component';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 import { NoticeComponent } from './components/notice/notice.component';
 import { UpdateLogComponent } from './about/update-log/update-log.component';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -61,7 +64,10 @@ import { UpdateLogComponent } from './about/update-log/update-log.component';
     NzTimelineModule,
     NzDrawerModule,
     NzSkeletonModule,
-    NzBackTopModule
+    NzBackTopModule,
+    ReactiveFormsModule,
+    NzFormModule,
+    NzSwitchModule
   ],
   exports: [BlogComponent],
   declarations: [
@@ -89,6 +95,7 @@ import { UpdateLogComponent } from './about/update-log/update-log.component';
     BackTopComponent,
     NoticeComponent,
     UpdateLogComponent,
+
   ],
   providers: [CookieService],
 })
