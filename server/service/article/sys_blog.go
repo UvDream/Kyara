@@ -10,6 +10,7 @@ import (
 	"server/model/request"
 	"server/model/response"
 	"strconv"
+	"time"
 )
 
 
@@ -87,10 +88,29 @@ func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 			ipList.IP=ipAddress
 			err=db.Create(&ipList).Error
 			//更新
-			UpdateBlogView()
+			err,msg=UpdateBlogView()
+			if err!=nil{
+				return err,msg
+			}
 		}else{
 			//	存在
-			fmt.Println(ipList,"获取看看")
+			//现在时间
+			t2,_:=time.ParseInLocation("2006-01-02 15:04:05", time.Now().Format("2006-01-02 15:04:05") , time.Local)
+			//之前更新时间
+			t1,_:=time.ParseInLocation("2006-01-02 15:04:05", ipList.UpdatedAt.Format("2006-01-02 15:04:05") , time.Local)
+			diff := (t2.Unix() - t1.Unix())/3600
+			fmt.Println(diff)
+			if diff>12{
+				//需要更新时间
+				err=db.Model(&ipList).Where("id = ?", ipList.ID).Update("updated_at", time.Now()).Error
+				if err!=nil {
+					return err,"更新新的访问时间失败"
+				}
+				err,msg=UpdateBlogView()
+				if err!=nil{
+					return err,msg
+				}
+			}
 		}
 
 		return err,"更新博客访问量成功"

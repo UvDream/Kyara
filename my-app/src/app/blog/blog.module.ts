@@ -37,7 +37,6 @@ import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
-import { CookieService } from 'ngx-cookie-service';
 import { BackTopComponent } from './components/back-top/back-top.component';
 import { NzBackTopModule } from 'ng-zorro-antd/back-top';
 import { NoticeComponent } from './components/notice/notice.component';
@@ -97,6 +96,6 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
     UpdateLogComponent,
 
   ],
-  providers: [CookieService],
+  providers: [],
 })
 export class BlogModule { }
