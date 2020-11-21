@@ -15,38 +15,39 @@ func AddArticle(c *gin.Context) {
 	if err != nil {
 		//	参数获取失败
 	}
-	err, msg ,data:= service.AddArticle(R,c)
+	err, msg, data := service.AddArticle(R, c)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
-		response.OkDetailed(data,msg, c)
+		response.OkDetailed(data, msg, c)
 	}
 }
+
 //查询文章详情
-func GetArticleDetail(c *gin.Context)  {
+func GetArticleDetail(c *gin.Context) {
 	id := c.Query("id")
-	err,data:=service.GetArticleDetail(id)
+	err, data := service.GetArticleDetail(id)
 	if err != nil {
 		response.FailWithMessage("获取详情错误", c)
 	} else {
-		response.OkDetailed(data,"获取详情成功", c)
+		response.OkDetailed(data, "获取详情成功", c)
 	}
 }
+
 //增加公告
-func AddNotice(c *gin.Context)  {
+func AddNotice(c *gin.Context) {
 	var R model.BlogNotice
-	var api model.BlogNotice
 	err := c.ShouldBindJSON(&R)
-		ApiVerify := utils.Rules{
-			"title":        {utils.NotEmpty()},
-			"content": {utils.NotEmpty()},
-		}
-		ApiVerifyErr := utils.Verify(api, ApiVerify)
-		if ApiVerifyErr != nil {
-			response.FailWithMessage(ApiVerifyErr.Error(), c)
-			return
-		}
-	err,msg:=service.AddNotice(R)
+	ApiVerify := utils.Rules{
+		"Title":   {utils.NotEmpty()},
+		"Content": {utils.NotEmpty()},
+	}
+	ApiVerifyErr := utils.Verify(R, ApiVerify)
+	if ApiVerifyErr != nil {
+		response.FailWithMessage(ApiVerifyErr.Error(), c)
+		return
+	}
+	err, msg := service.AddNotice(R)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {

@@ -3,6 +3,7 @@ package router
 import (
 	v1 "server/api/v1"
 	"github.com/gin-gonic/gin"
+	"server/api/v1/blog"
 )
 // 文章相关路由
 func InitArticles(Router *gin.RouterGroup)(R gin.IRouter)  {
@@ -18,6 +19,7 @@ func InitArticles(Router *gin.RouterGroup)(R gin.IRouter)  {
 	    ArticleRouter.GET("github",v1.GetGithub)//获取github仓库
 	    ArticleRouter.GET("views",v1.ViewBlogCount)//博客访问
 	    ArticleRouter.POST("noticeList",v1.GetNotice)//获取公告
+	    ArticleRouter.POST("comment",blog.Comment)
 	}
 	return ArticleRouter
 }

@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/imroc/req"
-	"net"
 	"server/global"
 	"server/model"
 	"server/model/request"
 	"server/model/response"
+	"server/utils"
 	"strconv"
 	"time"
 )
@@ -78,7 +78,7 @@ func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 	}
 	if id=="blog"{
 		//获取ip地址
-		ipAddress:=GetLocalIP()
+		ipAddress:=utils.GetLocalIP()
 		fmt.Println(ipAddress)
 		//根据ip地址查询此ip是否存在库中
 		var ipList model.BlogView
@@ -130,22 +130,7 @@ func UpdateBlogView() (err error,msg string) {
 	}
 	return err,"更新博客访问量成功"
 }
-func GetLocalIP() string {
-	addrs, err := net.InterfaceAddrs()
-	if err != nil {
-		return ""
-	}
 
-	for _, address := range addrs {
-		// 检查ip地址判断是否回环地址
-		if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
-			if ipnet.IP.To4() != nil {
-				return ipnet.IP.String()
-			}
-		}
-	}
-	return ""
-}
 //获取公告
 func GetNotice(r request.ListStruct)(err error,list []model.BlogNotice,msg string,total int64)  {
 	db := global.GVA_DB
