@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BlogService } from '@service/blog.service';
+import { Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
@@ -20,9 +22,11 @@ export class CommentComponent implements OnInit {
   constructor(
     private message: NzMessageService,
     private blogHttp: BlogService,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('留言-汪中杰的个人博客');
     this.getAvatar();
   }
   async getAvatar(): Promise<void> {
