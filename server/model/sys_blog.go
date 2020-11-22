@@ -6,6 +6,7 @@ import "github.com/jinzhu/gorm"
 type  BlogComment struct {
 	gorm.Model
 	UserName string `json:"user_name" gorm:"comment:'昵称'"`
+	Avatar string `json:"avatar" gorm:"comment:'用户头像'"`
 	Email string `json:"email"`
 	BlogURL string `json:"blog_url"`
 	CommentContent string `json:"comment_content" gorm:"comment:'留言内容'"`
