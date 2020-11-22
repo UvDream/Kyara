@@ -7,6 +7,7 @@ import (
 
 func Comment(r model.BlogComment)(err error ,msg string)  {
 	db := global.GVA_DB
+	r.Status="0"
 	if r.ID==0{
 		err=db.Create(&r).Error
 		if err!=nil {

@@ -15,4 +15,5 @@ type  BlogComment struct {
 	BadNumber string `json:"bad_number" gorm:"comment:'差评数'"`
 	ParentID string `json:"parent_id" gorm:"comment:'父id'"`
 	IsPrivate string `json:"is_private" gorm:"comment:'是否为私密评论'"`
+	Status string `json:"status" gorm:"comment:'审核状态0:需要审核,1:可以展示'`
 }
