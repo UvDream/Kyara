@@ -80,6 +80,7 @@ func ViewBlogCount(c *gin.Context)(err error,msg string)  {
 		//获取ip地址
 		ipAddress:=utils.GetLocalIP()
 		fmt.Println(ipAddress)
+		global.GVA_LOG.Info("ip地址",ipAddress)
 		//根据ip地址查询此ip是否存在库中
 		var ipList model.BlogView
 		err=db.Where("ip=?",ipAddress).First(&ipList).Error
