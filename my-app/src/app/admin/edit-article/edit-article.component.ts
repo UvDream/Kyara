@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '@service/article.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ActivatedRoute } from '@angular/router';
-import { Platform } from '@angular/cdk/platform';
 
 interface TreeItem {
   key: string;
@@ -17,11 +16,10 @@ interface TreeItem {
 })
 export class EditArticleComponent implements OnInit {
   constructor(
-    private route: ActivatedRoute, 
-    private httpService: ArticleService, 
+    private route: ActivatedRoute,
+    private httpService: ArticleService,
     private message: NzMessageService,
-    private platform: Platform,
-    ) { }
+  ) { }
   isPassword = false;
   isTop = false;
   coverTypeDisabled = false;
@@ -67,7 +65,6 @@ export class EditArticleComponent implements OnInit {
   }
   // 渲染markdown
   markdownToHtml = (data) => {
-    if (this.platform.isBrowser) { return; }
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
     import('vditor').then((Vditor: any) =>
       Vditor.preview(mainElement, data, {
