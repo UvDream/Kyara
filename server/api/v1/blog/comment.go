@@ -33,3 +33,12 @@ func Comment(c *gin.Context) {
 		response.OkWithMessage(msg,c)
 	}
 }
+//获取留言
+func GetComment(c *gin.Context)  {
+	err,msg,list:=blog.GetComment()
+	if err!=nil{
+		response.FailWithMessage(msg,c)
+	}else {
+		response.OkDetailed(list,msg,c)
+	}
+}

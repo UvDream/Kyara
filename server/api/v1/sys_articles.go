@@ -63,7 +63,6 @@ func CheckPassword(c *gin.Context) {
 // 文章分类
 func ArticleClassify(c *gin.Context) {
 	err, msg := article.ArticleClassify()
-	fmt.Println(err, msg)
 	if err != nil {
 		response.FailWithMessage("获取分类失败", c)
 	} else {

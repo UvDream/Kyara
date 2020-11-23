@@ -20,6 +20,7 @@ func InitArticles(Router *gin.RouterGroup)(R gin.IRouter)  {
 	    ArticleRouter.GET("views",v1.ViewBlogCount)//博客访问
 	    ArticleRouter.POST("noticeList",v1.GetNotice)//获取公告
 	    ArticleRouter.POST("comment",blog.Comment)//评论
+	    ArticleRouter.GET("getComment",blog.GetComment) //获取留言
 	}
 	return ArticleRouter
 }
