@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-comment-component',
   templateUrl: './comment.component.html',
@@ -7,10 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CommentComponent implements OnInit {
   @Input() data: Array<any>;
-  constructor() { }
+  @Input() isChildren = false;
+  constructor(
+    ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    console.log(this.data, this.isChildren);
   }
 
 }

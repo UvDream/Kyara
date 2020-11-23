@@ -1,4 +1,7 @@
 package response
+
+import "server/model"
+
 //白熊图床相关返回结构体
 type BxResponse struct {
 	Code int `json:"code"`
@@ -27,4 +30,9 @@ type BxTokenResponse struct{
 	Code int `json:"code"`
 	Msg string `json:"msg"`
 	Data bxData `json:"data"`
+}
+
+type CommentMsg struct {
+	Total int64 `json:"total"`
+	Data []model.BlogComment `json:"data"`
 }

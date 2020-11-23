@@ -22,4 +22,12 @@ export class BlogService {
       params
     });
   }
+  // 获取留言
+  getComment = (data?: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/article/getComment',
+      data
+    });
+  }
 }

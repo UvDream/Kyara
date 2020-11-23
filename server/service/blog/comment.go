@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"server/global"
 	"server/model"
+	"server/model/request"
 )
 
 func Comment(r model.BlogComment)(err error ,msg string)  {
@@ -18,21 +19,23 @@ func Comment(r model.BlogComment)(err error ,msg string)  {
 
 	return err,"留言成功"
 }
-func GetComment()(err error,msg string, blogComment []model.BlogComment)  {
+func GetComment(r request.ListStruct)(err error,msg string, blogComment []model.BlogComment,totalCount int64)  {
 	db := global.GVA_DB
-	err=db.Where("status=? AND parent_id=?","1","").Find(&blogComment).Error
+	offset:=r.PageSize*(r.Page-1)
+
+	err=db.Where("status=? AND parent_id=?","1","").Limit(r.PageSize).Offset(offset).Find(&blogComment).Count(&totalCount).Error
 	if err!=nil{
-		return err,"查询失败",blogComment
+		return err,"查询失败",blogComment,0
 	}
 	fmt.Println(blogComment)
 	for k,i:=range blogComment{
 		blogComment[k].Children=findChildren(i.ID)
 	}
-	return err,"查询留言成功",blogComment
+	return err,"查询留言成功",blogComment,totalCount
 }
 func findChildren(parentId uint)(child []model.BlogComment)  {
 	db := global.GVA_DB
-	err:=db.Where("parent_id=?",parentId).Find(&child).Error
+	err:=db.Where("parent_id=? AND status=?",parentId,"1").Find(&child).Error
 	fmt.Println(err)
 	for k, i := range child{
 		child[k].Children = findChildren(i.ID)

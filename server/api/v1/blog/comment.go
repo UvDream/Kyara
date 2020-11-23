@@ -3,7 +3,9 @@ package blog
 import (
 	"github.com/gin-gonic/gin"
 	"server/global/response"
+	resp "server/model/response"
 	"server/model"
+	"server/model/request"
 	"server/service/blog"
 	"server/utils"
 )
@@ -35,10 +37,12 @@ func Comment(c *gin.Context) {
 }
 //获取留言
 func GetComment(c *gin.Context)  {
-	err,msg,list:=blog.GetComment()
+	var R request.ListStruct
+	_ = c.ShouldBindJSON(&R)
+	err,msg,list,count:=blog.GetComment(R)
 	if err!=nil{
 		response.FailWithMessage(msg,c)
 	}else {
-		response.OkDetailed(list,msg,c)
+		response.OkDetailed(&resp.CommentMsg{Total: count,Data: list},msg,c)
 	}
 }

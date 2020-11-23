@@ -9,6 +9,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./comments.component.less']
 })
 export class CommentsComponent implements OnInit {
+  totalCount = 0;
   form = {
     user_name: '',
     email: '',
@@ -19,6 +20,12 @@ export class CommentsComponent implements OnInit {
     ID: '',
     is_private: false
   };
+  commentForm = {
+    page: 1,
+    page_size: 10
+  };
+  commentData = [
+  ];
   constructor(
     private message: NzMessageService,
     private blogHttp: BlogService,
@@ -28,6 +35,7 @@ export class CommentsComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('留言-汪中杰的个人博客');
     this.getAvatar();
+    this.getComment();
   }
   async getAvatar(): Promise<void> {
     const res = await this.blogHttp.getAvatar();
@@ -51,6 +59,19 @@ export class CommentsComponent implements OnInit {
     const res = await this.blogHttp.addComment(this.form);
     if (res.code === 200) {
       this.message.create('success', '留言成功,博主会及时审核回复展示!');
+    }
+  }
+  PageIndexChange(page: number): void {
+    this.commentForm.page = page;
+    this.getComment();
+  }
+  // 获取留言
+  async getComment(): Promise<void> {
+    const res = await this.blogHttp.getComment(this.commentForm);
+    console.log(res);
+    if (res.code === 200) {
+      this.commentData = res.data.data;
+      this.totalCount = res.data.total;
     }
   }
 

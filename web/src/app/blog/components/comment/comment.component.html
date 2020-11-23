@@ -1,3 +1,19 @@
-<div>
-    
+<div class="comment" *ngFor="let item of data" [ngClass]="{children: isChildren}">
+    <div class="comment-top">
+        <div class="comment-top-avatar">
+            <img [src]="item.avatar" alt="">
+        </div>
+        <div>
+            <div>
+                {{item.user_name}}
+            </div>
+            <div> {{item.comment_content}}</div>
+        </div>
+    </div>
+    <div class="comment-bottom">
+        <div>
+            {{item.CreatedAt | date:"y-d-MM HH:mm "}}
+        </div>
+    </div>
+    <app-comment-component [data]="item.children" isChildren="true"></app-comment-component>
 </div>

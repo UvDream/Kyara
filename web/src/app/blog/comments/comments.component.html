@@ -50,7 +50,10 @@
   </div>
   <div>
     留言展示
-    <app-comment-component [data]="['1']"></app-comment-component>
+    <app-comment-component [data]="commentData"></app-comment-component>
+    <div class="comments-page">
+      <nz-pagination [nzPageIndex]="1" [nzTotal]="totalCount" (nzPageIndexChange)="PageIndexChange"></nz-pagination>
+    </div>
   </div>
 
 </div>
