@@ -5,10 +5,10 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-comment',
-  templateUrl: './comment.component.html',
-  styleUrls: ['./comment.component.less']
+  templateUrl: './comments.component.html',
+  styleUrls: ['./comments.component.less']
 })
-export class CommentComponent implements OnInit {
+export class CommentsComponent implements OnInit {
   form = {
     user_name: '',
     email: '',

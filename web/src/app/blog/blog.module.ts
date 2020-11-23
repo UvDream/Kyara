@@ -31,7 +31,7 @@ import { NumberFormatPipe } from '../pipes/number-format.pipe';
 import { GithubComponent } from './github/github.component';
 import { ArchivesComponent } from './archives/archives.component';
 import { PhotosComponent } from './photos/photos.component';
-import { CommentComponent } from './comment/comment.component';
+// import { CommentComponent } from './comment/comment.component';
 import { AboutComponent } from './about/about.component';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzTimelineModule } from 'ng-zorro-antd/timeline';
@@ -43,6 +43,7 @@ import { NoticeComponent } from './components/notice/notice.component';
 import { UpdateLogComponent } from './about/update-log/update-log.component';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
@@ -90,11 +91,11 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
     GithubComponent,
     ArchivesComponent,
     PhotosComponent,
-    CommentComponent,
     AboutComponent,
     BackTopComponent,
     NoticeComponent,
     UpdateLogComponent,
+    CommentsComponent,
 
   ],
   providers: [],

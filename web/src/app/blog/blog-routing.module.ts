@@ -5,9 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { DetailComponent } from './detail/detail.component';
 import { GithubComponent } from './github/github.component';
 import { PhotosComponent } from './photos/photos.component';
-import { CommentComponent } from './comment/comment.component';
 import { AboutComponent } from './about/about.component';
 import { ArchivesComponent } from './archives/archives.component';
+import { CommentsComponent } from './comments/comments.component';
 
 export const homeRoutes: Routes = [
   {
@@ -33,7 +33,7 @@ export const homeRoutes: Routes = [
       },
       {
         path: 'comment',
-        component: CommentComponent,
+        component: CommentsComponent,
       },
       {
         path: 'about',
