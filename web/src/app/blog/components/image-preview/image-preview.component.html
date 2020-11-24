@@ -1,0 +1,6 @@
+<div class="preview" *ngIf="visible" (click)="imgClick()">
+    <div class="preview-content"></div>
+    <div class="preview-img">
+        <img [src]="src" [ngStyle]="{width: imgWidth}" alt="">
+    </div>
+</div>
