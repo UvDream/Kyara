@@ -28,9 +28,9 @@ export class HotArticleComponent implements OnInit {
     const res = await this.service.hotArticle();
     if (res.code === 200) {
       this.list = res.data;
-      const arr = this.randomNumber(5);
+      const arr = this.randomNumber(18);
       this.list.forEach((element: HotList, index: number) => {
-        element.avatar = './assets/images/hot-article/' + arr[index] + '.jpg';
+        element.avatar = './assets/images/robot/bot-' + arr[index] + '.png';
       });
     }
   }

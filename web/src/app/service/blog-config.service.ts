@@ -19,6 +19,7 @@ export class BlogConfigService {
   public BlogViewCount = '';
   public FilingMsg = '';
   public BlogNotice = '';
+
   getConfig = async () => {
     const res = await this.httpService.getConfig();
     if (res.code !== 200) { return; }
@@ -34,5 +35,6 @@ export class BlogConfigService {
     this.BlogTime = toTimeDH(res.data.blog_start_time, 'DD-HH');
     this.ActiveTime = toTimeDH(res.data.active_time, 'DD');
     this.BlogNotice = res.data.blog_notice;
+    this.BlogLogo = res.data.blog_logo;
   }
 }
