@@ -23,7 +23,7 @@
           <span>*</span>
         </div>
         <nz-input-group [nzPrefix]="prefixTemplateUser">
-          <input [(ngModel)]="form.user_name" type="text" nz-input placeholder="请输入你的昵称" />
+          <input [(ngModel)]="form.user_name" maxlength="30" type="text" nz-input placeholder="请输入你的昵称" />
         </nz-input-group>
         <ng-template #prefixTemplateUser>
           <img [src]="form.avatar" alt="" class="comments-avatar">
