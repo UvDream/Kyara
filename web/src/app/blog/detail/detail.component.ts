@@ -39,6 +39,8 @@ export class DetailComponent implements OnInit {
   public commentCount: string;
   // 图片
   public topImg: string;
+  // 更新时间
+  public UpdatedAt: string;
   @ViewChild('vditor') myDom: HTMLDivElement;
   isVisible = false;
   public tabList = [
@@ -86,6 +88,7 @@ export class DetailComponent implements OnInit {
     this.viewCount = res.data.view_count;
     this.commentCount = res.data.comment_count;
     this.topImg = res.data.img_url;
+    this.UpdatedAt = res.data.UpdatedAt;
     this.setTitle(this.title + '(汪中杰的个人博客)');
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
     import('vditor').then((Vditor: any) =>
@@ -156,5 +159,10 @@ export class DetailComponent implements OnInit {
   async viewArticle(id: string): Promise<void> {
     console.log('文章访问');
     const res = await this.request.viewBlog(id);
+  }
+  contentClick(event: any): void {
+    console.log(event, 'dianji');
+    console.log(event.target.currentSrc);
+
   }
 }

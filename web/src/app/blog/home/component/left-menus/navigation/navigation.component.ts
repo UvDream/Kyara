@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticleCatalogService } from '@service/article-catalog.service';
 interface MenuItem {
   title: string;
   id: number;
@@ -12,7 +13,7 @@ interface MenuItem {
   styleUrls: ['./navigation.component.less'],
 })
 export class NavigationComponent implements OnInit {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private catalogService: ArticleCatalogService,) { }
   public menus = [
     { title: '首页', id: 1, icon: 'uv-home-outline', url: '/home' },
     { title: '仓库', id: 2, icon: 'uv-git-merge-outline', url: '/github' },
@@ -27,5 +28,6 @@ export class NavigationComponent implements OnInit {
   navFunc(item: MenuItem) {
     this.ActiveMenus = item.id;
     this.router.navigate([item.url]);
+    this.catalogService.SetCatLog()
   }
 }

@@ -42,15 +42,15 @@
       'background-image': 'url(' + topImg + ')'
     }">
 </div>
-  <div #vditor id="vditor" class="detail-content"></div>
+  <div #vditor id="vditor" class="detail-content" (click)="contentClick($event)"></div>
   <div [innerHTML]="htmlContent" style="display: none"></div>
   <div class="detail-praise">
     <div class="detail-praise-time">
-      <section>
+      <section class="one-text">
         <span class="iconfont uv-time-outline"></span>
-        最后修改时间:2020年10月1日
+        最后修改时间:{{UpdatedAt|date:"y-d-MM HH:mm:ss "}}
       </section>
-      <section>
+      <section class="one-text">
         <span class="iconfont uv-alert-circle-outline"></span>
         允许转载
       </section>

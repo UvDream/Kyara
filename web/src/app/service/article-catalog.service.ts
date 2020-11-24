@@ -12,7 +12,7 @@ export class ArticleCatalogService {
   constructor(
     private platform: Platform,
   ) { }
-  SetCatLog = (arr: any) => {
+  SetCatLog = (arr?: any) => {
     if (this.platform.isBrowser) {
       this.pathName = location.pathname;
     }

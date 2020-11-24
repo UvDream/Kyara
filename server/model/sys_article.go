@@ -96,3 +96,11 @@ type BlogView struct{
 	System string `json:"system" gorm:"comment:'系统'"`
 	Device string `json:"device" gorm:"comment:'设备类型'"`
 }
+//收款码
+type CollectionCode struct{
+	gorm.Model
+	Name string `json:"name" gorm:"comment:'收款码名称'"`
+	ImgURL string `json:"img_url" gorm:"comment:'收款码地址'"`
+	ArticleID string `json:"article_id" gorm:"comment:'对应的文章id'"`
+	UserID string `json:"user_id" gorm:"comment:'上传作者id';default:'ce0d6685-c15f-4126-a5b4-890bc9d2356d'"`
+}
