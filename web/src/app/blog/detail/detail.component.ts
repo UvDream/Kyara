@@ -5,9 +5,9 @@ import { ArticleCatalogService } from '@service/article-catalog.service';
 import { Title } from '@angular/platform-browser';
 
 interface TabItem {
-  id: number;
-  title: string;
-  imgUrl: string;
+  ID: number;
+  name: string;
+  img_url: string;
 }
 @Component({
   selector: 'app-detail',
@@ -41,24 +41,14 @@ export class DetailComponent implements OnInit {
   public topImg: string;
   // 更新时间
   public UpdatedAt: string;
+  // 赞赏提示文字
+  public collectText: string;
   @ViewChild('vditor') myDom: HTMLDivElement;
+  // 赞赏弹窗
   isVisible = false;
-  public tabList = [
-    {
-      id: 1,
-      title: '支付宝支付',
-      imgUrl:
-        'https://gitee.com/Uvdream/images/raw/master/images/20200812100455.png',
-    },
-    {
-      id: 2,
-      title: '微信支付',
-      imgUrl:
-        'https://gitee.com/Uvdream/images/raw/master/images/20200812100455.png',
-    },
-  ];
-  public imgUrl = this.tabList[0].imgUrl;
-  public activeId = this.tabList[0].id;
+  public tabList = [];
+  public imgUrl = '';
+  public activeId = 1;
   ngOnInit(): void {
     let id = '';
     let password = '';
@@ -89,6 +79,13 @@ export class DetailComponent implements OnInit {
     this.commentCount = res.data.comment_count;
     this.topImg = res.data.img_url;
     this.UpdatedAt = res.data.UpdatedAt;
+    this.tabList = res.data.collect_list;
+    if (res.data.collect_list.length > 0) {
+      this.imgUrl = this.tabList[0].img_url;
+      this.activeId = this.tabList[0].ID;
+    }
+
+    this.collectText = res.data.collect_text;
     this.setTitle(this.title + '(汪中杰的个人博客)');
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
     import('vditor').then((Vditor: any) =>
@@ -151,7 +148,8 @@ export class DetailComponent implements OnInit {
     this.isVisible = data;
   }
   tabClick = (data: TabItem) => {
-    this.activeId = data.id;
+    this.activeId = data.ID;
+    this.imgUrl = data.img_url;
   }
   public setTitle = (newTitle: string) => {
     this.titleService.setTitle(newTitle);

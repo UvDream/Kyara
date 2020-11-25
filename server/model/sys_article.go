@@ -57,6 +57,9 @@ type SysArticle struct {
 	WordCount string `json:"word_count" gorm:"comment:'文章字数';"`
 	// 点赞数
 	LikeCount string `json:"like_count" gorm:"comment:'点赞数'"`
+	// 赞赏码
+	CollectList []CollectionCode `json:"collect_list" gorm:"-"`
+	CollectText string `json:"collect_text" gorm:"comment:'赞赏提示文字';default:'如果觉得我的文章对你有用，请随意赞赏!'"`
 }
 
 //文章分类

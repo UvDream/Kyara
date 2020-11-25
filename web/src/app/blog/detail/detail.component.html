@@ -55,7 +55,7 @@
         允许转载
       </section>
     </div>
-    <div class="detail-praise-text">
+    <div class="detail-praise-text" *ngIf="tabList.length!==0">
       <button
         nz-button
         nzType="primary"
@@ -65,7 +65,7 @@
       >
         赞赏
       </button>
-      <p>如果觉得我的文章对你有用，请随意赞赏</p>
+      <p>{{collectText}}</p>
     </div>
   </div>
   <nz-modal
@@ -82,12 +82,12 @@
           <section
             *ngFor="let item of tabList"
             (click)="tabClick(item)"
-            [ngClass]="{ active: activeId == item.id }"
+            [ngClass]="{ active: activeId == item.ID }"
           >
-            {{ item.title }}
+            {{ item.name }}
           </section>
         </div>
-        <img [src]="imgUrl" alt="" />
+        <img class="detail-modal-img-url" [src]="imgUrl" alt="" />
       </div>
     </ng-template>
     <ng-template #modalFooter>

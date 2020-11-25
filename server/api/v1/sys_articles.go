@@ -41,10 +41,13 @@ func GetArticleDetail(c *gin.Context) {
 		response.FailWithMessage("请携带文章id", c)
 		return
 	}
-	err, msg := article.GetArticleDetail(c)
-	if err == nil {
-		response.OkDetailed(msg, "获取详情成功", c)
+	err, list,msg := article.GetArticleDetail(c)
+	if err!=nil {
+		response.FailWithMessage(msg,c)
+	}else{
+		response.OkDetailed(list, msg, c)
 	}
+
 }
 
 //验证密码是否正确
