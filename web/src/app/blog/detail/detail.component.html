@@ -4,9 +4,7 @@
     <div class="detail-title-top">
       <h1>{{ title }}</h1>
       <div>
-        <span
-          class="iconfont uv-caret-forward-circle-outline margin-left-right-5"
-        ></span>
+        <span class="iconfont uv-caret-forward-circle-outline margin-left-right-5"></span>
         <span class="iconfont uv-book-outline margin-left-right-5"></span>
         <span class="iconfont uv-print-outline margin-left-right-5"></span>
       </div>
@@ -16,32 +14,21 @@
 
       <span>{{ author }}</span>
 
-      <span
-        class="iconfont uv-time-outline"
-        style="margin: 0 5px 0 10px"
-      ></span>
+      <span class="iconfont uv-time-outline" style="margin: 0 5px 0 10px"></span>
       <span>{{ time| date:"y-d-MM HH:mm:ss " }}</span>
-      <span
-        class="iconfont uv-chatbubble-outline"
-        style="margin: 0 5px 0 10px"
-      ></span>
+      <span class="iconfont uv-chatbubble-outline" style="margin: 0 5px 0 10px"></span>
       <span>{{ commentCount===''?'暂无':commentCount+'条评论' }}</span>
       <span class="iconfont uv-eye-outline" style="margin: 0 5px 0 10px"></span>
       <span>{{ viewCount===''?'暂无': viewCount+'次浏览'}}</span>
-      <span
-        class="iconfont uv-information-outline"
-        style="margin: 0 5px 0 10px"
-      ></span>
+      <span class="iconfont uv-information-outline" style="margin: 0 5px 0 10px"></span>
       <span>{{ wordCount===''?'暂无统计':wordCount+'字数' }}</span>
     </div>
   </div>
   <!-- 图片 -->
-  <div class="detail-img" 
-    class="detail-img"
-    [ngStyle]="{
+  <div class="detail-img" class="detail-img" [ngStyle]="{
       'background-image': 'url(' + topImg + ')'
     }">
-</div>
+  </div>
   <div #vditor id="vditor" class="detail-content" (click)="contentClick($event)"></div>
   <div [innerHTML]="htmlContent" style="display: none"></div>
   <div class="detail-praise">
@@ -68,14 +55,8 @@
       <p>{{collectText}}</p>
     </div>
   </div>
-  <nz-modal
-    [(nzVisible)]="isVisible"
-    nzTitle="赞赏作者"
-    [nzContent]="modalContent"
-    [nzFooter]="modalFooter"
-    nzWidth="400"
-    (nzOnCancel)="showModal(false)"
-  >
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="赞赏作者" [nzContent]="modalContent" [nzFooter]="modalFooter" nzWidth="400"
+    (nzOnCancel)="showModal(false)">
     <ng-template #modalContent>
       <div class="detail-modal-img">
         <div class="detail-modal-img-tab">
@@ -92,12 +73,7 @@
     </ng-template>
     <ng-template #modalFooter>
       <div class="detail-modal-footer">
-        <button
-          nz-button
-          nzType="primary"
-          nzShape="round"
-          (click)="showModal(false)"
-        >
+        <button nz-button nzType="primary" nzShape="round" (click)="showModal(false)">
           确认
         </button>
       </div>
@@ -107,4 +83,5 @@
     <button nz-button nzType="default" nzShape="round">上一篇</button>
     <button nz-button nzType="default" nzShape="round">下一篇</button>
   </div>
+  <app-image-preview [(visible)]="imageModal" [src]="imgPreviewUrl"></app-image-preview>
 </div>

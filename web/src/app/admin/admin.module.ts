@@ -52,7 +52,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     ArticleListComponent,
     NoticeComponent,
     ClassifyComponent,
-    TagsComponent
+    TagsComponent,
   ],
   exports: [AdminComponent],
 })

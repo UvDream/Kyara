@@ -21,6 +21,9 @@ export class DetailComponent implements OnInit {
     private articleCat: ArticleCatalogService,
     private titleService: Title
   ) { }
+  // 预览窗口弹窗
+  imageModal = false;
+  imgPreviewUrl: string;
   // 文章标题
   public title: string;
   // html内容
@@ -159,8 +162,11 @@ export class DetailComponent implements OnInit {
     const res = await this.request.viewBlog(id);
   }
   contentClick(event: any): void {
-    console.log(event, 'dianji');
-    console.log(event.target.currentSrc);
+    console.log(event.target.nodeName);
+    if (event.target.nodeName.toString() === 'IMG') {
+      this.imageModal = true;
+      this.imgPreviewUrl = event.target.currentSrc;
+    }
 
   }
 }
