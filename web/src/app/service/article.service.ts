@@ -102,7 +102,7 @@ export class ArticleService {
   }
   // 百度收录
   toBaidu = () => {
-    this.fetch.get('http://data.zz.baidu.com/urls?site=www.uvdream.cn&token=PlJmLr6f48JBQyyP').toPromise().then((res: any) => {
+    this.fetch.post('http://data.zz.baidu.com/urls?site=www.uvdream.cn&token=PlJmLr6f48JBQyyP', { urls: 'www.uvdream.cn', token: 'PlJmLr6f48JBQyyP' }).toPromise().then((res: any) => {
       console.log('百度收录', res);
     });
   }

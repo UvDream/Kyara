@@ -27,3 +27,10 @@ type ListStruct struct{
 	PageSize int `json:"page_size"`
 	Search string `json:"search"`
 }
+// 百度收录结构体
+type ToBaiDuRequest struct{
+	Site string `json:"site"`
+	Token string `json:"token"`
+	URL string `json:"url"`
+	Argument string `json:"argument"`
+}

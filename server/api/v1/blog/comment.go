@@ -46,3 +46,17 @@ func GetComment(c *gin.Context)  {
 		response.OkDetailed(&resp.CommentMsg{Total: count,Data: list},msg,c)
 	}
 }
+//百度收录
+func ToBaiDu(c *gin.Context)  {
+	var R request.ToBaiDuRequest
+	err:=c.ShouldBindJSON(&R)
+	if err!=nil {
+		response.FailWithMessage("参数获取错误",c)
+	}
+	err,msg,count:=blog.ToBaidu(R)
+	if err!=nil{
+		response.FailWithMessage(msg,c)
+	}else {
+		response.OkDetailed(count,msg,c)
+	}
+}
