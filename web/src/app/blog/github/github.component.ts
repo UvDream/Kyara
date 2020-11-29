@@ -21,7 +21,7 @@ interface GithubItem {
 })
 export class GithubComponent implements OnInit {
 
-  constructor(private http: ArticleService,  private titleService: Title) { }
+  constructor(private http: ArticleService, private titleService: Title) { }
   public GithubList: Array<GithubItem>;
   public Loading = false;
   public ColorObject = {
@@ -84,7 +84,12 @@ export class GithubComponent implements OnInit {
     // }];
     this.getGithub();
     this.titleService.setTitle('github仓库列表-汪中杰的个人博客');
-
+    const url = '/github';
+    this.http.toBaidu(url).then(res => {
+      if (res.code === 200) {
+        console.log(res.msg);
+      }
+    });
   }
   getGithub = async () => {
     this.Loading = true;

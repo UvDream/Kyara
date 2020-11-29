@@ -1,7 +1,9 @@
 package blog
 
 import (
+	"errors"
 	"fmt"
+	"github.com/imroc/req"
 	"github.com/thedevsaddam/gojsonq/v2"
 	"io/ioutil"
 	"net/http"
@@ -59,6 +61,11 @@ func ToBaidu(r request.ToBaiDuRequest)(err error,msg string,baiduResponse respon
 	url:="http://data.zz.baidu.com/urls?site="+config.DomainName+"&token="+config.BaiDuToken
 	contentType:="text/plain"
 	data:=config.DomainName+r.Argument
+	//判断是否收录
+	err,msg=BaiduInclude(data)
+	if err!=nil{
+		return err,"百度已经收录",baiduResponse
+	}
 	client := &http.Client{Timeout: 5 * time.Second}
 	resp, err := client.Post(url, contentType, strings.NewReader(data))
 	resp.Header.Add("User-Agent", "curl/7.12.1")
@@ -74,5 +81,25 @@ func ToBaidu(r request.ToBaiDuRequest)(err error,msg string,baiduResponse respon
 	remain:=gojsonq.New().FromString(string(result)).Find("remain")
 	baiduResponse.Success=success
 	baiduResponse.Remain=remain
-	return err,"百度收录成",baiduResponse
+	return err,"百度收录成功",baiduResponse
+}
+type baiduCollect struct{
+	Code int `json:"code"`
+	Msg string `json:"msg"`
+}
+//判断百度是否收录
+func BaiduInclude(url string)(err error,msg string)  {
+	param := req.Param{
+		"url":  url,
+	}
+	r,err:=req.Get("https://api.uomg.com/api/collect.baidu",param)
+	if err!=nil{
+		return err,"请求百度是否收录失败"
+	}
+	var res baiduCollect
+	r.ToJSON(&res)
+	if res.Code==1 {
+		return errors.New("EOF"),"该网址已经收录"
+	}
+	return nil,"网址未被收录"
 }

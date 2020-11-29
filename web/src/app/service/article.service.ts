@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
-  constructor(private http: HttpService, private fetch: HttpClient) {
+  constructor(private http: HttpService) {
   }
 
   // 文章列表
@@ -101,9 +100,14 @@ export class ArticleService {
     });
   }
   // 百度收录
-  toBaidu = () => {
-    this.fetch.post('http://data.zz.baidu.com/urls?site=www.uvdream.cn&token=PlJmLr6f48JBQyyP', { urls: 'www.uvdream.cn', token: 'PlJmLr6f48JBQyyP' }).toPromise().then((res: any) => {
-      console.log('百度收录', res);
+  toBaidu = (url?: string) => {
+    const data = {
+      argument: url
+    };
+    return this.http.request({
+      method: 'post',
+      url: '/article/baidu',
+      data
     });
   }
 

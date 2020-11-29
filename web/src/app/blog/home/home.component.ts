@@ -34,7 +34,11 @@ export class HomeComponent implements OnInit {
     this.getData();
     this.setTitle('汪中杰的个人博客-首页');
     this.catalog.SetCatLog([]);
-    this.articleService.toBaidu();
+    this.articleService.toBaidu('/home').then(res => {
+      if (res.code === 200) {
+        console.log(res.msg);
+      }
+    });
   }
   getData = async () => {
     this.Loading = true;

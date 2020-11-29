@@ -64,6 +64,12 @@ export class DetailComponent implements OnInit {
     });
     this.getDetail(id, password);
     this.viewArticle(id);
+    const url = '/detail?id=' + id;
+    this.request.toBaidu(url).then(res => {
+      if (res.code === 200) {
+        console.log(res.msg);
+      }
+    });
   }
   // 获取文章详情
   getDetail = async (id, password) => {
