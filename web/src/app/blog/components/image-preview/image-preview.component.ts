@@ -21,13 +21,16 @@ export class ImagePreviewComponent implements OnInit, DoCheck {
       img.src = this.src;
       if (img.complete) {
         console.log(img.width, '图片高度');
-        console.log(document.body.clientWidth / img.width, document.body.clientHeight / img.height)
-
-        if (document.body.clientWidth / img.width > 5) {
+        console.log(document.body.clientWidth / img.width, document.body.clientHeight / img.height);
+        const ratio = document.body.clientWidth / img.width;
+        if (ratio > 5) {
           this.imgWidth = img.width * 2 + 'px';
         }
-        if (document.body.clientWidth / img.width < 1) {
+        if (ratio < 1) {
           this.imgWidth = img.width / 2 + 'px';
+        }
+        if (ratio < 2 && ratio >= 1) {
+          this.imgWidth = img.width / 1.5 + 'px';
         }
       }
     }

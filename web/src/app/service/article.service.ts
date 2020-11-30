@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -104,6 +105,9 @@ export class ArticleService {
     const data = {
       argument: url
     };
+    if (!environment) {
+      return '';
+    }
     return this.http.request({
       method: 'post',
       url: '/article/baidu',
