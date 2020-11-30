@@ -45,6 +45,7 @@ import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { ImagePreviewComponent } from './components/image-preview/image-preview.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 
 @NgModule({
@@ -99,6 +100,7 @@ import { ImagePreviewComponent } from './components/image-preview/image-preview.
     CommentsComponent,
     CommentComponent,
     ImagePreviewComponent,
+    CommentFormComponent,
   ],
   providers: [],
 })
