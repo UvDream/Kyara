@@ -17,7 +17,7 @@
       </div>
     </div>
     <div nz-row [nzGutter]="5">
-      <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12" nzXl="8" nzXXl="8">
+      <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12" nzXl="8" nzXXl="8" *ngIf="!userExist">
         <div class="comments-title">
           昵称:
           <span>*</span>
@@ -30,14 +30,14 @@
         </ng-template>
       </div>
 
-      <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12" nzXl="8" nzXXl="8">
+      <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12" nzXl="8" nzXXl="8" *ngIf="!userExist">
         <div class="comments-title">
           邮箱:
           <span>*</span>
         </div>
         <input type="email" [(ngModel)]="form.email" nz-input placeholder="输入邮箱(将保密)" />
       </div>
-      <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="8" nzXXl="8">
+      <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="8" nzXXl="8" *ngIf="!userExist">
         <div class="comments-title">
           网址:
         </div>
@@ -46,9 +46,17 @@
       <div class="comments-btn">
         <button (click)="commentFunc()">留言</button>
       </div>
+      <div class="user" *ngIf="userExist">
+        <div class="user-logo">
+          欢迎回来!
+        </div>
+         <div class="user-msg">
+          <img [src]="form.avatar" alt="" > <span>{{form.user_name}}</span>
+        </div>
+      </div>
     </div>
   </div>
-  <div>
+  <div class="comments-list">
     留言展示
     <app-comment-component [data]="commentData"></app-comment-component>
     <div class="comments-page">

@@ -89,7 +89,7 @@ export class DetailComponent implements OnInit {
     this.topImg = res.data.img_url;
     this.UpdatedAt = res.data.UpdatedAt;
     this.tabList = res.data.collect_list;
-    if (res.data.collect_list.length > 0) {
+    if (res.data.collect_list.length ) {
       this.imgUrl = this.tabList[0].img_url;
       this.activeId = this.tabList[0].ID;
     }

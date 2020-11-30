@@ -10,6 +10,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class CommentsComponent implements OnInit {
   totalCount = 0;
+  userExist = false;
   form = {
     user_name: '',
     email: '',
@@ -34,7 +35,18 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('留言-汪中杰的个人博客');
-    this.getAvatar();
+    const isComment = localStorage.getItem('comment');
+    if (isComment) {
+      this.userExist = true;
+      this.form.user_name = JSON.parse(isComment).user_name;
+      this.form.email = JSON.parse(isComment).email;
+      this.form.avatar = JSON.parse(isComment).avatar;
+      this.form.blog_url = JSON.parse(isComment).blog_url;
+    } else {
+      this.userExist = false;
+      this.getAvatar();
+    }
+    // 
     this.getComment();
   }
   async getAvatar(): Promise<void> {
@@ -59,6 +71,8 @@ export class CommentsComponent implements OnInit {
     const res = await this.blogHttp.addComment(this.form);
     if (res.code === 200) {
       this.message.create('success', '留言成功,博主会及时审核回复展示!');
+      this.form.comment_content = '';
+      localStorage.setItem('comment', JSON.stringify(this.form));
     }
   }
   PageIndexChange(page: number): void {

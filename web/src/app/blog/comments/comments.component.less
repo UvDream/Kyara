@@ -1,5 +1,8 @@
 .comments {
-    width: 100%;
+    width           : 100%;
+    background-color: #fff;
+    padding         : 10px;
+    border-radius   : 8px;
 
     &-title {
         font-size: 14px;
@@ -44,5 +47,40 @@
 
     &-page {
         text-align: center;
+    }
+
+    &-list {
+        margin-top      : 10px;
+        background-color: #fff;
+        padding         : 10px;
+        border-radius   : 8px;
+    }
+}
+
+
+.user {
+    display    : flex;
+    align-items: center;
+    margin: 20px auto;
+    &-logo {
+        font-size: 18px;
+    }
+
+    &-msg {
+        margin       : 0px 10px;
+        border       : 1px solid #ccc;
+        border-radius: 15px;
+        display      : flex;
+        align-items  : center;
+
+        img {
+            width        : 30px;
+            border-radius: 50%;
+        }
+
+        span {
+            margin   : 0 5px;
+            font-size: 16px;
+        }
     }
 }
