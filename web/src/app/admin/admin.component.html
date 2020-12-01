@@ -25,7 +25,7 @@
           <ul>
             <li nz-menu-item nzMatchRouter routerLink="/notice">公告管理</li>
             <li nz-menu-item nzMatchRouter>评论管理</li>
-            <li nz-menu-item nzMatchRouter>留言管理</li>
+            <li nz-menu-item nzMatchRouter [routerLink]="['/', 'commentList']">留言管理</li>
             <li nz-menu-item nzMatchRouter>博客配置</li>
           </ul>
         </li>

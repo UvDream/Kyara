@@ -15,4 +15,12 @@ export class AdminService {
       data
     });
   }
+  // 获取留言
+  getBlogComment = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/blogComment',
+      data
+    });
+  }
 }

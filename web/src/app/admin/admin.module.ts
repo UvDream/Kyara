@@ -23,6 +23,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { ClassifyComponent } from './classify/classify.component';
 import { TagsComponent } from './tags/tags.component';
 import { NzTagModule } from 'ng-zorro-antd/tag';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
     NoticeComponent,
     ClassifyComponent,
     TagsComponent,
+    CommentComponent,
   ],
   exports: [AdminComponent],
 })
