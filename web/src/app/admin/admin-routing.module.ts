@@ -6,6 +6,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { NoticeComponent } from './notice/notice.component';
 import { ClassifyComponent } from './classify/classify.component';
 import { TagsComponent } from './tags/tags.component';
+import { CommentComponent } from './comment/comment.component';
+
 export const adminRoutes: Routes = [
   {
     path: '',
@@ -17,6 +19,7 @@ export const adminRoutes: Routes = [
       { path: 'notice', component: NoticeComponent },
       { path: 'tags', component: TagsComponent },
       { path: 'classify', component: ClassifyComponent },
+      { path: 'commentList', component: CommentComponent },
     ],
   },
 ];
@@ -25,4 +28,4 @@ export const adminRoutes: Routes = [
   imports: [RouterModule.forChild(adminRoutes)],
   exports: [RouterModule],
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule { }

@@ -56,7 +56,7 @@ export class ArticleListComponent implements OnInit {
     this.form.pageSize = pageSize;
     this.getData();
   }
-  onCurrentPageDataChange(page: number): void {
+  onCurrentPageChange(page: number): void {
     this.form.page = page;
     this.getData();
   }
