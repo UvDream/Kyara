@@ -24,6 +24,7 @@ import { ClassifyComponent } from './classify/classify.component';
 import { TagsComponent } from './tags/tags.component';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { CommentComponent } from './comment/comment.component';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { CommentComponent } from './comment/comment.component';
     NzModalModule,
     NzFormModule,
     ReactiveFormsModule,
-    NzTagModule
+    NzTagModule,
+    NzPopconfirmModule
   ],
   declarations: [
     AdminComponent,

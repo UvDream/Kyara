@@ -12,6 +12,7 @@ func InitAdminArticle(Router *gin.RouterGroup)(R gin.IRouter)  {
 		AdminArticleRouter.GET("articleDetail",v1.GetArticleDetail)//查询文章详情
 		AdminArticleRouter.POST("addNotice",v1.AddNotice)//增加公告
 		AdminArticleRouter.POST("blogComment",v1.GetBlogComment)//获取博客留言
+		AdminArticleRouter.POST("checkComment",v1.CheckBlogComment)//审核留言
 	}
 	return AdminArticleRouter
 }

@@ -15,11 +15,19 @@ export class AdminService {
       data
     });
   }
-  // 获取留言
+  // 获取博客留言
   getBlogComment = (data: object) => {
     return this.http.request({
       method: 'post',
       url: '/admin/blogComment',
+      data
+    });
+  }
+  // 审核博客留言
+  checkBlogComment = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/checkComment',
       data
     });
   }

@@ -35,5 +35,15 @@ export class CommentComponent implements OnInit {
       this.totalCount = res.data.total;
     }
   }
+  async check(id: number, status: boolean): Promise<void> {
+    const obj = {
+      ID: id,
+      check: status
+    };
+    const res = await this.adminService.checkBlogComment(obj);
+    if (res.code === 200) {
+      this.getData();
+    }
+  }
 
 }

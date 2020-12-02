@@ -11,22 +11,35 @@
         (nzPageSizeChange)="onCurrentPageSizeChange($event)" (nzPageIndexChange)="onCurrentPageChange($event)">
         <thead>
             <tr>
+                <th nzAlign="center">ID</th>
+                <th nzAlign="center">回复的评论ID</th>
                 <th nzAlign="center">作者</th>
                 <th nzAlign="center">留言内容</th>
+                <th nzAlign="center">email</th>
+                <th nzAlign="center">网站</th>
                 <th nzAlign="center">创建时间</th>
-                <th nzAlign="center">更新时间</th>
-                <th nzAlign="center" nzWidth="180px">操作</th>
+                <th nzAlign="center">状态</th>
+                <th nzAlign="center" nzWidth="120px">操作</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of basicTable.data">
+                <td nzEllipsis nzAlign="center">{{ data.ID }}</td>
+                <td nzEllipsis nzAlign="center">{{ data.parent_id }}</td>
                 <td nzEllipsis nzAlign="center">{{ data.user_name }}</td>
                 <td nzAlign="center" nzBreakWord="true">{{ data.comment_content }}</td>
+                <td nzAlign="center" >{{ data.email }}</td>
+                <td nzAlign="center">
+                    <a [href]="data.blog_url" target="_blank">{{ data.blog_url }}</a>
+                </td>
                 <td nzEllipsis nzAlign="center">{{ data.CreatedAt| date:"y-d-MM HH:mm:ss " }}</td>
-                <td nzEllipsis nzAlign="center">{{ data.UpdatedAt| date:"y-d-MM HH:mm:ss " }}</td>
-                <td>
-                    <button nz-button nzType="primary">编辑</button>
-                    <button nz-button nzType="primary" nzDanger style="margin-left:10px">删除</button>
+                <td nzEllipsis nzAlign="center">
+                    <nz-tag nzColor="success" *ngIf="data.status==='1'">审核通过</nz-tag>
+                    <nz-tag nzColor="warning"  *ngIf="data.status==='0'">待审核</nz-tag>
+                </td>
+                <td nzAlign="center">
+                    <button nz-button nzType="primary" *ngIf="data.status==='0'" (click)="check(data.ID,true)">通过</button>
+                    <button nz-button nzType="primary" nzDanger *ngIf="data.status==='1'" (click)="check(data.ID,false)">下架</button>
                 </td>
             </tr>
         </tbody>
