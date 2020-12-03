@@ -103,7 +103,7 @@ func getRyImgurList(r request.ImagesListStruct,token string)(list interface{},er
 }
 
 //文件上传
-func UploadImage(c *gin.Context)(code int,err error)  {
+func UploadImage(c *gin.Context)(msg string,err error)  {
 	db := global.GVA_DB
 	sys:=model.SysConfig{}
 	err=db.Find(&sys).Error
@@ -111,22 +111,26 @@ func UploadImage(c *gin.Context)(code int,err error)  {
 	if sys.ImgurType == "0"{
 		fmt.Println("如优")
 	}else if sys.ImgurType=="1"{
-		fmt.Println("白熊图床")
-		code,err=uploadBx(c,sys.ImgurToken)
+		msg,err=uploadBx(c,sys.ImgurToken)
 	}
-	return code,err
+	return msg,err
 }
 //白熊图床上传
-func uploadBx(c *gin.Context,token string) (code int,err error) {
-	file,_, _ := c.Request.FormFile("image")
+func uploadBx(c *gin.Context,token string) (msg string,err error) {
+	file,a,s:= c.Request.FormFile("image")
+	fmt.Println(file,a,s)
 	url:="https://pic.baixiongz.com/api/upload"
 	authHeader := req.Header{
+		"Accept":"multipart/form-data",
 		"token": token,
 	}
 	r,err:=req.Post(url, authHeader,req.FileUpload{
 		File:      file,
 		FieldName: "image",
 	})
-	resp:=r.Response()
-	return resp.StatusCode,err
+	fmt.Println(r,err)
+	if err!=nil{
+		return "上传失败", nil
+	}
+	return "上传成功",err
 }
