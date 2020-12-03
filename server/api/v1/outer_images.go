@@ -36,10 +36,10 @@ func UploadImage(c *gin.Context)  {
 	if err != nil {
 		response.FailWithMessage("缺少上传图片", c)
 	}
-	msg,err:=service.UploadImage(c)
+	msg,err,data:=service.UploadImage(c)
 	if err!=nil{
 		response.FailWithMessage(msg, c)
 	}else{
-		response.OkWithMessage(msg,c)
+		response.OkDetailed(data,msg,c)
 	}
 } 

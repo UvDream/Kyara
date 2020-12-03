@@ -1,11 +1,16 @@
 package service
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/imroc/req"
 	"github.com/kirinlabs/HttpRequest"
 	gojsonq "github.com/thedevsaddam/gojsonq/v2"
+	"io"
+	"io/ioutil"
+	"mime/multipart"
+	"net/http"
 	"server/global"
 	"server/model"
 	"server/model/request"
@@ -99,11 +104,12 @@ func getRyImgurList(r request.ImagesListStruct,token string)(list interface{},er
 		return "获取如优图床错误",err
 	}
 	list=gojsonq.New().FromString(string(body)).Find("data")
+	defer  res.Close()
 	return list,err
 }
 
 //文件上传
-func UploadImage(c *gin.Context)(msg string,err error)  {
+func UploadImage(c *gin.Context)(msg string,err error,data interface{})  {
 	db := global.GVA_DB
 	sys:=model.SysConfig{}
 	err=db.Find(&sys).Error
@@ -111,26 +117,60 @@ func UploadImage(c *gin.Context)(msg string,err error)  {
 	if sys.ImgurType == "0"{
 		fmt.Println("如优")
 	}else if sys.ImgurType=="1"{
-		msg,err=uploadBx(c,sys.ImgurToken)
+		msg,err,data=uploadBx(c,sys.ImgurToken)
 	}
-	return msg,err
+	return msg,err,data
 }
 //白熊图床上传
-func uploadBx(c *gin.Context,token string) (msg string,err error) {
-	file,a,s:= c.Request.FormFile("image")
-	fmt.Println(file,a,s)
-	url:="https://pic.baixiongz.com/api/upload"
-	authHeader := req.Header{
-		"Accept":"multipart/form-data",
-		"token": token,
+func uploadBx(c *gin.Context,token string) (msg string,err error,list interface{}) {
+	file,path,err:= c.Request.FormFile("image")
+	//url:="https://pic.baixiongz.com/api/upload"
+	//header := req.Header{
+	//	"token": token,
+	//}
+	//r,err:=req.Post(url,header,req.FileUpload{
+	//	File: file,
+	//	FieldName: "image",
+	//})
+	//fmt.Println("查看错误")
+	//fmt.Println(r,err)
+	//fmt.Println("查看错误")
+	//if err!=nil{
+	//	return "上传失败", nil
+	//}
+
+	url := "https://pic.baixiongz.com/api/upload"
+	method := "POST"
+	payload := &bytes.Buffer{}
+	writer := multipart.NewWriter(payload)
+	part1, errFile1 := writer.CreateFormFile("image",path.Filename)
+	_, errFile1 = io.Copy(part1, file)
+	if errFile1 !=nil {
+		return "文件参数写入错误",err,list
 	}
-	r,err:=req.Post(url, authHeader,req.FileUpload{
-		File:      file,
-		FieldName: "image",
-	})
-	fmt.Println(r,err)
-	if err!=nil{
-		return "上传失败", nil
+	err = writer.Close()
+	if err != nil {
+		return "文件写入失败",err,list
 	}
-	return "上传成功",err
+	client := &http.Client {
+	}
+	req, err := http.NewRequest(method, url, payload)
+	if err != nil {
+		return "上传失败",err,list
+	}
+	req.Header.Add("token", token)
+	req.Header.Set("Content-Type",  writer.FormDataContentType())
+	res, err := client.Do(req)
+	if err != nil {
+		return "请求上传失败",err,list
+	}
+	defer res.Body.Close()
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return "获取返回结果失败",err,list
+	}
+	fmt.Println(string(body))
+	list=gojsonq.New().FromString(string(body)).Find("data")
+	fmt.Println(list)
+	return "上传成功",err,list
 }
