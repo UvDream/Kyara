@@ -1,12 +1,11 @@
 package v1
 
 import (
-	"fmt"
+	"github.com/gin-gonic/gin"
+	"net/http"
 	"server/global/response"
 	"server/model/request"
 	service "server/service/images"
-	"net/http"
-	"github.com/gin-gonic/gin"
 )
 
 // GetImagesToken 获取白熊图床token
@@ -33,15 +32,14 @@ func GetImagesList(c *gin.Context)  {
 }
 //上传图片
 func UploadImage(c *gin.Context)  {
-	_, header, err := c.Request.FormFile("image")
-	fmt.Println(header,err)
+	_, _, err := c.Request.FormFile("image")
 	if err != nil {
-		response.FailWithMessage(fmt.Sprintf("上传文件失败，%v", err), c)
+		response.FailWithMessage("缺少上传图片", c)
 	}
-	_,err=service.UploadImage(c)
+	msg,err:=service.UploadImage(c)
 	if err!=nil{
-		response.FailWithMessage(fmt.Sprintf("上传文件失败，%v", err), c)
+		response.FailWithMessage(msg, c)
 	}else{
-		response.OkWithMessage("上传成功",c)
+		response.OkWithMessage(msg,c)
 	}
 } 
