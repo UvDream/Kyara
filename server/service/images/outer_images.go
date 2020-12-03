@@ -2,6 +2,7 @@ package service
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/imroc/req"
@@ -109,7 +110,7 @@ func getRyImgurList(r request.ImagesListStruct,token string)(list interface{},er
 }
 
 //文件上传
-func UploadImage(c *gin.Context)(msg string,err error,data interface{})  {
+func UploadImage(c *gin.Context)(msg string,err error,data request.BxData)  {
 	db := global.GVA_DB
 	sys:=model.SysConfig{}
 	err=db.Find(&sys).Error
@@ -117,12 +118,23 @@ func UploadImage(c *gin.Context)(msg string,err error,data interface{})  {
 	if sys.ImgurType == "0"{
 		fmt.Println("如优")
 	}else if sys.ImgurType=="1"{
+		//白熊图床
 		msg,err,data=uploadBx(c,sys.ImgurToken)
+		if err!=nil{
+			return "白熊图床上传失败",err,data
+		}
+		var imageList model.ImageList
+		imageList.SSID=data.MD5
+		imageList.Type=c.Query("type")
+		err=db.Create(&imageList).Error
+		if err!=nil {
+			return "关联图床到系统失败",err,data
+		}
 	}
 	return msg,err,data
 }
 //白熊图床上传
-func uploadBx(c *gin.Context,token string) (msg string,err error,list interface{}) {
+func uploadBx(c *gin.Context,token string) (msg string,err error,list request.BxData) {
 	file,path,err:= c.Request.FormFile("image")
 	//url:="https://pic.baixiongz.com/api/upload"
 	//header := req.Header{
@@ -169,8 +181,11 @@ func uploadBx(c *gin.Context,token string) (msg string,err error,list interface{
 	if err != nil {
 		return "获取返回结果失败",err,list
 	}
-	fmt.Println(string(body))
-	list=gojsonq.New().FromString(string(body)).Find("data")
-	fmt.Println(list)
+	var bxData request.BxRequest
+	err=json.Unmarshal(body,&bxData)
+	if bxData.Code!=200 {
+		return "获取返回解析错误", err, list
+	}
+	list=bxData.Data
 	return "上传成功",err,list
 }
