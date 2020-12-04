@@ -34,7 +34,6 @@ func DBTables() {
 		model.BlogView{},
 		model.BlogComment{},
 		model.CollectionCode{},
-		model.ImageList{},
 	)
 	global.GVA_LOG.Debug("注册成功!")
 }

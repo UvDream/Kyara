@@ -123,8 +123,8 @@ func UploadImage(c *gin.Context)(msg string,err error,data request.BxData)  {
 		if err!=nil{
 			return "白熊图床上传失败",err,data
 		}
-		var imageList model.ImageList
-		imageList.SSID=data.MD5
+		var imageList model.ExaFileUploadAndDownload
+		imageList.Key=data.MD5
 		imageList.Type=c.Query("type")
 		err=db.Create(&imageList).Error
 		if err!=nil {
