@@ -7,6 +7,7 @@ import { NoticeComponent } from './notice/notice.component';
 import { ClassifyComponent } from './classify/classify.component';
 import { TagsComponent } from './tags/tags.component';
 import { CommentComponent } from './comment/comment.component';
+import { BlogConfigComponent } from './blog-config/blog-config.component';
 
 export const adminRoutes: Routes = [
   {
@@ -20,6 +21,7 @@ export const adminRoutes: Routes = [
       { path: 'tags', component: TagsComponent },
       { path: 'classify', component: ClassifyComponent },
       { path: 'commentList', component: CommentComponent },
+      { path: 'blogConfig', component: BlogConfigComponent },
     ],
   },
 ];

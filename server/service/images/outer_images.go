@@ -17,11 +17,7 @@ import (
 	"server/model/request"
 	"server/model/response"
 )
-type res struct {
-	Code string `json:"code"`
-	Msg string `json:"msg"`
-	Data interface{} `json:"data"`
-}
+
 //获取token
 func GetImagesToken( r request.ImagesStruct)(msg string ,err error) {
 	db := global.GVA_DB
@@ -126,6 +122,8 @@ func UploadImage(c *gin.Context)(msg string,err error,data request.BxData)  {
 		var imageList model.ExaFileUploadAndDownload
 		imageList.Key=data.MD5
 		imageList.Type=c.Query("type")
+		imageList.Url=data.URL
+		imageList.Name=data.Name
 		err=db.Create(&imageList).Error
 		if err!=nil {
 			return "关联图床到系统失败",err,data

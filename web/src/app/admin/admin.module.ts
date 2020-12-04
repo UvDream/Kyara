@@ -25,6 +25,7 @@ import { TagsComponent } from './tags/tags.component';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { CommentComponent } from './comment/comment.component';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { BlogConfigComponent } from './blog-config/blog-config.component';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
     ClassifyComponent,
     TagsComponent,
     CommentComponent,
+    BlogConfigComponent,
   ],
   exports: [AdminComponent],
 })
