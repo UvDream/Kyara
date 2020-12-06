@@ -39,4 +39,12 @@ export class AdminService {
       data
     });
   }
+  // 图片列表
+  imgList = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/fileUploadAndDownload/getFileList',
+      data
+    });
+  }
 }

@@ -26,6 +26,7 @@ import { CommentComponent } from './comment/comment.component';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { BlogConfigComponent } from './blog-config/blog-config.component';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
+import { ImagesComponent } from './images/images.component';
 
 @NgModule({
   imports: [
@@ -59,6 +60,7 @@ import { UploadImageComponent } from './components/upload-image/upload-image.com
     CommentComponent,
     BlogConfigComponent,
     UploadImageComponent,
+    ImagesComponent,
   ],
   exports: [AdminComponent],
 })
