@@ -135,4 +135,7 @@ export class EditArticleComponent implements OnInit {
       this.markdownToHtml(this.form.article_content);
     }
   }
+  urlChange(data: string): void {
+    this.form.img_url = data;
+  }
 }

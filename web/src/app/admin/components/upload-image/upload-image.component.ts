@@ -1,33 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, forwardRef } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
-import { Observable, Observer } from 'rxjs';
-import { AdminService } from '@service/admin.service'
+import { AdminService } from '@service/admin.service';
 @Component({
   selector: 'app-upload-image',
   templateUrl: './upload-image.component.html',
-  styleUrls: ['./upload-image.component.less']
+  styleUrls: ['./upload-image.component.less'],
 })
 export class UploadImageComponent implements OnInit {
 
   constructor(private msg: NzMessageService, private adminHttp: AdminService) { }
   loading = false;
   avatarUrl?: string;
+  @Input() type = 'article';
+  @Input() url: string;
+  @Output() urlChange = new EventEmitter();
   ngOnInit(): void {
-
-
+    this.avatarUrl = this.url;
   }
+
   beforeUpload = async (file: any, _fileList: NzUploadFile[]) => {
     console.log(file);
     const formData = new FormData();
-    formData.append('type', 'article');
+    formData.append('type', this.type);
     formData.append('file', file);
     this.loading = true;
     const res = await this.adminHttp.uploadImage(formData);
     if (res.code === 200) {
       this.loading = false;
       this.avatarUrl = res.data.url;
+      this.urlChange.emit(this.avatarUrl);
     }
     // return new Observable((observer: Observer<boolean>) => {
     //   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
@@ -48,14 +51,7 @@ export class UploadImageComponent implements OnInit {
   }
 
   handleChange(info: NzUploadChangeParam): void {
-    if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === 'done') {
-      this.msg.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === 'error') {
-      this.msg.error(`${info.file.name} file upload failed.`);
-    }
+
   }
 
 
