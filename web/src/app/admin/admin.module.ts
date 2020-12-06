@@ -11,7 +11,6 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-import { UploadComponent } from './edit-article/components/upload/upload.component';
 import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMessageModule } from 'ng-zorro-antd/message';
@@ -26,6 +25,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { CommentComponent } from './comment/comment.component';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { BlogConfigComponent } from './blog-config/blog-config.component';
+import { UploadImageComponent } from './components/upload-image/upload-image.component';
 
 @NgModule({
   imports: [
@@ -52,13 +52,13 @@ import { BlogConfigComponent } from './blog-config/blog-config.component';
   declarations: [
     AdminComponent,
     EditArticleComponent,
-    UploadComponent,
     ArticleListComponent,
     NoticeComponent,
     ClassifyComponent,
     TagsComponent,
     CommentComponent,
     BlogConfigComponent,
+    UploadImageComponent,
   ],
   exports: [AdminComponent],
 })

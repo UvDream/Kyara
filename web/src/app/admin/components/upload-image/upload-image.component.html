@@ -1,0 +1,8 @@
+<nz-upload class="avatar-uploader" nzName="avatar" nzListType="picture-card" [nzShowUploadList]="false"
+    [nzBeforeUpload]="beforeUpload" (nzChange)="handleChange($event)">
+    <ng-container *ngIf="!avatarUrl">
+        <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+        <div class="ant-upload-text">Upload</div>
+    </ng-container>
+    <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+</nz-upload>

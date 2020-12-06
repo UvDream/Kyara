@@ -31,4 +31,12 @@ export class AdminService {
       data
     });
   }
+  // 上传图片
+  uploadImage = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/fileUploadAndDownload/upload',
+      data
+    });
+  }
 }

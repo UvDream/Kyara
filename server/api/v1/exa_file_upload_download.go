@@ -23,6 +23,8 @@ import (
 func UploadFile(c *gin.Context) {
 	noSave := c.DefaultQuery("noSave", "0")
 	_, header, err := c.Request.FormFile("file")
+	t:=c.PostForm("type")
+	fmt.Print(t)
 	if err != nil {
 		response.FailWithMessage(fmt.Sprintf("上传文件失败，%v", err), c)
 	} else {
@@ -44,7 +46,7 @@ func UploadFile(c *gin.Context) {
 			if err != nil {
 				response.FailWithMessage(fmt.Sprintf("修改数据库链接失败，%v", err), c)
 			} else {
-				response.OkDetailed(resp.ExaFileResponse{File: file}, "上传成功", c)
+				response.OkDetailed(file, "上传成功", c)
 			}
 		}
 	}
