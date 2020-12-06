@@ -1,15 +1,16 @@
 <div class="about">
-    <div class="top-img">
-        <img width="100%"  src="https://gitee.com/Uvdream/images/raw/master/images/20201109155154.png" alt="">
-    </div>
-    <div class="about-content">
-      <nz-tabset nzCentered="true">
-        <nz-tab nzTitle="关于博主">
-        </nz-tab>
-        <nz-tab nzTitle="本站更新记录">
-          <app-update-log></app-update-log>
-        </nz-tab>
-      </nz-tabset>
-    </div>
-  
+  <div class="top-img">
+    <img width="100%" src="https://gitee.com/Uvdream/images/raw/master/images/20201109155154.png" alt="">
+  </div>
+  <div class="about-content">
+    <nz-tabset nzCentered="true">
+      <nz-tab nzTitle="关于博主">
+        <div class="uvdream" [innerHTML]="config.AboutMe"></div>
+      </nz-tab>
+      <nz-tab nzTitle="本站更新记录">
+        <app-update-log></app-update-log>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+
 </div>

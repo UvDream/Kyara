@@ -15,6 +15,8 @@ type SysConfig struct {
 	BlogNotice    string    `json:"blog_notice" gorm:"comment:'博客公告'"`
 	BlogStartTime time.Time `json:"blog_start_time" gorm:"comment:'博客开始时间';default:'2015-01-02 15:04:05'"`
 	BlogViewCount string    `json:"blog_view_count" gorm:"comment:'博客访问量'"`
+	//关于博客
+	AboutMe string `json:"about_me" gorm:"comment:'关于博主';type:longtext"`
 	// 作者相关设置
 	AuthorAvatar string    `json:"author_avatar" gorm:"comment:'作者头像';default:'https://pic.baixiongz.com/2020/08/05/a46e139ec4236.png'"`
 	AuthorName   string    `json:"author_name" gorm:"comment:'作者名称';default:'UvDream'"`
