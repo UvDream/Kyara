@@ -47,4 +47,13 @@ export class AdminService {
       data
     });
   }
+  // 删除图片
+  deleteImg = (data: object) => {
+    alert('xxx');
+    return this.http.request({
+      method: 'post',
+      url: '/fileUploadAndDownload/deleteFile',
+      data
+    });
+  }
 }

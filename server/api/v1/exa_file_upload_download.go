@@ -40,6 +40,7 @@ func UploadFile(c *gin.Context) {
 			s := strings.Split(file.Name, ".")
 			file.Tag = s[len(s)-1]
 			file.Key = key
+			file.Type=t
 			if noSave == "0" {
 				err = service.Upload(file)
 			}

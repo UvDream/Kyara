@@ -10,6 +10,7 @@
                 <th nzAlign="center">上传位置</th>
                 <th nzAlign="center">存储位置</th>
                 <th nzAlign="center">上传时间</th>
+                <th nzAlign="center">Tag</th>
                 <th nzAlign="center" nzWidth="120px">操作</th>
             </tr>
         </thead>
@@ -26,8 +27,10 @@
                 <td nzAlign="center">{{ data.type }}</td>
                 <td nzEllipsis nzAlign="center">{{ data.position }}</td>
                 <td nzEllipsis nzAlign="center">{{ data.CreatedAt| date:"y-d-MM HH:mm:ss " }}</td>
+                <td nzEllipsis nzAlign="center">{{ data.tag }}</td>
+
                 <td nzAlign="center">
-                    <button nz-button nzType="primary" nzDanger>删除</button>
+                    <button nz-button nzType="primary" nzDanger (click)="delete(data)">删除</button>
                 </td>
             </tr>
         </tbody>
