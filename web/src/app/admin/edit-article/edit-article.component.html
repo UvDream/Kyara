@@ -64,7 +64,8 @@
       ">
       封面图片:
     </div>
-    <app-upload class="margin-left-10"></app-upload>
+    <app-upload-image class="margin-left-10" type="article" [url]="form.img_url" (urlChange)="urlChange($event)">
+    </app-upload-image>
     <input class="margin-left-10" nz-input [(ngModel)]="form.img_url" placeholder="输入封面图片地址" style="width: 400px" />
   </div>
   <!-- 转载规则 -->

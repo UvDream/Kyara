@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '@service/article.service';
 import { ArticleCatalogService } from '@service/article-catalog.service';
 import { Title } from '@angular/platform-browser';
+import { Platform } from '@angular/cdk/platform';
+
 
 interface TabItem {
   ID: number;
@@ -19,7 +21,8 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private request: ArticleService,
     private articleCat: ArticleCatalogService,
-    private titleService: Title
+    private titleService: Title,
+    private platform: Platform
   ) { }
   // 预览窗口弹窗
   imageModal = false;
@@ -89,7 +92,7 @@ export class DetailComponent implements OnInit {
     this.topImg = res.data.img_url;
     this.UpdatedAt = res.data.UpdatedAt;
     this.tabList = res.data.collect_list;
-    if (res.data.collect_list.length > 0) {
+    if (res.data.collect_list.length) {
       this.imgUrl = this.tabList[0].img_url;
       this.activeId = this.tabList[0].ID;
     }
@@ -172,6 +175,15 @@ export class DetailComponent implements OnInit {
     if (event.target.nodeName.toString() === 'IMG') {
       this.imageModal = true;
       this.imgPreviewUrl = event.target.currentSrc;
+    }
+  }
+  print(): void {
+    // const mainElement = document.getElementById('vditor') as HTMLDivElement;
+    // window.document.body.innerHTML = mainElement.innerHTML;
+    if (this.platform.isBrowser) {
+      setTimeout(() => {
+        window.print();
+      }, 500);
     }
 
   }

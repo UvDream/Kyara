@@ -29,10 +29,10 @@ sqlite:
 
 # 请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址
 qiniu:
-  access-key: "25j8dYBZ2wuiy0yhwShytjZDTX662b8xiFguwxzZ"
-  secret-key: "pgdbqEsf7ooZh7W3xokP833h3dZ_VecFXPDeG5JY"
-  bucket: "qm-plus-img"
-  img-path: "http://qmplusimg.henrongyi.top"
+  access-key: "Z3z3iRk1ar8KHMj09tKqKvyddarHG_hdh8apaEHy"
+  secret-key: "Cv8oYw_xQlj6xWkovmLRNaIJqtWfWdIqkAtExEzX"
+  bucket: "uvdream"
+  img-path: "http://www.pic.uvdream.cn"
 
 # redis configuration
 redis:

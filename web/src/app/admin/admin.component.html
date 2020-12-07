@@ -15,6 +15,7 @@
             <li nz-menu-item nzMatchRouter [routerLink]="['/', 'articleList']">文章列表</li>
             <li nz-menu-item nzMatchRouter [routerLink]="['/', 'classify']">分类管理</li>
             <li nz-menu-item nzMatchRouter [routerLink]="['/', 'tags']">标签管理</li>
+            <li nz-menu-item nzMatchRouter [routerLink]="['/', 'images']">图片管理</li>
           </ul>
         </li>
         <li nz-submenu>
@@ -25,8 +26,8 @@
           <ul>
             <li nz-menu-item nzMatchRouter routerLink="/notice">公告管理</li>
             <li nz-menu-item nzMatchRouter>评论管理</li>
-            <li nz-menu-item nzMatchRouter>留言管理</li>
-            <li nz-menu-item nzMatchRouter>博客配置</li>
+            <li nz-menu-item nzMatchRouter [routerLink]="['/', 'commentList']">留言管理</li>
+            <li nz-menu-item nzMatchRouter [routerLink]="['/', 'blogConfig']">博客配置</li>
           </ul>
         </li>
         <li nz-submenu>

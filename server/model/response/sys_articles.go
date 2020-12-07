@@ -30,6 +30,8 @@ type SysConfigsResponse struct {
 	ArticleCount string `json:"article_count"`
 	//备案信息
 	FilingMsg string `json:"filing_msg"`
+	//关于博客
+	AboutMe string `json:"about_me"`
 //
 }
 

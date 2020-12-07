@@ -159,4 +159,7 @@ export class EditArticleComponent implements OnInit {
       this.message.error(res.msg);
     }
   }
+  urlChange(data: string): void {
+    this.form.img_url = data;
+  }
 }

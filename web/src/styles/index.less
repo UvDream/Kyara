@@ -5,6 +5,10 @@
   src        : url('../assets/fonts/FiraCode.ttf');
 }
 
+.loading {
+  display: none;
+}
+
 body {
   background-color: rgba(0, 0, 0, 0);
 }
@@ -109,4 +113,36 @@ code {
 
 .imgRotate {
   .animation(animation1_1, 6s, linear, 0s, infinite);
+}
+
+@media print {
+
+  .header,
+  .main-left,
+  .main-right,
+  .detail-title,
+  .detail-img,
+  .detail-praise,
+  .detail-btn,
+  .footer {
+    display: none !important;
+  }
+
+  .main-center-left {
+    width: 100% !important;
+  }
+
+  .main-center {
+    width      : 100vw;
+    margin-left: 0px !important;
+  }
+
+  .main {
+    margin: 0 0;
+  }
+
+  #vditor {
+    width: 100%;
+  }
+
 }
