@@ -4,21 +4,25 @@
   font-family: 'fira';
   src        : url('../assets/fonts/FiraCode.ttf');
 }
-.loading{
+
+.loading {
   display: none;
 }
-body{
+
+body {
   background-color: rgba(0, 0, 0, 0);
 }
-html{
+
+html {
   // background: url(https://api.dongmanxingkong.com/suijitupian/acg/1080p/index.php) center center no-repeat no-repeat fixed #6A6B6F;
-  background: url(https://gitee.com/Uvdream/images/raw/master/images/20201125171115.jpg) center center no-repeat no-repeat fixed #6A6B6F;
+  background     : url(https://gitee.com/Uvdream/images/raw/master/images/20201125171115.jpg) center center no-repeat no-repeat fixed #6A6B6F;
   background-size: cover;
 }
+
 body,
 html {
-  padding            : 0;
-  height             : 100%;
+  padding               : 0;
+  height                : 100%;
   // background-color   : rgb(239, 239, 239);
   // font-family     : fira;
 }
@@ -37,7 +41,8 @@ code {
   -webkit-box-orient: vertical;
 }
 
-.text-ellipsis-one,.one-text {
+.text-ellipsis-one,
+.one-text {
   overflow          : hidden;
   text-overflow     : ellipsis;
   display           : -webkit-box;
@@ -108,4 +113,36 @@ code {
 
 .imgRotate {
   .animation(animation1_1, 6s, linear, 0s, infinite);
+}
+
+@media print {
+
+  .header,
+  .main-left,
+  .main-right,
+  .detail-title,
+  .detail-img,
+  .detail-praise,
+  .detail-btn,
+  .footer {
+    display: none !important;
+  }
+
+  .main-center-left {
+    width: 100% !important;
+  }
+
+  .main-center {
+    width      : 100vw;
+    margin-left: 0px !important;
+  }
+
+  .main {
+    margin: 0 0;
+  }
+
+  #vditor {
+    width: 100%;
+  }
+
 }
