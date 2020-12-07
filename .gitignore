@@ -1,10 +1,8 @@
 web/node_modules/
-web/src/.umi/
 web/.idea/
 server/.idea/
 server/log/
 my-app/node_modules/
-my-app/dist/
 server/log/
 server/latest_log
 server/config.yaml
