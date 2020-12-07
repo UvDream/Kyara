@@ -12,8 +12,15 @@ import (
 func AddArticle(c *gin.Context) {
 	var R model.SysArticle
 	err := c.ShouldBindJSON(&R)
-	if err != nil {
-		//	参数获取失败
+	ApiVerify := utils.Rules{
+		"Title": {utils.NotEmpty()},
+		"ArticleContent": {utils.NotEmpty()},
+		"ClassificationID": {utils.NotEmpty()},
+	}
+	ApiVerifyErr := utils.Verify(R, ApiVerify)
+	if ApiVerifyErr != nil {
+		response.FailWithMessage(ApiVerifyErr.Error(), c)
+		return
 	}
 	err, msg, data := service.AddArticle(R, c)
 	if err != nil {
@@ -52,5 +59,18 @@ func AddNotice(c *gin.Context) {
 		response.FailWithMessage(msg, c)
 	} else {
 		response.OkWithMessage(msg, c)
+	}
+}
+
+//增加tag
+func AddTag(c *gin.Context) {
+	if c.Query("tag") == "" {
+		response.FailWithMessage("缺少tag", c)
+	}
+	err, list, msg := service.AddTag(c)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	} else {
+		response.OkDetailed(list, msg, c)
 	}
 }

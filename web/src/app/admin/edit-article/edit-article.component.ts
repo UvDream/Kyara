@@ -48,13 +48,18 @@ export class EditArticleComponent implements OnInit {
     icon: '',
     // 图片地址
     img_url: '',
+    // tag
+    tag_array: [],
   };
+  tagVal = '';
   expandKeys = ['100', '1001'];
+  tagList = [];
   public nodes = [
   ];
 
   ngOnInit(): void {
     this.getClassify();
+    this.getTag();
     this.route.queryParams.subscribe((params) => {
       console.log(params);
       this.getArticleDetail(params.id);
@@ -116,6 +121,8 @@ export class EditArticleComponent implements OnInit {
     if (res.code === 200) {
       this.form.article_id = res.data.ID;
       this.message.info(res.msg);
+    } else {
+      this.message.error(res.msg);
     }
   }
   checkChange = () => {
@@ -133,6 +140,23 @@ export class EditArticleComponent implements OnInit {
       this.form = res.data;
       this.form.article_id = res.data.ID;
       this.markdownToHtml(this.form.article_content);
+    }
+  }
+  // 获取tag
+  async getTag(): Promise<void> {
+    const res = await this.httpService.getTag();
+    if (res.code === 200) {
+      this.tagList = res.data;
+    }
+  }
+  // 增加tag
+  async addTag(): Promise<void> {
+    const res = await this.httpService.addTag({ tag: this.tagVal });
+    if (res.code === 200) {
+      this.getTag();
+      this.message.success(res.msg);
+    } else {
+      this.message.error(res.msg);
     }
   }
 }

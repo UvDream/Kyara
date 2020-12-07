@@ -96,3 +96,19 @@ func updateNotice()(err error,msg string)  {
 	}
 	return err,"更新成功"
 }
+//新增tag
+func AddTag(c *gin.Context)(err error,tag model.SysTag,msg string)  {
+	t:=c.Query("tag")
+	db := global.GVA_DB
+	tag.TagName=t
+	//需要查重
+	err=db.Where("tag_name=?",tag).Find(&tag).Error
+	if err!=nil {
+		return err,tag,"tag重复"
+	}
+	err=db.Create(&tag).Error
+	if err!=nil {
+		return err,tag,"增加tag失败"
+	}
+	return err,tag,"增加tag成功"
+}

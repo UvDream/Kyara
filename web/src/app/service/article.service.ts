@@ -64,6 +64,14 @@ export class ArticleService {
       url: '/article/tag',
     });
   }
+  // 增加tag
+  addTag = (params?: object) => {
+    return this.http.request({
+      method: 'get',
+      url: '/admin/addTag',
+      params
+    });
+  }
   // 获取配置
   getConfig = () => {
     return this.http.request({
