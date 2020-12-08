@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '@service/article.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ActivatedRoute } from '@angular/router';
-
+import { AdminService } from '@service/admin.service';
 interface TreeItem {
   key: string;
   title: string;
@@ -19,6 +19,7 @@ export class EditArticleComponent implements OnInit {
     private route: ActivatedRoute,
     private httpService: ArticleService,
     private message: NzMessageService,
+    private httpAdmin: AdminService,
   ) { }
   isPassword = false;
   isTop = false;
@@ -64,6 +65,56 @@ export class EditArticleComponent implements OnInit {
       console.log(params);
       this.getArticleDetail(params.id);
     });
+    document.addEventListener('paste', (e) => {
+      let items: any;
+      const that = this;
+      if (e.clipboardData && e.clipboardData.items) {
+        items = e.clipboardData.items;
+        if (items) {
+          items = Array.prototype.filter.call(items, (element) => {
+            return element.type.indexOf('image') >= 0;
+          });
+
+          Array.prototype.forEach.call(items, (item) => {
+            const blob = item.getAsFile();
+            const reader = new FileReader();
+            reader.onloadend = (event) => {
+              const imgBase64 = event.target.result;
+              console.log(imgBase64);  // base64
+              const dataURI = imgBase64;
+              // tslint:disable-next-line:no-shadowed-variable
+              const blob = that.dataURItoBlob(dataURI); // blob
+              console.log('hhe1', blob);
+              console.log(dataURI);
+              that.uploadImg(blob);
+            };
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+
+    });
+  }
+  dataURItoBlob = (dataURI: any) => {
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]; // mime类型
+    const byteString = atob(dataURI.split(',')[1]);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const intArray = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      intArray[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([intArray], { type: mimeString });
+  }
+  async uploadImg(data: any): Promise<void> {
+    const formData = new FormData();
+    formData.append('type', 'article');
+    formData.append('file', data);
+    const res = await this.httpAdmin.uploadImage(formData);
+    if (res.code === 200) {
+      console.log(res, '上传成功');
+      const msg = '![img](' + res.data.url + ')';
+      this.form.article_content = this.form.article_content = msg;
+    }
   }
   textChange = () => {
     this.markdownToHtml(this.form.article_content);
