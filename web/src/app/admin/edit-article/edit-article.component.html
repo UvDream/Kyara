@@ -3,8 +3,8 @@
     文章标题:
     <input class="margin-left-10" nz-input placeholder="输入文章标题" [(ngModel)]="form.title" style="width: 350px" />
     分类:
-    <nz-tree-select style="width: 250px" [nzDefaultExpandAll]="true" [nzNodes]="nodes" nzShowSearch
-      nzPlaceHolder="请选择分类">
+    <nz-tree-select style="width: 250px" [nzDefaultExpandAll]="true" [(ngModel)]="form.classification_id"
+      [nzNodes]="nodes" nzShowSearch nzPlaceHolder="请选择分类">
     </nz-tree-select>
     标签:
     <nz-select [nzMaxTagCount]="3" style="width: 250px" nzMode="multiple" [nzDropdownRender]="renderTemplate"

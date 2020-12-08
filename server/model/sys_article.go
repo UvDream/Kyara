@@ -8,7 +8,7 @@ import (
 type SysArticle struct {
 	gorm.Model
 	//文章id
-	ArticleID int `json:"article_id" gorm:"-"`
+	ArticleID uint `json:"article_id" gorm:"-"`
 	// 文章标题
 	Title string `json:"title" gorm:"comment:'文章标题'"`
 	// 文章摘要
@@ -34,7 +34,7 @@ type SysArticle struct {
 	// 原文链接
 	OriginalLink string `json:"original_link" gorm:"comment:'原文链接'"`
 	// 标签
-	TagArray []string `json:"tag_array" gorm:"-"`
+	TagArray []uint `json:"tag_array" gorm:"-"`
 	// 分类id
 	ClassificationID string `json:"classification_id" gorm:"comment:'分类id'"`
 	// 阅读密码

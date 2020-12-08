@@ -51,6 +51,8 @@ export class EditArticleComponent implements OnInit {
     img_url: '',
     // tag
     tag_array: [],
+    // 分类id
+    classification_id: '',
   };
   tagVal = '';
   expandKeys = ['100', '1001'];
@@ -167,6 +169,7 @@ export class EditArticleComponent implements OnInit {
     console.log('提交', this.form);
     this.isPassword ? this.form.is_password = '1' : this.form.is_password = '0';
     this.isTop ? this.form.top = '1' : this.form.top = '0';
+    this.form.classification_id = this.form.classification_id.toString();
     const res = await this.httpService.addArticle(this.form);
     console.log(res);
     if (res.code === 200) {
