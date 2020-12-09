@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticleService } from '@service/article.service'
+import { ArticleService } from '@service/article.service';
+interface ClassifyItem {
+  name: string;
+  max: number;
+  count: number;
+}
 @Component({
   selector: 'app-radar-chart',
   templateUrl: './radar-chart.component.html',
@@ -9,7 +14,7 @@ export class RadarChartComponent implements OnInit {
   options: any;
   constructor(private articleHttp: ArticleService) { }
   data: [];
-  arr: [];
+  arr: ClassifyItem[] = [];
   ngOnInit(): void {
     this.getData();
   }
@@ -31,7 +36,7 @@ export class RadarChartComponent implements OnInit {
             let obj = '';
             for (let i = 0; i < parm.length; i++) {
               obj = obj + '<div style="display: flex;align-items:center;justify-content:space-between;"><span>' + parm[i].name
-                + '：</span><span style="margin-left:5px">' + params.data.value[i] + '</span></div>\n'
+                + '：</span><span style="margin-left:5px">' + params.data.value[i] + '</span></div>\n';
             }
             return params.seriesName + obj;
           }
