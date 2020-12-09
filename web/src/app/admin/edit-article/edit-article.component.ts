@@ -25,6 +25,7 @@ export class EditArticleComponent implements OnInit {
   isTop = false;
   coverTypeDisabled = false;
   value?: string;
+  classification: number;
   // 是否置顶
   public form = {
     article_id: 0,
@@ -169,9 +170,8 @@ export class EditArticleComponent implements OnInit {
     console.log('提交', this.form);
     this.isPassword ? this.form.is_password = '1' : this.form.is_password = '0';
     this.isTop ? this.form.top = '1' : this.form.top = '0';
-    this.form.classification_id = this.form.classification_id.toString();
+    this.form.classification_id = this.classification.toString();
     const res = await this.httpService.addArticle(this.form);
-    console.log(res);
     if (res.code === 200) {
       this.form.article_id = res.data.ID;
       this.message.info(res.msg);
@@ -187,12 +187,14 @@ export class EditArticleComponent implements OnInit {
       this.coverTypeDisabled = false;
     }
   }
+  // 获取详情
   async getArticleDetail(id: string): Promise<void> {
     const res = await this.httpService.getArticleDetail(id);
     console.log(res);
     if (res.code === 200) {
       this.form = res.data;
       this.form.article_id = res.data.ID;
+      this.classification = Number(this.form.classification_id);
       this.markdownToHtml(this.form.article_content);
     }
   }

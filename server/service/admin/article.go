@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"server/global"
 	"server/model"
@@ -29,7 +30,10 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 		if err != nil {
 			return err, "文章创建失败", r
 		} else {
-			updateTag(r.ID, r.TagArray)
+			err,msg:=updateTag(r.ID, r.TagArray)
+			if err!=nil{
+				return err,msg,r
+			}
 			return err, "文章创建成功", r
 		}
 	} else {
@@ -52,36 +56,53 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 	return nil, "", r
 }
 func updateTag(id uint, tag []uint) (err error, msg string) {
+	//先删除再添加
+	db := global.GVA_DB
+	//强删除
+	err=db.Where("article_id = ?",id).Unscoped().Delete(&model.SysArticleTag{}).Error
+	if err!=nil {
+		return err,"删除失败"
+	}
+	//添加
 	if len(tag) > 0 {
-		db := global.GVA_DB
 		for _,k:=range tag {
 			var tagArticle model.SysArticleTag
-			err=db.Where("article_id=? AND tag_id=?",id,k).Find(&tagArticle).Error
-			if err!=nil{
-				tagArticle.ArticleID=id
+			tagArticle.ArticleID=id
 				tagArticle.TagID=k
 				err=db.Create(&tagArticle).Error
 				if err!=nil{
 					return err,"创建文章和tag关系失败"
 				}
-			}
 		}
 	}
 	return err, "关联文章和tag关系成功"
 }
 
 //查询文章详情
-func GetArticleDetail(id string) (err error, article model.SysArticle) {
+func GetArticleDetail(id string) (err error, article model.SysArticle,msg string) {
 	article = model.SysArticle{}
 	db := global.GVA_DB
 	err = db.Where("id=? ", id).Find(&article).Error
-	return err, article
+	if err!=nil {
+		return err,article,"查询详情失败"
+	}
+	//查询tag
+	var tagArticle []model.SysArticleTag
+	err=db.Where("article_id = ?",article.ID).Find(&tagArticle).Error
+	if err!=nil {
+		return err,article,"查询tag失败"
+	}
+	fmt.Println(tagArticle)
+	for i,k:=range tagArticle{
+		fmt.Println(i,k)
+		article.TagArray=append(article.TagArray,k.TagID)
+	}
+	return err, article,"查询详情成功"
 }
 
 //新增公告
 func AddNotice(r model.BlogNotice) (err error, msg string) {
 	db := global.GVA_DB
-
 	if r.Show == "1" {
 		updateNotice()
 	}
