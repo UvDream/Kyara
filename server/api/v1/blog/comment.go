@@ -60,3 +60,12 @@ func ToBaiDu(c *gin.Context)  {
 		response.OkDetailed(count,msg,c)
 	}
 }
+//获取分类数量
+func GetClassifyStatistics(c *gin.Context)  {
+	err,data,arr:=blog.GetClassifyStatistics()
+	if err!=nil{
+		response.FailWithMessage("获取失败",c)
+	}else {
+		response.OkDetailed(&resp.ClassIfyRequest{Data: data,List: arr},"获取成功",c)
+	}
+}

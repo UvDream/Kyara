@@ -50,3 +50,13 @@ type GithubList struct {
 	//	语言
 	Language string `json:"language"`
 }
+type Classify struct{
+	Name string `json:"name"`
+	Max int `json:"max"`
+	Count int `json:"count"`
+}
+//分类动态
+type ClassIfyRequest struct{
+	Data []int `json:"data"`
+	List []Classify `json:"list"`
+}

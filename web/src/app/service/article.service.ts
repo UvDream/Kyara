@@ -122,5 +122,12 @@ export class ArticleService {
       data
     });
   }
+  // 获取分类动态
+  getClassify = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/article/classifyStatistics'
+    });
+  }
 
 }

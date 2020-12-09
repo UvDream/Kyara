@@ -11,6 +11,7 @@ import (
 	"server/model"
 	"server/model/request"
 	"server/model/response"
+	"server/utils"
 	"strings"
 	"time"
 )
@@ -102,4 +103,34 @@ func BaiduInclude(url string)(err error,msg string)  {
 		return errors.New("EOF"),"该网址已经收录"
 	}
 	return nil,"网址未被收录"
+}
+//获取分类动态
+func GetClassifyStatistics()(error,[]int,[]response.Classify)  {
+	var classify []model.SysClassify
+	db := global.GVA_DB
+	var countArr []int
+	var classifyArr []response.Classify
+	err:=db.Find(&classify).Error
+	if err!=nil {
+		return err,countArr,classifyArr
+	}
+
+	for _,k:=range classify{
+		var count int
+		var classify response.Classify
+		classify.Name=k.TypeName
+		err:=db.Where("classification_id = ?", k.ID).Table("sys_articles").Count(&count).Error
+		if err!=nil {
+			return err,countArr,classifyArr
+		}
+		classify.Count=count
+		classifyArr=append(classifyArr,classify)
+		countArr=append(countArr,count)
+	}
+	max,_:=utils.GetMaxNumber(countArr)
+	fmt.Println(max)
+	for i,_ := range classifyArr {
+		classifyArr[i].Max=max
+	}
+	return err,countArr,classifyArr
 }
