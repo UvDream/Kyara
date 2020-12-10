@@ -60,3 +60,9 @@ type ClassIfyRequest struct{
 	Data []int `json:"data"`
 	List []Classify `json:"list"`
 }
+type EditClassifyResponse struct{
+	ID uint `json:"id"`
+	ParentID string `json:"parent_id"`
+	TypeName string `json:"type_name"`
+	Icon string `json:"icon"`
+}

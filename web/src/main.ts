@@ -9,11 +9,13 @@ if (environment.production) {
   enableProdMode();
 }
 iconfontVersion.forEach((ele: any) => {
-  loadStyle(iconfontUrl.replace('$key', ele.icon), false);
-  loadStyle(iconfontUrl.replace('$key', ele.svg), false);
+  ele.icon ? loadStyle(iconfontUrl.replace('$key', ele.icon), false) :
+    loadStyle(iconfontUrl.replace('$key', ele.svg), false);
 });
 iconfontVersion.forEach((ele: any) => {
-  loadStyle(iconfontUrl.replace('$key', ele.svg), true);
+  if (ele.svg) {
+    loadStyle(iconfontUrl.replace('$key', ele.svg), true);
+  }
 });
 document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic()

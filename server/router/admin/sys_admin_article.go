@@ -15,6 +15,7 @@ func InitAdminArticle(Router *gin.RouterGroup) (R gin.IRouter) {
 		AdminArticleRouter.GET("addTag", v1.AddTag)                  //增加tag
 		AdminArticleRouter.POST("blogComment", v1.GetBlogComment)    //获取博客留言
 		AdminArticleRouter.POST("checkComment", v1.CheckBlogComment) //审核留言
+		AdminArticleRouter.POST("editClassify",v1.EditClassify)
 	}
 	return AdminArticleRouter
 }

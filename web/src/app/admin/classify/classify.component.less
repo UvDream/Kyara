@@ -1,4 +1,21 @@
 .classify {
+    &-content {
+        display: flex;
+
+        &-left {
+            width: 50%;
+        }
+
+        &-right {
+            width: 50%;
+
+            button {
+                margin-left: 150px;
+                margin-top : 10px;
+            }
+        }
+    }
+
     &-tree {
         &-node {
             display    : flex;
@@ -19,5 +36,20 @@
                 margin: 0 5px;
             }
         }
+    }
+}
+
+.block {
+    display    : flex;
+    align-items: center;
+    margin-top : 10px;
+
+    label {
+        flex-basis : 100px;
+        flex-shrink: 0;
+    }
+
+    input {
+        width: 200px;
     }
 }

@@ -55,4 +55,12 @@ export class AdminService {
       data
     });
   }
+  // 修改或者修改分类
+  editClassify = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/editClassify',
+      data
+    });
+  }
 }
