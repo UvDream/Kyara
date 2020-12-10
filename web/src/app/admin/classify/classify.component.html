@@ -1,1 +1,23 @@
-<p>classify works!</p>
+<div class="classify">
+    <div class="classify-content">
+        <div class="classify-content-left">
+            <nz-tree #nzTreeComponent [nzData]="nodes" [nzExpandAll]="true" [nzTreeTemplate]="nzTreeTemplate">
+            </nz-tree>
+            <ng-template #nzTreeTemplate let-node>
+                <div class="classify-tree-node">
+                    <div class="classify-tree-node-icon">
+                        <svg class="icon" aria-hidden="true">
+                            <use [attr.xlink:href]="'#'+node.icon"></use>
+                        </svg>
+                    </div>
+                    <span> {{node.title}}</span>
+                    <span class="iconfont uv-remove-circle-outline"></span>
+                    <span class="iconfont uv-add-circle-outline"></span>
+                </div>
+            </ng-template>
+        </div>
+        <div class="classify-content-right">
+
+        </div>
+    </div>
+</div>

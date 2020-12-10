@@ -27,6 +27,7 @@ import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { BlogConfigComponent } from './blog-config/blog-config.component';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { ImagesComponent } from './images/images.component';
+import { NzTreeModule } from 'ng-zorro-antd/tree';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { ImagesComponent } from './images/images.component';
     NzFormModule,
     ReactiveFormsModule,
     NzTagModule,
-    NzPopconfirmModule
+    NzPopconfirmModule,
+    NzTreeModule
   ],
   declarations: [
     AdminComponent,
