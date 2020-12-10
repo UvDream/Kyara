@@ -2,25 +2,34 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2020-12-10 16:50:34
+ * @LastEditTime: 2020-12-10 16:58:05
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
-export const loadStyle = (url: string) => {
-  const link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.href = url + '.css';
+
+/**
+ * @description: 添加iconfont
+ * @param 连接url url
+ * @param 是否是svg svg
+ * @return 无返回值
+ */
+export const loadStyle = (url: string, svg?: boolean) => {
   const head = document.getElementsByTagName('head')[0];
-  head.appendChild(link);
+  if (!svg) {
+    const link = document.createElement('link');
+    link.type = 'text/css';
+    link.rel = 'stylesheet';
+    link.href = url + '.css';
+    head.appendChild(link);
+  } else {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url + '.js';
+    head.appendChild(script);
+  }
+
 };
-export const loadScript = (url: string) => {
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.src = url + '.js';
-  const head = document.getElementsByTagName('head')[0];
-  head.appendChild(script);
-};
+
 export function getBase64(file: File): Promise<string | ArrayBuffer | null> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
