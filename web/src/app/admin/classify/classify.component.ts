@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '@service/article.service';
-import { NzFormatEmitEvent } from 'ng-zorro-antd/tree';
+import { NzTreeNode } from 'ng-zorro-antd/tree';
 import { AdminService } from '@service/admin.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -85,9 +85,9 @@ export class ClassifyComponent implements OnInit {
       pid: null,
     };
   }
-  treeClick(data: NzFormatEmitEvent): void {
-    console.log(data.node.origin);
-    const obj = data.node.origin;
+  treeClick(data: NzTreeNode): void {
+    console.log(data);
+    const obj = data.origin;
     this.form.type_name = obj.title;
     this.form.pid = Number(obj.parentId);
     this.form.icon = obj.icon;
@@ -107,6 +107,15 @@ export class ClassifyComponent implements OnInit {
         }
       },
     });
+  }
+  // 添加子类
+  addFunc(data: NzTreeNode): void {
+    console.log(data);
+    const obj = data.origin;
+    this.form.type_name = '';
+    this.form.pid = Number(obj.parentId);
+    this.form.icon = '';
+    this.form.id = '';
   }
 
 }

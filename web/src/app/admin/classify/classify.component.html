@@ -1,19 +1,18 @@
 <div class="classify">
     <div class="classify-content">
         <div class="classify-content-left">
-            <nz-tree #nzTreeComponent [nzData]="nodes" [nzExpandAll]="true" [nzTreeTemplate]="nzTreeTemplate"
-                (nzClick)="treeClick($event)">
+            <nz-tree #nzTreeComponent [nzData]="nodes" [nzExpandAll]="true" [nzTreeTemplate]="nzTreeTemplate">
             </nz-tree>
             <ng-template #nzTreeTemplate let-node>
                 <div class="classify-tree-node">
-                    <div class="classify-tree-node-icon">
+                    <div class="classify-tree-node-icon" (click)="treeClick(node)">
                         <svg class="icon" aria-hidden="true">
                             <use [attr.xlink:href]="'#'+node.icon"></use>
                         </svg>
                     </div>
-                    <span> {{node.title}}</span>
+                    <span (click)="treeClick(node)"> {{node.title}}</span>
                     <span class="iconfont uv-remove-circle-outline" (click)="deleteFunc(node)"></span>
-                    <span class="iconfont uv-add-circle-outline" (click)="addFunc(node,false)"></span>
+                    <span class="iconfont uv-add-circle-outline" (click)="addFunc(node)"></span>
                 </div>
             </ng-template>
         </div>
