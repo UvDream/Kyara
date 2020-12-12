@@ -32,8 +32,10 @@
                     [(ngModel)]="form.pid" nzPlaceHolder="请选择节点">
                 </nz-tree-select>
             </div>
-            <button nz-button nzType="primary" (click)="sureFunc()">确认</button>
-            <button nz-button nzType="primary" (click)="cancelFunc()">重置</button>
+            <div class="classify-content-right-btn">
+                <button nz-button nzType="primary" (click)="sureFunc()">确认</button>
+                <button nz-button (click)="cancelFunc()">重置</button>
+            </div>
         </div>
     </div>
 </div>

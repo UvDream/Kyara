@@ -63,4 +63,12 @@ export class AdminService {
       data
     });
   }
+  // 删除文章分类
+  deleteClassify = (params: object) => {
+    return this.http.request({
+      method: 'get',
+      url: '/admin/deleteClassify',
+      params
+    });
+  }
 }

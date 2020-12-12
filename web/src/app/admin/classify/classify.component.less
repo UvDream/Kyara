@@ -3,15 +3,21 @@
         display: flex;
 
         &-left {
-            width: 50%;
+            width       : 50%;
+            border-right: 1px solid #ccc;
         }
 
         &-right {
-            width: 50%;
+            width       : 50%;
+            padding-left: 10px;
 
-            button {
-                margin-left: 150px;
-                margin-top : 10px;
+            &-btn {
+                padding-left: 100px;
+                margin-top  : 10px;
+
+                button:nth-child(2) {
+                    margin-left: 80px;
+                }
             }
         }
     }

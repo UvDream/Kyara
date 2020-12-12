@@ -2,9 +2,10 @@ package service
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"server/global"
 	"server/model"
+
+	"github.com/gin-gonic/gin"
 )
 
 //新增文章
@@ -30,9 +31,9 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 		if err != nil {
 			return err, "文章创建失败", r
 		} else {
-			err,msg:=updateTag(r.ID, r.TagArray)
-			if err!=nil{
-				return err,msg,r
+			err, msg := updateTag(r.ID, r.TagArray)
+			if err != nil {
+				return err, msg, r
 			}
 			return err, "文章创建成功", r
 		}
@@ -46,58 +47,58 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 		if err != nil {
 			return err, "更新失败", r
 		} else {
-			err,msg:=updateTag(r.ArticleID, r.TagArray)
-			if err!=nil{
-				return err,msg,r
+			err, msg := updateTag(r.ArticleID, r.TagArray)
+			if err != nil {
+				return err, msg, r
 			}
 			return err, "更新文章成功", r
 		}
 	}
-	return nil, "", r
+
 }
 func updateTag(id uint, tag []uint) (err error, msg string) {
 	//先删除再添加
 	db := global.GVA_DB
 	//强删除
-	err=db.Where("article_id = ?",id).Unscoped().Delete(&model.SysArticleTag{}).Error
-	if err!=nil {
-		return err,"删除失败"
+	err = db.Where("article_id = ?", id).Unscoped().Delete(&model.SysArticleTag{}).Error
+	if err != nil {
+		return err, "删除失败"
 	}
 	//添加
 	if len(tag) > 0 {
-		for _,k:=range tag {
+		for _, k := range tag {
 			var tagArticle model.SysArticleTag
-			tagArticle.ArticleID=id
-				tagArticle.TagID=k
-				err=db.Create(&tagArticle).Error
-				if err!=nil{
-					return err,"创建文章和tag关系失败"
-				}
+			tagArticle.ArticleID = id
+			tagArticle.TagID = k
+			err = db.Create(&tagArticle).Error
+			if err != nil {
+				return err, "创建文章和tag关系失败"
+			}
 		}
 	}
 	return err, "关联文章和tag关系成功"
 }
 
 //查询文章详情
-func GetArticleDetail(id string) (err error, article model.SysArticle,msg string) {
+func GetArticleDetail(id string) (err error, article model.SysArticle, msg string) {
 	article = model.SysArticle{}
 	db := global.GVA_DB
 	err = db.Where("id=? ", id).Find(&article).Error
-	if err!=nil {
-		return err,article,"查询详情失败"
+	if err != nil {
+		return err, article, "查询详情失败"
 	}
 	//查询tag
 	var tagArticle []model.SysArticleTag
-	err=db.Where("article_id = ?",article.ID).Find(&tagArticle).Error
-	if err!=nil {
-		return err,article,"查询tag失败"
+	err = db.Where("article_id = ?", article.ID).Find(&tagArticle).Error
+	if err != nil {
+		return err, article, "查询tag失败"
 	}
 	fmt.Println(tagArticle)
-	for i,k:=range tagArticle{
-		fmt.Println(i,k)
-		article.TagArray=append(article.TagArray,k.TagID)
+	for i, k := range tagArticle {
+		fmt.Println(i, k)
+		article.TagArray = append(article.TagArray, k.TagID)
 	}
-	return err, article,"查询详情成功"
+	return err, article, "查询详情成功"
 }
 
 //新增公告

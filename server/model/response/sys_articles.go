@@ -10,8 +10,8 @@ type SysArticleListResponse struct {
 	TotalCount int64              `json:"totalCount"`
 }
 type BlogNotice struct {
-	List []model.BlogNotice `json:"list"`
-	TotalCount int64 `json:"total_count"`
+	List       []model.BlogNotice `json:"list"`
+	TotalCount int64              `json:"total_count"`
 }
 type SysConfigsResponse struct {
 	//博客相关设置
@@ -32,7 +32,7 @@ type SysConfigsResponse struct {
 	FilingMsg string `json:"filing_msg"`
 	//关于博客
 	AboutMe string `json:"about_me"`
-//
+	//
 }
 
 //github Module
@@ -50,19 +50,20 @@ type GithubList struct {
 	//	语言
 	Language string `json:"language"`
 }
-type Classify struct{
-	Name string `json:"name"`
-	Max int `json:"max"`
-	Count int `json:"count"`
+type Classify struct {
+	Name  string `json:"name"`
+	Max   int    `json:"max"`
+	Count int    `json:"count"`
 }
+
 //分类动态
-type ClassIfyRequest struct{
-	Data []int `json:"data"`
+type ClassIfyRequest struct {
+	Data []int      `json:"data"`
 	List []Classify `json:"list"`
 }
-type EditClassifyResponse struct{
-	ID uint `json:"id"`
+type EditClassifyResponse struct {
+	ID       uint   `json:"id"`
 	ParentID string `json:"parent_id"`
 	TypeName string `json:"type_name"`
-	Icon string `json:"icon"`
+	Icon     string `json:"icon"`
 }
