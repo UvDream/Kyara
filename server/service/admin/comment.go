@@ -6,6 +6,7 @@ import (
 	"server/model"
 	"server/model/request"
 	"server/model/response"
+	"server/service/blog"
 )
 //获取博客留言
 func GetBlogComment(r request.ListStruct)(err error,comment []model.BlogComment,msg string,total int)  {
@@ -38,5 +39,6 @@ func CheckBlogComment(r response.CheckComment)  (err error,msg string){
 	if err!=nil{
 		return err,"审核更新数据库失败"
 	}
+	blog.AddDynamic()
 	return err,"审核完成"
 }

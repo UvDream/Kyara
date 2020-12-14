@@ -1,18 +1,17 @@
 package service
 
 import (
-	"fmt"
 	"server/global"
 	"server/model"
 	"server/model/response"
+	"server/service/blog"
 
 	"github.com/gin-gonic/gin"
 )
 
 func EditClassify(r response.EditClassifyResponse) (err error, msg string, classify model.SysClassify) {
-	fmt.Println(r)
 	db := global.GVA_DB
-
+	blog.AddDynamic()
 	classify.TypeName = r.TypeName
 	classify.Icon = r.Icon
 	classify.ParentID = r.ParentID
@@ -38,6 +37,7 @@ func EditClassify(r response.EditClassifyResponse) (err error, msg string, class
 }
 func DeleteClassify(c *gin.Context) (err error, msg string) {
 	db := global.GVA_DB
+	blog.AddDynamic()
 	var classify model.SysClassify
 	id := c.Query("id")
 	err = db.Where("parent_id = ?", id).Find(&classify).Error

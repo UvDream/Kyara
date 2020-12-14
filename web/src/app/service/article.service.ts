@@ -126,7 +126,14 @@ export class ArticleService {
   getClassify = () => {
     return this.http.request({
       method: 'get',
-      url: '/article/classifyStatistics'
+      url: '/other/classifyStatistics'
+    });
+  }
+  // 获取博客动态
+  getBlogDynamic = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/other/blogDynamic'
     });
   }
 

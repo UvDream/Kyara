@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"server/global"
 	"server/model"
+	"server/service/blog"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,6 +12,7 @@ import (
 //新增文章
 func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data model.SysArticle) {
 	db := global.GVA_DB
+	blog.AddDynamic()
 	//claims, _ := c.Get("claims")
 	//waitUse := claims.(*request.CustomClaims)
 	//r.UserID=waitUse.UUID
@@ -121,6 +123,7 @@ func AddNotice(r model.BlogNotice) (err error, msg string) {
 			return err, "更新配置失败"
 		}
 	}
+	blog.AddDynamic()
 	return err, "成功"
 }
 func updateNotice() (err error, msg string) {
@@ -137,6 +140,7 @@ func updateNotice() (err error, msg string) {
 	} else {
 		return err, "更新数据失败"
 	}
+	blog.AddDynamic()
 	return err, "更新成功"
 }
 
@@ -155,5 +159,6 @@ func AddTag(c *gin.Context) (err error, tag model.SysTag, msg string) {
 	if err != nil {
 		return err, tag, "增加tag失败"
 	}
+	blog.AddDynamic()
 	return err, tag, "增加tag成功"
 }

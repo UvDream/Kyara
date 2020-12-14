@@ -193,7 +193,10 @@ func GetBlogDynamic() ([][]string, string, string, int, error) {
 		}
 		data = append(data, a)
 	}
-	max, _ := utils.GetMaxNumber(maxArr)
+	var max int
+	if len(maxArr)!=0 {
+		max, _ = utils.GetMaxNumber(maxArr)
+	}
 	AddDynamic()
 	return data, now.Format("2006-01-02"), thatDay.Format("2006-01-02"), max, nil
 }

@@ -12,6 +12,7 @@ interface ClassifyItem {
 })
 export class RadarChartComponent implements OnInit {
   options: any;
+  loading = true;
   constructor(private articleHttp: ArticleService) { }
   data: [];
   arr: ClassifyItem[] = [];
@@ -19,8 +20,9 @@ export class RadarChartComponent implements OnInit {
     this.getData();
   }
   async getData(): Promise<void> {
+    this.loading = true;
     const res = await this.articleHttp.getClassify();
-    console.log(res);
+    // console.log(res);
     if (res.code === 200) {
       this.data = res.data.data;
       this.arr = res.data.list;
@@ -78,6 +80,7 @@ export class RadarChartComponent implements OnInit {
           }]
         }]
       };
+      this.loading = false;
     }
   }
 
