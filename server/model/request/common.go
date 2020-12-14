@@ -14,3 +14,9 @@ type GetById struct {
 type IdsReq struct {
 	Ids []int `json:"ids" form:"ids"`
 }
+type DynamicRequest struct {
+	List     [][]string `json:"list" form:"list"`
+	Today    string     `json:"today" form:"today"`
+	ThatDay  string     `json:"thatDay" form:"thatDay"`
+	MaxCount int        `json:"maxCount" form:"maxCount"`
+}

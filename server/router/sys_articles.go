@@ -21,8 +21,7 @@ func InitArticles(Router *gin.RouterGroup)(R gin.IRouter)  {
 	    ArticleRouter.POST("noticeList",v1.GetNotice)//获取公告
 	    ArticleRouter.POST("comment",blog.Comment)//评论
 	    ArticleRouter.POST("getComment",blog.GetComment) //获取留言
-	    ArticleRouter.POST("baidu",blog.ToBaiDu)//百度收录
-	    ArticleRouter.GET("classifyStatistics",blog.GetClassifyStatistics)//获取分类动态
+
 	}
 	return ArticleRouter
 }

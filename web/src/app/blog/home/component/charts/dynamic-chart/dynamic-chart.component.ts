@@ -27,7 +27,7 @@ export class DynamicChartComponent implements OnInit {
       tooltip: {
         position: 'top',
         formatter: (params) => {
-          return params.value[0] + ',' + params.value[1];
+          return params.value[0] + ':' + params.value[1];
         }
       },
       grid: {
@@ -66,13 +66,13 @@ export class DynamicChartComponent implements OnInit {
     const thatday = today - dayTime * 365;
 
     const data = [];
-    for (let time = thatday; time < today; time += dayTime) {
+    for (let time = thatday; time <= today; time += dayTime) {
       data.push([
         echarts.format.formatTime('yyyy-MM-dd', time),
-        Math.floor(Math.random() * 10000)
+        0
       ]);
     }
-    console.log(data)
+    console.log(data);
     return {
       data,
       today: echarts.format.formatTime('yyyy-MM-dd', today),

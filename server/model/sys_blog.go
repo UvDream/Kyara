@@ -18,3 +18,9 @@ type  BlogComment struct {
 	Status string `json:"status" gorm:"comment:'审核状态0:需要审核,1:可以展示'`
 	Children []BlogComment `json:"children" gorm:"-"`
 }
+//博客动态
+type BlogDynamic struct{
+	gorm.Model
+	Date string `json:"date"`
+	Count string `json:"count"`
+}
