@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="code-57emz4kzfB" />
+  <title>汪中杰的个人博客</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vditor@latest/dist/index.css" />
+<link rel="stylesheet" href="styles.fc783ff94968e5b77fae.css"></head>
+<style id="blogger"></style>
+<style>
+  .z-loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: paleturquoise;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .book {
+    --sw: 0.3em;
+    width: 15em;
+    height: 10em;
+    background-color: lightyellow;
+    border: var(--sw) solid cadetblue;
+    border-radius: var(--sw);
+    font-size: 20px;
+    position: relative;
+  }
+
+  .book .page {
+    width: calc(50% + var(--sw) * 1.5);
+    height: inherit;
+    background-color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: absolute;
+    top: calc(-1 * var(--sw));
+    right: calc(-1 * var(--sw));
+    padding: 8% 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    animation: flip 4s linear infinite;
+    transform-origin: left;
+    transform-style: preserve-3d;
+  }
+
+  @keyframes flip {
+    55% {
+      transform: rotateY(0) translateX(0) skewY(0);
+    }
+
+    70% {
+      transform: rotateY(-90deg) translateX(calc(-1 * var(--sw) / 2)) skewY(-20deg);
+    }
+
+    85%,
+    100% {
+      transform: rotateY(-180deg) translateX(calc(-1 * var(--sw))) skewY(0);
+    }
+  }
+
+  /* strokes */
+  .book .page span {
+    display: block;
+    width: 100%;
+    border-top: var(--sw) solid cadetblue;
+    border-radius: inherit;
+    animation: 4s linear infinite;
+    transform-origin: left;
+    transform: scaleX(0);
+    backface-visibility: hidden;
+  }
+
+  .book .page span:nth-child(1) {
+    animation-name: stroke-1;
+  }
+
+  .book .page span:nth-child(2) {
+    animation-name: stroke-2;
+  }
+
+  .book .page span:nth-child(3) {
+    animation-name: stroke-3;
+  }
+
+  .book .page span:nth-child(4) {
+    animation-name: stroke-4;
+  }
+
+  .book .page span:nth-child(5) {
+    animation-name: stroke-5;
+  }
+
+  @keyframes stroke-1 {
+    0% {
+      transform: scaleX(0);
+    }
+
+    10%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes stroke-2 {
+    10% {
+      transform: scaleX(0);
+    }
+
+    20%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes stroke-3 {
+    20% {
+      transform: scaleX(0);
+    }
+
+    30%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes stroke-4 {
+    30% {
+      transform: scaleX(0);
+    }
+
+    40%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes stroke-5 {
+    40% {
+      transform: scaleX(0);
+    }
+
+    50%,
+    100% {
+      transform: scaleX(1);
+    }
+  }
+</style>
+
+<body>
+  <app-root></app-root>
+  <div class="z-loading">
+    <div class="book">
+      <div class="page">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+<script src="runtime.e016e0c304a0d8c715dc.js" defer></script><script src="polyfills.df8df8924122ea727a19.js" defer></script><script src="main.88e48a6eed49c5d2a582.js" defer></script></body>
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+
+</script>
+<script type="text/javascript">
+  ! function (e, t, a) {
+    function r() {
+      for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[
+        e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y +
+        "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale +
+        ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+      requestAnimationFrame(r)
+    }
+
+    function n() {
+      var t = "function" == typeof e.onclick && e.onclick;
+      e.onclick = function (e) {
+        t && t(), o(e)
+      }
+    }
+
+    function o(e) {
+      var a = t.createElement("div");
+      a.className = "heart", s.push({
+        el: a,
+        x: e.clientX - 5,
+        y: e.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: c()
+      }), t.body.appendChild(a)
+    }
+
+    function i(e) {
+      var a = t.createElement("style");
+      a.type = "text/css";
+      try {
+        a.appendChild(t.createTextNode(e))
+      } catch (t) {
+        a.styleSheet.cssText = e
+      }
+      t.getElementsByTagName("head")[0].appendChild(a)
+    }
+
+    function c() {
+      return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+    }
+    var s = [];
+    e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame ||
+      e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+        setTimeout(e, 1e3 / 60)
+      }, i(
+        ".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"
+      ), n(), r()
+  }(window, document);
+
+</script>
+
+</html>
