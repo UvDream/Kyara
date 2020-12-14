@@ -110,7 +110,7 @@ func BaiduInclude(url string) (err error, msg string) {
 	return nil, "网址未被收录"
 }
 
-//获取分类动态
+// GetClassifyStatistics 获取分类动态
 func GetClassifyStatistics() (error, []int, []response.Classify) {
 	var classify []model.SysClassify
 	db := global.GVA_DB
@@ -143,11 +143,33 @@ func GetClassifyStatistics() (error, []int, []response.Classify) {
 
 // AddDynamic 添加动态
 func AddDynamic() {
-	//db := global.GVA_DB
+	db := global.GVA_DB
+	//今天
+	now := time.Now().Format("2006-01-02")
+	var dynamic model.BlogDynamic
+	err := db.Where("date = ?", now).Find(&dynamic).Error
+	fmt.Println(err)
+	if err != nil {
+		// 不存在
+		dynamic.Date = now
+		dynamic.Count = "1"
+		err := db.Create(&dynamic).Error
+		if err != nil {
+			fmt.Println("创建失败")
+		}
+	} else {
+		count, _ := strconv.Atoi(dynamic.Count)
+		count++
+		fmt.Println(count)
+		err := db.Model(&dynamic).Where("ID = ?", dynamic.ID).Update(model.BlogDynamic{Count: strconv.Itoa(count)}).Error
+		if err != nil {
+			fmt.Println("更新失败")
+		}
+	}
 }
 
 // GetBlogDynamic 获取动态
-func GetBlogDynamic() ([][]string, string, string, int,error) {
+func GetBlogDynamic() ([][]string, string, string, int, error) {
 	db := global.GVA_DB
 	//今天
 	now := time.Now()
@@ -172,7 +194,6 @@ func GetBlogDynamic() ([][]string, string, string, int,error) {
 		data = append(data, a)
 	}
 	max, _ := utils.GetMaxNumber(maxArr)
-	fmt.Println(max)
-
-	return data, now.Format("2006-01-02"), thatDay.Format("2006-01-02"), max,nil
+	AddDynamic()
+	return data, now.Format("2006-01-02"), thatDay.Format("2006-01-02"), max, nil
 }
