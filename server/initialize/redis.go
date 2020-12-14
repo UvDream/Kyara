@@ -1,8 +1,8 @@
 package initialize
 
 import (
-	"server/global"
 	"github.com/go-redis/redis"
+	"server/global"
 )
 
 func Redis() {

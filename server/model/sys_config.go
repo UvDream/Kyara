@@ -37,7 +37,6 @@ type SysConfig struct {
 	DomainName string `json:"domain_name" gorm:"comment:'域名配置';default:'www.uvdream.cn'"`
 	// 百度token
 	BaiDuToken string `json:"bai_du_token" gorm:"comment:'百度收录token';default:'PlJmLr6f48JBQyyP'"'`
-
 }
 
 //打赏库

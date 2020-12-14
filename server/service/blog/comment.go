@@ -194,7 +194,7 @@ func GetBlogDynamic() ([][]string, string, string, int, error) {
 		data = append(data, a)
 	}
 	var max int
-	if len(maxArr)!=0 {
+	if len(maxArr) != 0 {
 		max, _ = utils.GetMaxNumber(maxArr)
 	}
 	AddDynamic()

@@ -2,11 +2,11 @@ package v1
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
+	"github.com/mojocn/base64Captcha"
 	"server/global"
 	"server/global/response"
 	resp "server/model/response"
-	"github.com/gin-gonic/gin"
-	"github.com/mojocn/base64Captcha"
 )
 
 var store = base64Captcha.DefaultMemStore

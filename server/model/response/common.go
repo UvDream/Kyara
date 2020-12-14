@@ -8,5 +8,5 @@ type PageResult struct {
 }
 type BaiduResponse struct {
 	Success interface{} `json:"success"`
-	Remain interface{} `json:"remain"`
+	Remain  interface{} `json:"remain"`
 }

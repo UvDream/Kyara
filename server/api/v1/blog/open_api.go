@@ -7,19 +7,19 @@ import (
 	"server/service/blog"
 )
 
-func RandomAvatar(c *gin.Context)  {
+func RandomAvatar(c *gin.Context) {
 	var R request.AvatarResponse
-	if c.Query("format")=="" {
-		R.Format="json"
-	}else{
-		R.Format= c.Query("format")
+	if c.Query("format") == "" {
+		R.Format = "json"
+	} else {
+		R.Format = c.Query("format")
 	}
-	if c.Query("sort")=="" {
-		R.Sort="男"
-	}else {
-		R.Sort=c.Query("sort")
+	if c.Query("sort") == "" {
+		R.Sort = "男"
+	} else {
+		R.Sort = c.Query("sort")
 	}
-	err,img,msg:=blog.RandomAvatar(R)
+	err, img, msg := blog.RandomAvatar(R)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {

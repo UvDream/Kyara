@@ -2,14 +2,14 @@ package v1
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
+	"net/url"
+	"os"
 	"server/global"
 	"server/global/response"
 	"server/model"
 	"server/service"
 	"server/utils"
-	"github.com/gin-gonic/gin"
-	"net/url"
-	"os"
 )
 
 // @Tags SysApi
@@ -49,7 +49,7 @@ func CreateTemp(c *gin.Context) {
 				Method:      "DELETE",
 			},
 			{
-				Path:        "/" + a.Abbreviation + "/" + "delete" + a.StructName+"ByIds",
+				Path:        "/" + a.Abbreviation + "/" + "delete" + a.StructName + "ByIds",
 				Description: "批量删除" + a.Description,
 				ApiGroup:    a.Abbreviation,
 				Method:      "DELETE",

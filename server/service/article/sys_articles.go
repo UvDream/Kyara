@@ -75,7 +75,7 @@ func tagToArticle(tag string, top string) (articleList []model.SysArticle, err e
 }
 
 //文章详情服务
-func GetArticleDetail(c *gin.Context) (err error, article model.SysArticle,msg string) {
+func GetArticleDetail(c *gin.Context) (err error, article model.SysArticle, msg string) {
 	db := global.GVA_DB
 	id := c.Query("id")
 	article = model.SysArticle{}
@@ -85,18 +85,18 @@ func GetArticleDetail(c *gin.Context) (err error, article model.SysArticle,msg s
 	//查询文章作者
 	a := model.SysUser{}
 	err = db.Where("UUID=?", article.UserID).Find(&a).Error
-	if err!=nil{
-		return err,article,"获取文章作者失败"
+	if err != nil {
+		return err, article, "获取文章作者失败"
 	}
 	article.UserName = a.NickName
 	//查询文章赞赏码
 	var collectList []model.CollectionCode
-	err=db.Where("article_id=?",id).Find(&collectList).Error
+	err = db.Where("article_id=?", id).Find(&collectList).Error
 	if err != nil {
-		return err, article,"获取文章赞赏码失败"
+		return err, article, "获取文章赞赏码失败"
 	}
-	article.CollectList=collectList
-	return err, article,"获取文章详情成功"
+	article.CollectList = collectList
+	return err, article, "获取文章详情成功"
 }
 
 //验证密码

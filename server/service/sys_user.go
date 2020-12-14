@@ -2,11 +2,11 @@ package service
 
 import (
 	"errors"
+	uuid "github.com/satori/go.uuid"
 	"server/global"
 	"server/model"
 	"server/model/request"
 	"server/utils"
-	uuid "github.com/satori/go.uuid"
 )
 
 // @title    Register

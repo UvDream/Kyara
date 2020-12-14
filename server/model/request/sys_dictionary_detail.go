@@ -2,7 +2,7 @@ package request
 
 import "server/model"
 
-type SysDictionaryDetailSearch struct{
-    model.SysDictionaryDetail
-    PageInfo
+type SysDictionaryDetailSearch struct {
+	model.SysDictionaryDetail
+	PageInfo
 }

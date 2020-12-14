@@ -55,3 +55,7 @@ func DeleteClassify(c *gin.Context) (err error, msg string) {
 	}
 	return err, "删除成功"
 }
+
+func GetIconfontClassify() {
+
+}

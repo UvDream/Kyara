@@ -19,121 +19,123 @@ import (
 )
 
 //获取token
-func GetImagesToken( r request.ImagesStruct)(msg string ,err error) {
+func GetImagesToken(r request.ImagesStruct) (msg string, err error) {
 	db := global.GVA_DB
-	sys:=model.SysConfig{}
-	err=db.Find(&sys).Error
-	if sys.ImgurType == "0"{
+	sys := model.SysConfig{}
+	err = db.Find(&sys).Error
+	if sys.ImgurType == "0" {
 		fmt.Println("如优")
-	}else if sys.ImgurType=="1"{
+	} else if sys.ImgurType == "1" {
 		fmt.Println("白熊图床")
-		msg,err=getTokenBX(r)
+		msg, err = getTokenBX(r)
 	}
-	return msg,err
+	return msg, err
 }
+
 //白熊图床获取token
-func getTokenBX(r request.ImagesStruct)(data string ,er error){
-	url:="https://pic.baixiongz.com/api/token"
+func getTokenBX(r request.ImagesStruct) (data string, er error) {
+	url := "https://pic.baixiongz.com/api/token"
 	param := req.Param{
-		"email":  r.UserName,
+		"email":    r.UserName,
 		"password": r.Password,
 	}
-	c,err:=req.Post(url,param)
+	c, err := req.Post(url, param)
 	var msg response.BxTokenResponse
 	c.ToJSON(&msg)
 	db := global.GVA_DB
-	sys:=model.SysConfig{}
-	err=db.Model(&sys).Update(model.SysConfig{ImgurToken:msg.Data.Token,ImgurType:r.Type,ImgurUserName: r.UserName,ImgurPassword: r.Password}).Error
-	if err!=nil {
-		return "更新token失败",err
+	sys := model.SysConfig{}
+	err = db.Model(&sys).Update(model.SysConfig{ImgurToken: msg.Data.Token, ImgurType: r.Type, ImgurUserName: r.UserName, ImgurPassword: r.Password}).Error
+	if err != nil {
+		return "更新token失败", err
 	}
-	return msg.Data.Token,err
+	return msg.Data.Token, err
 }
+
 //---------------------------------------获取图片列表-----------------------------------
-func GetImagesList(r request.ImagesListStruct)(msg interface{},err error)  {
+func GetImagesList(r request.ImagesListStruct) (msg interface{}, err error) {
 	//获取用户配置
 	db := global.GVA_DB
-	sys:=model.SysConfig{}
-	err=db.Find(&sys).Error
-	if err!=nil{
-		return "获取错误",err
+	sys := model.SysConfig{}
+	err = db.Find(&sys).Error
+	if err != nil {
+		return "获取错误", err
 	}
-	if sys.ImgurType == "0"{
+	if sys.ImgurType == "0" {
 		fmt.Println("如优")
-		msg,err=getRyImgurList(r,sys.ImgurToken)
-		return msg,err
-	}else if sys.ImgurType=="1"{
+		msg, err = getRyImgurList(r, sys.ImgurToken)
+		return msg, err
+	} else if sys.ImgurType == "1" {
 		fmt.Println("白熊图床")
-		 msg,err=getBxImgurList(r,sys.ImgurToken)
-		return msg,err
+		msg, err = getBxImgurList(r, sys.ImgurToken)
+		return msg, err
 	}
-	return "",err
+	return "", err
 }
 
-
 //获取白熊图床图片列表
-func getBxImgurList(r request.ImagesListStruct,token string) (data response.BxResponse ,err error)  {
-	url:="https://pic.baixiongz.com/api/images"
+func getBxImgurList(r request.ImagesListStruct, token string) (data response.BxResponse, err error) {
+	url := "https://pic.baixiongz.com/api/images"
 	header := req.Header{
 		"token": token,
 	}
 	param := req.Param{
-		"page":  r.Page,
+		"page": r.Page,
 		"rows": r.Limit,
 	}
 	c, err := req.Post(url, header, param)
-	var  msg response.BxResponse
+	var msg response.BxResponse
 	c.ToJSON(&msg)
-	return msg,err
+	return msg, err
 }
-func getRyImgurList(r request.ImagesListStruct,token string)(list interface{},err error)  {
+func getRyImgurList(r request.ImagesListStruct, token string) (list interface{}, err error) {
 	//用token获取列表
-	req:=HttpRequest.NewRequest()
+	req := HttpRequest.NewRequest()
 	req.SetHeaders(map[string]string{"Content-Type": "application/json"})
-	res,_:=req.Post("https://img.rruu.net/api/imageList",map[string]interface{}{
-		"token":token,
-		"page":r.Page,
-		"limit":r.Limit,
-		"folder":r.Folder,
+	res, _ := req.Post("https://img.rruu.net/api/imageList", map[string]interface{}{
+		"token":  token,
+		"page":   r.Page,
+		"limit":  r.Limit,
+		"folder": r.Folder,
 	})
 	body, err := res.Body()
-	if err!=nil {
-		return "获取如优图床错误",err
+	if err != nil {
+		return "获取如优图床错误", err
 	}
-	list=gojsonq.New().FromString(string(body)).Find("data")
-	defer  res.Close()
-	return list,err
+	list = gojsonq.New().FromString(string(body)).Find("data")
+	defer res.Close()
+	return list, err
 }
 
 //文件上传
-func UploadImage(c *gin.Context)(msg string,err error,data request.BxData)  {
+func UploadImage(c *gin.Context) (msg string, err error, data request.BxData) {
 	db := global.GVA_DB
-	sys:=model.SysConfig{}
-	err=db.Find(&sys).Error
+	sys := model.SysConfig{}
+	err = db.Find(&sys).Error
 	fmt.Println(err)
-	if sys.ImgurType == "0"{
+	if sys.ImgurType == "0" {
 		fmt.Println("如优")
-	}else if sys.ImgurType=="1"{
+	} else if sys.ImgurType == "1" {
 		//白熊图床
-		msg,err,data=uploadBx(c,sys.ImgurToken)
-		if err!=nil{
-			return "白熊图床上传失败",err,data
+		msg, err, data = uploadBx(c, sys.ImgurToken)
+		if err != nil {
+			return "白熊图床上传失败", err, data
 		}
 		var imageList model.ExaFileUploadAndDownload
-		imageList.Key=data.MD5
-		imageList.Type=c.Query("type")
-		imageList.Url=data.URL
-		imageList.Name=data.Name
-		err=db.Create(&imageList).Error
-		if err!=nil {
-			return "关联图床到系统失败",err,data
+		imageList.Key = data.MD5
+		imageList.Type = c.Query("type")
+		imageList.Url = data.URL
+		imageList.Name = data.Name
+		err = db.Create(&imageList).Error
+		if err != nil {
+			return "关联图床到系统失败", err, data
 		}
 	}
-	return msg,err,data
+	return msg, err, data
 }
+
 //白熊图床上传
-func uploadBx(c *gin.Context,token string) (msg string,err error,list request.BxData) {
-	file,path,err:= c.Request.FormFile("image")
+func uploadBx(c *gin.Context, token string) (msg string, err error, list request.BxData) {
+	file, path, err := c.Request.FormFile("image")
 	//url:="https://pic.baixiongz.com/api/upload"
 	//header := req.Header{
 	//	"token": token,
@@ -153,37 +155,36 @@ func uploadBx(c *gin.Context,token string) (msg string,err error,list request.Bx
 	method := "POST"
 	payload := &bytes.Buffer{}
 	writer := multipart.NewWriter(payload)
-	part1, errFile1 := writer.CreateFormFile("image",path.Filename)
+	part1, errFile1 := writer.CreateFormFile("image", path.Filename)
 	_, errFile1 = io.Copy(part1, file)
-	if errFile1 !=nil {
-		return "文件参数写入错误",err,list
+	if errFile1 != nil {
+		return "文件参数写入错误", err, list
 	}
 	err = writer.Close()
 	if err != nil {
-		return "文件写入失败",err,list
+		return "文件写入失败", err, list
 	}
-	client := &http.Client {
-	}
+	client := &http.Client{}
 	req, err := http.NewRequest(method, url, payload)
 	if err != nil {
-		return "上传失败",err,list
+		return "上传失败", err, list
 	}
 	req.Header.Add("token", token)
-	req.Header.Set("Content-Type",  writer.FormDataContentType())
+	req.Header.Set("Content-Type", writer.FormDataContentType())
 	res, err := client.Do(req)
 	if err != nil {
-		return "请求上传失败",err,list
+		return "请求上传失败", err, list
 	}
 	defer res.Body.Close()
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		return "获取返回结果失败",err,list
+		return "获取返回结果失败", err, list
 	}
 	var bxData request.BxRequest
-	err=json.Unmarshal(body,&bxData)
-	if bxData.Code!=200 {
+	err = json.Unmarshal(body, &bxData)
+	if bxData.Code != 200 {
 		return "获取返回解析错误", err, list
 	}
-	list=bxData.Data
-	return "上传成功",err,list
+	list = bxData.Data
+	return "上传成功", err, list
 }

@@ -30,10 +30,10 @@ func CheckBlogComment(c *gin.Context) {
 	if err != nil {
 		resp.FailWithMessage("获取参数错误", c)
 	}
-	err,msg:=service.CheckBlogComment(R)
+	err, msg := service.CheckBlogComment(R)
 	if err != nil {
 		resp.FailWithMessage(msg, c)
 	} else {
-		resp.OkWithMessage(msg,c)
+		resp.OkWithMessage(msg, c)
 	}
 }
