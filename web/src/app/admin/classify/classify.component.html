@@ -37,4 +37,21 @@
             </div>
         </div>
     </div>
+    <div class="classify-search">
+        <input nz-input placeholder="输入搜索内容" [(ngModel)]="search" (keyup.enter)="searchIcon()" />
+        <button nz-button nzType="primary" (click)="searchIcon()">搜索</button>
+    </div>
+    <div class="classify-icon">
+        <div *ngFor="let item of iconList" class="classify-icon-block" (click)="iconClick(item)">
+            <div class="classify-icon-block-icon">
+                <svg class="icon" aria-hidden="true">
+                    <use [attr.xlink:href]="'#'+item.font_class"></use>
+                </svg>
+            </div>
+            <div class="classify-icon-block-text">
+                <p class="one-text">{{item.name}}</p>
+                <p class="one-text">{{item.font_class}}</p>
+            </div>
+        </div>
+    </div>
 </div>

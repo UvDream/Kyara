@@ -71,4 +71,11 @@ export class AdminService {
       params
     });
   }
+  // 阿里分类接口
+  getIconfontList = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/admin/iconfontClassify',
+    });
+  }
 }

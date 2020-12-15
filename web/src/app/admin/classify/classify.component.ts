@@ -4,7 +4,13 @@ import { NzTreeNode } from 'ng-zorro-antd/tree';
 import { AdminService } from '@service/admin.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzMessageService } from 'ng-zorro-antd/message';
-
+interface IconItem {
+  id: number;
+  name: string;
+  project_id: number;
+  show_svg: string;
+  font_class: string;
+}
 interface TreeItem {
   key: string;
   title: string;
@@ -28,6 +34,7 @@ export class ClassifyComponent implements OnInit {
     private message: NzMessageService
   ) { }
   nodes = [];
+  search = '';
   form = {
     type_name: '',
     id: '',
@@ -35,8 +42,10 @@ export class ClassifyComponent implements OnInit {
     icon: '',
     pid: null,
   };
+  public iconList: Array<IconItem>;
   ngOnInit(): void {
     this.getTree();
+    this.getIconList();
   }
   async getTree(): Promise<void> {
     const res = await this.httpService.getArticleClassification();
@@ -116,6 +125,31 @@ export class ClassifyComponent implements OnInit {
     this.form.pid = Number(obj.parentId);
     this.form.icon = '';
     this.form.id = '';
+  }
+  // 获取icon list
+  async getIconList(): Promise<void> {
+    const res = await this.httpAdmin.getIconfontList();
+    if (res.code === 200) {
+      this.iconList = res.data.data.icons;
+    }
+  }
+  // 搜索icon
+  searchIcon(): void {
+    const newList = [];
+    if (this.search) {
+      this.iconList.filter((item: IconItem) => {
+        if (item.name.indexOf(this.search) !== -1) {
+          newList.push(item);
+        }
+      });
+      this.iconList = newList;
+    } else {
+      this.getIconList();
+    }
+  }
+  // 点击填充分类图标
+  iconClick(item: IconItem): void {
+    this.form.icon = item.font_class;
   }
 
 }
