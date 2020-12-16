@@ -28,6 +28,7 @@ import { BlogConfigComponent } from './blog-config/blog-config.component';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { ImagesComponent } from './images/images.component';
 import { NzTreeModule } from 'ng-zorro-antd/tree';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { NzTreeModule } from 'ng-zorro-antd/tree';
     ReactiveFormsModule,
     NzTagModule,
     NzPopconfirmModule,
-    NzTreeModule
+    NzTreeModule,
+    NzTabsModule
   ],
   declarations: [
     AdminComponent,
