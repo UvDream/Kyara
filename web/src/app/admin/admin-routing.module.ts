@@ -13,10 +13,10 @@ import { ImagesComponent } from './images/images.component';
 
 export const adminRoutes: Routes = [
   {
-    path: '',
+    path: 'admin',
     component: AdminComponent,
     children: [
-      { path: '', redirectTo: '/editArticle', pathMatch: 'full' },
+      { path: '', redirectTo: '/admin/editArticle', pathMatch: 'full' },
       { path: 'editArticle', component: EditArticleComponent },
       { path: 'articleList', component: ArticleListComponent },
       { path: 'notice', component: NoticeComponent },

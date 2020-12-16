@@ -1,11 +1,13 @@
-<nz-tabset>
-    <nz-tab nzTitle="Tab 1">
-        Content of Tab Pane 1
-    </nz-tab>
-    <nz-tab nzTitle="Tab 2">
-        Content of Tab Pane 2
-    </nz-tab>
-    <nz-tab nzTitle="Tab 3">
-        Content of Tab Pane 3
-    </nz-tab>
-</nz-tabset>
+<div>
+    <nz-tabset nzTabPosition="left">
+        <nz-tab nzTitle="用户相关">
+            <app-user-config></app-user-config>
+        </nz-tab>
+        <nz-tab nzTitle="博客相关">
+            <app-blog-about></app-blog-about>
+        </nz-tab>
+        <nz-tab nzTitle="其它">
+            <app-other-config></app-other-config>
+        </nz-tab>
+    </nz-tabset>
+</div>

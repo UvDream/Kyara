@@ -154,7 +154,6 @@ func AddDynamic() {
 	now := time.Now().Format("2006-01-02")
 	var dynamic model.BlogDynamic
 	err := db.Where("date = ?", now).Find(&dynamic).Error
-	fmt.Println(err)
 	if err != nil {
 		// 不存在
 		dynamic.Date = now
@@ -171,6 +170,13 @@ func AddDynamic() {
 		if err != nil {
 			fmt.Println("更新失败")
 		}
+	}
+//	更新博客最新活动时间
+	var blogConfig model.SysConfig
+	activeTime:=time.Now()
+	err=db.Model(&blogConfig).Update(model.SysConfig{ActiveTime: activeTime}).Error
+	if err!=nil {
+		fmt.Println("更新最新时间失败")
 	}
 }
 

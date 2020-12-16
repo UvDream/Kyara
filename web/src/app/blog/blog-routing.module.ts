@@ -14,9 +14,8 @@ export const homeRoutes: Routes = [
     path: '',
     component: BlogComponent,
     children: [
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
       {
-        path: 'home',
+        path: '',
         component: HomeComponent,
       },
       {
