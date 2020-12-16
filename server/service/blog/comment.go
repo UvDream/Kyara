@@ -27,7 +27,13 @@ func Comment(r model.BlogComment) (err error, msg string) {
 			return err, "留言入库失败"
 		}
 	}
-
+	fmt.Println(r)
+	title:=r.UserName+"给你留言了"
+	body:="留言内容:<br/>"+r.CommentContent+"<br/><p style='color:red;'>请及时登陆后台审核留言内容</p>"
+	msg,err=utils.SendEmail(title,body)
+	if err!=nil {
+		return err,msg
+	}
 	return err, "留言成功"
 }
 func GetComment(r request.ListStruct) (err error, msg string, blogComment []model.BlogComment, totalCount int64) {
