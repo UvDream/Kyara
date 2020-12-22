@@ -16,10 +16,11 @@
         </thead>
         <tbody>
             <tr *ngFor="let data of basicTable.data">
-                <td nzAlign="center" nzBreakWord="true">
+                <td nzAlign="center" nzBreakWord="true" nz-popover [nzPopoverContent]="contentTemplate">
                     <div class="img-preview">
                         <img [src]="data.url" alt="">
                     </div>
+                    <ng-template #contentTemplate><img [src]="data.url" alt="" class="img-hover"></ng-template>
                 </td>
                 <td nzEllipsis nzAlign="center">
                     <a [href]="data.url" target="_blank">{{data.url}}</a>

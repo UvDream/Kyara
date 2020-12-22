@@ -28,6 +28,11 @@ import { BlogConfigComponent } from './blog-config/blog-config.component';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { ImagesComponent } from './images/images.component';
 import { NzTreeModule } from 'ng-zorro-antd/tree';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { UserConfigComponent } from './blog-config/user-config/user-config.component';
+import { OtherConfigComponent } from './blog-config/other-config/other-config.component';
+import { BlogAboutComponent } from './blog-config/blog-about/blog-about.component';
+import { NzPopoverModule } from 'ng-zorro-antd/popover';
 
 @NgModule({
   imports: [
@@ -50,7 +55,9 @@ import { NzTreeModule } from 'ng-zorro-antd/tree';
     ReactiveFormsModule,
     NzTagModule,
     NzPopconfirmModule,
-    NzTreeModule
+    NzTreeModule,
+    NzTabsModule,
+    NzPopoverModule
   ],
   declarations: [
     AdminComponent,
@@ -63,6 +70,9 @@ import { NzTreeModule } from 'ng-zorro-antd/tree';
     BlogConfigComponent,
     UploadImageComponent,
     ImagesComponent,
+    UserConfigComponent,
+    OtherConfigComponent,
+    BlogAboutComponent,
   ],
   exports: [AdminComponent],
 })
