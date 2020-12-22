@@ -44,13 +44,12 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzSwitchModule } from 'ng-zorro-antd/switch';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './components/comment/comment.component';
-import { ImagePreviewComponent } from './components/image-preview/image-preview.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { ChartsComponent } from './home/component/charts/charts.component';
 import { DynamicChartComponent } from './home/component/charts/dynamic-chart/dynamic-chart.component';
 import { RadarChartComponent } from './home/component/charts/radar-chart/radar-chart.component';
-
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 @NgModule({
   imports: [
@@ -75,6 +74,7 @@ import { RadarChartComponent } from './home/component/charts/radar-chart/radar-c
     ReactiveFormsModule,
     NzFormModule,
     NzSwitchModule,
+    NzImageModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     })
@@ -106,7 +106,6 @@ import { RadarChartComponent } from './home/component/charts/radar-chart/radar-c
     UpdateLogComponent,
     CommentsComponent,
     CommentComponent,
-    ImagePreviewComponent,
     CommentFormComponent,
     ChartsComponent,
     DynamicChartComponent,
