@@ -43,13 +43,7 @@
       </section>
     </div>
     <div class="detail-praise-text" *ngIf="tabList.length!==0">
-      <button
-        nz-button
-        nzType="primary"
-        nzShape="round"
-        nzDanger
-        (click)="showModal(true)"
-      >
+      <button nz-button nzType="primary" nzShape="round" nzDanger (click)="showModal(true)">
         赞赏
       </button>
       <p>{{collectText}}</p>
@@ -60,11 +54,7 @@
     <ng-template #modalContent>
       <div class="detail-modal-img">
         <div class="detail-modal-img-tab">
-          <section
-            *ngFor="let item of tabList"
-            (click)="tabClick(item)"
-            [ngClass]="{ active: activeId == item.ID }"
-          >
+          <section *ngFor="let item of tabList" (click)="tabClick(item)" [ngClass]="{ active: activeId == item.ID }">
             {{ item.name }}
           </section>
         </div>
@@ -83,5 +73,4 @@
     <button nz-button nzType="default" nzShape="round">上一篇</button>
     <button nz-button nzType="default" nzShape="round">下一篇</button>
   </div>
-  <app-image-preview [(visible)]="imageModal" [src]="imgPreviewUrl"></app-image-preview>
 </div>
