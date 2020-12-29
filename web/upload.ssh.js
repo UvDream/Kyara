@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-12-22 15:25:41
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2020-12-22 15:30:48
+ * @LastEditTime: 2020-12-29 16:49:47
  * @Description: 上传文件
  * @Email: UvDream@163.com
  */
@@ -39,7 +39,7 @@ client.scp(
     port: "22",
     username: "root",
     password: "11165Wzj", 
-    path: "/www/blog/Kyara/web"
+    path: "/www/blog/Kyara/web/dist"
   },
   err => {
     if (!err) {

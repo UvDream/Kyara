@@ -6,5 +6,5 @@ my-app/node_modules/
 server/log/
 server/latest_log
 server/config.yaml
-/server/config.yaml
-web/dist
+web/dist/
+dist
