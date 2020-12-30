@@ -18,6 +18,7 @@ func InitAdminArticle(Router *gin.RouterGroup) (R gin.IRouter) {
 		AdminArticleRouter.POST("editClassify", v1.EditClassify)           //新增或者修改分类
 		AdminArticleRouter.GET("deleteClassify", v1.DeleteClassify)        //删除分类
 		AdminArticleRouter.GET("iconfontClassify", v1.GetIconfontClassify) //	获取阿里矢量分类图标
+		AdminArticleRouter.POST("revertComment",v1.RevertComment)			//回复留言
 	}
 	return AdminArticleRouter
 }

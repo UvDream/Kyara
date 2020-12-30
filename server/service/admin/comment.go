@@ -44,3 +44,9 @@ func CheckBlogComment(r response.CheckComment) (err error, msg string) {
 	blog.AddDynamic()
 	return err, "审核完成"
 }
+//回复留言
+func RevertComment()  {
+	//claims, _ := c.Get("claims")
+	//waitUse := claims.(*request.CustomClaims)
+	//fmt.Println(waitUse)
+}
