@@ -2,12 +2,12 @@ package middleware
 
 import (
 	"bytes"
-	"server/global"
-	"server/model"
-	"server/service"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
+	"server/global"
+	"server/model"
+	"server/service"
 	"strconv"
 	"time"
 )

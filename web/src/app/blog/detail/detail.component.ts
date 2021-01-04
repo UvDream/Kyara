@@ -4,7 +4,7 @@ import { ArticleService } from '@service/article.service';
 import { ArticleCatalogService } from '@service/article-catalog.service';
 import { Title } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
-
+import { NzImageService } from 'ng-zorro-antd/image';
 
 interface TabItem {
   ID: number;
@@ -22,11 +22,9 @@ export class DetailComponent implements OnInit {
     private request: ArticleService,
     private articleCat: ArticleCatalogService,
     private titleService: Title,
-    private platform: Platform
+    private platform: Platform,
+    private nzImageService: NzImageService
   ) { }
-  // 预览窗口弹窗
-  imageModal = false;
-  imgPreviewUrl: string;
   // 文章标题
   public title: string;
   // html内容
@@ -173,8 +171,16 @@ export class DetailComponent implements OnInit {
   contentClick(event: any): void {
     console.log(event.target.nodeName);
     if (event.target.nodeName.toString() === 'IMG') {
-      this.imageModal = true;
-      this.imgPreviewUrl = event.target.currentSrc;
+      console.log(event);
+      const images = [
+        {
+          src: event.target.currentSrc,
+          width: event.target.naturalWidth,
+          height: event.target.naturalHeight,
+          alt: event.target.alt
+        }
+      ];
+      this.nzImageService.preview(images, { nzZoom: 1, nzRotate: 0 });
     }
   }
   print(): void {

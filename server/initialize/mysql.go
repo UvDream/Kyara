@@ -1,10 +1,10 @@
 package initialize
 
 import (
-	"server/global"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"os"
+	"server/global"
 )
 
 // 初始化数据库并产生数据库全局变量

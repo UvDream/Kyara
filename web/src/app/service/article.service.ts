@@ -122,5 +122,19 @@ export class ArticleService {
       data
     });
   }
+  // 获取分类动态
+  getClassify = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/other/classifyStatistics'
+    });
+  }
+  // 获取博客动态
+  getBlogDynamic = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/other/blogDynamic'
+    });
+  }
 
 }

@@ -13,8 +13,8 @@ func AddArticle(c *gin.Context) {
 	var R model.SysArticle
 	err := c.ShouldBindJSON(&R)
 	ApiVerify := utils.Rules{
-		"Title": {utils.NotEmpty()},
-		"ArticleContent": {utils.NotEmpty()},
+		"Title":            {utils.NotEmpty()},
+		"ArticleContent":   {utils.NotEmpty()},
 		"ClassificationID": {utils.NotEmpty()},
 	}
 	ApiVerifyErr := utils.Verify(R, ApiVerify)
@@ -33,11 +33,11 @@ func AddArticle(c *gin.Context) {
 //查询文章详情
 func GetArticleDetail(c *gin.Context) {
 	id := c.Query("id")
-	err, data := service.GetArticleDetail(id)
+	err, data, msg := service.GetArticleDetail(id)
 	if err != nil {
-		response.FailWithMessage("获取详情错误", c)
+		response.FailWithMessage(msg, c)
 	} else {
-		response.OkDetailed(data, "获取详情成功", c)
+		response.OkDetailed(data, msg, c)
 	}
 }
 

@@ -55,4 +55,27 @@ export class AdminService {
       data
     });
   }
+  // 修改或者修改分类
+  editClassify = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/editClassify',
+      data
+    });
+  }
+  // 删除文章分类
+  deleteClassify = (params: object) => {
+    return this.http.request({
+      method: 'get',
+      url: '/admin/deleteClassify',
+      params
+    });
+  }
+  // 阿里分类接口
+  getIconfontList = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/admin/iconfontClassify',
+    });
+  }
 }

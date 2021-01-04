@@ -8,7 +8,7 @@ import { BlogService } from '@service/blog.service';
   styleUrls: ['./comment-form.component.less']
 })
 export class CommentFormComponent implements OnInit {
-  userExist=false;
+  userExist = false;
   form = {
     user_name: '',
     email: '',
@@ -62,6 +62,7 @@ export class CommentFormComponent implements OnInit {
       this.message.create('success', '留言成功,博主会及时审核回复展示!');
       this.form.comment_content = '';
       localStorage.setItem('comment', JSON.stringify(this.form));
+      this.userExist = true
     }
   }
 

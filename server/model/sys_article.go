@@ -8,7 +8,7 @@ import (
 type SysArticle struct {
 	gorm.Model
 	//文章id
-	ArticleID int `json:"article_id" gorm:"-"`
+	ArticleID uint `json:"article_id" gorm:"-"`
 	// 文章标题
 	Title string `json:"title" gorm:"comment:'文章标题'"`
 	// 文章摘要
@@ -34,7 +34,7 @@ type SysArticle struct {
 	// 原文链接
 	OriginalLink string `json:"original_link" gorm:"comment:'原文链接'"`
 	// 标签
-	TagArray []string `json:"tag_array" gorm:"-"`
+	TagArray []uint `json:"tag_array" gorm:"-"`
 	// 分类id
 	ClassificationID string `json:"classification_id" gorm:"comment:'分类id'"`
 	// 阅读密码
@@ -59,7 +59,7 @@ type SysArticle struct {
 	LikeCount string `json:"like_count" gorm:"comment:'点赞数'"`
 	// 赞赏码
 	CollectList []CollectionCode `json:"collect_list" gorm:"-"`
-	CollectText string `json:"collect_text" gorm:"comment:'赞赏提示文字';default:'如果觉得我的文章对你有用，请随意赞赏!'"`
+	CollectText string           `json:"collect_text" gorm:"comment:'赞赏提示文字';default:'如果觉得我的文章对你有用，请随意赞赏!'"`
 }
 
 //文章分类
@@ -75,9 +75,9 @@ type SysClassify struct {
 // 文章标签
 type SysTag struct {
 	gorm.Model
-	TagName string `json:"tag_name"`
-	TagCount int64 `json:"tag_count" gorm:"-"`
-	Color string `json:"color" gorm:"comment:'颜色';default:'#108ee9'"`
+	TagName  string `json:"tag_name"`
+	TagCount int64  `json:"tag_count" gorm:"-"`
+	Color    string `json:"color" gorm:"comment:'颜色';default:'#108ee9'"`
 }
 
 //点赞表
@@ -86,24 +86,27 @@ type SysLike struct {
 	UserID    string `json:"user_id" gorm:"comment:'点赞用户'"`
 	ArticleID string `json:"article_id" gorm:"comment:'文章id'"`
 }
+
 //文章以及tag关联表
 type SysArticleTag struct {
 	gorm.Model
 	ArticleID uint `json:"article_id"`
-	TagID uint `json:"tag_id"`
+	TagID     uint `json:"tag_id"`
 }
+
 //ip地址
-type BlogView struct{
+type BlogView struct {
 	gorm.Model
-	IP string `json:"ip"`
+	IP     string `json:"ip"`
 	System string `json:"system" gorm:"comment:'系统'"`
 	Device string `json:"device" gorm:"comment:'设备类型'"`
 }
+
 //收款码
-type CollectionCode struct{
+type CollectionCode struct {
 	gorm.Model
-	Name string `json:"name" gorm:"comment:'收款码名称'"`
-	ImgURL string `json:"img_url" gorm:"comment:'收款码地址'"`
+	Name      string `json:"name" gorm:"comment:'收款码名称'"`
+	ImgURL    string `json:"img_url" gorm:"comment:'收款码地址'"`
 	ArticleID string `json:"article_id" gorm:"comment:'对应的文章id'"`
-	UserID string `json:"user_id" gorm:"comment:'上传作者id';default:'ce0d6685-c15f-4126-a5b4-890bc9d2356d'"`
+	UserID    string `json:"user_id" gorm:"comment:'上传作者id';default:'ce0d6685-c15f-4126-a5b4-890bc9d2356d'"`
 }

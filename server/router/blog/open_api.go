@@ -5,10 +5,10 @@ import (
 	"server/api/v1/blog"
 )
 
-func InitOpenApi(Router *gin.RouterGroup)(R gin.IRouter){
-	OpenApi:=Router.Group("openApi")
+func InitOpenApi(Router *gin.RouterGroup) (R gin.IRouter) {
+	OpenApi := Router.Group("openApi")
 	{
-		OpenApi.GET("avatar",blog.RandomAvatar)//随机头像
+		OpenApi.GET("avatar", blog.RandomAvatar) //随机头像
 	}
 	return OpenApi
 }

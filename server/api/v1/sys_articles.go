@@ -41,10 +41,10 @@ func GetArticleDetail(c *gin.Context) {
 		response.FailWithMessage("请携带文章id", c)
 		return
 	}
-	err, list,msg := article.GetArticleDetail(c)
-	if err!=nil {
-		response.FailWithMessage(msg,c)
-	}else{
+	err, list, msg := article.GetArticleDetail(c)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	} else {
 		response.OkDetailed(list, msg, c)
 	}
 
@@ -92,44 +92,48 @@ func AllTag(c *gin.Context) {
 		response.OkDetailed(list, msg, c)
 	}
 }
+
 //获取博客配置
-func GetConfig(c *gin.Context)  {
-	err,data,msg:= article.GetConfig()
+func GetConfig(c *gin.Context) {
+	err, data, msg := article.GetConfig()
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
-		response.OkDetailed(data,msg, c)
+		response.OkDetailed(data, msg, c)
 	}
 }
+
 //获取github配置
-func GetGithub(c *gin.Context)  {
-	msg,err:= article.GetGithub()
+func GetGithub(c *gin.Context) {
+	msg, err := article.GetGithub()
 	if err != nil {
 		response.FailWithMessage("获取github仓库失败", c)
 	} else {
 		response.OkDetailed(msg, "获取github仓库成功", c)
 	}
-	
+
 }
+
 //博客访问量统计
-func ViewBlogCount(c *gin.Context)  {
+func ViewBlogCount(c *gin.Context) {
 	//id := c.Query("id")
 	//global.GVA_LOG.Info(c.ClientIP())
-	err,msg:= article.ViewBlogCount(c)
+	err, msg := article.ViewBlogCount(c)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
-		response.OkWithMessage(msg,c)
+		response.OkWithMessage(msg, c)
 	}
 }
+
 //获取公告
-func GetNotice(c *gin.Context)  {
+func GetNotice(c *gin.Context) {
 	var R request.ListStruct
 	_ = c.ShouldBindJSON(&R)
-	err,list,msg,total:= article.GetNotice(R)
+	err, list, msg, total := article.GetNotice(R)
 	if err != nil {
 		response.FailWithMessage(msg, c)
 	} else {
-		response.OkDetailed(resp.BlogNotice{List: list,TotalCount: total}, msg, c)
+		response.OkDetailed(resp.BlogNotice{List: list, TotalCount: total}, msg, c)
 	}
 }

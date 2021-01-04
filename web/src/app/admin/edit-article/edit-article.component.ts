@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '@service/article.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ActivatedRoute } from '@angular/router';
-
+import { AdminService } from '@service/admin.service';
 interface TreeItem {
   key: string;
   title: string;
@@ -19,11 +19,13 @@ export class EditArticleComponent implements OnInit {
     private route: ActivatedRoute,
     private httpService: ArticleService,
     private message: NzMessageService,
+    private httpAdmin: AdminService,
   ) { }
   isPassword = false;
   isTop = false;
   coverTypeDisabled = false;
   value?: string;
+  classification: number;
   // 是否置顶
   public form = {
     article_id: 0,
@@ -50,6 +52,8 @@ export class EditArticleComponent implements OnInit {
     img_url: '',
     // tag
     tag_array: [],
+    // 分类id
+    classification_id: '',
   };
   tagVal = '';
   expandKeys = ['100', '1001'];
@@ -64,6 +68,56 @@ export class EditArticleComponent implements OnInit {
       console.log(params);
       this.getArticleDetail(params.id);
     });
+    document.addEventListener('paste', (e) => {
+      let items: any;
+      const that = this;
+      if (e.clipboardData && e.clipboardData.items) {
+        items = e.clipboardData.items;
+        if (items) {
+          items = Array.prototype.filter.call(items, (element) => {
+            return element.type.indexOf('image') >= 0;
+          });
+
+          Array.prototype.forEach.call(items, (item) => {
+            const blob = item.getAsFile();
+            const reader = new FileReader();
+            reader.onloadend = (event) => {
+              const imgBase64 = event.target.result;
+              console.log(imgBase64);  // base64
+              const dataURI = imgBase64;
+              // tslint:disable-next-line:no-shadowed-variable
+              const blob = that.dataURItoBlob(dataURI); // blob
+              console.log('hhe1', blob);
+              console.log(dataURI);
+              that.uploadImg(blob);
+            };
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+
+    });
+  }
+  dataURItoBlob = (dataURI: any) => {
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]; // mime类型
+    const byteString = atob(dataURI.split(',')[1]);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const intArray = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      intArray[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([intArray], { type: mimeString });
+  }
+  async uploadImg(data: any): Promise<void> {
+    const formData = new FormData();
+    formData.append('type', 'article');
+    formData.append('file', data);
+    const res = await this.httpAdmin.uploadImage(formData);
+    if (res.code === 200) {
+      console.log(res, '上传成功');
+      const msg = '![img](' + res.data.url + ')';
+      this.form.article_content = this.form.article_content = msg;
+    }
   }
   textChange = () => {
     this.markdownToHtml(this.form.article_content);
@@ -116,8 +170,8 @@ export class EditArticleComponent implements OnInit {
     console.log('提交', this.form);
     this.isPassword ? this.form.is_password = '1' : this.form.is_password = '0';
     this.isTop ? this.form.top = '1' : this.form.top = '0';
+    this.form.classification_id = this.classification.toString();
     const res = await this.httpService.addArticle(this.form);
-    console.log(res);
     if (res.code === 200) {
       this.form.article_id = res.data.ID;
       this.message.info(res.msg);
@@ -133,12 +187,14 @@ export class EditArticleComponent implements OnInit {
       this.coverTypeDisabled = false;
     }
   }
+  // 获取详情
   async getArticleDetail(id: string): Promise<void> {
     const res = await this.httpService.getArticleDetail(id);
     console.log(res);
     if (res.code === 200) {
       this.form = res.data;
       this.form.article_id = res.data.ID;
+      this.classification = Number(this.form.classification_id);
       this.markdownToHtml(this.form.article_content);
     }
   }

@@ -2,13 +2,13 @@ package v1
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"server/global/response"
 	"server/model"
 	"server/model/request"
 	resp "server/model/response"
 	"server/service"
 	"server/utils"
-	"github.com/gin-gonic/gin"
 	"strings"
 )
 
@@ -23,7 +23,7 @@ import (
 func UploadFile(c *gin.Context) {
 	noSave := c.DefaultQuery("noSave", "0")
 	_, header, err := c.Request.FormFile("file")
-	t:=c.PostForm("type")
+	t := c.PostForm("type")
 	fmt.Print(t)
 	if err != nil {
 		response.FailWithMessage(fmt.Sprintf("上传文件失败，%v", err), c)
@@ -40,7 +40,7 @@ func UploadFile(c *gin.Context) {
 			s := strings.Split(file.Name, ".")
 			file.Tag = s[len(s)-1]
 			file.Key = key
-			file.Type=t
+			file.Type = t
 			if noSave == "0" {
 				err = service.Upload(file)
 			}

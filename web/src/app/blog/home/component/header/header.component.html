@@ -24,7 +24,7 @@
     </div> -->
 
     <div style="width: 60px" class="header-dynamic text-center">
-      <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+      <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" (nzVisibleChange)="nzVisibleChange($event)">
         <span class="iconfont uv-pulse-outline"></span>
         <span class="iconfont uv-chevron-down-sharp"></span>
       </div>
@@ -32,7 +32,7 @@
     <!-- 动态展示栏 -->
     <nz-dropdown-menu #menu="nzDropdownMenu">
       <ul nz-menu>
-        <app-charts></app-charts>
+        <app-charts *ngIf="dropShow"></app-charts>
       </ul>
     </nz-dropdown-menu>
     <!-- 搜索 -->

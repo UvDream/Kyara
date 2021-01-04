@@ -15,7 +15,7 @@ interface MenuItem {
 export class NavigationComponent implements OnInit {
   constructor(private router: Router, private catalogService: ArticleCatalogService,) { }
   public menus = [
-    { title: '首页', id: 1, icon: 'uv-home-outline', url: '/home' },
+    { title: '首页', id: 1, icon: 'uv-home-outline', url: '/' },
     { title: '仓库', id: 2, icon: 'uv-git-merge-outline', url: '/github' },
     { title: '相册', id: 6, icon: 'uv-image-outline', url: '/photos' },
     { title: '归档', id: 3, icon: 'uv-file-tray-full-outline', url: '/archives' },
@@ -28,6 +28,6 @@ export class NavigationComponent implements OnInit {
   navFunc(item: MenuItem) {
     this.ActiveMenus = item.id;
     this.router.navigate([item.url]);
-    this.catalogService.SetCatLog()
+    this.catalogService.SetCatLog();
   }
 }

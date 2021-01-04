@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	resp "server/global/response"
 	"server/model/request"
@@ -30,10 +31,19 @@ func CheckBlogComment(c *gin.Context) {
 	if err != nil {
 		resp.FailWithMessage("获取参数错误", c)
 	}
-	err,msg:=service.CheckBlogComment(R)
+	err, msg := service.CheckBlogComment(R)
 	if err != nil {
 		resp.FailWithMessage(msg, c)
 	} else {
-		resp.OkWithMessage(msg,c)
+		resp.OkWithMessage(msg, c)
 	}
+}
+//回复留言
+func RevertComment(c *gin.Context)  {
+	//获取登陆用户
+	claims, _ := c.Get("claims")
+	waitUse := claims.(*request.CustomClaims)
+	fmt.Println(waitUse)
+	//
+	service.RevertComment()
 }

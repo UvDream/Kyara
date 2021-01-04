@@ -2,10 +2,10 @@ package core
 
 import (
 	"fmt"
-	"server/global"
-	_ "server/packfile"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
+	"server/global"
+	_ "server/packfile"
 )
 
 const defaultConfigFile = "config.yaml"

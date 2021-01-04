@@ -2,13 +2,13 @@ package v1
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"server/global/response"
 	"server/model"
 	"server/model/request"
 	resp "server/model/response"
 	"server/service"
 	"server/utils"
-	"github.com/gin-gonic/gin"
 )
 
 // @Tags SysApi

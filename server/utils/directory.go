@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"server/global"
 	"os"
+	"server/global"
 )
 
 // @title    PathExists

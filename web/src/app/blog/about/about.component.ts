@@ -15,15 +15,9 @@ export class AboutComponent implements OnInit {
     this.titleService.setTitle('关于本站-汪中杰的个人博客');
     const style = `
     .uvdream {}
-    /* 一级标题 */
     .uvdream h1 {
-        font-size     : 2.1em;
-        line-height   : 1.1em;
-        padding-top   : 16px;
-        padding-bottom: 10px;
-        margin-bottom : 4px;
-        text-align:center;
-        border-bottom : 1px solid #c99833;
+        text-align: center;
+        background: linear-gradient(#fff 80%, #ffb11b 20%);
     }
 `;
     document.getElementById('blogger').innerHTML = style;

@@ -24,7 +24,7 @@ func CreateSysOperationRecord(sysOperationRecord model.SysOperationRecord) (err 
 // @return                    error
 
 func DeleteSysOperationRecordByIds(ids request.IdsReq) (err error) {
-	err = global.GVA_DB.Delete(&[]model.SysOperationRecord{},"id in (?)",ids.Ids).Error
+	err = global.GVA_DB.Delete(&[]model.SysOperationRecord{}, "id in (?)", ids.Ids).Error
 	return err
 }
 

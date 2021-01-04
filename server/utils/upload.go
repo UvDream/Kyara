@@ -3,10 +3,10 @@ package utils
 import (
 	"context"
 	"fmt"
-	"server/global"
 	"github.com/qiniu/api.v7/v7/auth/qbox"
 	"github.com/qiniu/api.v7/v7/storage"
 	"mime/multipart"
+	"server/global"
 	"time"
 )
 

@@ -2,12 +2,12 @@ package v1
 
 import (
 	"fmt"
+	"github.com/gin-gonic/gin"
+	"io/ioutil"
 	"server/global/response"
 	resp "server/model/response"
 	"server/service"
 	"server/utils"
-	"github.com/gin-gonic/gin"
-	"io/ioutil"
 	"strconv"
 )
 

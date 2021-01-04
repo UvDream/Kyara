@@ -9,6 +9,7 @@ import { BlogConfigService } from '@service/blog-config.service';
 export class HeaderComponent implements OnInit {
   constructor(private router: Router, public http: BlogConfigService) { }
   visible = false;
+  dropShow = false;
   ngOnInit(): void { }
   open(): void {
     this.visible = true;
@@ -19,5 +20,8 @@ export class HeaderComponent implements OnInit {
   }
   toHome = () => {
     this.router.navigate(['/home']);
+  }
+  nzVisibleChange(data: boolean): void {
+    this.dropShow = data;
   }
 }

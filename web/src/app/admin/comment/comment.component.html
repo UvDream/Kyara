@@ -19,7 +19,7 @@
                 <th nzAlign="center">网站</th>
                 <th nzAlign="center">创建时间</th>
                 <th nzAlign="center">状态</th>
-                <th nzAlign="center" nzWidth="120px">操作</th>
+                <th nzAlign="center" nzWidth="200px">操作</th>
             </tr>
         </thead>
         <tbody>
@@ -27,19 +27,30 @@
                 <td nzEllipsis nzAlign="center">{{ data.ID }}</td>
                 <td nzEllipsis nzAlign="center">{{ data.parent_id }}</td>
                 <td nzEllipsis nzAlign="center">{{ data.user_name }}</td>
-                <td nzAlign="center" nzBreakWord="true">{{ data.comment_content }}</td>
-                <td nzAlign="center" >{{ data.email }}</td>
+                <td nzAlign="center" nzEllipsis nz-popover [nzPopoverContent]="contentTemplate">
+                    {{data.comment_content }}
+                    <ng-template #contentTemplate>
+                        <div style="max-width: 800px;">{{data.comment_content}}</div>
+                    </ng-template>
+                </td>
+                <td nzAlign="center">{{ data.email }}</td>
                 <td nzAlign="center">
                     <a [href]="data.blog_url" target="_blank">{{ data.blog_url }}</a>
                 </td>
-                <td nzEllipsis nzAlign="center">{{ data.CreatedAt| date:"y-d-MM HH:mm:ss " }}</td>
+                <td nzEllipsis nzAlign="center" nz-popover
+                    [nzPopoverContent]="data.CreatedAt| date:' y-d-MM HH:mm:ss '">
+                    {{ data.CreatedAt| date:"y-d-MM HH:mm:ss " }}
+                </td>
                 <td nzEllipsis nzAlign="center">
                     <nz-tag nzColor="success" *ngIf="data.status==='1'">审核通过</nz-tag>
-                    <nz-tag nzColor="warning"  *ngIf="data.status==='0'">待审核</nz-tag>
+                    <nz-tag nzColor="warning" *ngIf="data.status==='0'">待审核</nz-tag>
                 </td>
                 <td nzAlign="center">
-                    <button nz-button nzType="primary" *ngIf="data.status==='0'" (click)="check(data.ID,true)">通过</button>
-                    <button nz-button nzType="primary" nzDanger *ngIf="data.status==='1'" (click)="check(data.ID,false)">下架</button>
+                    <button nz-button nzType="primary" nzGhost style="margin-right:10px">回复</button>
+                    <button nz-button nzType="primary" *ngIf="data.status==='0'"
+                        (click)="check(data.ID,true)">通过</button>
+                    <button nz-button nzType="primary" nzDanger *ngIf="data.status==='1'"
+                        (click)="check(data.ID,false)">下架</button>
                 </td>
             </tr>
         </tbody>

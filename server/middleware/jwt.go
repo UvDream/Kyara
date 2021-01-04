@@ -2,13 +2,13 @@ package middleware
 
 import (
 	"errors"
+	"github.com/dgrijalva/jwt-go"
+	"github.com/gin-gonic/gin"
 	"server/global"
 	"server/global/response"
 	"server/model"
 	"server/model/request"
 	"server/service"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/gin-gonic/gin"
 	"time"
 )
 

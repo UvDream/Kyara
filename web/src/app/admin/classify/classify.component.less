@@ -1,0 +1,121 @@
+.classify {
+    &-content {
+        display       : flex;
+        border-bottom : 1px solid #ccc;
+        padding-bottom: 10px;
+
+        &-left {
+            width       : 50%;
+            border-right: 1px solid #ccc;
+        }
+
+        &-right {
+            width       : 50%;
+            padding-left: 10px;
+
+            &-btn {
+                padding-left: 100px;
+                margin-top  : 10px;
+
+                button:nth-child(2) {
+                    margin-left: 80px;
+                }
+            }
+        }
+    }
+
+    &-tree {
+        &-node {
+            display    : flex;
+            align-items: center;
+
+            &-icon {
+                display     : flex;
+                align-items : center;
+                margin-right: 5px;
+
+                svg {
+                    width : 20px;
+                    height: 20px;
+                }
+            }
+
+            .iconfont {
+                margin: 0 5px;
+            }
+        }
+    }
+
+    &-icon {
+        display  : flex;
+        flex-wrap: wrap;
+
+        p {
+            margin: 0;
+        }
+
+        &-block {
+            width     : 100px;
+            text-align: center;
+            padding   : 10px;
+            margin    : 10px;
+            box-sizing: border-box;
+            border    : 1px solid #fff;
+
+            &:hover {
+                border       : 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            &-icon {
+                width : 50px;
+                height: 50px;
+                margin: 0 auto;
+
+                svg {
+                    width : 100%;
+                    height: 100%;
+                }
+            }
+
+            &-text {
+                margin-top: 5px;
+            }
+        }
+    }
+
+    &-title {
+        text-align: center;
+        margin    : 15px 0;
+        font-size : 18px;
+
+        span {
+            font-size: 12px;
+            color    : #999;
+        }
+    }
+
+    &-search {
+        display: flex;
+        margin : 10px 0;
+
+        input {
+            width: 200px;
+        }
+    }
+}
+
+.block {
+    display    : flex;
+    align-items: center;
+    margin-top : 10px;
+
+    label {
+        flex-basis : 100px;
+        flex-shrink: 0;
+    }
+
+    input {
+        width: 200px;
+    }
+}

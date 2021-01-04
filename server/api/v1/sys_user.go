@@ -2,6 +2,10 @@ package v1
 
 import (
 	"fmt"
+	"github.com/dgrijalva/jwt-go"
+	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis"
+	"mime/multipart"
 	"server/global"
 	"server/global/response"
 	"server/middleware"
@@ -10,10 +14,6 @@ import (
 	resp "server/model/response"
 	"server/service"
 	"server/utils"
-	"github.com/dgrijalva/jwt-go"
-	"github.com/gin-gonic/gin"
-	"github.com/go-redis/redis"
-	"mime/multipart"
 	"time"
 )
 

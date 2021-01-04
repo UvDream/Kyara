@@ -2,12 +2,12 @@ package service
 
 import (
 	"errors"
-	"server/global"
-	"server/model"
-	"server/model/request"
 	"github.com/casbin/casbin"
 	"github.com/casbin/casbin/util"
 	gormadapter "github.com/casbin/gorm-adapter"
+	"server/global"
+	"server/model"
+	"server/model/request"
 	"strings"
 )
 

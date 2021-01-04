@@ -1,1 +1,60 @@
-<p>classify works!</p>
+<div class="classify">
+    <div class="classify-content">
+        <div class="classify-content-left">
+            <nz-tree #nzTreeComponent [nzData]="nodes" [nzExpandAll]="true" [nzTreeTemplate]="nzTreeTemplate">
+            </nz-tree>
+            <ng-template #nzTreeTemplate let-node>
+                <div class="classify-tree-node">
+                    <div class="classify-tree-node-icon" (click)="treeClick(node)">
+                        <svg class="icon" aria-hidden="true">
+                            <use [attr.xlink:href]="'#'+node.icon"></use>
+                        </svg>
+                    </div>
+                    <span (click)="treeClick(node)"> {{node.title}}</span>
+                    <span class="iconfont uv-remove-circle-outline" (click)="deleteFunc(node)"></span>
+                    <span class="iconfont uv-add-circle-outline" (click)="addFunc(node)"></span>
+                </div>
+            </ng-template>
+        </div>
+        <div class="classify-content-right">
+            <div class="block">
+                <label for="name">分类名称:</label>
+                <input nz-input maxlength="30" [(ngModel)]="form.type_name" name="name">
+            </div>
+            <div class="block">
+                <label for="name">分类图标:</label>
+                <input nz-input maxlength="30" [(ngModel)]="form.icon" name="name">
+            </div>
+            <div class="block">
+                <label for="name">父节点:</label>
+                <nz-tree-select style="width: 200px" [nzDefaultExpandAll]="true" [nzNodes]="nodes" nzShowSearch
+                    [(ngModel)]="form.pid" nzPlaceHolder="请选择节点">
+                </nz-tree-select>
+            </div>
+            <div class="classify-content-right-btn">
+                <button nz-button nzType="primary" (click)="sureFunc()">确认</button>
+                <button nz-button (click)="cancelFunc()">重置</button>
+            </div>
+        </div>
+    </div>
+    <div class="classify-title">
+        分类图标可选库<span>(点击可填充到分类图标输入框)</span>
+    </div>
+    <div class="classify-search">
+        <input nz-input placeholder="输入搜索内容" [(ngModel)]="search" (keyup.enter)="searchIcon()" />
+        <button nz-button nzType="primary" (click)="searchIcon()">搜索</button>
+    </div>
+    <div class="classify-icon">
+        <div *ngFor="let item of iconList" class="classify-icon-block" (click)="iconClick(item)">
+            <div class="classify-icon-block-icon">
+                <svg class="icon" aria-hidden="true">
+                    <use [attr.xlink:href]="'#'+item.font_class"></use>
+                </svg>
+            </div>
+            <div class="classify-icon-block-text">
+                <p class="one-text">{{item.name}}</p>
+                <p class="one-text">{{item.font_class}}</p>
+            </div>
+        </div>
+    </div>
+</div>

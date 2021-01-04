@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { LeftMenusComponent } from './left-menus.component';
 
@@ -6,7 +6,7 @@ describe('LeftMenusComponent', () => {
   let component: LeftMenusComponent;
   let fixture: ComponentFixture<LeftMenusComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ LeftMenusComponent ]
     })
