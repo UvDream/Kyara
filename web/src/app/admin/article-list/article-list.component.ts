@@ -63,7 +63,7 @@ export class ArticleListComponent implements OnInit {
   edit(data: ListItem, id: number): void {
     console.log(data, id);
     if (id === 1) {
-      this.router.navigate(['/editArticle'], { queryParams: { id: data.ID } });
+      this.router.navigate(['/admin/editArticle'], { queryParams: { id: data.ID } });
 
     }
   }
