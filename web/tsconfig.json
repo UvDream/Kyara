@@ -13,11 +13,9 @@
     "target": "es2015",
     "module": "es2020",
     "paths": {
-      "@service/*":["app/service/*"]
+      "@service/*": ["app/service/*"],
+      "@pipes/*": ["app/pipes/*"]
     },
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"]
   }
 }

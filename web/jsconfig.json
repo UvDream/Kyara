@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": "./src/",
     "paths": {
-      "@service/*": ["app/service/*"]
+      "@service/*": ["app/service/*"],
+      "@pipes/*": ["app/pipes/*"]
     },
     "target": "ES6",
     "module": "commonjs",

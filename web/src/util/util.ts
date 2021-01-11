@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2020-12-10 16:58:05
+ * @LastEditTime: 2021-01-11 11:13:06
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -38,7 +38,7 @@ export function getBase64(file: File): Promise<string | ArrayBuffer | null> {
     reader.onerror = error => reject(error);
   });
 }
-export function toTimeDH(timeDate: string, type: string): string {
+export function toTimeDH(timeDate: string, type?: string): string {
   const time = new Date(timeDate).getTime();
   const nowTime = new Date().getTime();
   const diffTime = nowTime - time;
@@ -50,6 +50,8 @@ export function toTimeDH(timeDate: string, type: string): string {
     return dayRound + '天前';
   } else if (type === 'DD-HH') {
     return dayRound + '天' + hoursRound + '小时';
+  } else {
+    return diffTime.toString();
   }
 
 }

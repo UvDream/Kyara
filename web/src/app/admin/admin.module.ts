@@ -33,6 +33,7 @@ import { UserConfigComponent } from './blog-config/user-config/user-config.compo
 import { OtherConfigComponent } from './blog-config/other-config/other-config.component';
 import { BlogAboutComponent } from './blog-config/blog-about/blog-about.component';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 @NgModule({
   imports: [
@@ -57,7 +58,8 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
     NzPopconfirmModule,
     NzTreeModule,
     NzTabsModule,
-    NzPopoverModule
+    NzPopoverModule,
+    NzDrawerModule
   ],
   declarations: [
     AdminComponent,

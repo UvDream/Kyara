@@ -33,7 +33,8 @@ export class BlogConfigService {
     this.BlogViewCount = res.data.blog_view_count;
     this.FilingMsg = res.data.filing_msg;
     // 处理时间
-    this.BlogTime = toTimeDH(res.data.blog_start_time, 'DD-HH');
+    // this.BlogTime = toTimeDH(res.data.blog_start_time);
+    this.BlogTime = res.data.blog_start_time;
     this.ActiveTime = toTimeDH(res.data.active_time, 'DD');
     this.BlogNotice = res.data.blog_notice;
     this.BlogLogo = res.data.blog_logo;

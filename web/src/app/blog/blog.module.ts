@@ -50,6 +50,7 @@ import { ChartsComponent } from './home/component/charts/charts.component';
 import { DynamicChartComponent } from './home/component/charts/dynamic-chart/dynamic-chart.component';
 import { RadarChartComponent } from './home/component/charts/radar-chart/radar-chart.component';
 import { NzImageModule } from 'ng-zorro-antd/image';
+import { TimeDiffPipe } from '@pipes/time-diff.pipe';
 
 @NgModule({
   imports: [
@@ -110,6 +111,7 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     ChartsComponent,
     DynamicChartComponent,
     RadarChartComponent,
+    TimeDiffPipe
   ],
   providers: [],
 })

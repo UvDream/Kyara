@@ -22,6 +22,8 @@ export class EditArticleComponent implements OnInit {
     private httpAdmin: AdminService,
   ) { }
   isPassword = false;
+  // 配置抽屉
+  drawerVisible = false;
   isTop = false;
   coverTypeDisabled = false;
   value?: string;
@@ -217,5 +219,13 @@ export class EditArticleComponent implements OnInit {
   }
   urlChange(data: string): void {
     this.form.img_url = data;
+  }
+  // 配置抽屉
+  drawerOpen(): void {
+    this.drawerVisible = true;
+  }
+
+  drawerClose(): void {
+    this.drawerVisible = false;
   }
 }
