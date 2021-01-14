@@ -25,6 +25,7 @@ export class DetailComponent implements OnInit {
     private platform: Platform,
     private nzImageService: NzImageService
   ) { }
+  public loading = true;
   // 文章标题
   public title: string;
   // html内容
@@ -74,6 +75,7 @@ export class DetailComponent implements OnInit {
   }
   // 获取文章详情
   getDetail = async (id, password) => {
+    this.loading = true;
     const res = await this.request.getDetail({ id, password });
     if (res.code !== 200) {
       return;
@@ -98,6 +100,7 @@ export class DetailComponent implements OnInit {
     this.collectText = res.data.collect_text;
     this.setTitle(this.title + '(汪中杰的个人博客)');
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
+    this.loading = false;
     import('vditor').then((Vditor: any) =>
       Vditor.preview(mainElement, this.markDown, {
         speech: {

@@ -1,6 +1,8 @@
+<nz-spin nzTip="文章加载中..." style="margin-top:100px" *ngIf="loading">
+</nz-spin>
 <div class="detail">
   <!-- 上面 -->
-  <div class="detail-title">
+  <div class="detail-title" *ngIf="!loading">
     <div class="detail-title-top">
       <h1>{{ title }}</h1>
       <div>
@@ -25,13 +27,14 @@
     </div>
   </div>
   <!-- 图片 -->
-  <div class="detail-img" class="detail-img" [ngStyle]="{
+  <div *ngIf="!loading" class="detail-img" class="detail-img" [ngStyle]="{
       'background-image': 'url(' + topImg + ')'
     }">
   </div>
-  <div #vditor id="vditor" class="detail-content" (click)="contentClick($event)"></div>
+  <div #vditor id="vditor" class="detail-content" [ngClass]="{'padding-30':!loading}" (click)="contentClick($event)">
+  </div>
   <div [innerHTML]="htmlContent" style="display: none"></div>
-  <div class="detail-praise">
+  <div class="detail-praise" *ngIf="!loading">
     <div class="detail-praise-time">
       <section class="one-text">
         <span class="iconfont uv-time-outline"></span>
@@ -69,8 +72,9 @@
       </div>
     </ng-template>
   </nz-modal>
-  <div class="detail-btn">
+  <div class="detail-btn" *ngIf="!loading">
     <button nz-button nzType="default" nzShape="round">上一篇</button>
     <button nz-button nzType="default" nzShape="round">下一篇</button>
   </div>
+
 </div>
