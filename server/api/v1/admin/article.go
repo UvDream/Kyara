@@ -74,3 +74,12 @@ func AddTag(c *gin.Context) {
 		response.OkDetailed(list, msg, c)
 	}
 }
+// 删除公告
+func DeleteNotice(c *gin.Context)  {
+	msg, err := service.DeleteNotice(c)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	} else {
+		response.OkWithMessage(msg, c)
+	}
+}

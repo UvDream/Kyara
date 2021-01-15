@@ -162,3 +162,17 @@ func AddTag(c *gin.Context) (err error, tag model.SysTag, msg string) {
 	blog.AddDynamic()
 	return err, tag, "增加tag成功"
 }
+//删除公告
+func DeleteNotice(c *gin.Context)(msg string ,err error)  {
+	db := global.GVA_DB
+	id := c.Query("id")
+	if id == "" {
+		return "参数缺失", err
+	}
+	var notice model.BlogNotice
+	err=db.Where("ID=?",id).Delete(&notice).Error
+	if err!=nil {
+		return "删除公告失败",err
+	}
+	return "删除公告失败",err
+}

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '@service/article.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '@service/admin.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+
 interface ListItem {
   ID: number;
   title: string;
@@ -22,7 +24,8 @@ export class NoticeComponent implements OnInit {
   constructor(
     private articleService: ArticleService,
     private fb: FormBuilder,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private message: NzMessageService
   ) { }
   indeterminate = false;
   loading = true;
@@ -62,7 +65,7 @@ export class NoticeComponent implements OnInit {
     this.form.page_size = pageSize;
     this.getData();
   }
-  onCurrentPageDataChange(page: number): void {
+  onCurrentPageChange(page: number): void {
     this.form.page = page;
     this.getData();
   }
@@ -118,6 +121,18 @@ export class NoticeComponent implements OnInit {
         console.log('保存成功');
         this.getData();
         this.isVisible = false;
+      }
+    }
+  }
+  // 删除
+  async deleteFunc(item: any, sure: boolean): Promise<void> {
+    if (!sure) {
+      this.message.info('取消删除');
+    } else {
+      const res = await this.adminService.deleteNotice({ id: item.ID });
+      if (res.code === 200) {
+        this.message.success('删除成功!');
+        this.getData();
       }
     }
   }

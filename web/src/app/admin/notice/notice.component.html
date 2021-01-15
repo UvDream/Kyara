@@ -6,7 +6,9 @@
     </div>
     <button nz-button nzType="primary" (click)="add()">添加</button>
   </div>
-  <nz-table #basicTable [nzData]="list">
+  <nz-table #basicTable nzShowPagination nzTableLayout="fixed" nzBordered nzShowSizeChanger [nzFrontPagination]="false"
+    [nzData]="list" [nzTotal]="totalCount" (nzPageSizeChange)="onCurrentPageSizeChange($event)"
+    (nzPageIndexChange)="onCurrentPageChange($event)">
     <thead>
       <tr>
         <th nzAlign="center">公告标题</th>
@@ -24,7 +26,9 @@
         <td nzEllipsis nzAlign="center">{{ data.UpdatedAt| date:"y-d-MM HH:mm:ss " }}</td>
         <td>
           <button nz-button nzType="primary" (click)="edit(data)">编辑</button>
-          <button nz-button nzType="primary" nzDanger (click)="edit(data)" style="margin-left:10px">删除</button>
+          <button nz-button nzType="primary" nzDanger style="margin-left:10px" nz-popconfirm
+            nzPopconfirmTitle="确认删除这条公告吗?" nzPopconfirmPlacement="bottom" (nzOnConfirm)="deleteFunc(data,true)"
+            (nzOnCancel)="deleteFunc(data,false)">删除</button>
         </td>
       </tr>
     </tbody>
@@ -60,6 +64,6 @@
         </nz-form-item>
       </ng-template>
     </form>
-  
+
   </nz-modal>
 </div>

@@ -94,4 +94,12 @@ export class AdminService {
       params
     });
   }
+  // 删除公告
+  deleteNotice = (params: object) => {
+    return this.http.request({
+      method: 'get',
+      url: '/admin/deleteNotice',
+      params
+    });
+  }
 }

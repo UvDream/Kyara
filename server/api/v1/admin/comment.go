@@ -55,8 +55,6 @@ func RevertComment(c *gin.Context) {
 
 // 删除留言
 func DeleteComment(c *gin.Context) {
-	//id := c.Query("id")
-	//fmt.Println(id)
 	msg, err := service.DeleteComment(c)
 	if err != nil {
 		resp.FailWithMessage(msg, c)

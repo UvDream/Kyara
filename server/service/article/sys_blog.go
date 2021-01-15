@@ -156,7 +156,7 @@ func GetNotice(r request.ListStruct) (err error, list []model.BlogNotice, msg st
 	if err != nil {
 		return err, list, "获取公告失败", total
 	}
-	err = db.Where("title LIKE ?", "%"+r.Search+"%").Table("blog_notices").Count(&total).Error
+	err = db.Where("title LIKE ?", "%"+r.Search+"%").Table("blog_notices").Where("deleted_at is null").Count(&total).Error
 	if err != nil {
 		return err, list, "获取公告总数失败", total
 	}
