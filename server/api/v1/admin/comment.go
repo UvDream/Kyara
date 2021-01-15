@@ -38,8 +38,17 @@ func CheckBlogComment(c *gin.Context) {
 		resp.OkWithMessage(msg, c)
 	}
 }
+type Comment struct{
+	Id string `json:"id"`
+	Comment string `json:"comment"`
+}
 //回复留言
 func RevertComment(c *gin.Context)  {
+	var R Comment
+	err := c.ShouldBindJSON(&R)
+	if err!=nil {
+		resp.FailWithMessage("获取参数错误", c)
+	}
 	//获取登陆用户
 	claims, _ := c.Get("claims")
 	waitUse := claims.(*request.CustomClaims)
