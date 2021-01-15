@@ -19,7 +19,7 @@
                 <th nzAlign="center">网站</th>
                 <th nzAlign="center">创建时间</th>
                 <th nzAlign="center">状态</th>
-                <th nzAlign="center" nzWidth="200px">操作</th>
+                <th nzAlign="center" nzWidth="250px">操作</th>
             </tr>
         </thead>
         <tbody>
@@ -46,13 +46,22 @@
                     <nz-tag nzColor="warning" *ngIf="data.status==='0'">待审核</nz-tag>
                 </td>
                 <td nzAlign="center">
-                    <button nz-button nzType="primary" nzGhost style="margin-right:10px">回复</button>
-                    <button nz-button nzType="primary" *ngIf="data.status==='0'"
-                        (click)="check(data.ID,true)">通过</button>
-                    <button nz-button nzType="primary" nzDanger *ngIf="data.status==='1'"
-                        (click)="check(data.ID,false)">下架</button>
+                    <button nz-button nzType="primary" nzGhost style="margin-right:10px"
+                        (click)="replyFunc(data)">回复</button>
+                    <button nz-button nzType="primary" *ngIf="data.status==='0'" (click)="check(data.ID,true)"
+                        style="margin-right:10px">通过</button>
+                    <button nz-button nzType="primary" nzDanger nzGhost *ngIf="data.status==='1'"
+                        (click)="check(data.ID,false)" style="margin-right:10px">下架</button>
+                    <button nz-button nzType="primary" nzDanger nz-popconfirm nzPopconfirmTitle="确认删除这条留言吗?"
+                        nzPopconfirmPlacement="bottom" (nzOnConfirm)="deleteFunc(data,true)"
+                        (nzOnCancel)="deleteFunc(data,false)">删除</button>
                 </td>
             </tr>
         </tbody>
     </nz-table>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="回复留言" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+            <textarea rows="4" nz-input [(ngModel)]="replyForm.comment"></textarea>
+        </ng-container>
+    </nz-modal>
 </div>

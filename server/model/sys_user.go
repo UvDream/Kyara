@@ -14,4 +14,6 @@ type SysUser struct {
 	HeaderImg   string       `json:"headerImg" gorm:"default:'https://gitee.com/Uvdream/images/raw/master/images/20200825150341.png';comment:'用户头像'"`
 	Authority   SysAuthority `json:"authority" gorm:"ForeignKey:AuthorityId;AssociationForeignKey:AuthorityId;comment:'用户角色'"`
 	AuthorityId string       `json:"authorityId" gorm:"default:888;comment:'用户角色ID'"`
+	BlogURL     string       `json:"blog_url" gorm:"comment:'博客地址'"`
+	Email       string       `json:"email" gorm:"comment:'邮箱'"`
 }

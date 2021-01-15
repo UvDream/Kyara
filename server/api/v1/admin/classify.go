@@ -48,10 +48,10 @@ func DeleteClassify(c *gin.Context) {
 
 //获取阿里分类图标
 func GetIconfontClassify(c *gin.Context) {
-	msg,data,err:=service.GetIconfontClassify()
+	msg, data, err := service.GetIconfontClassify()
 	if err != nil {
 		resp.FailWithMessage(msg, c)
 	} else {
-		resp.OkDetailed(data,msg, c)
+		resp.OkDetailed(data, msg, c)
 	}
 }

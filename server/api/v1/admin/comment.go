@@ -1,7 +1,6 @@
 package v1
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	resp "server/global/response"
 	"server/model/request"
@@ -38,21 +37,30 @@ func CheckBlogComment(c *gin.Context) {
 		resp.OkWithMessage(msg, c)
 	}
 }
-type Comment struct{
-	Id string `json:"id"`
-	Comment string `json:"comment"`
-}
+
 //回复留言
-func RevertComment(c *gin.Context)  {
-	var R Comment
+func RevertComment(c *gin.Context) {
+	var R response.ReplyComment
 	err := c.ShouldBindJSON(&R)
-	if err!=nil {
+	if err != nil {
 		resp.FailWithMessage("获取参数错误", c)
 	}
-	//获取登陆用户
-	claims, _ := c.Get("claims")
-	waitUse := claims.(*request.CustomClaims)
-	fmt.Println(waitUse)
-	//
-	service.RevertComment()
+	msg, err := service.RevertComment(c, R)
+	if err != nil {
+		resp.FailWithMessage(msg, c)
+	} else {
+		resp.OkWithMessage(msg, c)
+	}
+}
+
+// 删除留言
+func DeleteComment(c *gin.Context) {
+	//id := c.Query("id")
+	//fmt.Println(id)
+	msg, err := service.DeleteComment(c)
+	if err != nil {
+		resp.FailWithMessage(msg, c)
+	} else {
+		resp.OkWithMessage(msg, c)
+	}
 }

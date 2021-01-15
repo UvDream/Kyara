@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { baseUrl } from '../../environments/env';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Params } from './params';
 interface Response {
   code: number;
@@ -12,7 +12,12 @@ interface Response {
 })
 
 export class HttpService {
-
+  public httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: ''
+    })
+  };
   constructor(private http: HttpClient) { }
   public request(params: any): any {
     if (params.method === 'post' || params.method === 'POST') {
@@ -22,11 +27,20 @@ export class HttpService {
     }
   }
   public get = (url: string, params: any) => {
-
-    return this.http.get(baseUrl + url, { params }).toPromise().then(this.handleSuccess).catch(this.handleError);
+    const headers = this.getAuthorization();
+    return this.http.get(baseUrl + url, { params, headers }).toPromise().then(this.handleSuccess).catch(this.handleError);
   }
   public post = (url: string, data: Params) => {
-    return this.http.post(baseUrl + url, data).toPromise().then(this.handleSuccess).catch(this.handleError);
+    const headers = this.getAuthorization();
+    return this.http.post(baseUrl + url, data, { headers }).toPromise().then(this.handleSuccess).catch(this.handleError);
+  }
+  public getAuthorization(): HttpHeaders {
+    const authorization = localStorage.getItem('Authorization');
+    let headers = new HttpHeaders();
+    if (authorization) {
+      return headers = headers.set('Authorization', authorization);
+    }
+    return headers;
   }
   private handleSuccess = (res: Response) => {
     switch (res.code) {

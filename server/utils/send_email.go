@@ -13,7 +13,7 @@ import (
 // @auth  （2020/12/16  11:30）
 // @param     path     string
 // @return    err     error
-func SendEmail(title string, body string) ( msg string,err error) {
+func SendEmail(title string, body string) (msg string, err error) {
 	var sysConfig model.SysConfig
 	db := global.GVA_DB
 	err = db.Find(&sysConfig).Error
@@ -38,8 +38,8 @@ func SendEmail(title string, body string) ( msg string,err error) {
 	email.SetBody("text/html", body)  //设置邮件正文
 	d := gomail.NewDialer(mailConn["host"], port, mailConn["user"], mailConn["pass"])
 	err = d.DialAndSend(email)
-	if err!=nil {
-		return "发送邮件失败,请联系开源项目作者",err
+	if err != nil {
+		return "发送邮件失败,请联系开源项目作者", err
 	}
-	return  "发送成功",err
+	return "发送成功", err
 }

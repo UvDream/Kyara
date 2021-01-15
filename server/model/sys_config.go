@@ -38,10 +38,10 @@ type SysConfig struct {
 	// 百度token
 	BaiDuToken string `json:"bai_du_token" gorm:"comment:'百度收录token';default:'PlJmLr6f48JBQyyP'"'`
 	// 邮箱配置
-	EmailUser string `json:"email_user" gorm:"comment:'邮箱用户名';default:'913906565@qq.com'"`
+	EmailUser     string `json:"email_user" gorm:"comment:'邮箱用户名';default:'913906565@qq.com'"`
 	EmailPassword string `json:"email_password" gorm:"comment:'邮箱密码或者授权码'"`
-	EmailHost string `json:"email_host" gorm:"comment:'邮箱host';default:'smtp.qq.com'"`
-	EmailPort string `json:"email_port" gorm:"comment:'邮箱port';default:'465'"`
+	EmailHost     string `json:"email_host" gorm:"comment:'邮箱host';default:'smtp.qq.com'"`
+	EmailPort     string `json:"email_port" gorm:"comment:'邮箱port';default:'465'"`
 	//接收信息邮箱
 	ReceiveEmail string `json:"receive_email" gorm:"comment:'接受信息邮箱';default:'uvdream@163.com'"`
 }

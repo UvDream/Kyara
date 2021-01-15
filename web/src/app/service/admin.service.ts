@@ -78,4 +78,20 @@ export class AdminService {
       url: '/admin/iconfontClassify',
     });
   }
+  // 回复留言
+  replyComment = (data) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/revertComment',
+      data
+    });
+  }
+  // 删除留言
+  deleteComment = (params: object) => {
+    return this.http.request({
+      method: 'get',
+      url: '/admin/deleteComment',
+      params
+    });
+  }
 }

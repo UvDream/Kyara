@@ -28,11 +28,11 @@ func Comment(r model.BlogComment) (err error, msg string) {
 		}
 	}
 	fmt.Println(r)
-	title:=r.UserName+"给你留言了"
-	body:="留言内容:<br/>"+r.CommentContent+"<br/><p style='color:red;'>请及时登陆后台审核留言内容</p>"
-	msg,err=utils.SendEmail(title,body)
-	if err!=nil {
-		return err,msg
+	title := r.UserName + "给你留言了"
+	body := "留言内容:<br/>" + r.CommentContent + "<br/><p style='color:red;'>请及时登陆后台审核留言内容</p>"
+	msg, err = utils.SendEmail(title, body)
+	if err != nil {
+		return err, msg
 	}
 	return err, "留言成功"
 }
@@ -171,11 +171,11 @@ func AddDynamic() {
 			fmt.Println("更新失败")
 		}
 	}
-//	更新博客最新活动时间
+	//	更新博客最新活动时间
 	var blogConfig model.SysConfig
-	activeTime:=time.Now()
-	err=db.Model(&blogConfig).Update(model.SysConfig{ActiveTime: activeTime}).Error
-	if err!=nil {
+	activeTime := time.Now()
+	err = db.Model(&blogConfig).Update(model.SysConfig{ActiveTime: activeTime}).Error
+	if err != nil {
 		fmt.Println("更新最新时间失败")
 	}
 }
