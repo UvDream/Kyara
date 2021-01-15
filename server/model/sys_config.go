@@ -12,7 +12,6 @@ type SysConfig struct {
 	BlogName      string    `json:"blog_name" gorm:"comment:'博客名称';default:'U世界的V梦想'"`
 	BlogLogo      string    `json:"blog_logo" gorm:"comment:'博客logo';default:'https://pic.baixiongz.com/2020/08/05/a46e139ec4236.png'"`
 	BlogNoticeID  uint      `json:"blog_notice_id" gorm:"comment:'博客公告id'"`
-	BlogNotice    string    `json:"blog_notice" gorm:"comment:'博客公告'"`
 	BlogStartTime time.Time `json:"blog_start_time" gorm:"comment:'博客开始时间';default:'2015-01-02 15:04:05'"`
 	BlogViewCount string    `json:"blog_view_count" gorm:"comment:'博客访问量'"`
 	//关于博客
