@@ -18,7 +18,7 @@ func GetBlogComment(r request.ListStruct) (err error, comment []model.BlogCommen
 	if err != nil {
 		return err, comment, "查询留言失败", total
 	}
-	err = db.Where("comment_content LIKE ?", "%"+r.Search+"%").Table("blog_comments").Count(&total).Error
+	err = db.Where("comment_content LIKE ?", "%"+r.Search+"%").Where("deleted_at is null").Table("blog_comments").Count(&total).Error
 	if err != nil {
 		return err, comment, "查询总数失败", total
 	}
