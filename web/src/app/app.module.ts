@@ -15,8 +15,7 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { BlogModule } from './blog/blog.module';
 import { AdminModule } from './admin/admin.module';
-import { LoginModule } from './login/login.module';
-
+import { LoginModule } from './account/login.module';
 registerLocaleData(zh);
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +29,7 @@ registerLocaleData(zh);
     BrowserAnimationsModule,
     BlogModule,
     AdminModule,
-    LoginModule
+    LoginModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent],
