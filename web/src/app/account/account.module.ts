@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
-import { LoginRoutes } from './login.routing';
+import { AccountRoutes } from './account.routing';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
   imports: [
     CommonModule,
-    LoginRoutes,
+    AccountRoutes,
     NzFormModule,
     NzInputModule,
     NzGridModule,
