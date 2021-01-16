@@ -4,6 +4,9 @@
       {{userService.userInfo.nickName}},你好!
     </div>
     <div class="userinfo-message-list">
+      个人信息
+    </div>
+    <div class="userinfo-message-list">
       退出登录
     </div>
   </div>
@@ -20,6 +23,6 @@
         <img [src]="imgUrl" alt="">
       </div>
     </div>
-    <button nz-button [nzType]="'primary'" (click)="submitForm()">登陆</button>
+    <button nz-button [nzType]="'primary'" (click)="submitForm()" style="margin:0 auto">登陆</button>
   </div>
 </div>

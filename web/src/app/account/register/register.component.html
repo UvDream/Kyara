@@ -8,9 +8,8 @@
         <!-- 用户名 -->
         <nz-form-item>
           <nz-form-label [nzSpan]="7" nzRequired>用户名</nz-form-label>
-          <nz-form-control [nzSpan]="12" nzHasFeedback nzValidatingTip="Validating..."
-                           [nzErrorTip]="userErrorTpl">
-            <input nz-input formControlName="userName" placeholder="请输入用户名"/>
+          <nz-form-control [nzSpan]="12" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+            <input nz-input formControlName="userName" placeholder="请输入用户名" />
             <ng-template #userErrorTpl let-control>
               <ng-container *ngIf="control.hasError('required')">
                 请输入用户名!
@@ -25,7 +24,7 @@
         <nz-form-item>
           <nz-form-label [nzSpan]="7" nzRequired>昵称</nz-form-label>
           <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="nickNameErrorTpl">
-            <input nz-input formControlName="nickName" placeholder="请输入昵称" type="text"/>
+            <input nz-input formControlName="nickName" placeholder="请输入昵称" type="text" />
             <ng-template #nickNameErrorTpl let-control>
               <ng-container *ngIf="control.hasError('nickName')">
                 昵称不能为空!
@@ -40,7 +39,7 @@
         <nz-form-item>
           <nz-form-label [nzSpan]="7">邮箱</nz-form-label>
           <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="emailErrorTpl">
-            <input nz-input formControlName="email" placeholder="请输入邮箱地址" type="email"/>
+            <input nz-input formControlName="email" placeholder="请输入邮箱地址" type="email" />
             <ng-template #emailErrorTpl let-control>
               <ng-container *ngIf="control.hasError('email')">
                 邮箱格式不正确!
@@ -53,15 +52,14 @@
         <nz-form-item>
           <nz-form-label [nzSpan]="7" nzRequired>密码</nz-form-label>
           <nz-form-control [nzSpan]="12" nzHasFeedback nzErrorTip="请输入密码!">
-            <input nz-input type="password" formControlName="password"
-                   (ngModelChange)="validateConfirmPassword()"/>
+            <input nz-input type="password" formControlName="password" (ngModelChange)="validateConfirmPassword()" />
           </nz-form-control>
         </nz-form-item>
         <!-- 重复密码 -->
         <nz-form-item>
           <nz-form-label [nzSpan]="7" nzRequired>重复密码</nz-form-label>
           <nz-form-control [nzSpan]="12" nzHasFeedback [nzErrorTip]="passwordErrorTpl">
-            <input nz-input type="password" formControlName="confirm" placeholder="请再次输入密码"/>
+            <input nz-input type="password" formControlName="confirm" placeholder="请再次输入密码" />
             <ng-template #passwordErrorTpl let-control>
               <ng-container *ngIf="control.hasError('required')">
                 请输入密码!
