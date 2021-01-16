@@ -37,7 +37,7 @@ func Register(c *gin.Context) {
 		response.FailWithMessage(UserVerifyErr.Error(), c)
 		return
 	}
-	user := &model.SysUser{Username: R.Username, NickName: R.NickName, Password: R.Password, HeaderImg: R.HeaderImg, AuthorityId: R.AuthorityId}
+	user := &model.SysUser{Username: R.Username, NickName: R.NickName, Password: R.Password, HeaderImg: R.HeaderImg, AuthorityId: R.AuthorityId,Email: R.Email}
 	err, userReturn := service.Register(*user)
 	if err != nil {
 		response.FailWithDetailed(response.ERROR, resp.SysUserResponse{User: userReturn}, fmt.Sprintf("%v", err), c)

@@ -6,8 +6,8 @@
       <span class="iconfont uv-menu-outline" (click)="open()"></span>
     </div>
     <div nz-col nzXs="21" nzSm="22" nzMd="0" nzLg="0" nzXl="0" nzXXl="0" class="text-center">
-      <img [src]="http.BlogLogo" alt="" class="header-right-logo">
-      {{http.BlogName}}
+      <img [src]="blogHttp.BlogLogo" alt="" class="header-right-logo">
+      {{blogHttp.BlogName}}
     </div>
     <!-- 动态 -->
     <!-- <div
@@ -43,7 +43,13 @@
         <span class="iconfont uv-paper-plane-outline"></span>
       </section>
       <section>
-        <span class="iconfont uv-person-outline"></span>
+        <span class="iconfont uv-person-outline" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo" *ngIf="!userService.userInfo"></span>
+        <div *ngIf="userService.userInfo" class="header-avatar">
+          <img [src]="userService.userInfo.headerImg" alt="" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo" >
+        </div>
+        <nz-dropdown-menu #userInfo="nzDropdownMenu">
+          <app-user-info></app-user-info>
+        </nz-dropdown-menu>
       </section>
     </div>
   </div>

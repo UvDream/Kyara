@@ -5,10 +5,11 @@ import uuid "github.com/satori/go.uuid"
 // User register structure
 type RegisterStruct struct {
 	Username    string `json:"userName"`
-	Password    string `json:"passWord"`
-	NickName    string `json:"nickName" gorm:"default:'QMPlusUser'"`
+	Password    string  `json:"password"`
+	NickName    string `json:"nickName"`
 	HeaderImg   string `json:"headerImg" gorm:"default:'https://gitee.com/Uvdream/images/raw/master/images/20200825150341.png'"`
 	AuthorityId string `json:"authorityId" gorm:"default:888"`
+	Email       string `json:"email" gorm:"comment:'邮箱'"`
 }
 
 // User login structure

@@ -1,0 +1,44 @@
+.userinfo {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: default;
+
+  &-form {
+    width: 300px;
+    text-align: center;
+
+    &-block {
+      margin: 10px 0;
+      display: flex;
+
+      &-img {
+        width: 120px;
+        height: 32px;
+        background-color: #fff;
+        margin-left: 10px;
+        border-radius: 4px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  &-message {
+    text-align: center;
+
+    & > div:last-child {
+      border-bottom: none;
+    }
+
+    &-list {
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}

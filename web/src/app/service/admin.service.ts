@@ -1,12 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpService } from './http.service';
+import {Injectable} from '@angular/core';
+import {HttpService} from './http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService) {
+  }
+
   // 添加公告
   addNotice = (data: object) => {
     return this.http.request({
@@ -100,6 +102,22 @@ export class AdminService {
       method: 'get',
       url: '/admin/deleteNotice',
       params
+    });
+  }
+  //  登陆
+  login = (data?: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/revertComment',
+      data
+    });
+  }
+//  注册
+  register = (data?: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/base/register',
+      data
     });
   }
 }

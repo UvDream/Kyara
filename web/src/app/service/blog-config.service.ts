@@ -5,7 +5,6 @@ import { toTimeDH } from '../../util/util';
   providedIn: 'root'
 })
 export class BlogConfigService {
-  configObservable: any;
 
   constructor(private httpService: ArticleService) { }
   public BlogName = '';
