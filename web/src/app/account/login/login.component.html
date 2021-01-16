@@ -1,15 +1,19 @@
-<div class="login-form">
-  <nz-input-group nzPrefixIcon="user" class="login-form-block">
-    <input type="text" nz-input [(ngModel)]="form.username" placeholder="Username" />
-  </nz-input-group>
-  <nz-input-group nzPrefixIcon="lock" class="login-form-block">
-    <input type="password" nz-input [(ngModel)]="form.password" placeholder="Password" />
-  </nz-input-group>
-  <div class="login-form-block">
-    <input type="text" nz-input [(ngModel)]="form.Captcha" placeholder="验证码" />
-    <div class="login-form-block-img" (click)="getVerificationCode()">
-      <img [src]="imgUrl" alt="">
+<div class="login">
+  <div class="login-body" nz-row [nzJustify]="'center'" [nzAlign]="'middle'">
+    <div nz-col nzXs="20" nzSm="16" nzMd="14" nzLg="9" nzXl="7" [nzXXl]="6" class="login-body-block">
+      <nz-input-group nzPrefixIcon="user" class="login-form-block">
+        <input type="text" nz-input [(ngModel)]="form.username" placeholder="Username" />
+      </nz-input-group>
+      <nz-input-group nzPrefixIcon="lock" class="login-form-block">
+        <input type="password" nz-input [(ngModel)]="form.password" placeholder="Password" />
+      </nz-input-group>
+      <div class="login-form-block">
+        <input type="text" nz-input [(ngModel)]="form.Captcha" placeholder="验证码" />
+        <div class="login-form-block-img" (click)="getVerificationCode()">
+          <img [src]="imgUrl" alt="">
+        </div>
+      </div>
+      <button nz-button [nzType]="'primary'" (click)="submitForm()">登陆</button>
     </div>
   </div>
-  <button nz-button [nzType]="'primary'" (click)="submitForm()">登陆</button>
 </div>
