@@ -58,7 +58,6 @@ func findChildren(parentId uint) (child []model.BlogComment,err error,msg string
 	if err!=nil {
 		return child,err,"查询子元素失败"
 	}
-	fmt.Println(child)
 	for i,k:=range child{
 		if k.UserID!="" {
 			var user model.SysUser

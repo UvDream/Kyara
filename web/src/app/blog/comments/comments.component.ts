@@ -11,16 +11,6 @@ import { Title } from '@angular/platform-browser';
 export class CommentsComponent implements OnInit {
   totalCount = 0;
   userExist = false;
-  form = {
-    user_name: '',
-    email: '',
-    avatar: '',
-    blog_url: '',
-    comment_content: '',
-    user_id: '',
-    ID: '',
-    is_private: false
-  };
   commentForm = {
     page: 1,
     page_size: 10
@@ -36,8 +26,6 @@ export class CommentsComponent implements OnInit {
     this.titleService.setTitle('留言-汪中杰的个人博客');
     this.getComment();
   }
-
-
   PageIndexChange(page: number): void {
     this.commentForm.page = page;
     this.getComment();
