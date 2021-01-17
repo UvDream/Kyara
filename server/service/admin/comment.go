@@ -8,6 +8,7 @@ import (
 	"server/model/request"
 	"server/model/response"
 	"server/service/blog"
+	"strconv"
 )
 
 //获取博客留言
@@ -17,6 +18,19 @@ func GetBlogComment(r request.ListStruct) (err error, comment []model.BlogCommen
 	err = db.Limit(r.PageSize).Offset(offset).Where("comment_content LIKE ?", "%"+r.Search+"%").Find(&comment).Error
 	if err != nil {
 		return err, comment, "查询留言失败", total
+	}
+	for i,k:=range comment{
+		if k.UserID!=""{
+			var user model.SysUser
+			err=db.Where("ID=?",k.UserID).Find(&user).Error
+			if err!=nil {
+				return err, comment, "查询回复信息失败", total
+			}
+			comment[i].UserName=user.NickName
+			comment[i].Email=user.Email
+			comment[i].BlogURL=user.BlogURL
+			comment[i].Avatar=user.HeaderImg
+		}
 	}
 	err = db.Where("comment_content LIKE ?", "%"+r.Search+"%").Where("deleted_at is null").Table("blog_comments").Count(&total).Error
 	if err != nil {
@@ -54,8 +68,8 @@ func RevertComment(c *gin.Context, r response.ReplyComment) (msg string, err err
 	comment.CommentContent = r.Comment
 	comment.ParentID = r.ID
 	comment.UserName = waitUse.NickName
-	comment.UserID = waitUse.Id
-	comment.Status = "0"
+	comment.UserID = strconv.Itoa(int(waitUse.ID ))
+	comment.Status = "1"
 	db := global.GVA_DB
 	err = db.Create(&comment).Error
 	if err != nil {

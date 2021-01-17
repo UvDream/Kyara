@@ -44,20 +44,38 @@ func GetComment(r request.ListStruct) (err error, msg string, blogComment []mode
 	if err != nil {
 		return err, "查询失败", blogComment, 0
 	}
-	fmt.Println(blogComment)
 	for k, i := range blogComment {
-		blogComment[k].Children = findChildren(i.ID)
+		blogComment[k].Children,err,msg = findChildren(i.ID)
+		if err!=nil {
+			return err, "查询子节点失败", blogComment, 0
+		}
 	}
 	return err, "查询留言成功", blogComment, totalCount
 }
-func findChildren(parentId uint) (child []model.BlogComment) {
+func findChildren(parentId uint) (child []model.BlogComment,err error,msg string) {
 	db := global.GVA_DB
-	err := db.Where("parent_id=? AND status=?", parentId, "1").Find(&child).Error
-	fmt.Println(err)
-	for k, i := range child {
-		child[k].Children = findChildren(i.ID)
+	err=db.Where("parent_id=? AND status=?", parentId, "1").Find(&child).Error
+	if err!=nil {
+		return child,err,"查询子元素失败"
 	}
-	return child
+	fmt.Println(child)
+	for i,k:=range child{
+		if k.UserID!="" {
+			var user model.SysUser
+			err=db.Where("ID=?",k.UserID).Find(&user).Error
+			if err!=nil {
+				return child,err,"查询用户信息失败"
+			}
+			child[i].UserName=user.NickName
+			child[i].Email=user.Email
+			child[i].BlogURL=user.BlogURL
+			child[i].Avatar=user.HeaderImg
+		}
+	}
+	for k, i := range child {
+		child[k].Children,err,msg= findChildren(i.ID)
+	}
+	return child, err,"查询成功"
 }
 
 //百度收录
