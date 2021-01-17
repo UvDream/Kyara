@@ -13,7 +13,6 @@ export class TimeDiffPipe implements PipeTransform {
     const diffTime = (nowTime - time) / 1000; // 转换为秒
     // 先计算出年份
     const years = parseInt((diffTime / 31536000).toString(), 0);
-    console.log('年份', years);
     years > 0 ? timeVal = timeVal + years + '年' : '';
     // 计算月
     const monthsDiffTime = diffTime - years * 31536000;

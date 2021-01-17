@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     if (res.code === 200) {
       this.message.success('登陆成功!');
       this.router.navigate(['/admin']);
+      this.blogHttp.setUserInfo(res.data.user);
       localStorage.setItem('Authorization', res.data.token);
     } else {
       this.message.error(res.msg);
