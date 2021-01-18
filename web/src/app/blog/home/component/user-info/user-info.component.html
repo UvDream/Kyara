@@ -12,17 +12,20 @@
   </div>
   <div *ngIf="!userService.userInfo" class="userinfo-message">
     <nz-input-group nzPrefixIcon="user" class="userinfo-form-block">
-      <input type="text" nz-input [(ngModel)]="form.username" placeholder="Username"/>
+      <input type="text" nz-input [(ngModel)]="form.username" placeholder="Username" />
     </nz-input-group>
     <nz-input-group nzPrefixIcon="lock" class="userinfo-form-block">
-      <input type="password" nz-input [(ngModel)]="form.password" placeholder="Password"/>
+      <input type="password" nz-input [(ngModel)]="form.password" placeholder="Password" />
     </nz-input-group>
     <div class="userinfo-form-block">
-      <input type="text" nz-input [(ngModel)]="form.Captcha" placeholder="验证码"/>
+      <input type="text" nz-input [(ngModel)]="form.Captcha" placeholder="验证码" />
       <div class="userinfo-form-block-img" (click)="getVerificationCode()">
         <img [src]="imgUrl" alt="">
       </div>
     </div>
-    <button nz-button [nzType]="'primary'" (click)="submitForm()" style="margin:0 auto">登陆</button>
+    <div class="userinfo-form-btn">
+      <button nz-button [nzType]="'primary'" (click)="submitForm()">登陆</button>
+      <button nz-button nzType="default" routerLink="/account/register">注册</button>
+    </div>
   </div>
 </div>

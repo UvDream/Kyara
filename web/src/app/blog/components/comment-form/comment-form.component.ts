@@ -34,6 +34,8 @@ export class CommentFormComponent implements OnInit, DoCheck {
   }
   ngOnInit(): void {
     const isComment = localStorage.getItem('comment');
+    this.userService.getUserInfo();
+    console.log(this.userService.userInfo, '用户信息')
     if (this.userService.userInfo) {
       this.userExist = true;
       this.form.user_name = this.userService.userInfo.nickName;

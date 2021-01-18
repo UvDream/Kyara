@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
-import {Observable, Observer} from 'rxjs';
-import {AdminService} from '@service/admin.service';
-import {NzMessageService} from 'ng-zorro-antd/message';
-import {Router} from '@angular/router';
-import {UserService} from '@service/user.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable, Observer } from 'rxjs';
+import { AdminService } from '@service/admin.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Router } from '@angular/router';
+import { UserService } from '@service/user.service';
 
 @Component({
   selector: 'app-register',
@@ -34,6 +34,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // tslint:disable-next-line:max-line-length
   async submitForm(value: { userName: string; email: string; password: string; confirm: string; comment: string; nickName: string; AuthorityId: string }): Promise<void> {
     // tslint:disable-next-line:forin
     for (const key in this.validateForm.controls) {
@@ -72,7 +73,7 @@ export class RegisterComponent implements OnInit {
     new Observable((observer: Observer<ValidationErrors | null>) => {
       setTimeout(() => {
         if (control.value === 'JasonWood') {
-          observer.next({error: true, duplicated: true});
+          observer.next({ error: true, duplicated: true });
         } else {
           observer.next(null);
         }
@@ -82,9 +83,9 @@ export class RegisterComponent implements OnInit {
 
   confirmValidator = (control: FormControl): { [s: string]: boolean } => {
     if (!control.value) {
-      return {error: true, required: true};
+      return { error: true, required: true };
     } else if (control.value !== this.validateForm.controls.password.value) {
-      return {confirm: true, error: true};
+      return { confirm: true, error: true };
     }
     return {};
   };
