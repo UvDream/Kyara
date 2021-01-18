@@ -1,28 +1,28 @@
-<div class="comment" *ngFor="let item of data" [ngClass]="{children: isChildren}">
-    <div class="comment-top">
-        <div class="comment-top-avatar">
+<div class="comments" *ngFor="let item of data" [ngClass]="{children: isChildren}">
+    <div class="comments-top">
+        <div class="comments-top-avatar">
             <img [src]="item.avatar" alt="">
         </div>
         <div>
             <div>
                 {{item.user_name}}
             </div>
-            <div> {{item.comment_content}}</div>
+            <div> {{item.comments_content}}</div>
         </div>
     </div>
-    <div class="comment-bottom">
+    <div class="comments-bottom">
         <div>
             {{item.CreatedAt | date:"y-d-MM HH:mm "}}
         </div>
-        <div class="comment-bottom-reply" (click)="replyFunc(item.ID)" *ngIf="item.ID!==activeId">
+        <div class="commentss-bottom-reply" (click)="replyFunc(item.ID)" *ngIf="item.ID!==activeId">
             回复
         </div>
-        <div class="comment-bottom-reply" (click)="replyFunc()" *ngIf="item.ID===activeId">
+        <div class="comments-bottom-reply" (click)="replyFunc()" *ngIf="item.ID===activeId">
             取消回复
         </div>
     </div>
     <div *ngIf="item.ID===activeId">
-        <app-comment-form [replyID]="activeId"></app-comment-form>
+        <app-comments-form [replyID]="activeId"></app-comments-form>
     </div>
-    <app-comment-component [data]="item.children" isChildren="true"></app-comment-component>
+    <app-comments-component [data]="item.children" isChildren="true"></app-comments-component>
 </div>
