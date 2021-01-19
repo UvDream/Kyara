@@ -8,3 +8,5 @@ server/latest_log
 server/config.yaml
 web/dist/
 dist
+web/package-lock.json
+web/yarn-error.log

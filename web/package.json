@@ -36,7 +36,7 @@
     "rxjs": "~6.5.5",
     "scp2": "^0.5.0",
     "tslib": "^2.0.0",
-    "vditor": "^3.5.1",
+    "vditor": "^3.7.6",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
