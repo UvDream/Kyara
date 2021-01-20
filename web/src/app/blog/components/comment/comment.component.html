@@ -14,7 +14,7 @@
         <div>
             {{item.CreatedAt | date:"y-d-MM HH:mm "}}
         </div>
-        <div class="commentss-bottom-reply" (click)="replyFunc(item.ID)" *ngIf="item.ID!==activeId">
+        <div class="comments-bottom-reply" (click)="replyFunc(item.ID)" *ngIf="item.ID!==activeId">
             回复
         </div>
         <div class="comments-bottom-reply" (click)="replyFunc()" *ngIf="item.ID===activeId">
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div *ngIf="item.ID===activeId">
-        <app-comments-form [replyID]="activeId"></app-comments-form>
+        <app-comment-form [replyID]="activeId"></app-comment-form>
     </div>
     <app-comments-component [data]="item.children" isChildren="true"></app-comments-component>
 </div>

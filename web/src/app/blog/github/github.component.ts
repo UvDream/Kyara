@@ -68,20 +68,14 @@ export class GithubComponent implements OnInit {
     Dart: {
       color: '#00B4AB',
       fontColor: '#fff'
+    },
+    Shell: {
+      color: '#89e051',
+      fontColor: '#fff'
     }
   };
   ngOnInit(): void {
-    // this.GithubList = [{
-    //   name: '#b07219',
-    //   full_name: '',
-    //   node_id: '',
-    //   description: '',
-    //   forks_count: '',
-    //   stargazers_count: '',
-    //   html_url: '',
-    //   language: 'TypeScript',
-    //   color: '#b07219'
-    // }];
+
     this.getGithub();
     this.titleService.setTitle('github仓库列表-汪中杰的个人博客');
     const url = '/github';
