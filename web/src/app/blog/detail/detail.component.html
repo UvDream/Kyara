@@ -1,5 +1,4 @@
-<nz-spin nzTip="文章加载中..." style="margin-top:100px" *ngIf="loading">
-</nz-spin>
+<app-loading *ngIf="loading"></app-loading>
 <div class="detail">
   <!-- 上面 -->
   <div class="detail-title" *ngIf="!loading">
@@ -52,7 +51,7 @@
       <p>{{collectText}}</p>
     </div>
   </div>
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="赞赏作者" [nzContent]="modalContent" [nzFooter]="modalFooter" nzWidth="400"
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="赞赏作者" [nzContent]="modalContent" [nzFooter]="modalFooter"
     (nzOnCancel)="showModal(false)">
     <ng-template #modalContent>
       <div class="detail-modal-img">

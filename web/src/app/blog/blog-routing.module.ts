@@ -20,6 +20,9 @@ export const homeRoutes: Routes = [
       },
       {
         path: 'detail',
+        data: {
+          title: 'detail'
+        },
         component: DetailComponent,
       },
       {

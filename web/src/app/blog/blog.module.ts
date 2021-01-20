@@ -52,6 +52,7 @@ import { RadarChartComponent } from './home/component/charts/radar-chart/radar-c
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { TimeDiffPipe } from '@pipes/time-diff.pipe';
 import { UserInfoComponent } from './home/component/user-info/user-info.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -113,7 +114,8 @@ import { UserInfoComponent } from './home/component/user-info/user-info.componen
     DynamicChartComponent,
     RadarChartComponent,
     TimeDiffPipe,
-    UserInfoComponent
+    UserInfoComponent,
+    LoadingComponent
   ],
   providers: [],
 })

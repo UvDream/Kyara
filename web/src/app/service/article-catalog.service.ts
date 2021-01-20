@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Location } from '@angular/common';
-import { Platform } from '@angular/cdk/platform';
+import { Location, PlatformLocation } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +9,14 @@ export class ArticleCatalogService {
   public pathName = '';
   location: Location;
   constructor(
-    private platform: Platform,
+    private platformLocation: PlatformLocation
   ) { }
   SetCatLog = (arr?: any) => {
-    if (this.platform.isBrowser) {
-      this.pathName = location.pathname;
+    const pathName = this.platformLocation.hash;
+    if (pathName.match(/\#(\S*)\?/) != null) {
+      this.pathName = pathName.match(/\#(\S*)\?/)[1];
+    } else {
+      this.pathName = '';
     }
     this.ArticleCatList = arr;
   }
