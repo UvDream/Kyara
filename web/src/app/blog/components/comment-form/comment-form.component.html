@@ -43,13 +43,16 @@
       <input type="text" [(ngModel)]="form.blog_url" nz-input placeholder="输入网址或者博客" />
     </div>
     <div class="comments-btn">
-      <button (click)="commentFunc()">留言</button>
+      <!-- <button (click)="commentFunc()">留言</button> -->
+      <div class="btn" (click)="commentFunc()">
+        留言
+      </div>
     </div>
-    <div class="comments-user" *ngIf="userExist">
+    <div class="comments-user " *ngIf="userExist">
       <div class="comments-user-prompt">
         欢迎回来!
       </div>
-      <div class="comments-user-msg">
+      <div class="comments-user-msg ">
         <img [src]="form.avatar" alt=""> <span>{{form.user_name}}</span>
       </div>
     </div>

@@ -55,30 +55,94 @@
         padding         : 10px;
         border-radius   : 8px;
     }
+
     &-user {
         display    : flex;
         align-items: center;
-        margin: 20px auto;
+        margin     : 20px auto;
+
         &-prompt {
             font-size: 18px;
         }
-    
+
         &-msg {
             margin       : 0px 10px;
             border       : 1px solid #ccc;
             border-radius: 15px;
             display      : flex;
             align-items  : center;
-    
+
             img {
                 width        : 30px;
                 border-radius: 50%;
             }
-    
+
             span {
                 margin   : 0 5px;
                 font-size: 16px;
             }
         }
+    }
+}
+
+.btn {
+    position           : relative;
+    margin             : auto;
+    width              : 100px;
+    line-height        : 30px;
+    text-align         : center;
+    color              : #fff;
+    font-size          : 16px;
+    // border          : 2px solid gold;
+    border-radius      : 10px;
+    // background   : gold;
+    background-image   : linear-gradient(135deg, #5EFCE8 10%, #736EFE 100%);
+    transition         : all .3s;
+    cursor             : pointer;
+
+    &:hover {
+        filter: contrast(1.1);
+    }
+
+    &:active {
+        filter: contrast(0.9);
+    }
+
+    &::before,
+    &::after {
+        content      : "";
+        position     : absolute;
+        top          : -5px;
+        left         : -5px;
+        right        : -5px;
+        bottom       : -5px;
+        border       : 2px solid #5EFCE8;
+        transition   : all .5s;
+        animation    : clippath 3s infinite linear;
+        border-radius: 10px;
+    }
+
+    &::after {
+        animation: clippath 3s infinite -1.5s linear;
+    }
+}
+
+@keyframes clippath {
+
+    0%,
+    100% {
+        clip-path: inset(0 0 98% 0);
+    }
+
+    25% {
+        clip-path: inset(0 98% 0 0);
+    }
+
+    50% {
+        clip-path: inset(98% 0 0 0);
+    }
+
+    75% {
+        clip-path: inset(0 0 0 98%);
     }
 }
