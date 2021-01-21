@@ -25,7 +25,10 @@
 
     <div style="width: 60px" class="header-dynamic text-center">
       <div nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" (nzVisibleChange)="nzVisibleChange($event)">
-        <span class="iconfont uv-pulse-outline"></span>
+        <!-- <span class="iconfont uv-pulse-outline"></span> -->
+        <svg aria-hidden="true">
+          <use xlink:href="#icon-xuanxiang"></use>
+        </svg>
         <span class="iconfont uv-chevron-down-sharp"></span>
       </div>
     </div>
@@ -44,11 +47,17 @@
     </div>
     <div class="header-user header-block">
       <section>
-        <span class="iconfont uv-paper-plane-outline"></span>
+        <!-- <span class="iconfont uv-paper-plane-outline"></span> -->
+        <svg aria-hidden="true" *ngIf="!userService.userInfo">
+          <use xlink:href="#icon-xihuan"></use>
+        </svg>
       </section>
       <section>
-        <span class="iconfont uv-person-outline" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo"
-          *ngIf="!userService.userInfo"></span>
+        <!-- <span class="iconfont uv-person-outline" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo"
+          *ngIf="!userService.userInfo"></span> -->
+        <svg aria-hidden="true" *ngIf="!userService.userInfo">
+          <use xlink:href="#icon-wode"></use>
+        </svg>
         <div *ngIf="userService.userInfo" class="header-avatar">
           <img [src]="userService.userInfo.headerImg" alt="" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo">
         </div>

@@ -9,12 +9,30 @@
             踏山河
         </div>
         <div class="music-tool-bar">
-            <span class="iconfont uv-play-back-circle-outline"></span>
-            <span class="iconfont uv-pause-circle-outline" *ngIf="AudioStatus" (click)="playFunc(false)"></span>
-            <span class="iconfont uv-play-circle-outline" *ngIf="!AudioStatus" (click)="playFunc(true)"></span>
-            <span class="iconfont uv-play-forward-circle-outline"></span>
-            <span class="iconfont uv-volume-mute-outline" (click)="volumeFunc(false)" *ngIf="AudioVolume===0"></span>
-            <span class="iconfont uv-volume-medium-outline" (click)="volumeFunc(true)" *ngIf="AudioVolume!==0"></span>
+            <!-- <span class="iconfont uv-play-back-circle-outline"></span> -->
+            <svg aria-hidden="true">
+                <use xlink:href="#icon-kuaitui"></use>
+            </svg>
+            <!-- <span class="iconfont uv-pause-circle-outline" *ngIf="AudioStatus" (click)="playFunc(false)"></span> -->
+            <svg aria-hidden="true" *ngIf="AudioStatus" (click)="playFunc(false)">
+                <use xlink:href="#icon-zanting"></use>
+            </svg>
+            <!-- <span class="iconfont uv-play-circle-outline" *ngIf="!AudioStatus" (click)="playFunc(true)"></span> -->
+            <svg aria-hidden="true" *ngIf="!AudioStatus" (click)="playFunc(true)">
+                <use xlink:href="#icon-bofang"></use>
+            </svg>
+            <!-- <span class="iconfont uv-play-forward-circle-outline"></span> -->
+            <svg aria-hidden="true">
+                <use xlink:href="#icon-kuaijin"></use>
+            </svg>
+            <!-- <span class="iconfont uv-volume-mute-outline" (click)="volumeFunc(false)" *ngIf="AudioVolume===0"></span>
+            <span class="iconfont uv-volume-medium-outline" (click)="volumeFunc(true)" *ngIf="AudioVolume!==0"></span> -->
+            <svg aria-hidden="true" (click)="volumeFunc(false)" *ngIf="AudioVolume===0">
+                <use xlink:href="#icon-jingyin "></use>
+            </svg>
+            <svg aria-hidden="true" (click)="volumeFunc(true)" *ngIf="AudioVolume!==0">
+                <use xlink:href="#icon-gaoyin"></use>
+            </svg>
         </div>
         <div class="music-tool-schedule">
 
