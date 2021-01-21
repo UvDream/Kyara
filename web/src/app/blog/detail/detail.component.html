@@ -16,7 +16,7 @@
       <span>{{ author }}</span>
 
       <span class="iconfont uv-time-outline" style="margin: 0 5px 0 10px"></span>
-      <span>{{ time| date:"y-d-MM HH:mm:ss " }}</span>
+      <span>{{ time| date:"y-MM-dd HH:mm " }}</span>
       <span class="iconfont uv-chatbubble-outline" style="margin: 0 5px 0 10px"></span>
       <span>{{ commentCount===''?'暂无':commentCount+'条评论' }}</span>
       <span class="iconfont uv-eye-outline" style="margin: 0 5px 0 10px"></span>
@@ -37,7 +37,7 @@
     <div class="detail-praise-time">
       <section class="one-text">
         <span class="iconfont uv-time-outline"></span>
-        最后修改时间:{{UpdatedAt|date:"y-d-MM HH:mm:ss "}}
+        最后修改时间:{{UpdatedAt|date:"y-MM-dd HH:mm "}}
       </section>
       <section class="one-text">
         <span class="iconfont uv-alert-circle-outline"></span>
