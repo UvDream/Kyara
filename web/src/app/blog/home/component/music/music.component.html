@@ -1,0 +1,23 @@
+<div class="music">
+    <div class="music-img">
+        <img src="https://y.gtimg.cn/music/photo_new/T002R300x300M000002LpFim37pdCS.jpg?max_age=2592000" alt="">
+    </div>
+    <div class="music-tool">
+        <audio id="audio"
+            src="https://webfs.yun.kugou.com/202101211452/937bafd6c76b6aface90c6c16c47e5c5/G239/M00/0D/04/j4cBAF-87BmAQpz0ACkRT30fEHU644.mp3"></audio>
+        <div class="music-tool-title">
+            踏山河
+        </div>
+        <div class="music-tool-bar">
+            <span class="iconfont uv-play-back-circle-outline"></span>
+            <span class="iconfont uv-pause-circle-outline" *ngIf="AudioStatus" (click)="playFunc(false)"></span>
+            <span class="iconfont uv-play-circle-outline" *ngIf="!AudioStatus" (click)="playFunc(true)"></span>
+            <span class="iconfont uv-play-forward-circle-outline"></span>
+            <span class="iconfont uv-volume-mute-outline" (click)="volumeFunc(false)" *ngIf="AudioVolume===0"></span>
+            <span class="iconfont uv-volume-medium-outline" (click)="volumeFunc(true)" *ngIf="AudioVolume!==0"></span>
+        </div>
+        <div class="music-tool-schedule">
+
+        </div>
+    </div>
+</div>

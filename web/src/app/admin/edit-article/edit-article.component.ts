@@ -118,7 +118,7 @@ export class EditArticleComponent implements OnInit {
     if (res.code === 200) {
       console.log(res, '上传成功');
       const msg = '![img](' + res.data.url + ')';
-      this.form.article_content = this.form.article_content = msg;
+      this.form.article_content = this.form.article_content + msg;
     }
   }
   textChange = () => {

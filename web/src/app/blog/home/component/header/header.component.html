@@ -36,16 +36,21 @@
       </ul>
     </nz-dropdown-menu>
     <!-- 搜索 -->
-    <div class="header-search">搜索</div>
-    <div class="header-video">音乐播放器</div>
+    <div class="header-search">
+      <!-- 搜索 -->
+    </div>
+    <div class="header-video">
+      <app-music></app-music>
+    </div>
     <div class="header-user header-block">
       <section>
         <span class="iconfont uv-paper-plane-outline"></span>
       </section>
       <section>
-        <span class="iconfont uv-person-outline" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo" *ngIf="!userService.userInfo"></span>
+        <span class="iconfont uv-person-outline" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo"
+          *ngIf="!userService.userInfo"></span>
         <div *ngIf="userService.userInfo" class="header-avatar">
-          <img [src]="userService.userInfo.headerImg" alt="" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo" >
+          <img [src]="userService.userInfo.headerImg" alt="" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo">
         </div>
         <nz-dropdown-menu #userInfo="nzDropdownMenu">
           <app-user-info></app-user-info>
