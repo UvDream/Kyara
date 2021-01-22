@@ -5,23 +5,41 @@
     <div class="detail-title-top">
       <h1>{{ title }}</h1>
       <div>
-        <span class="iconfont uv-caret-forward-circle-outline margin-left-right-5"></span>
-        <span class="iconfont uv-book-outline margin-left-right-5"></span>
-        <span class="iconfont uv-print-outline margin-left-right-5" (click)="print()"></span>
+        <!-- 暂未做 -->
+        <!-- <span class="iconfont uv-caret-forward-circle-outline margin-left-right-5"></span>
+        <span class="iconfont uv-book-outline margin-left-right-5"></span> -->
+        <!-- <span class="iconfont uv-print-outline margin-left-right-5" (click)="print()"></span> -->
+        <svg aria-hidden="true" class="margin-left-right-5" (click)="print()">
+          <use xlink:href="#icon-dayin"></use>
+        </svg>
       </div>
     </div>
-    <div>
-      <span class="iconfont uv-person-outline" style="margin: 0 5px 0 0"></span>
-
+    <div class="detail-title-bottom">
+      <!-- <span class="iconfont uv-person-outline" style="margin: 0 5px 0 0"></span> -->
+      <svg aria-hidden="true" style="margin: 0 5px 0 0">
+        <use xlink:href="#icon-wode"></use>
+      </svg>
       <span>{{ author }}</span>
 
-      <span class="iconfont uv-time-outline" style="margin: 0 5px 0 10px"></span>
+      <!-- <span class="iconfont uv-time-outline" style="margin: 0 5px 0 10px"></span> -->
+      <svg aria-hidden="true" style="margin: 0 5px 0 10px">
+        <use xlink:href="#icon-shijian"></use>
+      </svg>
       <span>{{ time| date:"y-MM-dd HH:mm " }}</span>
-      <span class="iconfont uv-chatbubble-outline" style="margin: 0 5px 0 10px"></span>
+      <!-- <span class="iconfont uv-chatbubble-outline" style="margin: 0 5px 0 10px"></span> -->
+      <svg aria-hidden="true" style="margin: 0 5px 0 10px">
+        <use xlink:href="#icon-xiaoxi"></use>
+      </svg>
       <span>{{ commentCount===''?'暂无':commentCount+'条评论' }}</span>
-      <span class="iconfont uv-eye-outline" style="margin: 0 5px 0 10px"></span>
+      <!-- <span class="iconfont uv-eye-outline" style="margin: 0 5px 0 10px"></span> -->
+      <svg aria-hidden="true" style="margin: 0 5px 0 10px">
+        <use xlink:href="#icon-faxian"></use>
+      </svg>
       <span>{{ viewCount===''?'暂无': viewCount+'次浏览'}}</span>
-      <span class="iconfont uv-information-outline" style="margin: 0 5px 0 10px"></span>
+      <!-- <span class="iconfont uv-information-outline" style="margin: 0 5px 0 10px"></span> -->
+      <svg aria-hidden="true" style="margin: 0 5px 0 10px">
+        <use xlink:href="#icon-A11"></use>
+      </svg>
       <span>{{ wordCount===''?'暂无统计':wordCount+'字数' }}</span>
     </div>
   </div>
@@ -36,11 +54,17 @@
   <div class="detail-praise" *ngIf="!loading">
     <div class="detail-praise-time">
       <section class="one-text">
-        <span class="iconfont uv-time-outline"></span>
+        <!-- <span class="iconfont uv-time-outline"></span> -->
+        <svg aria-hidden="true" class="svg " (click)="print()">
+          <use xlink:href="#icon-shijian"></use>
+        </svg>
         最后修改时间:{{UpdatedAt|date:"y-MM-dd HH:mm "}}
       </section>
       <section class="one-text">
-        <span class="iconfont uv-alert-circle-outline"></span>
+        <!-- <span class="iconfont uv-alert-circle-outline"></span> -->
+        <svg aria-hidden="true" class="svg " (click)="print()">
+          <use xlink:href="#icon-A11"></use>
+        </svg>
         允许转载
       </section>
     </div>

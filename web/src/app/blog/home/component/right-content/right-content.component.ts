@@ -11,18 +11,18 @@ export class RightContentComponent implements OnInit, DoCheck {
     {
       active: true,
       name: '1',
-      icon: 'uv-thumbs-up-outline',
+      icon: 'icon-A7',
     },
     {
       active: false,
       name: '2',
-      icon: 'uv-chatbubble-ellipses-outline',
+      icon: 'icon-A12',
     },
-    {
-      active: false,
-      name: '3',
-      icon: 'uv-star-outline',
-    },
+    // {
+    //   active: false,
+    //   name: '3',
+    //   icon: 'uv-star-outline',
+    // },
   ];
   public pathName = '';
   constructor(private service: ArticleCatalogService) { }

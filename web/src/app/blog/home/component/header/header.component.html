@@ -55,7 +55,7 @@
       <section>
         <!-- <span class="iconfont uv-person-outline" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo"
           *ngIf="!userService.userInfo"></span> -->
-        <svg aria-hidden="true" *ngIf="!userService.userInfo">
+        <svg aria-hidden="true" *ngIf="!userService.userInfo" nz-dropdown nzTrigger="click" [nzDropdownMenu]="userInfo">
           <use xlink:href="#icon-wode"></use>
         </svg>
         <div *ngIf="userService.userInfo" class="header-avatar">

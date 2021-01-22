@@ -4,7 +4,10 @@
     <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate">
       <ng-template #titleTemplate>
         <div class="main-right-tab">
-          <span class="iconfont" [ngClass]="tab.icon"> </span>
+          <!-- <span class="iconfont" [ngClass]="tab.icon"> </span> -->
+          <svg aria-hidden="true" class="margin-left-right-5" (click)="print()">
+            <use [attr.xlink:href]="'#'+tab.icon"></use>
+          </svg>
         </div>
       </ng-template>
       <!--      {{ tab.name }}-->

@@ -10,7 +10,10 @@
           {{item.title}}
         </h4>
         <div class="hot-article-block-like">
-          <span class="iconfont uv-thumbs-up-outline"></span>
+          <!-- <span class="iconfont uv-thumbs-up-outline"></span> -->
+          <svg aria-hidden="true" class="svg margin-left-right-5" (click)="print()">
+            <use xlink:href="#icon-A7"></use>
+          </svg>
           <span class="hot-article-block-like-span">{{item.like_count| numberFormat}}</span>
         </div>
       </div>
