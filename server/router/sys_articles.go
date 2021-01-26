@@ -22,6 +22,7 @@ func InitArticles(Router *gin.RouterGroup) (R gin.IRouter) {
 		ArticleRouter.POST("noticeList", v1.GetNotice)           //获取公告
 		ArticleRouter.POST("comment", blog.Comment)              //评论
 		ArticleRouter.POST("getComment", blog.GetComment)        //获取留言
+		ArticleRouter.GET("blogArchives",blog.BlogArchives)		//博客归档
 
 	}
 	return ArticleRouter

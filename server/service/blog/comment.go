@@ -228,3 +228,27 @@ func GetBlogDynamic() ([][]string, string, string, int, error) {
 	}
 	return data, now.Format("2006-01-02"), thatDay.Format("2006-01-02"), max, nil
 }
+
+//博客分类
+func BlogArchives()(err error){
+	db := global.GVA_DB
+	var config model.SysConfig
+	err=db.Find(&config).Error
+	//获取博客开始时间
+	startTime:=config.BlogStartTime
+	nowTime:=time.Now()
+	var data []request.Actives
+	for i:=0;i<10;i++ {
+		if startTime.Format("2006") <=nowTime.Format("2006"){
+			var obj request.Actives
+			obj.Time=startTime
+			var article []model.SysArticle
+			err=db.Where("created_at <= ?",startTime.Format("2006")).Where("created_at > ?",startTime.AddDate(-1,0,0)).Find(&article).Error
+			fmt.Println(article)
+			data=append(data,obj)
+			startTime=startTime.AddDate(1,0,0)
+		}
+	}
+	fmt.Println(data)
+	return err
+}

@@ -83,3 +83,8 @@ func GetBlogDynamic(c *gin.Context) {
 		response.OkDetailed(&request.DynamicRequest{List: list, Today: today, ThatDay: thatday, MaxCount: max}, "获取成功", c)
 	}
 }
+
+//博客归档
+func BlogArchives(c *gin.Context){
+	blog.BlogArchives()
+}
