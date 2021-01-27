@@ -3,7 +3,7 @@
   <div class="list-img" *ngIf="data.cover_type == 2" [ngStyle]="{ 'background-image': 'url(' + data.img_url + ')' }">
     <header class="list-header">
       <div class="list-title">
-        <span>置顶</span>
+        <span *ngIf="data.top==='1'">置顶</span>
         {{ data.title }}
       </div>
       <div class="list-summary">

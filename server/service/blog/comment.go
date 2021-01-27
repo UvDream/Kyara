@@ -230,25 +230,35 @@ func GetBlogDynamic() ([][]string, string, string, int, error) {
 }
 
 //博客分类
-func BlogArchives()(err error){
+func BlogArchives()(err error,msg string,data []request.Actives){
 	db := global.GVA_DB
 	var config model.SysConfig
 	err=db.Find(&config).Error
 	//获取博客开始时间
 	startTime:=config.BlogStartTime
 	nowTime:=time.Now()
-	var data []request.Actives
 	for i:=0;i<10;i++ {
 		if startTime.Format("2006") <=nowTime.Format("2006"){
 			var obj request.Actives
 			obj.Time=startTime
 			var article []model.SysArticle
-			err=db.Where("created_at <= ?",startTime.Format("2006")).Where("created_at > ?",startTime.AddDate(-1,0,0)).Find(&article).Error
-			fmt.Println(article)
+			//err = db.Raw("select * from sys_articles where date_format(created_at,'%Y')= ?", startTime.Format("2006")).Scan(&article).Error
+			err = db.Where("date_format(created_at,'%Y')= ?", startTime.Format("2006")).Find(&article).Error
+			if err!=nil {
+				return err,"查询文章失败",data
+			}
+			for _,k:=range article{
+				var item request.ActivesItem
+				item.Title=k.Title
+				item.ID=k.ID
+				item.CreatedAt=k.CreatedAt
+				item.UpdatedAt=k.UpdatedAt
+				obj.List=append(obj.List,item)
+			}
 			data=append(data,obj)
 			startTime=startTime.AddDate(1,0,0)
 		}
 	}
 	fmt.Println(data)
-	return err
+	return err,"查询成功",data
 }

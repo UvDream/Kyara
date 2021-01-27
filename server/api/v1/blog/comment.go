@@ -86,5 +86,10 @@ func GetBlogDynamic(c *gin.Context) {
 
 //博客归档
 func BlogArchives(c *gin.Context){
-	blog.BlogArchives()
+	err,msg,data:=blog.BlogArchives()
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	} else {
+		response.OkDetailed(data,msg,c)
+	}
 }

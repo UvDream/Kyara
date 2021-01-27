@@ -212,6 +212,7 @@ export class EditArticleComponent implements OnInit {
     const res = await this.httpService.addTag({ tag: this.tagVal });
     if (res.code === 200) {
       this.getTag();
+      this.tagVal = '';
       this.message.success(res.msg);
     } else {
       this.message.error(res.msg);
