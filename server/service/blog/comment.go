@@ -240,10 +240,10 @@ func BlogArchives()(err error,msg string,data []request.Actives){
 	for i:=0;i<10;i++ {
 		if startTime.Format("2006") <=nowTime.Format("2006"){
 			var obj request.Actives
-			obj.Time=startTime
+			obj.Time=nowTime
 			var article []model.SysArticle
 			//err = db.Raw("select * from sys_articles where date_format(created_at,'%Y')= ?", startTime.Format("2006")).Scan(&article).Error
-			err = db.Where("date_format(created_at,'%Y')= ?", startTime.Format("2006")).Find(&article).Error
+			err = db.Where("date_format(created_at,'%Y')= ?", nowTime.Format("2006")).Find(&article).Error
 			if err!=nil {
 				return err,"查询文章失败",data
 			}
@@ -256,7 +256,7 @@ func BlogArchives()(err error,msg string,data []request.Actives){
 				obj.List=append(obj.List,item)
 			}
 			data=append(data,obj)
-			startTime=startTime.AddDate(1,0,0)
+			nowTime=nowTime.AddDate(-1,0,0)
 		}
 	}
 	fmt.Println(data)
