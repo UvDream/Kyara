@@ -136,5 +136,12 @@ export class ArticleService {
       url: '/other/blogDynamic'
     });
   }
+  // 获取文章归档数据
+  getBlogArchive = () => {
+    return this.http.request({
+      method: 'get',
+      url: '/article/blogArchives'
+    });
+  }
 
 }

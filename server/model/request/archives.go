@@ -3,8 +3,8 @@ package request
 import "time"
 // 博客分类
 type Actives struct{
-	Time time.Time
-	List []ActivesItem
+	Time time.Time `json:"time"`
+	List []ActivesItem `json:"list"`
 }
 type ActivesItem struct{
 	ID        uint `json:"id"`

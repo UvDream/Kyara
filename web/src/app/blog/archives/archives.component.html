@@ -1,3 +1,25 @@
-<div style="text-align:center">
-    <img width="90%"  src="https://gitee.com/Uvdream/images/raw/master/images/20201106144838.png" alt="">
+<div class="archives">
+    <div class="archives-title">
+        <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-biaoqian"></use>
+        </svg>
+
+        文章归档
+    </div>
+    <div *ngFor="let item of List" class="archives-list">
+        <div *ngIf="item.list">
+            <div class="archives-list-time">
+                {{item.time| date:"y年"}}
+            </div>
+            <div class="archives-list-block">
+                <div *ngFor="let child of item.list" class="archives-list-block-item" (click)="toArticle(child.id)">
+                    <span class="archives-list-block-item-time">{{child.created_at| date:"MM月dd日"}}</span>
+                    <span class="archives-list-block-item-title">
+                        <span class="one-text">{{child.title}}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
