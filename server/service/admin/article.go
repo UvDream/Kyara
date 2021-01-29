@@ -16,10 +16,7 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 	//claims, _ := c.Get("claims")
 	//waitUse := claims.(*request.CustomClaims)
 	//r.UserID=waitUse.UUID
-	//处理置顶问题
-	if r.CoverType == "2" {
-		r.Top = "1"
-	}
+
 	if r.ImgURL == "" {
 		r.ImgURL = "https://gitee.com/UvDream/images/raw/master/images/20200826195538.png"
 	}
