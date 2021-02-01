@@ -32,7 +32,9 @@ type SysConfigsResponse struct {
 	FilingMsg string `json:"filing_msg"`
 	//关于博客
 	AboutMe string `json:"about_me"`
-	//
+	// 博客域名
+	DomainName string `json:"domain_name" gorm:"comment:'域名配置';'"`
+
 }
 
 //github Module
@@ -61,8 +63,7 @@ type ClassIfyRequest struct {
 	Data []int      `json:"data"`
 	List []Classify `json:"list"`
 }
-type EditClassifyResponse struct {
-	ID       uint   `json:"id"`
+type EditClassifyResponse struct {	ID       uint   `json:"id"`
 	ParentID string `json:"parent_id"`
 	TypeName string `json:"type_name"`
 	Icon     string `json:"icon"`

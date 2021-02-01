@@ -30,6 +30,8 @@ func GetConfig() (err error, res response.SysConfigsResponse, msg string) {
 	res.AuthorName = config.AuthorName
 	res.BlogLogo = config.BlogLogo
 	res.BlogName = config.BlogName
+	res.DomainName=config.DomainName
+
 	luteEngine := lute.New()
 	res.AboutMe = luteEngine.MarkdownStr("UvDream", config.AboutMe)
 	//查询博客公告信息

@@ -43,6 +43,8 @@ type SysConfig struct {
 	EmailPort     string `json:"email_port" gorm:"comment:'邮箱port';default:'465'"`
 	//接收信息邮箱
 	ReceiveEmail string `json:"receive_email" gorm:"comment:'接受信息邮箱';default:'uvdream@163.com'"`
+	// 设置保存类型
+	ConfigType string `json:"config_type" gorm:"-"`
 }
 
 //打赏库

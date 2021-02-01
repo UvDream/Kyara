@@ -22,6 +22,7 @@ func InitAdminArticle(Router *gin.RouterGroup) (R gin.IRoutes) {
 		AdminArticleRouter.GET("iconfontClassify", v1.GetIconfontClassify) //获取阿里矢量分类图标
 		AdminArticleRouter.POST("revertComment", v1.RevertComment)         //回复留言
 		AdminArticleRouter.GET("deleteComment", v1.DeleteComment)          //删除留言
+		AdminArticleRouter.POST("saveConfig",v1.SaveConfig)					//保存设置
 	}
 	return AdminArticleRouter
 }

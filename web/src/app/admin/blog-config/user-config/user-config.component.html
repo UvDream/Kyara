@@ -1,1 +1,19 @@
-<p>user-config works!</p>
+<div class="label-block">
+    <label class="label-block-label">博主名称:</label>
+    <input nz-input type="text" placeholder="请输入博主名称" class="label-block-input" [(ngModel)]="form.author_name">
+</div>
+<div class="label-block">
+    <label class="label-block-label">博主座右铭:</label>
+    <input nz-input type="text" placeholder="请输入博主座右铭" class="label-block-input" [(ngModel)]="form.author_motto">
+</div>
+<div class="label-block">
+    <label class="label-block-label">博主头像:</label>
+    <input nz-input type="text" placeholder="请输入博主头像" class="label-block-input" [(ngModel)]="form.author_avatar">
+</div>
+<div class="label-block">
+    <label class="label-block-label">点击头像跳转URL:</label>
+    <input nz-input type="text" placeholder="请输入url,默认博客域名" class="label-block-input" [(ngModel)]="form.author_link">
+</div>
+<div class="label-block-btn">
+    <button nz-button nzType="primary" (click)="saveFunc()">保存</button>
+</div>

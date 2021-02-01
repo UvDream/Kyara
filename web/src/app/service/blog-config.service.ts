@@ -19,13 +19,15 @@ export class BlogConfigService {
   public FilingMsg = '';
   public BlogNotice = '';
   public AboutMe = '';
-
+  public AuthorLink = '';
+  public DomainName = '';
   getConfig = async () => {
     const res = await this.httpService.getConfig();
     if (res.code !== 200) { return; }
     this.BlogName = res.data.blog_name;
     this.AuthorName = res.data.author_name;
     this.AuthorMotto = res.data.author_motto;
+    this.AuthorLink = res.data.author_link;
     this.BlogLogo = res.data.blog_logo;
     this.AuthorAvatar = res.data.author_avatar;
     this.ArticleCount = res.data.article_count;
@@ -38,5 +40,6 @@ export class BlogConfigService {
     this.BlogNotice = res.data.blog_notice;
     this.BlogLogo = res.data.blog_logo;
     this.AboutMe = res.data.about_me;
+    this.DomainName = res.data.domain_name;
   }
 }

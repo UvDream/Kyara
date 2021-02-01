@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {HttpService} from './http.service';
+import { Injectable } from '@angular/core';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -112,11 +112,19 @@ export class AdminService {
       data
     });
   }
-//  注册
+  //  注册
   register = (data?: object) => {
     return this.http.request({
       method: 'post',
       url: '/base/register',
+      data
+    });
+  }
+  // 博客设置
+  blogConfig = (data: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/saveConfig',
       data
     });
   }
