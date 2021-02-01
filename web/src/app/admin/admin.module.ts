@@ -34,6 +34,7 @@ import { OtherConfigComponent } from './blog-config/other-config/other-config.co
 import { BlogAboutComponent } from './blog-config/blog-about/blog-about.component';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { ArticleConfigComponent } from './blog-config/article-config/article-config.component';
 
 @NgModule({
   imports: [
@@ -75,6 +76,7 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
     UserConfigComponent,
     OtherConfigComponent,
     BlogAboutComponent,
+    ArticleConfigComponent,
   ],
   exports: [AdminComponent],
 })
