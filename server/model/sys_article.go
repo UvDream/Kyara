@@ -54,7 +54,7 @@ type SysArticle struct {
 	// 是否置顶
 	Top string `json:"top" gorm:"comment:'是否置顶';default:'0'"`
 	// 字数
-	WordCount int `json:"word_count" gorm:"comment:'文章字数';"`
+	WordCount int `json:"word_count" gorm:"comment:'文章字数';default:'0'"`
 	// 点赞数
 	LikeCount string `json:"like_count" gorm:"comment:'点赞数'"`
 	// 赞赏码
