@@ -2,9 +2,11 @@ package service
 
 import (
 	"fmt"
+	"github.com/88250/lute"
 	"server/global"
 	"server/model"
 	"server/service/blog"
+	"server/utils"
 
 	"github.com/gin-gonic/gin"
 )
@@ -23,7 +25,11 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 	if r.UserID == "" {
 		r.UserID = "ce0d6685-c15f-4126-a5b4-890bc9d2356d"
 	}
-
+	luteEngine := lute.New()
+	r.ArticleHtml = luteEngine.MarkdownStr("UvDream", r.ArticleContent)
+	counter := &utils.Counter{}
+	counter.Stat(string(r.ArticleHtml))
+	r.WordCount=counter.Total
 	if r.ArticleID == 0 {
 		//增加文章
 		err := db.Create(&r).Error
