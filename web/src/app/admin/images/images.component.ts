@@ -17,7 +17,7 @@ export class ImagesComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private message: NzMessageService,
-    private modal: NzModalService
+    private modal: NzModalService,
   ) { }
 
   ngOnInit(): void {
@@ -55,5 +55,6 @@ export class ImagesComponent implements OnInit {
     });
 
   }
+
 
 }

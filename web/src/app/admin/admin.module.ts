@@ -36,6 +36,7 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { ArticleConfigComponent } from './blog-config/article-config/article-config.component';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 @NgModule({
   imports: [
@@ -62,7 +63,8 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
     NzTabsModule,
     NzPopoverModule,
     NzDrawerModule,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzImageModule
   ],
   declarations: [
     AdminComponent,

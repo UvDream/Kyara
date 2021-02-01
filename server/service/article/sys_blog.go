@@ -18,6 +18,9 @@ func GetConfig() (err error, res response.SysConfigsResponse, msg string) {
 	db := global.GVA_DB
 	config := model.SysConfig{}
 	err = db.Find(&config).Error
+	if config.AuthorLink=="" {
+		config.AuthorLink=config.DomainName
+	}
 	if err != nil {
 		return err, res, "获取配置失败"
 	}
