@@ -1,6 +1,8 @@
 <div class="avatar">
   <div class="avatar-img">
-    <img [src]="config.AuthorAvatar" alt="" />
+    <a [href]="config.AuthorLink">
+      <img [src]="config.AuthorAvatar" alt="" />
+    </a>
   </div>
   <div class="avatar-person">
     <div class="avatar-person-name">{{config.AuthorName}}</div>

@@ -2,12 +2,12 @@
  * @Author: wangzhongjie
  * @Date: 2020-04-14 13:56:51
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-01-22 14:21:51
+ * @LastEditTime: 2021-02-01 16:44:50
  * @Description:配置文件
  * @Email: UvDream@163.com
  */
 import { environment } from './environment';
-const iconfontVersion = [{ icon: '1762601_ytyd1qlptvq' }, { svg: '1753589_p1dg92w9of' }, { svg: '2341925_1jddcutmyqc' }];
+const iconfontVersion = [{ icon: '1762601_ytyd1qlptvq' }, { svg: '1753589_n52485ovn5' }, { svg: '2341925_1jddcutmyqc' }];
 const iconfontUrl = `//at.alicdn.com/t/font_$key`;
 
 let baseUrl: string;
