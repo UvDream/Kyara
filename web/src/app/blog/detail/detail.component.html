@@ -1,4 +1,6 @@
-<app-loading *ngIf="loading"></app-loading>
+<div *ngIf="loading" style="padding-top:150px">
+  <app-loading></app-loading>
+</div>
 <div class="detail">
   <!-- 上面 -->
   <div class="detail-title" *ngIf="!loading">
@@ -44,9 +46,8 @@
     </div>
   </div>
   <!-- 图片 -->
-  <div *ngIf="!loading" class="detail-img" class="detail-img" [ngStyle]="{
-      'background-image': 'url(' + topImg + ')'
-    }">
+  <div *ngIf="!loading" class="detail-img" class="detail-img">
+    <img [src]="topImg" alt="">
   </div>
   <div #vditor id="vditor" class="detail-content" [ngClass]="{'padding-30':!loading}" (click)="contentClick($event)">
   </div>

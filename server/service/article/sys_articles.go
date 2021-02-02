@@ -22,7 +22,7 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 		err = db.Where(&model.SysArticle{Top: "1"}).Find(&topArticle).Error
 	}
 	if u.ClassificationID != "" {
-		err = db.Where(&model.SysArticle{Top: "1", ClassificationID: u.ClassificationID}).Order("updated_at desc").Find(&topArticle).Error
+		err = db.Where(&model.SysArticle{Top: "1", ClassificationID: u.ClassificationID}).Order("created_at desc").Find(&topArticle).Error
 	}
 	if u.Tag != "" {
 		topArticle, err = tagToArticle(u.Tag, "1")
@@ -33,10 +33,10 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 	limit := u.PageSize
 	offset := u.PageSize * (u.Page - 1)
 	if u.ClassificationID == "" && u.Tag == "" {
-		err = db.Where("top=? ", "0").Limit(limit).Offset(offset).Order("updated_at desc").Find(&articleList).Error
+		err = db.Where("top=? ", "0").Limit(limit).Offset(offset).Order("created_at desc").Find(&articleList).Error
 	}
 	if u.ClassificationID != "" {
-		err = db.Where("top=? AND classification_id=?", "0", u.ClassificationID).Limit(limit).Offset(offset).Order("updated_at desc").Find(&articleList).Error
+		err = db.Where("top=? AND classification_id=?", "0", u.ClassificationID).Limit(limit).Offset(offset).Order("created_at desc").Find(&articleList).Error
 	}
 	if u.Tag != "" {
 		// 根据tag查询文章
