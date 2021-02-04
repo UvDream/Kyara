@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '@service/article.service';
 import { ArticleCatalogService } from '@service/article-catalog.service';
 import { Title } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
 import { NzImageService } from 'ng-zorro-antd/image';
+import { isPlatformBrowser } from '@angular/common';
 
 interface TabItem {
   ID: number;
@@ -23,7 +24,8 @@ export class DetailComponent implements OnInit {
     private articleCat: ArticleCatalogService,
     private titleService: Title,
     private platform: Platform,
-    private nzImageService: NzImageService
+    private nzImageService: NzImageService,
+    @Inject(PLATFORM_ID) private platformId: object
   ) { }
   public loading = true;
   // 文章标题
@@ -153,9 +155,11 @@ export class DetailComponent implements OnInit {
     );
   }
   parseDom = (arg: any) => {
-    const objE = document.createElement('div');
-    objE.innerHTML = arg;
-    return objE.childNodes;
+    if (isPlatformBrowser(this.platformId)) {
+      const objE = document.createElement('div');
+      objE.innerHTML = arg;
+      return objE.childNodes;
+    }
   }
   showModal = (data: boolean) => {
     this.isVisible = data;

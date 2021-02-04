@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { BlogConfigService } from '@service/blog-config.service';
 // import { Platform } from '@angular/cdk/platform';
+import { isPlatformBrowser } from '@angular/common';
+
 @Component({
   selector: 'app-notice',
   templateUrl: './notice.component.html',
@@ -12,6 +14,8 @@ export class NoticeComponent implements OnInit, OnDestroy {
   constructor(
     public config: BlogConfigService,
     // private platform: Platform,
+    @Inject(PLATFORM_ID) private platformId: object
+
   ) {
 
   }
@@ -47,6 +51,7 @@ export class NoticeComponent implements OnInit, OnDestroy {
     textMain.appendChild(newNode);
   }
   scrollFunc(): void {
+
     const text = document.getElementById('text') as HTMLDivElement;
     const textMain = document.getElementById('text-main') as HTMLDivElement;
     if (text.offsetWidth - textMain.scrollLeft <= 4) {
