@@ -54,8 +54,6 @@ export class HomeComponent implements OnInit {
     this.titleService.setTitle(newTitle);
   }
   pageChange = (num: number) => {
-    console.log('页码变化', num, this.form.page);
-    sessionStorage.setItem('page', this.form.page.toString());
     this.getData();
   }
   getPage(): void {

@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '@service/user.service';
-import {Router} from '@angular/router';
-import {NzMessageService} from 'ng-zorro-antd/message';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { UserService } from '@service/user.service';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-user-info',
@@ -17,7 +18,11 @@ export class UserInfoComponent implements OnInit {
   };
   public imgUrl = '';
 
-  constructor(public userService: UserService, private router: Router,    private message: NzMessageService,
+  constructor(
+    public userService: UserService,
+    private router: Router,
+    private message: NzMessageService,
+    @Inject(PLATFORM_ID) private platformId: object
   ) {
   }
 
@@ -37,7 +42,10 @@ export class UserInfoComponent implements OnInit {
     if (res.code === 200) {
       this.message.success('登陆成功!');
       this.userService.setUserInfo(res.data.user);
-      localStorage.setItem('Authorization', res.data.token);
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('Authorization', res.data.token);
+      }
+
     } else {
       this.message.error(res.msg);
       this.getVerificationCode();

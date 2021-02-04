@@ -1,5 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpService} from './http.service';
+import { Injectable } from '@angular/core';
+import { HttpService } from './http.service';
+import { Inject, PLATFORM_ID } from '@angular/core';
+
+import { isPlatformBrowser } from '@angular/common';
 
 interface UserInfoItem {
   ID: number;
@@ -17,16 +20,21 @@ interface UserInfoItem {
 export class UserService {
   public userInfo: UserInfoItem;
 
-  constructor(private http: HttpService) {
+  constructor(
+    private http: HttpService,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {
   }
 
   setUserInfo(info: UserInfoItem): void {
-    localStorage.setItem('user', JSON.stringify(info));
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('user', JSON.stringify(info));
+    }
     this.userInfo = info;
   }
 
   getUserInfo(): void {
-    if (!this.userInfo) {
+    if (!this.userInfo && isPlatformBrowser(this.platformId)) {
       this.userInfo = JSON.parse(localStorage.getItem('user'));
     }
 

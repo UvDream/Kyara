@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { baseUrl } from '../../environments/env';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Params } from './params';
+import { isPlatformBrowser } from '@angular/common';
+
 interface Response {
   code: number;
   data: any;
@@ -18,7 +20,10 @@ export class HttpService {
       Authorization: ''
     })
   };
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) { }
   public request(params: any): any {
     if (params.method === 'post' || params.method === 'POST') {
       return this.post(params.url, params.data);
@@ -35,12 +40,14 @@ export class HttpService {
     return this.http.post(baseUrl + url, data, { headers }).toPromise().then(this.handleSuccess).catch(this.handleError);
   }
   public getAuthorization(): HttpHeaders {
-    const authorization = localStorage.getItem('Authorization');
-    let headers = new HttpHeaders();
-    if (authorization) {
-      return headers = headers.set('Authorization', authorization);
+    if (isPlatformBrowser(this.platformId)) {
+      const authorization = localStorage.getItem('Authorization');
+      let headers = new HttpHeaders();
+      if (authorization) {
+        return headers = headers.set('Authorization', authorization);
+      }
+      return headers;
     }
-    return headers;
   }
   private handleSuccess = (res: Response) => {
     switch (res.code) {

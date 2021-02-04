@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { UserService } from '@service/user.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     private blogHttp: UserService,
     private message: NzMessageService,
     private router: Router,
+    @Inject(PLATFORM_ID) private platformId: object
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +41,9 @@ export class LoginComponent implements OnInit {
       this.message.success('登陆成功!');
       this.router.navigate(['/admin']);
       this.blogHttp.setUserInfo(res.data.user);
-      localStorage.setItem('Authorization', res.data.token);
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('Authorization', res.data.token);
+      }
     } else {
       this.message.error(res.msg);
       this.getVerificationCode();
