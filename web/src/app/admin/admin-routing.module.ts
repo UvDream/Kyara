@@ -14,7 +14,7 @@ import { ImagesComponent } from './images/images.component';
 export const adminRoutes: Routes = [
   { path: '', redirectTo: '/admin/editArticle', pathMatch: 'full' },
   {
-    path: 'admin',
+    path: '',
     component: AdminComponent,
     children: [
       { path: 'editArticle', component: EditArticleComponent },
