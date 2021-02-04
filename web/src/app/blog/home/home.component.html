@@ -7,10 +7,12 @@
     <app-list *ngFor="let item of list" [data]="item" (HavePassword)="havePassword($event)"></app-list>
   </div>
   <div class="home-page">
-    <nz-pagination [(nzPageIndex)]="form.page" [(nzTotal)]="totalCount" (nzPageIndexChange)="pageChange()">
+    <nz-pagination [(nzPageIndex)]="form.page" [(nzPageSize)]="form.pageSize" [(nzTotal)]="totalCount"
+      (nzPageIndexChange)="pageChange($event)">
     </nz-pagination>
   </div>
 </div>
+<!-- 密码文章 -->
 <nz-modal nzWidth="400" [(nzVisible)]="isVisible" nzTitle="请输入文章访问密码" [nzContent]="modalContent"
   [nzFooter]="modalFooter" (nzOnCancel)="modalFunc(false)">
   <ng-template #modalContent>

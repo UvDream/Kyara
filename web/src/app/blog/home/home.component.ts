@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   public list: Array<any>;
   public form = {
     search: '',
-    page: 1,
+    page: 2,
     pageSize: 10,
   };
   public totalCount = 0;
@@ -53,8 +53,17 @@ export class HomeComponent implements OnInit {
   public setTitle = (newTitle: string) => {
     this.titleService.setTitle(newTitle);
   }
-  pageChange = () => {
+  pageChange = (num: number) => {
+    console.log('页码变化', num, this.form.page);
+    sessionStorage.setItem('page', this.form.page.toString());
     this.getData();
+  }
+  getPage(): void {
+    const page = sessionStorage.getItem('page');
+    page ?
+      this.form.page = Number(page) :
+      this.form.page = 1;
+    // console.log('初始化获取页码', page);
   }
   havePassword = (id: string) => {
     this.isVisible = true;

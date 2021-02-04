@@ -142,7 +142,7 @@ func findChildren(parent model.SysClassify) (children []model.SysClassify) {
 func HotArticle() (err error, list []model.SysArticle) {
 	db := global.GVA_DB
 	var arr []model.SysArticle
-	err = db.Order("like_count desc").Find(&arr).Error
+	err = db.Order("view_count desc").Find(&arr).Error
 	for k, i := range arr {
 		if k < 5 {
 			i.ArticleContent = ""

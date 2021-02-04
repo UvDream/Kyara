@@ -16,10 +16,11 @@ import zh from '@angular/common/locales/zh';
 import { BlogModule } from './blog/blog.module';
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './account/account.module';
-import { ZhihuComponent } from './components/zhihu/zhihu.component'
+import { ZhihuComponent } from './components/zhihu/zhihu.component';
+import { NotFoundComponent } from './other/not-found/not-found.component';
 registerLocaleData(zh);
 @NgModule({
-  declarations: [AppComponent, ZhihuComponent],
+  declarations: [AppComponent, ZhihuComponent, NotFoundComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
