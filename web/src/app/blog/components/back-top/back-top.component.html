@@ -1,7 +1,14 @@
-<nz-back-top [nzTemplate]="tpl" [nzVisibilityHeight]="100" [@fadeIn]>
+<!-- <nz-back-top [nzTemplate]="tpl" [nzVisibilityHeight]="100" [@fadeIn]>
     <ng-template #tpl>
-        <div class="back" >
-            <div class="back-line"></div>  
+        <div class="back">
+            <div class="back-line"></div>
         </div>
     </ng-template>
-  </nz-back-top>
+</nz-back-top> -->
+<div class="back-top">
+    <div class="back-top-content" *ngIf="visible" (click)="backTop()">
+    </div>
+    <div class="back-top-tree" *ngIf="visible" @fadeIn>
+
+    </div>
+</div>

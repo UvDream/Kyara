@@ -1,16 +1,23 @@
 .back {
-    top       : 0;
-    height    : 100%;
-    right     : 120px;
-    position  : fixed;
-    width     : 4px;
-    text-align: center;
+    &-top {
+        &-content {
+            position: fixed;
+            bottom  : 106px;
+            right   : 100px;
+            width   : 80px;
+            height  : 100px;
+            z-index : 10;
+        }
 
-    &-line {
-        height         : 90%;
-        width          : 50px;
-        margin-left    : 22px;
-        background     : url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/scroll.png);
-        background-size: 100% 100%;
+        &-tree {
+            position       : fixed;
+            right          : 100px;
+            bottom         : 100px;
+            height         : 90%;
+            width          : 80px;
+            background     : url(https://cdn.jsdelivr.net/gh/LIlGG/cdn@1.0.8/img/Sakura/images/scroll.png);
+            background-size: 100% 100%;
+            z-index        : 9;
+        }
     }
 }
