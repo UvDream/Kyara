@@ -9762,10 +9762,10 @@ vary@~1.1.2:
   resolved "https://registry.npm.taobao.org/vary/download/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
 
-vditor@^3.5.1:
-  version "3.5.3"
-  resolved "https://registry.npm.taobao.org/vditor/download/vditor-3.5.3.tgz#c410a5df18d61ef3a4cdf17300973ee44385a13a"
-  integrity sha1-xBCl3xjWHvOkzfFzAJc+5EOFoTo=
+vditor@^3.7.6:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/vditor/-/vditor-3.8.1.tgz#93567193d481ff1772b56ca28691ccf67094e7cb"
+  integrity sha512-aVqkaF81sTA58038RZzNPOz/iW3ZjRgU2A78kcBX/oWecfhh1w679OuFf2owYGMZlFJmO4Bme1L0y52XNajb/A==
   dependencies:
     diff-match-patch "^1.0.5"
 
@@ -9819,10 +9819,8 @@ watchpack@^1.7.4:
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
