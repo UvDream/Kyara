@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   public list: Array<any>;
   public form = {
     search: '',
-    page: 2,
+    page: 1,
     pageSize: 10,
   };
   public totalCount = 0;

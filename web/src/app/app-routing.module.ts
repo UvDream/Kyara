@@ -18,7 +18,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabled',
       relativeLinkResolution: 'legacy',
-      useHash: true
+      // useHash: true
     }),
   ],
   exports: [RouterModule],
