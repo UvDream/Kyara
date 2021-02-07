@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Location, PlatformLocation } from '@angular/common';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +9,9 @@ export class ArticleCatalogService {
   public pathName = '';
   location: Location;
   constructor(
-    private platformLocation: PlatformLocation
   ) { }
   SetCatLog = (arr?: any) => {
-    const pathName = this.platformLocation.hash;
-    if (pathName.match(/\#(\S*)\?/) != null) {
-      this.pathName = pathName.match(/\#(\S*)\?/)[1];
-    } else {
-      this.pathName = '';
-    }
+    this.pathName = location.pathname;
     this.ArticleCatList = arr;
   }
 
