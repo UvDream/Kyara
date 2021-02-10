@@ -38,7 +38,7 @@ export class EditArticleComponent implements OnInit {
     // 封面类型
     cover_type: '0',
     // 文章类容
-    article_content: '',
+    article_content: '测试一下文章的内容1',
     // 置顶
     top: '0',
     // 访问密码

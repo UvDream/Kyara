@@ -36,6 +36,7 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { ArticleConfigComponent } from './blog-config/article-config/article-config.component';
 import { NzImageModule } from 'ng-zorro-antd/image';
+import { MarkdownEditComponent } from '../components/markdown-edit/markdown-edit.component';
 
 @NgModule({
   imports: [
@@ -79,6 +80,7 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     OtherConfigComponent,
     BlogAboutComponent,
     ArticleConfigComponent,
+    MarkdownEditComponent,
   ],
   exports: [AdminComponent],
 })

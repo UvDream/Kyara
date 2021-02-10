@@ -10,6 +10,7 @@
     </button>
   </div>
   <!-- 编辑器 -->
+  <app-markdown-edit [EditValue]="form.article_content"></app-markdown-edit>
   <div class="edit-textarea">
     <textarea class="edit-textarea-left" [(ngModel)]="form.article_content" nz-input placeholder="文章内容"
       [nzAutosize]="{ minRows: 30 }" (ngModelChange)="textChange()"></textarea>
