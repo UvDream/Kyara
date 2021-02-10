@@ -10,14 +10,15 @@
     </button>
   </div>
   <!-- 编辑器 -->
-  <app-markdown-edit [EditValue]="form.article_content"></app-markdown-edit>
-  <div class="edit-textarea">
+  <app-markdown-edit [EditValue]="form.article_content" (EditValueOutput)="editOutput($event)"
+    (EditCounterOutput)="editCounter($event)"></app-markdown-edit>
+  <!-- <div class="edit-textarea">
     <textarea class="edit-textarea-left" [(ngModel)]="form.article_content" nz-input placeholder="文章内容"
       [nzAutosize]="{ minRows: 30 }" (ngModelChange)="textChange()"></textarea>
     <div class="edit-textarea-right">
       <div id="vditor"></div>
     </div>
-  </div>
+  </div> -->
   <!-- 配置项 -->
   <nz-drawer [nzClosable]="false" [nzVisible]="drawerVisible" [nzFooter]="footerTpl" [nzWidth]="600" nzPlacement="right"
     nzTitle="文章配置项" (nzOnClose)="drawerClose()">

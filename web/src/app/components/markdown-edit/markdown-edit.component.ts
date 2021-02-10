@@ -22,15 +22,15 @@ export class MarkdownEditComponent implements OnInit {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.vditor = new Vditor('vditor', {
-        height: 500,
+        height: 800,
         toolbarConfig: {
           pin: true,
         },
         counter: {
           enable: true,
           after: (length: number, counter: any) => {
-            console.log('统计字数');
-            console.log(length, counter);
+            // console.log('统计字数');
+            // console.log(length, counter);
             this.EditCounterOutput.emit(length);
           },
         },
@@ -38,8 +38,8 @@ export class MarkdownEditComponent implements OnInit {
           enable: false,
         },
         blur: (value: string) => {
-          console.log('编辑器的值');
-          console.log(value);
+          // console.log('编辑器的值');
+          // console.log(value);
           this.EditValueOutput.emit(value);
         },
         after: () => {
