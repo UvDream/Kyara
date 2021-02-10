@@ -150,9 +150,7 @@ export class EditArticleComponent implements OnInit {
   getClassify = async () => {
     const res = await this.httpService.getArticleClassification();
     if (res.code !== 200) { return; }
-    console.log('老数据', res.data);
     this.nodes = this.changeData(res.data);
-    console.log('新数据', this.nodes);
   }
   changeData = (arr: any): Array<TreeItem> => {
     const data: Array<TreeItem> = [];
