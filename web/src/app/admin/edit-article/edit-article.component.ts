@@ -38,7 +38,7 @@ export class EditArticleComponent implements OnInit {
     // 封面类型
     cover_type: '0',
     // 文章类容
-    article_content: '测试一下文章的内容1',
+    article_content: '',
     // 置顶
     top: '0',
     // 访问密码
@@ -199,6 +199,7 @@ export class EditArticleComponent implements OnInit {
       this.form = res.data;
       this.form.article_id = res.data.ID;
       this.classification = Number(this.form.classification_id);
+      res.data.top === '1' ? this.isTop = true : this.isTop = false;
       // this.markdownToHtml(this.form.article_content);
     }
   }

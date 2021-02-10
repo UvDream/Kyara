@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, Inject, PLATFORM_ID, DoCheck } from '@angular/core';
 import Vditor from 'vditor';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -7,8 +7,9 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './markdown-edit.component.html',
   styleUrls: ['./markdown-edit.component.less']
 })
-export class MarkdownEditComponent implements OnInit {
+export class MarkdownEditComponent implements OnInit, DoCheck {
   vditor: Vditor;
+  @Input() height = 600;
   // 编辑器内容回显
   @Input() EditValue: string;
   // 编辑器内容回调
@@ -18,11 +19,15 @@ export class MarkdownEditComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
-
+  ngDoCheck(): void {
+    if (this.EditValue !== '') {
+      this.vditor.setValue(this.EditValue);
+    }
+  }
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.vditor = new Vditor('vditor', {
-        height: 800,
+        height: this.height,
         toolbarConfig: {
           pin: true,
         },
