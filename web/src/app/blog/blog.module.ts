@@ -54,6 +54,7 @@ import { TimeDiffPipe } from '@pipes/time-diff.pipe';
 import { UserInfoComponent } from './home/component/user-info/user-info.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MusicComponent } from './home/component/music/music.component';
+import { MarkdownPreviewComponent } from '../components/markdown-preview/markdown-preview.component';
 
 @NgModule({
   imports: [
@@ -117,7 +118,8 @@ import { MusicComponent } from './home/component/music/music.component';
     TimeDiffPipe,
     UserInfoComponent,
     LoadingComponent,
-    MusicComponent
+    MusicComponent,
+    MarkdownPreviewComponent
   ],
   providers: [],
 })

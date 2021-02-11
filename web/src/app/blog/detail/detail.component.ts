@@ -75,6 +75,10 @@ export class DetailComponent implements OnInit {
       }
     });
   }
+  catalogOut(arr: any): void {
+    console.log('目录111', arr);
+    this.articleCat.SetCatLog(arr);
+  }
   // 获取文章详情
   getDetail = async (id, password) => {
     this.loading = true;
@@ -103,56 +107,55 @@ export class DetailComponent implements OnInit {
     this.setTitle(this.title + '(汪中杰的个人博客)');
     const mainElement = document.getElementById('vditor') as HTMLDivElement;
     this.loading = false;
-    import('vditor').then((Vditor: any) =>
-      Vditor.preview(mainElement, this.markDown, {
-        speech: {
-          enable: true,
-        },
-        anchor: 0,
-        hljs: {
-          enable: true,
-          lineNumber: true,
-          style: 'native',
-        },
-        markdown: {
-          toc: true,
-        },
-        transform: (html: string) => {
-          const arr = [];
-          this.parseDom(html).forEach((element) => {
-            if (
-              element.nodeName === 'H1' ||
-              element.nodeName === 'H2' ||
-              element.nodeName === 'H3'
-            ) {
-              const obj = {
-                // tslint:disable-next-line:no-string-literal
-                id: element['id'],
-                // tslint:disable-next-line:no-string-literal
-                title: element['innerText'],
-                name: element.nodeName,
-                children: [],
-              };
-              arr.push(obj);
-              // if (element.nodeName === 'H1') {
-              //   arr.push(obj);
-              // }
-              // if (element.nodeName === 'H2') {
-              //   arr[arr.length - 1].children.push(obj);
-              // }
-              // if (element.nodeName === 'H3') {
-              //   arr[arr.length - 1].children[
-              //     arr[arr.length - 1].children.length - 1
-              //   ].children.push(obj);
-              // }
-            }
-          });
-          this.articleCat.SetCatLog(arr);
-
-          return html;
-        },
-      })
-    );
+    // import('vditor').then((Vditor: any) =>
+    //   Vditor.preview(mainElement, this.markDown, {
+    //     speech: {
+    //       enable: true,
+    //     },
+    //     anchor: 0,
+    //     hljs: {
+    //       enable: true,
+    //       lineNumber: true,
+    //       style: 'native',
+    //     },
+    //     markdown: {
+    //       toc: true,
+    //     },
+    //     transform: (html: string) => {
+    //       const arr = [];
+    //       this.parseDom(html).forEach((element) => {
+    //         if (
+    //           element.nodeName === 'H1' ||
+    //           element.nodeName === 'H2' ||
+    //           element.nodeName === 'H3'
+    //         ) {
+    //           const obj = {
+    //             // tslint:disable-next-line:no-string-literal
+    //             id: element['id'],
+    //             // tslint:disable-next-line:no-string-literal
+    //             title: element['innerText'],
+    //             name: element.nodeName,
+    //             children: [],
+    //           };
+    //           arr.push(obj);
+    //           // if (element.nodeName === 'H1') {
+    //           //   arr.push(obj);
+    //           // }
+    //           // if (element.nodeName === 'H2') {
+    //           //   arr[arr.length - 1].children.push(obj);
+    //           // }
+    //           // if (element.nodeName === 'H3') {
+    //           //   arr[arr.length - 1].children[
+    //           //     arr[arr.length - 1].children.length - 1
+    //           //   ].children.push(obj);
+    //           // }
+    //         }
+    //       });
+    //       this.articleCat.SetCatLog(arr);
+    //       return html;
+    //     },
+    //   })
+    // );
   }
   parseDom = (arg: any) => {
     if (isPlatformBrowser(this.platformId)) {
