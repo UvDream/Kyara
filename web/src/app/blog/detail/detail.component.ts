@@ -105,7 +105,7 @@ export class DetailComponent implements OnInit {
 
     this.collectText = res.data.collect_text;
     this.setTitle(this.title + '(汪中杰的个人博客)');
-    const mainElement = document.getElementById('vditor') as HTMLDivElement;
+    // const mainElement = document.getElementById('vditor') as HTMLDivElement;
     this.loading = false;
     // import('vditor').then((Vditor: any) =>
     //   Vditor.preview(mainElement, this.markDown, {
