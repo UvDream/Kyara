@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input, Inject, PLATFORM_ID, OnChanges } from '@angular/core';
 import Vditor from 'vditor';
 import { isPlatformBrowser } from '@angular/common';
-
+import { Emoji } from './emoji';
 @Component({
   selector: 'app-markdown-edit',
   templateUrl: './markdown-edit.component.html',
@@ -38,6 +38,9 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
         height: this.height,
         toolbarConfig: {
           pin: true,
+        },
+        hint: {
+          emoji: Emoji
         },
         counter: {
           enable: true,
