@@ -37,7 +37,6 @@ export class UserService {
     if (!this.userInfo && isPlatformBrowser(this.platformId)) {
       this.userInfo = JSON.parse(localStorage.getItem('user'));
     }
-
   }
 
   // 获取验证码
@@ -46,7 +45,7 @@ export class UserService {
       method: 'post',
       url: '/base/captcha',
     });
-  };
+  }
   // 用户登陆
   login = (data) => {
     return this.http.request({

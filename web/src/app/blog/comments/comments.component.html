@@ -4,7 +4,8 @@
     留言展示
     <app-comment-component [data]="commentData"></app-comment-component>
     <div class="comments-page">
-      <nz-pagination [nzPageIndex]="1" [nzTotal]="totalCount" (nzPageIndexChange)="PageIndexChange"></nz-pagination>
+      <nz-pagination [nzPageIndex]="1" [nzTotal]="totalCount" (nzPageIndexChange)="PageIndexChange($event)">
+      </nz-pagination>
     </div>
   </div>
 

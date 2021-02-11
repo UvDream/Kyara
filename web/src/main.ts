@@ -5,6 +5,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { loadStyle } from './util/util';
 import { iconfontUrl, iconfontVersion } from './environments/env';
+import '@angular/compiler';
 if (environment.production) {
   enableProdMode();
 }

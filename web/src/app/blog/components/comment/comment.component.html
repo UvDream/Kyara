@@ -21,8 +21,8 @@
             取消回复
         </div>
     </div>
-    <div *ngIf="item.ID===activeId">
+    <!-- <div *ngIf="item.ID===activeId">
         <app-comment-form [replyID]="activeId"></app-comment-form>
-    </div>
+    </div> -->
     <app-comments-component [data]="item.children" isChildren="true"></app-comments-component>
 </div>

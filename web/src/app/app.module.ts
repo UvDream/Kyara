@@ -20,10 +20,11 @@ import { ZhihuComponent } from './components/zhihu/zhihu.component';
 import { NotFoundComponent } from './other/not-found/not-found.component';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
+
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
-const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key])
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
 registerLocaleData(zh);
 @NgModule({
   declarations: [AppComponent, ZhihuComponent, NotFoundComponent],

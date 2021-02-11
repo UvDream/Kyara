@@ -4,7 +4,9 @@
     <span>*</span>
   </div>
   <div>
-    <textarea rows="4" [(ngModel)]="form.comment_content" nz-input></textarea>
+    <!-- <textarea rows="4" [(ngModel)]="form.comment_content" nz-input></textarea> -->
+    <app-markdown-edit [EditValue]="form.comment_content" [height]="200" (EditValueOutput)="editOutput($event)">
+    </app-markdown-edit>
   </div>
   <div class="comments-private">
     <div>

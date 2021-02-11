@@ -37,6 +37,7 @@ export class CommentFormComponent implements OnInit, DoCheck {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       const isComment = localStorage.getItem('comment');
+      // console.log(JSON.parse(isComment).email, '信息');
       this.userService.getUserInfo();
       if (this.userService.userInfo) {
         this.userExist = true;
@@ -59,6 +60,9 @@ export class CommentFormComponent implements OnInit, DoCheck {
     }
 
   }
+  editOutput(value: string): void {
+    this.form.comment_content = value;
+  }
   async getAvatar(): Promise<void> {
     const res = await this.blogHttp.getAvatar();
     if (res.code === 200) {
@@ -66,6 +70,7 @@ export class CommentFormComponent implements OnInit, DoCheck {
     }
   }
   async commentFunc(): Promise<void> {
+    console.log(this.form);
     if (this.form.user_name === '') {
       this.message.create('error', '请输入昵称!');
       return;

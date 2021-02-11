@@ -12,6 +12,36 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
   @Input() height = 600;
   // 编辑器内容回显
   @Input() EditValue: string;
+  @Input() EditToolbar = [
+    'emoji',
+    'headings',
+    'bold',
+    'italic',
+    'strike',
+    'link',
+    '|',
+    'list',
+    'ordered-list',
+    'check',
+    'outdent',
+    'indent',
+    '|',
+    'quote',
+    'line',
+    'code',
+    'inline-code',
+    'insert-before',
+    'insert-after',
+    '|',
+    'upload',
+    // 'record',
+    'table',
+    '|',
+    'undo',
+    'redo',
+    '|',
+    'fullscreen',
+    'edit-mode'];
   // 编辑器内容回调
   @Output() EditValueOutput = new EventEmitter();
   // 字数回调
@@ -20,22 +50,16 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
-  // ngDoCheck(): void {
-  //   if (this.editContent !== this.EditValue) {
-  //     console.log('初始化');
-  //     // this.vditor.setValue(this.editContent);
-  //   }
-  // }
   ngOnChanges(): void {
-    this.vditor.setValue(this.EditValue);
+    // this.vditor.setValue(this.EditValue);
   }
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.vditor.setValue(this.EditValue);
-    // }, 1000);
+    console.log('编辑器');
     if (isPlatformBrowser(this.platformId)) {
       this.vditor = new Vditor('vditor', {
+        // value: this.EditValue,
         height: this.height,
+        toolbar: this.EditToolbar,
         toolbarConfig: {
           pin: true,
         },
@@ -59,7 +83,9 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
           this.EditValueOutput.emit(value);
         },
         after: () => {
-          this.vditor.setValue(this.EditValue);
+          if (this.EditValue !== '') {
+            this.vditor.setValue(this.EditValue);
+          }
         }
       });
     }

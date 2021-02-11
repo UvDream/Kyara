@@ -55,6 +55,8 @@ import { UserInfoComponent } from './home/component/user-info/user-info.componen
 import { LoadingComponent } from './components/loading/loading.component';
 import { MusicComponent } from './home/component/music/music.component';
 import { MarkdownPreviewComponent } from '../components/markdown-preview/markdown-preview.component';
+// import { MarkdownEditComponent } from '../components/markdown-edit/markdown-edit.component';
+import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.module';
 
 @NgModule({
   imports: [
@@ -82,7 +84,8 @@ import { MarkdownPreviewComponent } from '../components/markdown-preview/markdow
     NzImageModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
+    }),
+    MarkdownEditModule
   ],
   exports: [BlogComponent],
   declarations: [
@@ -119,7 +122,8 @@ import { MarkdownPreviewComponent } from '../components/markdown-preview/markdow
     UserInfoComponent,
     LoadingComponent,
     MusicComponent,
-    MarkdownPreviewComponent
+    MarkdownPreviewComponent,
+    // MarkdownEditComponent
   ],
   providers: [],
 })
