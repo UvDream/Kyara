@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-comment-component',
   templateUrl: './comment.component.html',
@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CommentComponent implements OnInit {
   @Input() data: Array<any>;
   @Input() isChildren = false;
+  @Output() ActiveIDOut = new EventEmitter();
   constructor(
   ) { }
   private activeId: number;
@@ -14,9 +15,9 @@ export class CommentComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.data, this.isChildren);
   }
-  replyFunc(item: number): void {
-    this.activeId = item;
-
+  replyFunc(item: any): void {
+    this.activeId = item.ID;
+    this.ActiveIDOut.emit(item);
   }
 
 }

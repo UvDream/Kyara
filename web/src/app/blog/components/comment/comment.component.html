@@ -14,10 +14,10 @@
         <div>
             {{item.CreatedAt | date:"y-d-MM HH:mm "}}
         </div>
-        <div class="comments-bottom-reply" (click)="replyFunc(item.ID)" *ngIf="item.ID!==activeId">
+        <div class="comments-bottom-reply" (click)="replyFunc(item)" *ngIf="item.ID!==activeId">
             回复
         </div>
-        <div class="comments-bottom-reply" (click)="replyFunc()" *ngIf="item.ID===activeId">
+        <div class="comments-bottom-reply" (click)="replyFunc({id:0})" *ngIf="item.ID===activeId">
             取消回复
         </div>
     </div>

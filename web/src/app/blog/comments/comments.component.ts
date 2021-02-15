@@ -39,6 +39,9 @@ export class CommentsComponent implements OnInit {
       this.totalCount = res.data.total;
     }
   }
+  activeOut(item: object): void {
+    console.log(item, '输出');
+  }
 
 
 }
