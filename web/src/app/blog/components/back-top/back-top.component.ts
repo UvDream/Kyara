@@ -11,7 +11,8 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class BackTopComponent implements OnInit {
   visible = false;
-  constructor(@Inject(PLATFORM_ID) private platformId: object
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object
   ) { }
   @HostListener('window:scroll', [])
   onScroll(): void {

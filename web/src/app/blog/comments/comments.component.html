@@ -1,5 +1,5 @@
 <div>
-  <app-comment-form></app-comment-form>
+  <app-comment-form [UserInfo]="UserInfo"></app-comment-form>
   <div class="comments-list">
     留言展示
     <app-comment-component [data]="commentData" (ActiveIDOut)="activeOut($event)"></app-comment-component>

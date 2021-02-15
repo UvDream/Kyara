@@ -12,21 +12,20 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
 
   @Input() Markdown: string;
   @Output() CatalogOut = new EventEmitter();
+  public mainElement;
   constructor(
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
 
   ngOnInit(): void {
-
+    this.mainElement = document.getElementById('markdown') as HTMLDivElement;
   }
   ngOnChanges(): void {
     this.markdownToHtml(this.Markdown);
   }
   markdownToHtml(markdown: string): void {
     if (isPlatformBrowser(this.platformId) && markdown !== undefined) {
-
-      const mainElement = document.getElementById('markdown') as HTMLDivElement;
-      Vditor.preview(mainElement, markdown, {
+      Vditor.preview(this.mainElement, markdown, {
         mode: 'dark',
         speech: {
           enable: true,

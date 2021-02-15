@@ -1,28 +1,33 @@
 <div class="comments" *ngFor="let item of data" [ngClass]="{children: isChildren}">
-    <div class="comments-top">
-        <div class="comments-top-avatar">
-            <img [src]="item.avatar" alt="">
-        </div>
-        <div>
-            <div>
-                {{item.user_name}}
+    <div [ngClass]="{replay:item.ID===activeId}">
+        <div class="comments-top">
+            <div class="comments-top-avatar">
+                <img [src]="item.avatar" alt="">
             </div>
-            <div> {{item.comment_content}}</div>
+            <div>
+                <div>
+                    {{item.user_name}}
+                </div>
+                <div> {{item.comment_content}}</div>
+                <!-- <app-markdown-preview [Markdown]="item.comment_content"></app-markdown-preview> -->
+            </div>
         </div>
-    </div>
-    <div class="comments-bottom">
-        <div>
-            {{item.CreatedAt | date:"y-d-MM HH:mm "}}
-        </div>
-        <div class="comments-bottom-reply" (click)="replyFunc(item)" *ngIf="item.ID!==activeId">
-            回复
-        </div>
-        <div class="comments-bottom-reply" (click)="replyFunc({id:0})" *ngIf="item.ID===activeId">
-            取消回复
+        <div class="comments-bottom">
+            <div>
+                {{item.CreatedAt | date:"y-d-MM HH:mm "}}
+            </div>
+            <div class="comments-bottom-reply" (click)="replyFunc(item)" *ngIf="item.ID!==activeId">
+                回复
+            </div>
+            <div class="comments-bottom-reply" (click)="replyFunc({ID:0})" *ngIf="item.ID===activeId">
+                取消回复
+            </div>
         </div>
     </div>
     <!-- <div *ngIf="item.ID===activeId">
         <app-comment-form [replyID]="activeId"></app-comment-form>
     </div> -->
-    <app-comments-component [data]="item.children" isChildren="true"></app-comments-component>
+
+    <app-comment-component [data]="item.children" isChildren="true" (ActiveIDOut)="replyFunc($event)">
+    </app-comment-component>
 </div>

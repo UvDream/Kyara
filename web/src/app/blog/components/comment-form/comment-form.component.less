@@ -5,9 +5,29 @@
     border-radius   : 8px;
 
     &-title {
-        font-size: 14px;
-        color    : #777;
-        margin   : 10px 0;
+        font-size  : 14px;
+        color      : #777;
+        margin     : 10px 0;
+        display    : flex;
+        align-items: center;
+
+        &-user {
+            display    : flex;
+            align-items: center;
+
+            &-avatar {
+                width : 30px;
+                height: 30px;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            &-name {
+                margin: 0 5px;
+            }
+        }
 
         span {
             color: red;

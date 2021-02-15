@@ -51,7 +51,7 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
   ngOnChanges(): void {
-    // this.vditor.setValue(this.EditValue);
+    this.vditor.setValue(this.EditValue);
   }
   ngOnInit(): void {
     console.log('编辑器');
