@@ -11,10 +11,13 @@
         </h4>
         <div class="hot-article-block-like">
           <!-- <span class="iconfont uv-thumbs-up-outline"></span> -->
-          <svg aria-hidden="true" class="svg margin-left-right-5" (click)="print()">
+          <!-- <svg aria-hidden="true" class="svg margin-left-right-5" (click)="print()">
             <use xlink:href="#icon-A7"></use>
+          </svg> -->
+          <svg aria-hidden="true" style="margin: 0 5px 0 10px;width:15px;height:15px">
+            <use xlink:href="#icon-faxian"></use>
           </svg>
-          <span class="hot-article-block-like-span">{{item.like_count| numberFormat}}</span>
+          <span class="hot-article-block-like-span">{{item.view_count| numberFormat}}</span>
         </div>
       </div>
     </li>
