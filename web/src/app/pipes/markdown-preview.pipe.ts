@@ -7,6 +7,7 @@ import MarkdownIt from 'markdown-it';
 export class MarkdownPreviewPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
+
     const md = new MarkdownIt({
       highlight: (str, lang) => {
         if (lang && hljs.getLanguage(lang)) {
@@ -22,9 +23,10 @@ export class MarkdownPreviewPipe implements PipeTransform {
             html = '<ol>' + html + '</ol>';
             // 添加代码语言
             if (lines.length) {
-              html += '<b class="name btn" data-clipboard-text="哈哈" title="语言">' + lang + '</b>';
+              html += '<div class="pBtn" ><b class="language">' + lang + '</b><b class="copyBtn">复制代码<div class="none"><textarea>' + str + '</textarea></div></b></div>';
             }
-            return '<pre class="hljs "><code>' +
+
+            return '<pre class="hljs"><code>' +
               html +
               '</code></pre>';
           } catch (__) { }

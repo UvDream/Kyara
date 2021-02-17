@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-01-11 11:13:06
+ * @LastEditTime: 2021-02-17 16:15:18
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -54,4 +54,24 @@ export function toTimeDH(timeDate: string, type?: string): string {
     return diffTime.toString();
   }
 
+}
+/**
+ * @description: 复制代码
+ */
+export function CopyText(): void {
+  const copyText = document.getElementsByClassName('copyBtn');
+  console.log(copyText);
+  // tslint:disable-next-line:prefer-for-of
+  for (let i = 0; i < copyText.length; i++) {
+    copyText[i].onclick = (e) => {
+      console.log(e.target.children[0].innerText);
+      const oInput = document.createElement('textarea');
+      oInput.value = e.target.children[0].innerText;
+      document.body.appendChild(oInput);
+      oInput.select();
+      document.execCommand('Copy');
+      oInput.className = 'oInput';
+      oInput.style.display = 'none';
+    };
+  }
 }
