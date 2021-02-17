@@ -7,10 +7,22 @@
     <app-list *ngFor="let item of list" [data]="item" (HavePassword)="havePassword($event)"></app-list>
   </div>
   <div class="home-page">
+    <button nz-button nzType="default" nzShape="round" (click)="pageChange(true)" [disabled]="form.page==1">上一页</button>
+    <section class="home-page-center">
+      第
+      <span>{{form.page}}</span>
+      页/总共
+      <span>{{totalCount}}</span>
+      篇文章
+    </section>
+    <button nz-button nzType="default" nzShape="round" [disabled]="form.page>maxPage"
+      (click)="pageChange(false)">下一页</button>
+  </div>
+  <!-- <div class="home-page">
     <nz-pagination [(nzPageIndex)]="form.page" [(nzPageSize)]="form.pageSize" [(nzTotal)]="totalCount"
       (nzPageIndexChange)="pageChange($event)">
     </nz-pagination>
-  </div>
+  </div> -->
 </div>
 <!-- 密码文章 -->
 <nz-modal nzWidth="400" [(nzVisible)]="isVisible" nzTitle="请输入文章访问密码" [nzContent]="modalContent"
