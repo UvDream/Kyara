@@ -51,6 +51,7 @@ import { DynamicChartComponent } from './home/component/charts/dynamic-chart/dyn
 import { RadarChartComponent } from './home/component/charts/radar-chart/radar-chart.component';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { TimeDiffPipe } from '@pipes/time-diff.pipe';
+import { MarkdownPreviewPipe } from '@pipes/markdown-preview.pipe';
 import { UserInfoComponent } from './home/component/user-info/user-info.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MusicComponent } from './home/component/music/music.component';
@@ -123,7 +124,8 @@ import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.mo
     LoadingComponent,
     MusicComponent,
     MarkdownPreviewComponent,
-    // MarkdownEditComponent
+    // MarkdownEditComponent,
+    MarkdownPreviewPipe
   ],
   providers: [],
 })

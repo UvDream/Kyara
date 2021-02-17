@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-
 @Component({
   selector: 'app-comment-component',
   templateUrl: './comment.component.html',
@@ -11,13 +10,14 @@ export class CommentComponent implements OnInit {
   @Input() isChildren = false;
   @Output() ActiveIDOut = new EventEmitter();
   constructor(
-    @Inject(PLATFORM_ID) private platformId: object
+    @Inject(PLATFORM_ID) private platformId: object,
   ) { }
   public activeId: number;
 
   ngOnInit(): void {
-    console.log(this.data, this.isChildren);
+    // console.log(this.data, this.isChildren);
   }
+
   replyFunc(item: any): void {
     this.activeId = item.ID;
     this.ActiveIDOut.emit(item);

@@ -4,11 +4,12 @@
             <div class="comments-top-avatar">
                 <img [src]="item.avatar" alt="">
             </div>
-            <div>
+            <div class="comments-top-right">
                 <div>
                     {{item.user_name}}
                 </div>
-                <div> {{item.comment_content}}</div>
+                <!-- <div> {{item.comment_content}}</div> -->
+                <div [innerHTML]="item.comment_content | MarkdownPreview"></div>
                 <!-- <app-markdown-preview [Markdown]="item.comment_content"></app-markdown-preview> -->
             </div>
         </div>
