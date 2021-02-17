@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-02-17 16:15:18
+ * @LastEditTime: 2021-02-17 17:41:39
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -60,11 +60,10 @@ export function toTimeDH(timeDate: string, type?: string): string {
  */
 export function CopyText(): void {
   const copyText = document.getElementsByClassName('copyBtn');
-  console.log(copyText);
   // tslint:disable-next-line:prefer-for-of
   for (let i = 0; i < copyText.length; i++) {
-    copyText[i].onclick = (e) => {
-      console.log(e.target.children[0].innerText);
+    const element = copyText[i] as HTMLElement;
+    element.onclick = (e: any) => {
       const oInput = document.createElement('textarea');
       oInput.value = e.target.children[0].innerText;
       document.body.appendChild(oInput);
@@ -74,4 +73,5 @@ export function CopyText(): void {
       oInput.style.display = 'none';
     };
   }
+
 }

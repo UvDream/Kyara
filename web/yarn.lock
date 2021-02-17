@@ -4653,11 +4653,6 @@ fs.realpath@^1.0.0:
   resolved "https://registry.npm.taobao.org/fs.realpath/download/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
-fs@^0.0.1-security:
-  version "0.0.1-security"
-  resolved "https://registry.yarnpkg.com/fs/-/fs-0.0.1-security.tgz#8a7bd37186b6dddf3813f23858b57ecaaf5e41d4"
-  integrity sha1-invTcYa23d84E/I4WLV+yq9eQdQ=
-
 fsevents@^1.2.7:
   version "1.2.13"
   resolved "https://registry.npm.taobao.org/fsevents/download/fsevents-1.2.13.tgz#f325cb0455592428bcf11b383370ef70e3bfcc38"
@@ -6230,19 +6225,6 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-it-code-copy@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/markdown-it-code-copy/-/markdown-it-code-copy-0.1.0.tgz#47fa90407062ef22b2f4c0b9f357d8f4a4047551"
-  integrity sha512-MHl4iHARAz0dUNoQnM8QdaWvSR/REk8iBNjDOIo3XbwxXfcDy5JhKwIapiKiZ6PALdmTZAzLbIWb83QZREPt4A==
-  dependencies:
-    clipboard "^2.0.6"
-    lodash "^4.17.15"
-
-markdown-it-copy@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/markdown-it-copy/-/markdown-it-copy-1.2.0.tgz#6fcaae495e23a0060013d1344acdee929d1fcac5"
-  integrity sha512-8Pm/cF7kpr+9VArhICCndb31zmz75hMR0WpmelUNn1RYe8vkqumLKt0xaInTT4mELhMqmnIr+8dm30w7Pzqc4A==
-
 markdown-it@^12.0.4:
   version "12.0.4"
   resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-12.0.4.tgz#eec8247d296327eac3ba9746bdeec9cfcc751e33"
@@ -6253,11 +6235,6 @@ markdown-it@^12.0.4:
     linkify-it "^3.0.1"
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
-
-marked@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-2.0.0.tgz#9662bbcb77ebbded0662a7be66ff929a8611cee5"
-  integrity sha512-NqRSh2+LlN2NInpqTQnS614Y/3NkVMFFU6sJlRFEpxJ/LHuK/qJECH7/fXZjk4VZstPW/Pevjil/VtSONsLc7Q==
 
 md5.js@^1.3.4:
   version "1.3.5"
