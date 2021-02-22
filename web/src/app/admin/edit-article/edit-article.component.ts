@@ -56,6 +56,8 @@ export class EditArticleComponent implements OnInit {
     tag_array: [],
     // 分类id
     classification_id: '',
+    // 文章字数
+    word_count: 0
   };
   tagVal = '';
   expandKeys = ['100', '1001'];
@@ -67,37 +69,7 @@ export class EditArticleComponent implements OnInit {
     this.getClassify();
     this.getTag();
     this.route.queryParams.subscribe((params) => {
-      console.log(params);
       this.getArticleDetail(params.id);
-    });
-    document.addEventListener('paste', (e) => {
-      let items: any;
-      const that = this;
-      if (e.clipboardData && e.clipboardData.items) {
-        items = e.clipboardData.items;
-        if (items) {
-          items = Array.prototype.filter.call(items, (element) => {
-            return element.type.indexOf('image') >= 0;
-          });
-
-          Array.prototype.forEach.call(items, (item) => {
-            const blob = item.getAsFile();
-            const reader = new FileReader();
-            reader.onloadend = (event) => {
-              const imgBase64 = event.target.result;
-              console.log(imgBase64);  // base64
-              const dataURI = imgBase64;
-              // tslint:disable-next-line:no-shadowed-variable
-              const blob = that.dataURItoBlob(dataURI); // blob
-              console.log('hhe1', blob);
-              console.log(dataURI);
-              that.uploadImg(blob);
-            };
-            reader.readAsDataURL(blob);
-          });
-        }
-      }
-
     });
   }
   dataURItoBlob = (dataURI: any) => {
@@ -121,36 +93,11 @@ export class EditArticleComponent implements OnInit {
       this.form.article_content = this.form.article_content + msg;
     }
   }
-  textChange = () => {
-    this.markdownToHtml(this.form.article_content);
-  }
-  // 渲染markdown
-  markdownToHtml = (data) => {
-    const mainElement = document.getElementById('vditor') as HTMLDivElement;
-    import('vditor').then((Vditor: any) =>
-      Vditor.preview(mainElement, data, {
-        speech: {
-          enable: true,
-        },
-        anchor: 0,
-        hljs: {
-          enable: true,
-          lineNumber: true,
-          style: 'native',
-        },
-        markdown: {
-          toc: true,
-        },
-      })
-    );
-  }
   // 获取分类
   getClassify = async () => {
     const res = await this.httpService.getArticleClassification();
     if (res.code !== 200) { return; }
-    console.log('老数据', res.data);
     this.nodes = this.changeData(res.data);
-    console.log('新数据', this.nodes);
   }
   changeData = (arr: any): Array<TreeItem> => {
     const data: Array<TreeItem> = [];
@@ -197,7 +144,7 @@ export class EditArticleComponent implements OnInit {
       this.form = res.data;
       this.form.article_id = res.data.ID;
       this.classification = Number(this.form.classification_id);
-      this.markdownToHtml(this.form.article_content);
+      res.data.top === '1' ? this.isTop = true : this.isTop = false;
     }
   }
   // 获取tag
@@ -228,5 +175,15 @@ export class EditArticleComponent implements OnInit {
 
   drawerClose(): void {
     this.drawerVisible = false;
+  }
+  // 新版编辑器获取内容
+  editOutput(value: string): void {
+    // console.log('获取编辑器的值', value);
+    this.form.article_content = value;
+  }
+  // 新版编辑器你获取字数
+  editCounter(value: number): void {
+    // console.log('编辑器字数', value);
+    this.form.word_count = value;
   }
 }

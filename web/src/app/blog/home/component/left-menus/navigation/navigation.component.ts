@@ -13,19 +13,21 @@ interface MenuItem {
   styleUrls: ['./navigation.component.less'],
 })
 export class NavigationComponent implements OnInit {
-  constructor(private router: Router, private catalogService: ArticleCatalogService,) { }
+  constructor(
+    private router: Router,
+    private catalogService: ArticleCatalogService
+  ) { }
   public menus = [
     { title: '首页', id: 1, icon: 'icon-shouye', url: '/' },
     { title: '仓库', id: 2, icon: 'icon-fujian', url: '/github' },
-    { title: '相册', id: 6, icon: 'icon-tupian', url: '/photos' },
+    // { title: '相册', id: 6, icon: 'icon-tupian', url: '/photos' },
     { title: '归档', id: 3, icon: 'icon-biaoqian', url: '/archives' },
     { title: '留言', id: 4, icon: 'icon-at', url: '/comment' },
     { title: '关于', id: 5, icon: 'icon-yiwen', url: '/about' },
   ];
   public ActiveMenus = 1;
   ngOnInit(): void { }
-  // tslint:disable-next-line:typedef
-  navFunc(item: MenuItem) {
+  navFunc(item: MenuItem): void {
     this.ActiveMenus = item.id;
     this.router.navigate([item.url]);
     this.catalogService.SetCatLog();

@@ -1,16 +1,22 @@
-import { Component, Input, OnInit, DoCheck, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Input, OnInit, DoCheck, Inject, PLATFORM_ID, OnChanges } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BlogService } from '@service/blog.service';
 import { UserService } from '@service/user.service';
 import { isPlatformBrowser } from '@angular/common';
 
+interface ReplayItem {
+  ID: number;
+  user_name: string;
+  avatar: string;
+}
 @Component({
   selector: 'app-comment-form',
   templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.less']
 })
-export class CommentFormComponent implements OnInit, DoCheck {
+export class CommentFormComponent implements OnInit, OnChanges {
   @Input() replyID: number;
+  @Input() UserInfo: ReplayItem;
   userExist = false;
   form = {
     user_name: '',
@@ -29,14 +35,20 @@ export class CommentFormComponent implements OnInit, DoCheck {
     private userService: UserService,
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
-  ngDoCheck(): void {
-    if (this.replyID) {
-      this.form.parent_id = this.replyID.toString();
+
+  ngOnChanges(): void {
+    if (this.UserInfo.ID !== 0) {
+      this.form.parent_id = this.UserInfo.ID.toString();
+      this.form.comment_content = '';
+    } else {
+      this.form.parent_id = '';
+      this.form.comment_content = '';
     }
   }
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       const isComment = localStorage.getItem('comment');
+      // console.log(JSON.parse(isComment).email, '信息');
       this.userService.getUserInfo();
       if (this.userService.userInfo) {
         this.userExist = true;
@@ -59,6 +71,9 @@ export class CommentFormComponent implements OnInit, DoCheck {
     }
 
   }
+  editOutput(value: string): void {
+    this.form.comment_content = value;
+  }
   async getAvatar(): Promise<void> {
     const res = await this.blogHttp.getAvatar();
     if (res.code === 200) {
@@ -66,6 +81,7 @@ export class CommentFormComponent implements OnInit, DoCheck {
     }
   }
   async commentFunc(): Promise<void> {
+    console.log(this.form);
     if (this.form.user_name === '') {
       this.message.create('error', '请输入昵称!');
       return;

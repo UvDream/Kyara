@@ -1,19 +1,31 @@
 <div class="comments">
   <div class="comments-title">
+    <div class="comments-title-user" *ngIf="UserInfo.ID!==0">
+      回复
+      <div class="comments-title-user-avatar">
+        <img [src]="UserInfo.avatar" alt="">
+      </div>
+      <div class="comments-title-user-name">
+        {{UserInfo.user_name}}
+      </div>
+      的
+    </div>
     留言:
     <span>*</span>
   </div>
   <div>
-    <textarea rows="4" [(ngModel)]="form.comment_content" nz-input></textarea>
+    <!-- <textarea rows="4" [(ngModel)]="form.comment_content" nz-input></textarea> -->
+    <app-markdown-edit [EditValue]="form.comment_content" [height]="300" (EditValueOutput)="editOutput($event)">
+    </app-markdown-edit>
   </div>
   <div class="comments-private">
     <div>
 
     </div>
-    <div>
+    <!-- <div>
       是否私密
       <nz-switch nzSize="small" disabled [(ngModel)]="form.is_private"></nz-switch>
-    </div>
+    </div> -->
   </div>
   <div nz-row [nzGutter]="5">
     <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="12" nzXl="8" nzXXl="8" *ngIf="!userExist">

@@ -2,11 +2,14 @@ package model
 
 import (
 	"github.com/jinzhu/gorm"
+	"time"
 )
 
 // SysArticle 文章数据表
 type SysArticle struct {
 	gorm.Model
+	//更新时间
+	UpdateTime  time.Time `json:"update_time" gorm:"comment:'更新时间'"`
 	//文章id
 	ArticleID uint `json:"article_id" gorm:"-"`
 	// 文章标题
@@ -26,7 +29,7 @@ type SysArticle struct {
 	// 图片地址
 	ImgURL string `json:"img_url" gorm:"comment:'图片地址'"`
 	// 文章内容
-	ArticleContent string `json:"article_content" gorm:"comment:'文章内容';type:longblob "`
+	ArticleContent string `json:"article_content" gorm:"comment:'文章内容';type:longblob"`
 	//---------html内容
 	ArticleHtml string `json:"article_html" gorm:"-"`
 	// 浏览量
@@ -54,7 +57,7 @@ type SysArticle struct {
 	// 是否置顶
 	Top string `json:"top" gorm:"comment:'是否置顶';default:'0'"`
 	// 字数
-	WordCount int `json:"word_count" gorm:"comment:'文章字数';default:'0'"`
+	WordCount uint `json:"word_count" gorm:"comment:'文章字数';default:'0'"`
 	// 点赞数
 	LikeCount string `json:"like_count" gorm:"comment:'点赞数'"`
 	// 赞赏码

@@ -39,8 +39,11 @@ func Comment(r model.BlogComment) (err error, msg string) {
 func GetComment(r request.ListStruct) (err error, msg string, blogComment []model.BlogComment, totalCount int64) {
 	db := global.GVA_DB
 	offset := r.PageSize * (r.Page - 1)
-
-	err = db.Where("status=? AND parent_id=?", "1", "").Limit(r.PageSize).Offset(offset).Find(&blogComment).Count(&totalCount).Error
+	err=db.Where("status=? AND parent_id=? ", "1", "").Where("article_id=?","").Find(&blogComment).Count(&totalCount).Error
+	if err!=nil {
+		return err, "查询留言总数失败", blogComment, 0
+	}
+	err = db.Where("status=? AND parent_id=?", "1", "").Where("article_id=?","").Limit(r.PageSize).Offset(offset).Order("created_at desc").Find(&blogComment).Error
 	if err != nil {
 		return err, "查询失败", blogComment, 0
 	}

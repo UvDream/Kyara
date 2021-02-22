@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { BlogService } from '@service/blog.service';
 import { Title } from '@angular/platform-browser';
-
+interface ReplayItem {
+  ID: number;
+  user_name: string;
+  avatar: string;
+}
 @Component({
   selector: 'app-comment',
   templateUrl: './comments.component.html',
@@ -14,6 +18,11 @@ export class CommentsComponent implements OnInit {
   commentForm = {
     page: 1,
     page_size: 10
+  };
+  public UserInfo = {
+    ID: 0,
+    user_name: '',
+    avatar: ''
   };
   commentData = [
   ];
@@ -38,6 +47,9 @@ export class CommentsComponent implements OnInit {
       this.commentData = res.data.data;
       this.totalCount = res.data.total;
     }
+  }
+  activeOut(item: ReplayItem): void {
+    this.UserInfo = item;
   }
 
 

@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { CopyText } from '../../../../util/util';
 @Component({
   selector: 'app-comment-component',
   templateUrl: './comment.component.html',
@@ -7,16 +9,33 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CommentComponent implements OnInit {
   @Input() data: Array<any>;
   @Input() isChildren = false;
+  @Output() ActiveIDOut = new EventEmitter();
   constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
   ) { }
-  private activeId: number;
+  public activeId: number;
 
   ngOnInit(): void {
-    console.log(this.data, this.isChildren);
+    if (isPlatformBrowser(this.platformId)) {
+      CopyText();
+    }
   }
-  replyFunc(item: number): void {
-    this.activeId = item;
 
+  replyFunc(item: any): void {
+    this.activeId = item.ID;
+    this.ActiveIDOut.emit(item);
+    if (item.ID !== 0 && isPlatformBrowser(this.platformId)) {
+      let speed = 0;
+      let osTop = 0;
+      const timer = setInterval(() => {
+        osTop = document.documentElement.scrollTop || document.body.scrollTop;
+        speed = Math.ceil(-osTop / 2);
+        document.body.scrollTop = document.documentElement.scrollTop -= (osTop + speed);
+        if (speed === 0) {
+          clearInterval(timer);
+        }
+      }, 100);
+    }
   }
 
 }

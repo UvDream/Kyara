@@ -15,7 +15,7 @@ import (
 func GetBlogComment(r request.ListStruct) (err error, comment []model.BlogComment, msg string, total int) {
 	db := global.GVA_DB
 	offset := r.PageSize * (r.Page - 1)
-	err = db.Limit(r.PageSize).Offset(offset).Where("comment_content LIKE ?", "%"+r.Search+"%").Find(&comment).Error
+	err = db.Limit(r.PageSize).Offset(offset).Where("comment_content LIKE ?", "%"+r.Search+"%").Order("created_at desc").Find(&comment).Error
 	if err != nil {
 		return err, comment, "查询留言失败", total
 	}

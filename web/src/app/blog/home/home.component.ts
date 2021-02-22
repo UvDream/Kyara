@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ArticleService } from '@service/article.service';
 import { ArticleCatalogService } from '@service/article-catalog.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   public list: Array<any>;
   public form = {
     search: '',
-    page: 2,
+    page: 1,
     pageSize: 10,
   };
   public totalCount = 0;
@@ -23,14 +24,20 @@ export class HomeComponent implements OnInit {
   public passwordVal: string;
   private articleId: string;
   passwordVisible = false;
+  public maxPage = 0;
   constructor(
     private catalog: ArticleCatalogService,
     private titleService: Title,
     private router: Router,
     private message: NzMessageService,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    @Inject(PLATFORM_ID) private platformId: object
   ) { }
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const page = localStorage.getItem('page');
+      page ? this.form.page = Number(page) : this.form.page = 1;
+    }
     this.getData();
     this.setTitle('汪中杰的个人博客-首页');
     this.catalog.SetCatLog([]);
@@ -47,21 +54,25 @@ export class HomeComponent implements OnInit {
       this.Loading = false;
       this.list = res.data.msg;
       this.totalCount = res.data.totalCount;
+      this.maxPage = Math.ceil(this.totalCount / this.form.pageSize);
     }
 
   }
   public setTitle = (newTitle: string) => {
     this.titleService.setTitle(newTitle);
   }
-  pageChange = (num: number) => {
-    this.getData();
-  }
-  getPage(): void {
-    const page = sessionStorage.getItem('page');
-    page ?
-      this.form.page = Number(page) :
-      this.form.page = 1;
-    // console.log('初始化获取页码', page);
+  pageChange = (status: boolean) => {
+    if (this.form.page > 1 && status) {
+      this.form.page--;
+      this.getData();
+    }
+    if (this.form.page < Math.ceil(this.totalCount / this.form.pageSize) && !status) {
+      this.form.page++;
+      this.getData();
+    }
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('page', this.form.page.toString());
+    }
   }
   havePassword = (id: string) => {
     this.isVisible = true;

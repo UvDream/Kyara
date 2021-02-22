@@ -68,6 +68,8 @@
     </div>
   </div>
   <nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="left" (nzOnClose)="close()">
-    <app-left-menus (click)="close()"></app-left-menus>
+    <ng-container *nzDrawerContent>
+      <app-left-menus (click)="close()"></app-left-menus>
+    </ng-container>
   </nz-drawer>
 </header>
