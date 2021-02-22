@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Inject, PLATFORM_ID, OnChanges, Output, EventEmitter } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import Vditor from 'vditor';
+import { NzImageService } from 'ng-zorro-antd/image';
+
 
 @Component({
   selector: 'app-markdown-preview',
@@ -14,7 +16,8 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
   @Output() CatalogOut = new EventEmitter();
   public mainElement;
   constructor(
-    @Inject(PLATFORM_ID) private platformId: object
+    @Inject(PLATFORM_ID) private platformId: object,
+    private nzImageService: NzImageService,
   ) { }
 
   ngOnInit(): void {
@@ -69,6 +72,20 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
       const objE = document.createElement('div');
       objE.innerHTML = arg;
       return objE.childNodes;
+    }
+  }
+  contentClick(event: any): void {
+    if (event.target.nodeName.toString() === 'IMG') {
+      console.log(event);
+      const images = [
+        {
+          src: event.target.currentSrc,
+          width: event.target.naturalWidth,
+          height: event.target.naturalHeight,
+          alt: event.target.alt
+        }
+      ];
+      this.nzImageService.preview(images, { nzZoom: 1, nzRotate: 0 });
     }
   }
 

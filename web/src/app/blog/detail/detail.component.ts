@@ -4,7 +4,6 @@ import { ArticleService } from '@service/article.service';
 import { ArticleCatalogService } from '@service/article-catalog.service';
 import { Title } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
-import { NzImageService } from 'ng-zorro-antd/image';
 import { isPlatformBrowser } from '@angular/common';
 
 interface TabItem {
@@ -24,7 +23,6 @@ export class DetailComponent implements OnInit {
     private articleCat: ArticleCatalogService,
     private titleService: Title,
     private platform: Platform,
-    private nzImageService: NzImageService,
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
   public loading = true;
@@ -105,57 +103,7 @@ export class DetailComponent implements OnInit {
 
     this.collectText = res.data.collect_text;
     this.setTitle(this.title + '(汪中杰的个人博客)');
-    // const mainElement = document.getElementById('vditor') as HTMLDivElement;
     this.loading = false;
-    // import('vditor').then((Vditor: any) =>
-    //   Vditor.preview(mainElement, this.markDown, {
-    //     speech: {
-    //       enable: true,
-    //     },
-    //     anchor: 0,
-    //     hljs: {
-    //       enable: true,
-    //       lineNumber: true,
-    //       style: 'native',
-    //     },
-    //     markdown: {
-    //       toc: true,
-    //     },
-    //     transform: (html: string) => {
-    //       const arr = [];
-    //       this.parseDom(html).forEach((element) => {
-    //         if (
-    //           element.nodeName === 'H1' ||
-    //           element.nodeName === 'H2' ||
-    //           element.nodeName === 'H3'
-    //         ) {
-    //           const obj = {
-    //             // tslint:disable-next-line:no-string-literal
-    //             id: element['id'],
-    //             // tslint:disable-next-line:no-string-literal
-    //             title: element['innerText'],
-    //             name: element.nodeName,
-    //             children: [],
-    //           };
-    //           arr.push(obj);
-    //           // if (element.nodeName === 'H1') {
-    //           //   arr.push(obj);
-    //           // }
-    //           // if (element.nodeName === 'H2') {
-    //           //   arr[arr.length - 1].children.push(obj);
-    //           // }
-    //           // if (element.nodeName === 'H3') {
-    //           //   arr[arr.length - 1].children[
-    //           //     arr[arr.length - 1].children.length - 1
-    //           //   ].children.push(obj);
-    //           // }
-    //         }
-    //       });
-    //       this.articleCat.SetCatLog(arr);
-    //       return html;
-    //     },
-    //   })
-    // );
   }
   parseDom = (arg: any) => {
     if (isPlatformBrowser(this.platformId)) {
@@ -178,24 +126,8 @@ export class DetailComponent implements OnInit {
     console.log('文章访问');
     const res = await this.request.viewBlog(id);
   }
-  contentClick(event: any): void {
-    console.log(event.target.nodeName);
-    if (event.target.nodeName.toString() === 'IMG') {
-      console.log(event);
-      const images = [
-        {
-          src: event.target.currentSrc,
-          width: event.target.naturalWidth,
-          height: event.target.naturalHeight,
-          alt: event.target.alt
-        }
-      ];
-      this.nzImageService.preview(images, { nzZoom: 1, nzRotate: 0 });
-    }
-  }
+
   print(): void {
-    // const mainElement = document.getElementById('vditor') as HTMLDivElement;
-    // window.document.body.innerHTML = mainElement.innerHTML;
     if (this.platform.isBrowser) {
       setTimeout(() => {
         window.print();
