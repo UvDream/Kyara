@@ -6,6 +6,7 @@ import (
 	"server/global"
 	"server/model"
 	"server/service/blog"
+	"time"
 )
 
 //新增文章
@@ -22,6 +23,7 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 	if r.UserID == "" {
 		r.UserID = "ce0d6685-c15f-4126-a5b4-890bc9d2356d"
 	}
+	r.UpdateTime=time.Now()
 	//luteEngine := lute.New()
 	//r.ArticleHtml = luteEngine.MarkdownStr("UvDream", r.ArticleContent)
 	//counter := &utils.Counter{}

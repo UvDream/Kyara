@@ -2,11 +2,14 @@ package model
 
 import (
 	"github.com/jinzhu/gorm"
+	"time"
 )
 
 // SysArticle 文章数据表
 type SysArticle struct {
 	gorm.Model
+	//更新时间
+	UpdateTime  time.Time `json:"update_time" gorm:"comment:'更新时间'"`
 	//文章id
 	ArticleID uint `json:"article_id" gorm:"-"`
 	// 文章标题
