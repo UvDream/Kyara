@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-02-17 17:41:39
+ * @LastEditTime: 2021-02-23 10:50:31
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -14,6 +14,7 @@
  * @return 无返回值
  */
 export const loadStyle = (url: string, svg?: boolean) => {
+  console.log('样式', svg);
   const head = document.getElementsByTagName('head')[0];
   if (!svg) {
     const link = document.createElement('link');
