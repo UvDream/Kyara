@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-left-footer',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) { }
 
   ngOnInit(): void {
+  }
+  toAdmin(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.getItem('Authorization') ? this.router.navigate(['/admin']) : this.router.navigate(['/account/login']);
+    }
+
   }
 
 }
