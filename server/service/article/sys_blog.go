@@ -2,7 +2,6 @@ package article
 
 import (
 	"fmt"
-	"github.com/88250/lute"
 	"github.com/gin-gonic/gin"
 	"github.com/imroc/req"
 	"server/global"
@@ -35,8 +34,9 @@ func GetConfig() (err error, res response.SysConfigsResponse, msg string) {
 	res.BlogName = config.BlogName
 	res.DomainName=config.DomainName
 
-	luteEngine := lute.New()
-	res.AboutMe = luteEngine.MarkdownStr("UvDream", config.AboutMe)
+	//luteEngine := lute.New()
+	//res.AboutMe = luteEngine.MarkdownStr("UvDream", config.AboutMe)
+	res.AboutMe = config.AboutMe
 	//查询博客公告信息
 	blogNotice := model.BlogNotice{}
 	err = db.Where("id=?", config.BlogNoticeID).Find(&blogNotice).Error

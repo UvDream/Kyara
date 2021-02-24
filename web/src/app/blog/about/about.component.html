@@ -5,7 +5,7 @@
   <div class="about-content">
     <nz-tabset nzCentered="true">
       <nz-tab nzTitle="关于博主">
-        <div class="uvdream" [innerHTML]="config.AboutMe"></div>
+        <div class="uvdream" [innerHTML]="config.AboutMe|MarkdownPreview "></div>
       </nz-tab>
       <nz-tab nzTitle="本站更新记录">
         <app-update-log></app-update-log>
