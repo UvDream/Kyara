@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-02-25 09:08:52
+ * @LastEditTime: 2021-02-25 10:41:25
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -47,7 +47,7 @@ export function toTimeDH(timeDate: string, type?: string): string {
   const hours = diffTime / 1000 / 60 / 60 - (24 * dayRound);
   const hoursRound = Math.floor(hours);
   if (type === 'DD') {
-    if (diffTime < 86400000 && day < 1) {
+    if (day <= 1) {
       return '今天';
     } else {
       return dayRound + '天前';
