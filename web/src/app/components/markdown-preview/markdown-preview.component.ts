@@ -48,9 +48,9 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
           // 标题自定义渲染
           renderHeading: (node: ILuteNode, entering: boolean) => {
             if (entering) {
-              return [`<h${node.__internal_object__.HeadingLevel}><span class="prefix"></span> `, Lute.WalkContinue];
+              return [`<h${node.__internal_object__.HeadingLevel}><span class="prefix"></span><span class="content"> `, Lute.WalkContinue];
             } else {
-              return [`<span class="suffix"></span> </h${node.__internal_object__.HeadingLevel} > `, Lute.WalkContinue];
+              return [`</span><span class="suffix"></span> </h${node.__internal_object__.HeadingLevel} > `, Lute.WalkContinue];
             }
           },
           // renderImage: (node: ILuteNode, entering: boolean) => {

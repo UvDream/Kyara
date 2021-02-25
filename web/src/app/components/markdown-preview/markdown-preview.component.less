@@ -12,4 +12,39 @@
         padding         : 1em;
         border-radius   : 4px;
     }
+
+    ::ng-deep h1 {
+        display              : block;
+        text-align           : center;
+        background           : url('../../../assets/images/title1.png');
+        border-bottom        : none;
+        background-position  : center center;
+        background-repeat    : no-repeat;
+        background-attachment: initial;
+        background-origin    : initial;
+        background-clip      : initial;
+        background-size      : 63px;
+        margin-bottom        : .5em;
+
+        .content {
+            display   : inline-block;
+            margin-top: 2.5em;
+        }
+    }
+
+    ::ng-deep h2 {
+        border-bottom : none;
+        display       : inline-block;
+        background    : linear-gradient(#fff 60%, #646cff 40%);
+        padding-bottom: 0px;
+        padding-left  : 2px;
+        padding-right : 2px;
+    }
+
+    ::ng-deep h3 {
+        border-bottom: none;
+        border-left  : 4px solid #646cff;
+        padding-top  : .3em;
+        padding-left : 2px;
+    }
 }
