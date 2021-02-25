@@ -46,13 +46,17 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
         // 自定义渲染
         renderers: {
           // 标题自定义渲染
-          renderHeading: (node: ILuteNode, entering: boolean) => {
-            if (entering) {
-              return [`<h${node.__internal_object__.HeadingLevel}><span class="prefix"></span><span class="content"> `, Lute.WalkContinue];
-            } else {
-              return [`</span><span class="suffix"></span> </h${node.__internal_object__.HeadingLevel} > `, Lute.WalkContinue];
-            }
-          },
+          // renderHeading: (node: ILuteNode, entering: boolean) => {
+          //   console.log(node);
+          //   // const src = node.__internal_object__;
+          //   // console.log('src: ', src);
+
+          //   if (entering) {
+          //     return [`<h${node.__internal_object__.HeadingLevel}><span class="prefix"></span><span class="content"> `, Lute.WalkContinue];
+          //   } else {
+          //     return [`</span><span class="suffix"></span> </h${node.__internal_object__.HeadingLevel} > `, Lute.WalkContinue];
+          //   }
+          // },
           // renderLinkDest: (node: ILuteNode, entering: boolean) => {
           //   const src = node.TokensStr();
           //   return [`wzj`, Lute.WalkContinue];
