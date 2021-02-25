@@ -53,14 +53,19 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
               return [`</span><span class="suffix"></span> </h${node.__internal_object__.HeadingLevel} > `, Lute.WalkContinue];
             }
           },
+          // renderLinkDest: (node: ILuteNode, entering: boolean) => {
+          //   const src = node.TokensStr();
+          //   return [`wzj`, Lute.WalkContinue];
+          // },
           // renderImage: (node: ILuteNode, entering: boolean) => {
-          //   console.log('image');
-          //   console.dir(node.__internal_object__);
-          //   if (entering) {
-          //     return [`<span class="prefix"></span> <img`, Lute.WalkContinue];
-          //   } else {
-          //     return [`/><span class="suffix"></span> `, Lute.WalkContinue];
-          //   }
+          // console.log('image');
+          // const src = node.TokensStr();
+
+          // if (entering) {
+          // return [`<p>${src}</p>`, Lute.WalkContinue];
+          // } else {
+          //   return [` </p>`, Lute.WalkContinue];
+          // }
           // }
         },
         transform: (html: string) => {
