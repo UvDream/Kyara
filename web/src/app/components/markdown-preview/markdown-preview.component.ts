@@ -26,6 +26,7 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     this.markdownToHtml(this.Markdown);
   }
+
   markdownToHtml(markdown: string): void {
     if (isPlatformBrowser(this.platformId) && markdown !== undefined) {
       Vditor.preview(this.mainElement, markdown, {
@@ -41,6 +42,26 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
         },
         markdown: {
           toc: true,
+        },
+        // 自定义渲染
+        renderers: {
+          // 标题自定义渲染
+          renderHeading: (node: ILuteNode, entering: boolean) => {
+            if (entering) {
+              return [`<h${node.__internal_object__.HeadingLevel}><span class="prefix"></span> `, Lute.WalkContinue];
+            } else {
+              return [`<span class="suffix"></span> </h${node.__internal_object__.HeadingLevel} > `, Lute.WalkContinue];
+            }
+          },
+          // renderImage: (node: ILuteNode, entering: boolean) => {
+          //   console.log('image');
+          //   console.dir(node.__internal_object__);
+          //   if (entering) {
+          //     return [`<span class="prefix"></span> <img`, Lute.WalkContinue];
+          //   } else {
+          //     return [`/><span class="suffix"></span> `, Lute.WalkContinue];
+          //   }
+          // }
         },
         transform: (html: string) => {
           const arr = [];

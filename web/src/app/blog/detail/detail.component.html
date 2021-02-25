@@ -3,7 +3,7 @@
 </div>
 <div class="detail">
   <!-- 上面 -->
-  <div class="detail-title" *ngIf="!loading">
+  <div class="detail-title detail-width" *ngIf="!loading">
     <div class="detail-title-top">
       <h1>{{ title }}</h1>
       <div>
@@ -46,16 +46,16 @@
     </div>
   </div>
   <!-- 图片 -->
-  <div *ngIf="!loading" class="detail-img" class="detail-img">
+  <div *ngIf="!loading" class="detail-img detail-width">
     <img [src]="topImg" alt="">
   </div>
-  <div class="detail-markdown">
+  <div class="detail-markdown detail-width">
     <app-markdown-preview [Markdown]="markDown" (CatalogOut)="catalogOut($event)"></app-markdown-preview>
   </div>
   <!-- <div #vditor id="vditor" class="detail-content" [ngClass]="{'padding-30':!loading}" (click)="contentClick($event)">
   </div> -->
   <div [innerHTML]="htmlContent" style="display: none"></div>
-  <div class="detail-praise" *ngIf="!loading">
+  <div class="detail-praise detail-width" *ngIf="!loading">
     <div class="detail-praise-time">
       <section class="one-text">
         <!-- <span class="iconfont uv-time-outline"></span> -->

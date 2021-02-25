@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-02-24 17:41:28
+ * @LastEditTime: 2021-02-25 09:08:52
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -46,7 +46,6 @@ export function toTimeDH(timeDate: string, type?: string): string {
   const dayRound = Math.floor(day);
   const hours = diffTime / 1000 / 60 / 60 - (24 * dayRound);
   const hoursRound = Math.floor(hours);
-  console.log(diffTime);
   if (type === 'DD') {
     if (diffTime < 86400000 && day < 1) {
       return '今天';

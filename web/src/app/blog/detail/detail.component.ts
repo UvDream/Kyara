@@ -74,7 +74,6 @@ export class DetailComponent implements OnInit {
     });
   }
   catalogOut(arr: any): void {
-    console.log('目录111', arr);
     this.articleCat.SetCatLog(arr);
   }
   // 获取文章详情
