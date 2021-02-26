@@ -48,8 +48,6 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
           // 标题自定义渲染
           renderHeading: (node: ILuteNode, entering: boolean) => {
             console.log(node);
-            // const src = node.__internal_object__;
-            // console.log('src: ', src);
             const id = Lute.GetHeadingID(node);
             if (entering) {
               // tslint:disable-next-line:max-line-length
