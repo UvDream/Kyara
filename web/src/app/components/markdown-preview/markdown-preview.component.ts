@@ -43,6 +43,7 @@ export class MarkdownPreviewComponent implements OnInit, OnChanges {
         markdown: {
           toc: true,
         },
+        lazyLoadImage: 'https://gitee.com/Uvdream/images/blob/master/images/20210226094439.svg',
         // 自定义渲染
         renderers: {
           // 标题自定义渲染
