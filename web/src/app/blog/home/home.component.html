@@ -15,7 +15,7 @@
       <span>{{totalCount}}</span>
       篇文章
     </section>
-    <button nz-button nzType="default" nzShape="round" [disabled]="form.page>maxPage"
+    <button nz-button nzType="default" nzShape="round" [disabled]="form.page>=maxPage"
       (click)="pageChange(false)">下一页</button>
   </div>
   <!-- <div class="home-page">
