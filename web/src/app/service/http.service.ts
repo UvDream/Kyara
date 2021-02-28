@@ -3,6 +3,7 @@ import { baseUrl } from '../../environments/env';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Params } from './params';
 import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 interface Response {
   code: number;
@@ -22,8 +23,10 @@ export class HttpService {
   };
   constructor(
     private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: object
+    @Inject(PLATFORM_ID) private platformId: object,
+    private router: Router
   ) { }
+
   public request(params: any): any {
     if (params.method === 'post' || params.method === 'POST') {
       return this.post(params.url, params.data);
@@ -54,6 +57,10 @@ export class HttpService {
       case 200:
         return res;
       case 400:
+        const path = this.router.url.match(/\/(\S*)\//)[1];
+        if (path === 'admin') {
+          this.router.navigate(['/account/login']);
+        }
         return res;
       default:
         return;

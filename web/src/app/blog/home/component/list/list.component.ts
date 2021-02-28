@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
   @Output() HavePassword = new EventEmitter();
   ngOnInit(): void { }
   toDetail = (data) => {
+
     if (data.is_password === '1') {
       this.HavePassword.emit(data.ID);
     } else {

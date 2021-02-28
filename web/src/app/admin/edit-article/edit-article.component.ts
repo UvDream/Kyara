@@ -69,7 +69,9 @@ export class EditArticleComponent implements OnInit {
     this.getClassify();
     this.getTag();
     this.route.queryParams.subscribe((params) => {
-      this.getArticleDetail(params.id);
+      if (params.id) {
+        this.getArticleDetail(params.id);
+      }
     });
   }
   dataURItoBlob = (dataURI: any) => {
