@@ -2,6 +2,7 @@ package model
 
 import (
 	"github.com/jinzhu/gorm"
+	uuid "github.com/satori/go.uuid"
 	"time"
 )
 
@@ -17,7 +18,7 @@ type SysArticle struct {
 	// 文章摘要
 	Introduction string `json:"introduction" gorm:"comment:'文章摘要'"`
 	// 作者id
-	UserID string `json:"user_id" gorm:"comment:'作者id'"`
+	UserID uuid.UUID `json:"user_id" gorm:"comment:'作者id'"`
 	// ---作者名---
 	UserName string `json:"user_name" gorm:"-"`
 	// 评论id
@@ -110,6 +111,7 @@ type CollectionCode struct {
 	gorm.Model
 	Name      string `json:"name" gorm:"comment:'收款码名称'"`
 	ImgURL    string `json:"img_url" gorm:"comment:'收款码地址'"`
-	ArticleID string `json:"article_id" gorm:"comment:'对应的文章id'"`
-	UserID    string `json:"user_id" gorm:"comment:'上传作者id';default:'ce0d6685-c15f-4126-a5b4-890bc9d2356d'"`
+	ArticleID uint `json:"article_id" gorm:"comment:'对应的文章id'"`
+	UserID    uuid.UUID `json:"user_id" gorm:"comment:'上传作者id';default:'ce0d6685-c15f-4126-a5b4-890bc9d2356d'"`
+	Type string `json:"type" gorm:"comment:'默认赞赏码为0'"`
 }

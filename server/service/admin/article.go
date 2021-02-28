@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"server/global"
 	"server/model"
+	"server/model/request"
 	"server/service/blog"
 	"time"
 )
@@ -13,17 +14,14 @@ import (
 func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data model.SysArticle) {
 	db := global.GVA_DB
 	blog.AddDynamic()
-	//claims, _ := c.Get("claims")
-	//waitUse := claims.(*request.CustomClaims)
-	//r.UserID=waitUse.UUID
+	claims, _ := c.Get("claims")
+	waitUse := claims.(*request.CustomClaims)
+	r.UserID=waitUse.UUID
 
 	if r.ImgURL == "" {
 		r.ImgURL = "https://gitee.com/UvDream/images/raw/master/images/20200826195538.png"
 	}
-	if r.UserID == "" {
-		r.UserID = "ce0d6685-c15f-4126-a5b4-890bc9d2356d"
-	}
-	r.UpdateTime=time.Now()
+	r.UpdateTime = time.Now()
 	//luteEngine := lute.New()
 	//r.ArticleHtml = luteEngine.MarkdownStr("UvDream", r.ArticleContent)
 	//counter := &utils.Counter{}
@@ -39,6 +37,11 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 			if err != nil {
 				return err, msg, r
 			}
+			//增加赞赏码
+			err, msg = addCollect(r, c)
+			if err != nil {
+				return err, msg, r
+			}
 			return err, "文章创建成功", r
 		}
 	} else {
@@ -50,15 +53,55 @@ func AddArticle(r model.SysArticle, c *gin.Context) (err error, msg string, data
 		err = db.Model(&model.SysArticle{}).Where("ID=?", r.ArticleID).Update(&r).Error
 		if err != nil {
 			return err, "更新失败", r
-		} else {
-			err, msg := updateTag(r.ArticleID, r.TagArray)
+		}
+		err, msg := updateTag(r.ArticleID, r.TagArray)
+		if err != nil {
+			return err, msg, r
+		}
+		//查询是否存在赞赏码
+		var collect model.CollectionCode
+		err=db.Where("article_id=?",r.ArticleID).Find(&collect).Error
+		if err!=nil {
+			err, msg = addCollect(r, c)
 			if err != nil {
 				return err, msg, r
 			}
-			return err, "更新文章成功", r
 		}
+		return err, "更新文章成功", r
+
 	}
 
+}
+func addCollect(r model.SysArticle, c *gin.Context) (err error, msg string) {
+	db := global.GVA_DB
+	claims, _ := c.Get("claims")
+	waitUse := claims.(*request.CustomClaims)
+	if r.CollectList == nil {
+		var collect []model.CollectionCode
+		err = db.Where("type=?", "0").Find(&collect).Error
+		if err != nil {
+			return err, "查询默认赞赏码失败"
+		}
+		for _, k := range collect {
+			var obj model.CollectionCode
+			obj.ArticleID = r.ArticleID
+			obj.Name = k.Name
+			obj.ImgURL = k.ImgURL
+			obj.UserID = waitUse.UUID
+			err := db.Create(&obj).Error
+			if err != nil {
+				return err, "增加赞赏码失败"
+			}
+		}
+	} else {
+		for _, k := range r.CollectList {
+			err = db.Create(&k).Error
+			if err != nil {
+				return err, "赞赏码添加失败"
+			}
+		}
+	}
+	return err, "增加成功"
 }
 func updateTag(id uint, tag []uint) (err error, msg string) {
 	//先删除再添加
@@ -164,17 +207,18 @@ func AddTag(c *gin.Context) (err error, tag model.SysTag, msg string) {
 	blog.AddDynamic()
 	return err, tag, "增加tag成功"
 }
+
 //删除公告
-func DeleteNotice(c *gin.Context)(msg string ,err error)  {
+func DeleteNotice(c *gin.Context) (msg string, err error) {
 	db := global.GVA_DB
 	id := c.Query("id")
 	if id == "" {
 		return "参数缺失", err
 	}
 	var notice model.BlogNotice
-	err=db.Where("ID=?",id).Delete(&notice).Error
-	if err!=nil {
-		return "删除公告失败",err
+	err = db.Where("ID=?", id).Delete(&notice).Error
+	if err != nil {
+		return "删除公告失败", err
 	}
-	return "删除公告失败",err
+	return "删除公告失败", err
 }
