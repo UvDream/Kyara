@@ -10,3 +10,4 @@ web/dist/
 dist
 /web/package-lock.json
 /web/yarn-error.log
+server/main
