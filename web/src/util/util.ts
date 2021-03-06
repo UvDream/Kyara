@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-02-25 10:41:25
+ * @LastEditTime: 2021-03-06 10:23:11
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -48,7 +48,7 @@ export function toTimeDH(timeDate: string, type?: string): string {
   const hoursRound = Math.floor(hours);
   if (type === 'DD') {
     if (day <= 1) {
-      return '今天';
+      return '一天内';
     } else {
       return dayRound + '天前';
     }
