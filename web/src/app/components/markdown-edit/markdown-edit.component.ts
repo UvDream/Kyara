@@ -10,6 +10,10 @@ import { Emoji } from './emoji';
 export class MarkdownEditComponent implements OnInit, OnChanges {
   vditor: Vditor;
   @Input() height = 600;
+  // 是否需要缓存
+  @Input() Cache = false;
+  // 大纲
+  @Input() Catalog = false;
   // 编辑器内容回显
   @Input() EditValue: string;
   @Input() EditToolbar = [
@@ -62,6 +66,10 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
         toolbar: this.EditToolbar,
         toolbarConfig: {
           pin: true,
+        },
+        outline: {
+          enable: this.Catalog,
+          position: 'left',
         },
         hint: {
           emoji: Emoji
