@@ -39,25 +39,25 @@ func Comment(r model.BlogComment) (err error, msg string) {
 func GetComment(r request.ListStruct) (err error, msg string, blogComment []model.BlogComment, totalCount int64) {
 	db := global.GVA_DB
 	offset := r.PageSize * (r.Page - 1)
-	err=db.Where("status=? AND parent_id=? ", "1", "").Where("article_id=?","").Find(&blogComment).Count(&totalCount).Error
+	err=db.Where("status=? AND parent_id=? ", "1", "").Where("article_id=?",r.ArticleID).Find(&blogComment).Count(&totalCount).Error
 	if err!=nil {
 		return err, "查询留言总数失败", blogComment, 0
 	}
-	err = db.Where("status=? AND parent_id=?", "1", "").Where("article_id=?","").Limit(r.PageSize).Offset(offset).Order("created_at desc").Find(&blogComment).Error
+	err = db.Where("status=? AND parent_id=? ", "1", "").Where("article_id=?",r.ArticleID).Limit(r.PageSize).Offset(offset).Order("created_at desc").Find(&blogComment).Error
 	if err != nil {
 		return err, "查询失败", blogComment, 0
 	}
 	for k, i := range blogComment {
-		blogComment[k].Children,err,msg = findChildren(i.ID)
+		blogComment[k].Children,err,msg = findChildren(i.ID,r.ArticleID)
 		if err!=nil {
 			return err, "查询子节点失败", blogComment, 0
 		}
 	}
 	return err, "查询留言成功", blogComment, totalCount
 }
-func findChildren(parentId uint) (child []model.BlogComment,err error,msg string) {
+func findChildren(parentId uint,article_id string) (child []model.BlogComment,err error,msg string) {
 	db := global.GVA_DB
-	err=db.Where("parent_id=? AND status=?", parentId, "1").Find(&child).Error
+	err=db.Where("parent_id=? AND status=?", parentId, "1").Where("article_id=?",article_id).Find(&child).Error
 	if err!=nil {
 		return child,err,"查询子元素失败"
 	}
@@ -75,7 +75,7 @@ func findChildren(parentId uint) (child []model.BlogComment,err error,msg string
 		}
 	}
 	for k, i := range child {
-		child[k].Children,err,msg= findChildren(i.ID)
+		child[k].Children,err,msg= findChildren(i.ID,article_id)
 	}
 	return child, err,"查询成功"
 }

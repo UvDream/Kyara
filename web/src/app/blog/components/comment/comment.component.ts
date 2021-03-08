@@ -25,13 +25,10 @@ export class CommentComponent implements OnInit {
     this.activeId = item.ID;
     this.ActiveIDOut.emit(item);
     if (item.ID !== 0 && isPlatformBrowser(this.platformId)) {
-      let speed = 0;
-      let osTop = 0;
       const timer = setInterval(() => {
-        osTop = document.documentElement.scrollTop || document.body.scrollTop;
-        speed = Math.ceil(-osTop / 2);
-        document.body.scrollTop = document.documentElement.scrollTop -= (osTop + speed);
-        if (speed === 0) {
+        const osTop = document.getElementById('replayForm').offsetTop;
+        document.documentElement.scrollTop -= 40;
+        if (document.documentElement.scrollTop < osTop) {
           clearInterval(timer);
         }
       }, 100);

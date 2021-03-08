@@ -29,6 +29,7 @@ type ListStruct struct {
 	Page     int    `json:"page"`
 	PageSize int    `json:"page_size"`
 	Search   string `json:"search"`
+	ArticleID string `json:"article_id"`
 }
 
 // 百度收录结构体

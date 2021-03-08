@@ -5,7 +5,12 @@ import { ArticleCatalogService } from '@service/article-catalog.service';
 import { Title } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
 import { isPlatformBrowser } from '@angular/common';
-
+import { BlogService } from '@service/blog.service';
+interface ReplayItem {
+  ID: number;
+  user_name: string;
+  avatar: string;
+}
 interface TabItem {
   ID: number;
   name: string;
@@ -23,8 +28,14 @@ export class DetailComponent implements OnInit {
     private articleCat: ArticleCatalogService,
     private titleService: Title,
     private platform: Platform,
+    private blogHttp: BlogService,
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
+  public UserInfo = {
+    ID: 0,
+    user_name: '',
+    avatar: '',
+  };
   public loading = true;
   // 文章标题
   public title: string;
@@ -48,6 +59,13 @@ export class DetailComponent implements OnInit {
   public UpdatedAt: string;
   // 赞赏提示文字
   public collectText: string;
+  public commentForm = {
+    page: 1,
+    page_size: 10,
+    article_id: '',
+  };
+  commentData = [
+  ];
   @ViewChild('vditor') myDom: HTMLDivElement;
   // 赞赏弹窗
   isVisible = false;
@@ -59,6 +77,8 @@ export class DetailComponent implements OnInit {
     let password = '';
     this.route.queryParams.subscribe((params) => {
       id = params.id;
+      this.commentForm.article_id = id;
+      this.getArticleComment(this.commentForm);
       password = params.password;
       if (password === undefined) {
         password = '';
@@ -103,6 +123,17 @@ export class DetailComponent implements OnInit {
     this.collectText = res.data.collect_text;
     this.setTitle(this.title + '(汪中杰的个人博客)');
     this.loading = false;
+  }
+  // 获取评论
+  getArticleComment = async (data: object) => {
+    const res = await this.blogHttp.getComment(data);
+    console.log('res: ', res);
+    if (res.code === 200) {
+      this.commentData = res.data.data;
+    }
+  }
+  activeOut(item: ReplayItem): void {
+    this.UserInfo = item;
   }
   parseDom = (arg: any) => {
     if (isPlatformBrowser(this.platformId)) {

@@ -3,6 +3,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { BlogService } from '@service/blog.service';
 import { UserService } from '@service/user.service';
 import { isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 interface ReplayItem {
   ID: number;
@@ -27,12 +28,15 @@ export class CommentFormComponent implements OnInit, OnChanges {
     user_id: '',
     ID: '',
     parent_id: '',
-    is_private: false
+    is_private: false,
+    article_id: ''
   };
   constructor(
     private message: NzMessageService,
     private blogHttp: BlogService,
     private userService: UserService,
+    private route: ActivatedRoute,
+
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
 
@@ -46,6 +50,11 @@ export class CommentFormComponent implements OnInit, OnChanges {
     }
   }
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      if (params.id) {
+        this.form.article_id = params.id;
+      }
+    });
     if (isPlatformBrowser(this.platformId)) {
       const isComment = localStorage.getItem('comment');
       // console.log(JSON.parse(isComment).email, '信息');

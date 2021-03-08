@@ -99,6 +99,10 @@
       </div>
     </ng-template>
   </nz-modal>
+  <div class="detail-width detail-comment">
+    <app-comment-form [UserInfo]="UserInfo"></app-comment-form>
+    <app-comment-component [data]="commentData" (ActiveIDOut)="activeOut($event)"></app-comment-component>
+  </div>
   <!-- <div class="detail-btn" *ngIf="!loading">
     <button nz-button nzType="default" nzShape="round">上一篇</button>
     <button nz-button nzType="default" nzShape="round">下一篇</button>
