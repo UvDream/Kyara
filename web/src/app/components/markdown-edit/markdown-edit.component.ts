@@ -75,7 +75,7 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
           },
         },
         cache: {
-          enable: true,
+          enable: false,
         },
         blur: (value: string) => {
           // console.log('编辑器的值');
