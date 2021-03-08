@@ -46,6 +46,7 @@ func Routers() *gin.Engine {
 	admin.InitAdminArticle(ApiGroup) //添加文章相关
 	blog.InitOpenApi(ApiGroup)       //开放的接口
 	blog.InitOther(ApiGroup)         //其它接口
+	blog.InitInterview(ApiGroup)//面试题库接口
 	global.GVA_LOG.Info("路由注册成功!")
 	return Router
 }
