@@ -58,6 +58,7 @@ import { MusicComponent } from './home/component/music/music.component';
 import { MarkdownPreviewComponent } from '../components/markdown-preview/markdown-preview.component';
 // import { MarkdownEditComponent } from '../components/markdown-edit/markdown-edit.component';
 import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.module';
+import { InterviewComponent } from './interview/interview.component';
 
 @NgModule({
   imports: [
@@ -125,7 +126,8 @@ import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.mo
     MusicComponent,
     MarkdownPreviewComponent,
     // MarkdownEditComponent,
-    MarkdownPreviewPipe
+    MarkdownPreviewPipe,
+    InterviewComponent
   ],
   providers: [],
 })

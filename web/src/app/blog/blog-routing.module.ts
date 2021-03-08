@@ -8,6 +8,7 @@ import { PhotosComponent } from './photos/photos.component';
 import { AboutComponent } from './about/about.component';
 import { ArchivesComponent } from './archives/archives.component';
 import { CommentsComponent } from './comments/comments.component';
+import { InterviewComponent } from './interview/interview.component';
 
 export const homeRoutes: Routes = [
   {
@@ -45,6 +46,10 @@ export const homeRoutes: Routes = [
         path: 'archives',
         component: ArchivesComponent,
       },
+      {
+        path: 'interview',
+        component: InterviewComponent
+      }
     ],
   },
 ];
