@@ -35,6 +35,9 @@ func DBTables() {
 		model.BlogComment{},
 		model.CollectionCode{},
 		model.BlogDynamic{},
+		model.Interview{},//面试题
+		model.InterviewClassify{},//面试题分类
+		model.InterviewTag{},//面试题tag
 	)
 	global.GVA_LOG.Debug("注册成功!")
 }
