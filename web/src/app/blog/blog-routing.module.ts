@@ -9,6 +9,8 @@ import { AboutComponent } from './about/about.component';
 import { ArchivesComponent } from './archives/archives.component';
 import { CommentsComponent } from './comments/comments.component';
 import { InterviewComponent } from './interview/interview.component';
+import { InterviewDetailComponent } from './interview/interview-detail/interview-detail.component';
+import { InterviewListComponent } from './interview/interview-list/interview-list.component';
 
 export const homeRoutes: Routes = [
   {
@@ -49,6 +51,14 @@ export const homeRoutes: Routes = [
       {
         path: 'interview',
         component: InterviewComponent
+      },
+      {
+        path: 'interviewDetail',
+        component: InterviewDetailComponent
+      },
+      {
+        path: 'interviewList',
+        component: InterviewListComponent
       }
     ],
   },

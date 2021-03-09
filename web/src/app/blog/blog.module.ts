@@ -59,6 +59,8 @@ import { MarkdownPreviewComponent } from '../components/markdown-preview/markdow
 // import { MarkdownEditComponent } from '../components/markdown-edit/markdown-edit.component';
 import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.module';
 import { InterviewComponent } from './interview/interview.component';
+import { InterviewDetailComponent } from './interview/interview-detail/interview-detail.component';
+import { InterviewListComponent } from './interview/interview-list/interview-list.component';
 
 @NgModule({
   imports: [
@@ -127,7 +129,9 @@ import { InterviewComponent } from './interview/interview.component';
     MarkdownPreviewComponent,
     // MarkdownEditComponent,
     MarkdownPreviewPipe,
-    InterviewComponent
+    InterviewComponent,
+    InterviewDetailComponent,
+    InterviewListComponent
   ],
   providers: [],
 })
