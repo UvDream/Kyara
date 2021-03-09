@@ -2,6 +2,7 @@ package admin
 
 import (
 	v1 "server/api/v1/admin"
+	"server/api/v1/blog"
 	"server/middleware"
 
 	"github.com/gin-gonic/gin"
@@ -23,6 +24,7 @@ func InitAdminArticle(Router *gin.RouterGroup) (R gin.IRoutes) {
 		AdminArticleRouter.POST("revertComment", v1.RevertComment)         //回复留言
 		AdminArticleRouter.GET("deleteComment", v1.DeleteComment)          //删除留言
 		AdminArticleRouter.POST("saveConfig",v1.SaveConfig)					//保存设置
+		AdminArticleRouter.POST("addInterviewClassify",blog.AddInterviewClassify)		//新增面试题分类
 	}
 	return AdminArticleRouter
 }

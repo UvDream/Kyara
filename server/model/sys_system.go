@@ -30,7 +30,7 @@ type InterviewClassify struct {
 	gorm.Model
 	ClassifyName string `json:"classify_name" gorm:"comment:'分类名称'"`
 	ClassifyIcon string `json:"classify_icon" gorm:"comment:'分类图标'"`
-	Counter      uint   `json:"counter" gorm:"-"`
+	Count      uint   `json:"count" gorm:"-"`
 }
 
 //面试题tag集合
