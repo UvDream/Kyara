@@ -17,12 +17,14 @@ type Interview struct {
 	Title string `json:"title" gorm:"comment:'题目'"`
 	//tag
 	Tag []uint `json:"tag" gorm:"-"`
+	//tag 集合
+	TagArr []string `json:"tag_arr" gorm:"-"`
 	//	答案
-	AnswerMd string `json:"answer" gorm:"comment:'答案markdown格式'"`
+	AnswerMd string `json:"answer_md" gorm:"comment:'答案markdown格式'"`
 	// 难以程度
 	Level string `json:"level" gorm:"comment:'难易程度';default:'1'"`
 	//分类
-	Classify string `json:"classify" gorm:"comment:'分类'"`
+	ClassifyID string `json:"classify_id" gorm:"comment:'分类id'"`
 }
 
 //面试题分类

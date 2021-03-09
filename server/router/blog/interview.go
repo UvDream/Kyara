@@ -10,7 +10,7 @@ func InitInterview(Router *gin.RouterGroup)(R gin.IRouter)  {
 	{
 		InterviewRouter.GET("classify",blog.GetInterviewClassify)//面试题分类接口
 		InterviewRouter.POST("list",blog.GetInterview)//面试题列表接口
-		InterviewRouter.GET("detail")//面试题详情接口
+		InterviewRouter.GET("detail",blog.GetInterviewDetail)//面试题详情接口
 	}
 	return InterviewRouter
 

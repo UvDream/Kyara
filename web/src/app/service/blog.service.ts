@@ -30,5 +30,13 @@ export class BlogService {
       data
     });
   }
+  // 获取题库分类
+  getInterview = (params?: object) => {
+    return this.http.request({
+      method: 'get',
+      url: '/interview/classify',
+      params
+    });
+  }
 
 }

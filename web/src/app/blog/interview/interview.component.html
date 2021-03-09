@@ -1,3 +1,19 @@
-<div style="text-align:center">
-    <img width="90%" src="https://gitee.com/Uvdream/images/raw/master/images/20201106144838.png" alt="">
+<div class="interview">
+    <div class="interview-title">
+        面试必备
+    </div>
+    <div nz-row class="interview-list">
+        <div nz-col [nzXs]="8" [nzSm]="8" [nzMd]="6" [nzLg]="6" nzXl="6" nzXXl="4" class="gutter-row"
+            *ngFor="let item of interviewList">
+            <div class="interview-list-block">
+                <div class="interview-list-block-img">
+                    <img [src]="item.classify_icon" alt="">
+                </div>
+                <div class="interview-list-block-name">
+                    {{item.classify_name}}
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

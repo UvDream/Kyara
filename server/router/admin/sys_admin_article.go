@@ -25,6 +25,7 @@ func InitAdminArticle(Router *gin.RouterGroup) (R gin.IRoutes) {
 		AdminArticleRouter.GET("deleteComment", v1.DeleteComment)          //删除留言
 		AdminArticleRouter.POST("saveConfig",v1.SaveConfig)					//保存设置
 		AdminArticleRouter.POST("addInterviewClassify",blog.AddInterviewClassify)		//新增面试题分类
+		AdminArticleRouter.POST("addInterview",blog.AddInterview)//新增面试题
 	}
 	return AdminArticleRouter
 }

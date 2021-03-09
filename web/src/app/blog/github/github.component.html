@@ -7,7 +7,7 @@
     <div nz-row [nzGutter]="[16, 10]" class="github-list">
         <!-- <nz-spin nzSimple [nzSize]="'large'" *ngIf="Loading" style="margin:30% auto"></nz-spin> -->
 
-        <div nz-col class="gutter-row " [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" nzXl="6" nzXXl="8"
+        <div nz-col class="gutter-row" [nzXs]="24" [nzSm]="12" [nzMd]="12" [nzLg]="12" nzXl="6" nzXXl="8"
             *ngFor="let item of GithubList">
             <div class="github-list-block" [ngStyle]="{backgroundColor: item.color,color:item.fontColor}">
                 <!-- 仓库名称 -->
