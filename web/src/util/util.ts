@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-03-06 10:23:11
+ * @LastEditTime: 2021-03-10 09:24:22
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -78,4 +78,14 @@ export function CopyText(): void {
     };
   }
 
+}
+export function downloadMD(doc: any, name: string): void {
+  const downloadLink = document.createElement('a');
+  downloadLink.download = name + '.md';
+  downloadLink.style.display = 'none';
+  const blob = new Blob([doc]);
+  downloadLink.href = URL.createObjectURL(blob);
+  document.body.appendChild(downloadLink);
+  downloadLink.click();
+  document.body.removeChild(downloadLink);
 }

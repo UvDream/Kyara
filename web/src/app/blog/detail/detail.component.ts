@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
 import { isPlatformBrowser } from '@angular/common';
 import { BlogService } from '@service/blog.service';
+import { downloadMD } from '../../../util/util';
 interface ReplayItem {
   ID: number;
   user_name: string;
@@ -156,7 +157,9 @@ export class DetailComponent implements OnInit {
     console.log('文章访问');
     const res = await this.request.viewBlog(id);
   }
-
+  downloadMD(): void {
+    downloadMD(this.markDown, this.title);
+  }
   print(): void {
     if (this.platform.isBrowser) {
       setTimeout(() => {
