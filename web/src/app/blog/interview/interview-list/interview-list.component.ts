@@ -25,7 +25,8 @@ export class InterviewListComponent implements OnInit {
   };
   list = [];
   classifyName = '';
-
+  loadingText = '加载更多';
+  btnDisabled = false;
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       console.log(params);
@@ -40,10 +41,19 @@ export class InterviewListComponent implements OnInit {
   async getInterviewList(): Promise<void> {
     const res = await this.blogHttp.getInterviewList(this.form);
     if (res.code === 200) {
-      this.list = res.data.data;
+      if (res.data.data.length > 0) {
+        this.list = this.list.concat(res.data.data);
+      } else {
+        this.loadingText = '以上是全部内容';
+        this.btnDisabled = true;
+      }
     }
   }
   toDetail(id: number): void {
     this.router.navigate(['/interviewDetail'], { queryParams: { id } });
+  }
+  loadMore(): void {
+    this.form.page += 1;
+    this.getInterviewList();
   }
 }

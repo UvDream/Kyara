@@ -24,8 +24,8 @@ export class InterviewDetailComponent implements OnInit {
   public showAnswer = false;
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
+      this.showAnswer = false;
       this.getInterviewDetail(params.id);
-
     });
   }
   async getInterviewDetail(id: number): Promise<void> {

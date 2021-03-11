@@ -37,12 +37,12 @@ func GetInterview(r request.InterviewSearch) (err error, msg string, interview [
 	limit := r.PageSize
 	offset := r.PageSize * (r.Page - 1)
 	//获取面试题总数
-	err = db.Find(&interview).Count(&totalCount).Error
+	err = db.Table("interviews").Count(&totalCount).Error
 	if err != nil {
 		return err, "获取题库", interview, 0
 	}
 	//获取面试题
-	err = db.Where("level LIKE ?", "%"+r.Level+"%").Where("classify_id = ?", r.Classify).Order("level " + r.LevelSort).Find(&interview).Limit(limit).Offset(offset).Error
+	err = db.Where("classify_id = ?", r.Classify).Order("level " + r.LevelSort).Limit(limit).Offset(offset).Find(&interview).Error
 
 	if err != nil {
 		return err, "获取题库失败", interview, totalCount
@@ -52,7 +52,7 @@ func GetInterview(r request.InterviewSearch) (err error, msg string, interview [
 
 func GetInterviewDetail(id string)(err error,msg string,data model.Interview)  {
 	db := global.GVA_DB
-	err=db.Where("classify_id=?",id).Find(&data).Error
+	err=db.Where("id=?",id).Find(&data).Error
 	if err!=nil {
 		return err,"获取详情失败",data
 	}
