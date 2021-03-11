@@ -2,7 +2,7 @@
     <div class="list-title">
         {{classifyName}}
     </div>
-    <div class="list-block" *ngFor="let item of list;let i = index">
+    <div class="list-block" *ngFor="let item of list;let i = index" (click)="toDetail(item.ID)">
         <div class="list-block-index">
             第{{i+1}}题
         </div>

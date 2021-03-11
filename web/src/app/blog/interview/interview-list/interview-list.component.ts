@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '@service/blog.service';
 import { CopyText } from '../../../../util/util';
 import { isPlatformBrowser } from '@angular/common';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-interview-list',
@@ -16,6 +16,7 @@ export class InterviewListComponent implements OnInit {
     private route: ActivatedRoute,
     private blogHttp: BlogService,
     @Inject(PLATFORM_ID) private platformId: object,
+    private router: Router
   ) { }
   form = {
     page: 1,
@@ -38,9 +39,11 @@ export class InterviewListComponent implements OnInit {
   }
   async getInterviewList(): Promise<void> {
     const res = await this.blogHttp.getInterviewList(this.form);
-    console.log(res);
     if (res.code === 200) {
       this.list = res.data.data;
     }
+  }
+  toDetail(id: number): void {
+    this.router.navigate(['/interviewDetail'], { queryParams: { id } });
   }
 }

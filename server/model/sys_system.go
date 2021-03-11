@@ -14,13 +14,13 @@ type System struct {
 type Interview struct {
 	gorm.Model
 	//题目
-	Title string `json:"title" gorm:"comment:'题目'"`
+	Title string `json:"title" gorm:"comment:'题目';type:text"`
 	//tag
 	Tag []uint `json:"tag" gorm:"-"`
 	//tag 集合
 	TagArr []string `json:"tag_arr" gorm:"-"`
 	//	答案
-	AnswerMd string `json:"answer_md" gorm:"comment:'答案markdown格式'"`
+	AnswerMd string `json:"answer_md" gorm:"comment:'答案markdown格式';type:longblob"`
 	// 难以程度
 	Level string `json:"level" gorm:"comment:'难易程度';default:'1'"`
 	//分类

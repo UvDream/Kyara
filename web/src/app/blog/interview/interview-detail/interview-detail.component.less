@@ -1,0 +1,41 @@
+.detail {
+    &-title {
+        text-align      : center;
+        background-color: #fff;
+        line-height     : 50px;
+        border-radius   : 8px;
+    }
+
+    &-topic {
+        background-color: #fff;
+        margin          : 10px 0;
+        padding         : 10px;
+        border-radius   : 8px;
+
+        &-footer {
+            margin-top: 10px;
+            display   : flex;
+
+            &-tag {
+                display  : flex;
+                flex-wrap: wrap;
+
+                section {
+                    margin          : 0 2px;
+                    border-radius   : 4px;
+                    font-size       : 12px;
+                    padding         : 2px 4px;
+                    color           : rgba(224, 149, 62, 0.712);
+                    background-color: #cfdadd;
+                }
+            }
+        }
+    }
+
+    &-content {
+        background-color: #fff;
+        padding         : 10px;
+        border-radius   : 8px;
+        min-height      : 200px;
+    }
+}
