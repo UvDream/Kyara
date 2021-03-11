@@ -38,5 +38,13 @@ export class BlogService {
       params
     });
   }
+  // 获取题库列表
+  getInterviewList = (data?: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/interview/list',
+      data
+    });
+  }
 
 }

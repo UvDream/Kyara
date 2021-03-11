@@ -4,7 +4,7 @@
     </div>
     <div nz-row class="interview-list">
         <div nz-col [nzXs]="8" [nzSm]="8" [nzMd]="6" [nzLg]="6" nzXl="6" nzXXl="4" class="gutter-row"
-            *ngFor="let item of interviewList">
+            *ngFor="let item of interviewList" (click)="tabClick(item.ID,item.classify_name)">
             <div class="interview-list-block">
                 <div class="interview-list-block-img">
                     <img [src]="item.classify_icon" alt="">

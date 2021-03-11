@@ -42,7 +42,7 @@ func GetInterview(r request.InterviewSearch) (err error, msg string, interview [
 		return err, "获取题库", interview, 0
 	}
 	//获取面试题
-	err = db.Where("level LIKE ?", "%"+r.Level+"%").Where("classify = ?", r.Classify).Order("level " + r.LevelSort).Find(&interview).Limit(limit).Offset(offset).Error
+	err = db.Where("level LIKE ?", "%"+r.Level+"%").Where("classify_id = ?", r.Classify).Order("level " + r.LevelSort).Find(&interview).Limit(limit).Offset(offset).Error
 
 	if err != nil {
 		return err, "获取题库失败", interview, totalCount

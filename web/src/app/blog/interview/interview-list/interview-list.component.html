@@ -1,1 +1,16 @@
-<p>interview-list works!</p>
+<div class="list">
+    <div class="list-title">
+        {{classifyName}}
+    </div>
+    <div class="list-block" *ngFor="let item of list;let i = index">
+        <div class="list-block-index">
+            第{{i+1}}题
+        </div>
+        <div class="list-block-title">
+            <div [innerHTML]="item.title | MarkdownPreview"></div>
+        </div>
+        <div class="list-block-footer">
+
+        </div>
+    </div>
+</div>

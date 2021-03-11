@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '@service/blog.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-interview',
   templateUrl: './interview.component.html',
@@ -8,7 +10,8 @@ import { BlogService } from '@service/blog.service';
 export class InterviewComponent implements OnInit {
 
   constructor(
-    private blogHttp: BlogService
+    private blogHttp: BlogService,
+    private router: Router
   ) { }
   public interviewList = [];
   ngOnInit(): void {
@@ -20,6 +23,9 @@ export class InterviewComponent implements OnInit {
     if (res.code === 200) {
       this.interviewList = res.data;
     }
+  }
+  tabClick(id: number, name: string): void {
+    this.router.navigate(['/interviewList'], { queryParams: { id, name } });
   }
 
 }

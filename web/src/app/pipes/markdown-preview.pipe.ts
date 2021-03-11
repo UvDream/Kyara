@@ -10,6 +10,9 @@ export class MarkdownPreviewPipe implements PipeTransform {
 
     const md = new MarkdownIt({
       highlight: (str, lang) => {
+        if (lang === '') {
+          lang = 'javascript';
+        }
         if (lang && hljs.getLanguage(lang)) {
           try {
             // 得到经过highlight.js之后的html代码
