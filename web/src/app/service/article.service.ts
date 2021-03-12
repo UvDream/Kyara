@@ -118,7 +118,7 @@ export class ArticleService {
     }
     return this.http.request({
       method: 'post',
-      url: '/article/baidu',
+      url: '/other/baidu',
       data
     });
   }
