@@ -74,6 +74,9 @@ export class DetailComponent implements OnInit {
   public imgUrl = '';
   public activeId = 1;
   ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
     let id = '';
     let password = '';
     this.route.queryParams.subscribe((params) => {
