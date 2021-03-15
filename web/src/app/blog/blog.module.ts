@@ -61,7 +61,7 @@ import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.mo
 import { InterviewComponent } from './interview/interview.component';
 import { InterviewDetailComponent } from './interview/interview-detail/interview-detail.component';
 import { InterviewListComponent } from './interview/interview-list/interview-list.component';
-
+import { PipeModule } from '@pipes/pipe.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -89,7 +89,8 @@ import { InterviewListComponent } from './interview/interview-list/interview-lis
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
     }),
-    MarkdownEditModule
+    MarkdownEditModule,
+    PipeModule
   ],
   exports: [BlogComponent],
   declarations: [
@@ -128,7 +129,7 @@ import { InterviewListComponent } from './interview/interview-list/interview-lis
     MusicComponent,
     MarkdownPreviewComponent,
     // MarkdownEditComponent,
-    MarkdownPreviewPipe,
+    // MarkdownPreviewPipe,
     InterviewComponent,
     InterviewDetailComponent,
     InterviewListComponent

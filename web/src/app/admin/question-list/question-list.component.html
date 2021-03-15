@@ -1,8 +1,13 @@
 <div>
     <nz-collapse>
-        <nz-collapse-panel *ngFor="let item of list" [nzHeader]="item.title">
-            <div [innerHTML]="item.answer_md ">
-
+        <nz-collapse-panel *ngFor="let item of list" [nzHeader]="nzHeader" [nzExtra]="extraTpl">
+            <ng-template #nzHeader>
+                <div [innerHTML]="item.title | MarkdownPreview"></div>
+            </ng-template>
+            <ng-template #extraTpl>
+                <span class="iconfont uv-terminal-outline"></span>
+            </ng-template>
+            <div [innerHTML]="item.answer_md | MarkdownPreview">
             </div>
         </nz-collapse-panel>
     </nz-collapse>

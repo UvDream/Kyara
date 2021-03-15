@@ -42,6 +42,8 @@ import { QuestionClassifyComponent } from './question-classify/question-classify
 import { QuestionListComponent } from './question-list/question-list.component';
 import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { MarkdownPreviewPipe } from '@pipes/markdown-preview.pipe';
+import { PipeModule } from '@pipes/pipe.module';
+
 
 
 @NgModule({
@@ -71,7 +73,8 @@ import { MarkdownPreviewPipe } from '@pipes/markdown-preview.pipe';
     NzDrawerModule,
     NzImageModule,
     MarkdownEditModule,
-    NzCollapseModule
+    NzCollapseModule,
+    PipeModule
   ],
   declarations: [
     AdminComponent,
