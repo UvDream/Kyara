@@ -37,6 +37,9 @@ import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 import { ArticleConfigComponent } from './blog-config/article-config/article-config.component';
 import { NzImageModule } from 'ng-zorro-antd/image';
 import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.module';
+import { AddQuestionComponent } from './add-question/add-question.component';
+import { QuestionClassifyComponent } from './question-classify/question-classify.component';
+import { QuestionListComponent } from './question-list/question-list.component';
 
 @NgModule({
   imports: [
@@ -81,6 +84,9 @@ import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.mo
     OtherConfigComponent,
     BlogAboutComponent,
     ArticleConfigComponent,
+    AddQuestionComponent,
+    QuestionClassifyComponent,
+    QuestionListComponent,
     // MarkdownEditComponent,
   ],
   exports: [AdminComponent],

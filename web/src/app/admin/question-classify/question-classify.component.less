@@ -1,0 +1,53 @@
+.classify {
+    &-list {
+        display: flex;
+
+        &-block {
+            width        : 200px;
+            height       : 200px;
+            margin       : 10px;
+            text-align   : center;
+            border       : 1px solid #ccc;
+            border-radius: 4px;
+
+            &-img {
+                img {
+                    width : 100px;
+                    height: 100px;
+                }
+            }
+
+            &-text {
+                margin: 15px 0;
+            }
+
+            &-footer {
+                display   : flex;
+                border-top: 1px solid #ccc;
+
+                section {
+                    height     : 45px;
+                    width      : 50%;
+                    line-height: 45px;
+                    cursor     : pointer;
+                }
+
+                section:nth-child(2n) {
+                    border-left: 1px solid #ccc;
+                    color      : red;
+                }
+            }
+        }
+
+        &-add {
+            width      : 200px;
+            height     : 200px;
+            margin     : 10px;
+            text-align : center;
+            line-height: 200px;
+            font-size  : 40px;
+            border     : 1px solid #ccc;
+            cursor     : pointer;
+        }
+    }
+}

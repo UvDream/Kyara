@@ -9,6 +9,9 @@ import { TagsComponent } from './tags/tags.component';
 import { CommentComponent } from './comment/comment.component';
 import { BlogConfigComponent } from './blog-config/blog-config.component';
 import { ImagesComponent } from './images/images.component';
+import { AddQuestionComponent } from './add-question/add-question.component';
+import { QuestionClassifyComponent } from './question-classify/question-classify.component';
+import { QuestionListComponent } from './question-list/question-list.component';
 
 
 export const adminRoutes: Routes = [
@@ -25,6 +28,9 @@ export const adminRoutes: Routes = [
       { path: 'commentList', component: CommentComponent },
       { path: 'blogConfig', component: BlogConfigComponent },
       { path: 'images', component: ImagesComponent },
+      { path: 'addQuestion', component: AddQuestionComponent },
+      { path: 'questionList', component: QuestionListComponent },
+      { path: 'questionClassify', component: QuestionClassifyComponent },
     ],
   },
 

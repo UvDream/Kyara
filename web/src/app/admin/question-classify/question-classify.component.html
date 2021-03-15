@@ -1,0 +1,29 @@
+<div class="classify">
+    <div class="classify-title">
+        试题分类
+    </div>
+    <div class="classify-list">
+        <section *ngFor="let item of interviewList" class="classify-list-block">
+            <div class="classify-list-block-img">
+                <img nz-image [nzSrc]="item.classify_icon" alt="" />
+            </div>
+            <div class="classify-list-block-text">
+                {{item.classify_name}}
+            </div>
+            <div class="classify-list-block-footer">
+                <section (click)="editFunc(item)">修改</section>
+                <section (click)="deleteFunc(item.ID)">删除</section>
+            </div>
+        </section>
+        <section class="classify-list-add" (click)="editFunc()">
+            +
+        </section>
+    </div>
+
+    <!-- 新增修改分类 -->
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="新增/修改分类" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+        <ng-container *nzModalContent>
+            修改
+        </ng-container>
+    </nz-modal>
+</div>
