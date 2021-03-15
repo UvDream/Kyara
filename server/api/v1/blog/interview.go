@@ -33,6 +33,20 @@ func AddInterviewClassify(c *gin.Context)  {
 	}
 
 }
+//删除面试题分类
+func DeleteInterviewClassify(c *gin.Context)  {
+	id:=c.Query("id")
+	if id=="" {
+		response.FailWithMessage("缺少分类id", c)
+	}
+	err,msg:=blog.DeleteInterviewClassify(id)
+	if err!=nil{
+		response.FailWithMessage(msg,c)
+	}else{
+		response.OkWithMessage(msg,c)
+	}
+
+}
 //获取面试题分类
 func GetInterviewClassify(c *gin.Context)  {
 	err,msg,data:=blog.GetInterviewClassify()
@@ -53,7 +67,6 @@ func GetInterview(c *gin.Context)  {
 	apiData:=utils.Rules{
 		"Page":{utils.NotEmpty()},
 		"PageSize":{utils.NotEmpty()},
-		"Classify":{utils.NotEmpty()},
 	}
 	err=utils.Verify(R,apiData)
 	if err != nil {

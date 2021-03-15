@@ -1,1 +1,9 @@
-<p>question-list works!</p>
+<div>
+    <nz-collapse>
+        <nz-collapse-panel *ngFor="let item of list" [nzHeader]="item.title">
+            <div [innerHTML]="item.answer_md ">
+
+            </div>
+        </nz-collapse-panel>
+    </nz-collapse>
+</div>

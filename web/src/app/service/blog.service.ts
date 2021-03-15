@@ -54,5 +54,21 @@ export class BlogService {
       params
     });
   }
+  // 修改或者新增题库分类
+  editInterviewClassify = (data?: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/addInterviewClassify',
+      data
+    });
+  }
+  // 删除面试题分类
+  deleteInterviewClassify = (params?: object) => {
+    return this.http.request({
+      method: 'get',
+      url: '/admin/deleteInterviewClassify',
+      params
+    });
+  }
 
 }

@@ -27,7 +27,11 @@ const antDesignIcons = AllIcons as {
 const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesignIcons[key]);
 registerLocaleData(zh);
 @NgModule({
-  declarations: [AppComponent, ZhihuComponent, NotFoundComponent],
+  declarations: [
+    AppComponent,
+    ZhihuComponent,
+    NotFoundComponent,
+  ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,

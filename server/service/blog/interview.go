@@ -1,7 +1,6 @@
 package blog
 
 import (
-	"fmt"
 	"server/global"
 	"server/model"
 	"server/model/request"
@@ -10,7 +9,6 @@ import (
 //新增面试题分类
 func AddInterviewClassify(r model.InterviewClassify) (err error, msg string) {
 	db := global.GVA_DB
-	fmt.Println(r)
 	//创建分类
 	if r.ID == 0 {
 
@@ -34,6 +32,21 @@ func AddInterviewClassify(r model.InterviewClassify) (err error, msg string) {
 	return err, "创建分类成功"
 }
 
+//删除面试题分类
+func DeleteInterviewClassify(id string)(err error,msg string)  {
+	db := global.GVA_DB
+	var classify model.InterviewClassify
+	err=db.Where("id=?",id).Find(&classify).Error
+	if err!=nil {
+		return err,"此分类不存在"
+	}
+	err=db.Where("id=?",id).Delete(&classify).Error
+	if err!=nil {
+		return err,"删除失败"
+	}
+	return err,"删除成功"
+}
+
 //获取面试题分类
 func GetInterviewClassify() (err error, msg string, data []model.InterviewClassify) {
 	db := global.GVA_DB
@@ -55,7 +68,11 @@ func GetInterview(r request.InterviewSearch) (err error, msg string, interview [
 		return err, "获取题库", interview, 0
 	}
 	//获取面试题
-	err = db.Where("classify_id = ?", r.Classify).Order("level " + r.LevelSort).Limit(limit).Offset(offset).Find(&interview).Error
+	if r.Classify=="" {
+		err = db.Order("level " + r.LevelSort).Limit(limit).Offset(offset).Find(&interview).Error
+	}else{
+		err = db.Where("classify_id = ?", r.Classify).Order("level " + r.LevelSort).Limit(limit).Offset(offset).Find(&interview).Error
+	}
 
 	if err != nil {
 		return err, "获取题库失败", interview, totalCount

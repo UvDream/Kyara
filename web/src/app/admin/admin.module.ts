@@ -40,6 +40,9 @@ import { MarkdownEditModule } from '../components/markdown-edit/markdown-edit.mo
 import { AddQuestionComponent } from './add-question/add-question.component';
 import { QuestionClassifyComponent } from './question-classify/question-classify.component';
 import { QuestionListComponent } from './question-list/question-list.component';
+import { NzCollapseModule } from 'ng-zorro-antd/collapse';
+import { MarkdownPreviewPipe } from '@pipes/markdown-preview.pipe';
+
 
 @NgModule({
   imports: [
@@ -67,7 +70,8 @@ import { QuestionListComponent } from './question-list/question-list.component';
     NzPopoverModule,
     NzDrawerModule,
     NzImageModule,
-    MarkdownEditModule
+    MarkdownEditModule,
+    NzCollapseModule
   ],
   declarations: [
     AdminComponent,
@@ -88,6 +92,7 @@ import { QuestionListComponent } from './question-list/question-list.component';
     QuestionClassifyComponent,
     QuestionListComponent,
     // MarkdownEditComponent,
+    // MarkdownPreviewPipe
   ],
   exports: [AdminComponent],
 })
