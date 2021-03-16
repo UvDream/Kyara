@@ -14,7 +14,8 @@
     "module": "es2020",
     "paths": {
       "@service/*": ["app/service/*"],
-      "@pipes/*": ["app/pipes/*"]
+      "@pipes/*": ["app/pipes/*"],
+      "@util/*": ["util/*"]
     },
     "lib": ["es2018", "dom"]
   }

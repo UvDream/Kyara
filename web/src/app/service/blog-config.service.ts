@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ArticleService } from './article.service';
-import { toTimeDH } from '../../util/util';
+import { toTimeDH } from '@util/util';
 @Injectable({
   providedIn: 'root'
 })

@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-09-02 15:19:45
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-03-10 09:24:22
+ * @LastEditTime: 2021-03-16 10:59:24
  * @Description:工具函数
  * @Email: UvDream@163.com
  */
@@ -63,6 +63,7 @@ export function toTimeDH(timeDate: string, type?: string): string {
  * @description: 复制代码
  */
 export function CopyText(): void {
+  console.log('拷贝代码');
   const copyText = document.getElementsByClassName('copyBtn');
   // tslint:disable-next-line:prefer-for-of
   for (let i = 0; i < copyText.length; i++) {

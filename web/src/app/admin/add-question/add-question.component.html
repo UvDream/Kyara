@@ -1,7 +1,46 @@
 <div class="question">
     <div class="question-title">
-        新增题目
+        <nz-breadcrumb>
+            <nz-breadcrumb-item>
+                首页
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                <a>题库相关</a>
+            </nz-breadcrumb-item>
+            <nz-breadcrumb-item>
+                新增或修改面试题
+            </nz-breadcrumb-item>
+        </nz-breadcrumb>
     </div>
-    <!-- <app-markdown-edit [Catalog]="true" [Cache]="true"></app-markdown-edit> -->
+    <!-- 题目 -->
+    <div class="question-section">
+        <label>题目:</label>
+        <div>
+            <div [innerHTML]="detail.title | MarkdownPreview"></div>
+        </div>
+    </div>
+    <!-- 分类 -->
+    <div class="question-block">
+        <label>题目标签:</label>
+        <div>
+            <nz-tree-select style="width: 250px" class="margin-left-10" [nzDefaultExpandAll]="true"
+                [(ngModel)]="classification" [nzNodes]="nodes" nzShowSearch nzPlaceHolder="请选择分类">
+            </nz-tree-select>
+        </div>
+    </div>
+    <!-- 答案 -->
+    <div class="question-section">
+        <label>答案:</label>
+        <div>
+            <div [innerHTML]="detail.answer_md | MarkdownPreview"></div>
+        </div>
+    </div>
 
+    <!-- 编辑器 -->
+    <nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="bottom" [nzHeight]="600" nzTitle="编辑器"
+        (nzOnClose)="close()">
+        <ng-container *nzDrawerContent>
+            <app-markdown-edit [Catalog]="true" [Cache]="true"></app-markdown-edit>
+        </ng-container>
+    </nz-drawer>
 </div>

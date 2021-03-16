@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '@service/blog.service';
-import { CopyText } from '../../../../util/util';
+import { CopyText } from '@util/util';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 

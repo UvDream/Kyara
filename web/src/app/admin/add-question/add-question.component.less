@@ -1,0 +1,33 @@
+.question {
+    &-block {
+        display    : flex;
+        align-items: center;
+        margin     : 10px 0;
+
+        label {
+            flex-basis : 100px;
+            flex-shrink: 0;
+            font-size  : 20px;
+        }
+
+        &>div {
+            width: calc(100%-100px);
+
+            pre {
+                width: 100%;
+            }
+        }
+    }
+
+    &-section {
+        label {
+            font-size: 20px;
+        }
+
+        &>div {
+            border       : 1px solid #ccc;
+            border-radius: 8px;
+            padding      : 10px;
+        }
+    }
+}

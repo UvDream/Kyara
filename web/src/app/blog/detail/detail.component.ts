@@ -6,7 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { Platform } from '@angular/cdk/platform';
 import { isPlatformBrowser } from '@angular/common';
 import { BlogService } from '@service/blog.service';
-import { downloadMD } from '../../../util/util';
+import { downloadMD } from '@util/util';
 interface ReplayItem {
   ID: number;
   user_name: string;

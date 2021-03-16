@@ -3,7 +3,8 @@
     "baseUrl": "./src/",
     "paths": {
       "@service/*": ["app/service/*"],
-      "@pipes/*": ["app/pipes/*"]
+      "@pipes/*": ["app/pipes/*"],
+      "@util/*": ["util/*"]
     },
     "target": "ES6",
     "module": "commonjs",

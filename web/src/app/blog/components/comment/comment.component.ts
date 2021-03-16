@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { CopyText } from '../../../../util/util';
+import { CopyText } from '@util/util';
 @Component({
   selector: 'app-comment-component',
   templateUrl: './comment.component.html',
