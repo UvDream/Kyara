@@ -58,7 +58,6 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
     this.vditor.setValue(this.EditValue);
   }
   ngOnInit(): void {
-    console.log('编辑器');
     if (isPlatformBrowser(this.platformId)) {
       this.vditor = new Vditor('vditor', {
         // value: this.EditValue,
@@ -92,6 +91,7 @@ export class MarkdownEditComponent implements OnInit, OnChanges {
         },
         after: () => {
           if (this.EditValue !== '') {
+            console.log(this.EditValue, '编辑器内容');
             this.vditor.setValue(this.EditValue);
           }
         }

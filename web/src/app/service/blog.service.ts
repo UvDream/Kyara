@@ -70,5 +70,13 @@ export class BlogService {
       params
     });
   }
+  // 新增/修改面试题
+  addInterview = (data?: object) => {
+    return this.http.request({
+      method: 'post',
+      url: '/admin/addInterview',
+      data
+    });
+  }
 
 }

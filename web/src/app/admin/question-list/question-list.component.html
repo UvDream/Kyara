@@ -5,7 +5,7 @@
                 <div [innerHTML]="item.title | MarkdownPreview"></div>
             </ng-template>
             <ng-template #extraTpl>
-                <span class="iconfont uv-terminal-outline"></span>
+                <span class="iconfont uv-terminal-outline" (click)="editFunc(item.ID)"></span>
             </ng-template>
             <div [innerHTML]="item.answer_md | MarkdownPreview">
             </div>

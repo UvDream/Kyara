@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '@service/blog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-list',
@@ -10,7 +11,7 @@ export class QuestionListComponent implements OnInit {
 
   constructor(
     private blogHttp: BlogService,
-
+    private router: Router
   ) { }
   list = [];
   form = {
@@ -27,6 +28,9 @@ export class QuestionListComponent implements OnInit {
     if (res.code === 200) {
       this.list = res.data.data;
     }
+  }
+  editFunc(id: number): void {
+    this.router.navigate(['/admin/addQuestion'], { queryParams: { id } });
   }
 
 }

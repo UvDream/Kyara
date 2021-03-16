@@ -23,7 +23,7 @@ func AddInterviewClassify(r model.InterviewClassify) (err error, msg string) {
 		}
 	}else{
 	//	更新
-		err=db.First(&r).Error
+		err=db.Save(&r).Error
 		if err!=nil {
 			return err,"更新失败"
 		}
@@ -106,14 +106,19 @@ func GetInterviewDetail(id string) (err error, msg string, data model.Interview)
 }
 
 //新增面试题
-func AddInterview(r model.Interview) (err error, msg string) {
+func AddInterview(r model.Interview) (err error, msg string, data model.Interview) {
 	db := global.GVA_DB
 	if r.Level == "" {
 		r.Level = "1"
 	}
-	err = db.Create(&r).Error
+	data=r
+	if r.ID==0 {
+		err = db.Create(&r).Error
+	}else{
+		err=db.Save(&r).Error
+	}
 	if err != nil {
-		return err, "创建失败"
+		return err, "创建失败",r
 	}
 	for _, k := range r.Tag {
 		var tag model.InterviewTag
@@ -123,10 +128,10 @@ func AddInterview(r model.Interview) (err error, msg string) {
 		if err == nil {
 			err = db.Create(&tag).Error
 			if err != nil {
-				return err, "创建试题和tag之间关系失败"
+				return err, "创建试题和tag之间关系失败",r
 			}
 		}
 
 	}
-	return err, "创建试题成功"
+	return err, "创建试题成功",r
 }

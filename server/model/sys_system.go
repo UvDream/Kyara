@@ -24,7 +24,7 @@ type Interview struct {
 	// 难以程度
 	Level string `json:"level" gorm:"comment:'难易程度';default:'1'"`
 	//分类
-	ClassifyID string `json:"classify_id" gorm:"comment:'分类id'"`
+	ClassifyID uint `json:"classify_id" gorm:"comment:'分类id'"`
 }
 
 //面试题分类

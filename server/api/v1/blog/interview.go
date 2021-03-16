@@ -100,6 +100,7 @@ func AddInterview(c *gin.Context)  {
 	err:=c.ShouldBindJSON(&R)
 	if err!=nil {
 		response.FailWithMessage("获取参数错误",c)
+		return
 	}
 	apiData:=utils.Rules{
 		"Title":{utils.NotEmpty()},
@@ -110,11 +111,11 @@ func AddInterview(c *gin.Context)  {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	err,msg:=blog.AddInterview(R)
+	err,msg,data:=blog.AddInterview(R)
 	if err!=nil{
 		response.FailWithMessage(msg,c)
 	}else{
-		response.OkWithMessage(msg,c)
+		response.OkDetailed(data,msg,c)
 	}
 
 }

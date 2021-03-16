@@ -4,7 +4,7 @@ import { BlogService } from '@service/blog.service';
 import { ArticleService } from '@service/article.service';
 import { CopyText } from '@util/util';
 import { isPlatformBrowser } from '@angular/common';
-
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 interface TreeItem {
   key: string;
@@ -24,6 +24,7 @@ export class AddQuestionComponent implements OnInit {
     private blogHttp: BlogService,
     private httpService: ArticleService,
     @Inject(PLATFORM_ID) private platformId: object,
+    private message: NzMessageService
   ) { }
   public detail = {
     title: '',
@@ -34,11 +35,17 @@ export class AddQuestionComponent implements OnInit {
     level: '',
     classify_id: ''
   };
+  tagVal = [];
+  status = 1;
   classification: number;
-  public nodes = [
-  ];
+  public markdownContent: string;
+  public cacheMarkdownContent: string;
+  selectedValue = '';
+  public tagList = [];
+  public classifyList = [];
   visible = false;
   ngOnInit(): void {
+    this.getTag();
     this.getClassify();
     this.route.queryParams.subscribe((params) => {
       if (params.id) {
@@ -49,8 +56,26 @@ export class AddQuestionComponent implements OnInit {
       CopyText();
     }
   }
+  editFunc(id: number): void {
+    this.visible = true;
+    this.status = id;
+    id === 1 ? this.markdownContent = this.detail.title : this.markdownContent = this.detail.answer_md;
+  }
   close(): void {
     this.visible = false;
+  }
+  async getClassify(): Promise<void> {
+    const res = await this.blogHttp.getInterview();
+    if (res.code === 200) {
+      this.classifyList = res.data;
+    }
+  }
+  // 获取tag
+  async getTag(): Promise<void> {
+    const res = await this.httpService.getTag();
+    if (res.code === 200) {
+      this.tagList = res.data;
+    }
   }
   async getInterviewDetail(id: number): Promise<void> {
     const res = await this.blogHttp.getInterviewDetail({ id });
@@ -58,26 +83,23 @@ export class AddQuestionComponent implements OnInit {
       this.detail = res.data;
     }
   }
-  changeData = (arr: any): Array<TreeItem> => {
-    const data: Array<TreeItem> = [];
-    arr.forEach(element => {
-      const obj: TreeItem = {
-        title: '',
-        key: '',
-        children: []
-      };
-      obj.title = element.type_name;
-      obj.key = element.ID;
-      element.children.length > 0 ? obj.children = this.changeData(element.children) : obj.isLeaf = true;
-      data.push(obj);
-    });
-    return data;
+
+
+  EditValueOutput(value: string): void {
+    // console.log(value, '编辑器');
+    this.cacheMarkdownContent = value;
   }
-  // 获取分类
-  getClassify = async () => {
-    const res = await this.httpService.getArticleClassification();
-    if (res.code !== 200) { return; }
-    this.nodes = this.changeData(res.data);
+  async saveFunc(): Promise<void> {
+    console.log(this.detail);
+    const res = await this.blogHttp.addInterview(this.detail);
+    if (res.code === 200) {
+      this.message.success('保存成功!');
+      this.detail = res.data.data;
+    }
+  }
+  sureFunc(): void {
+    this.visible = false;
+    this.status === 1 ? this.detail.title = this.cacheMarkdownContent : this.detail.answer_md = this.cacheMarkdownContent;
   }
 
 }

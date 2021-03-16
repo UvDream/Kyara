@@ -14,33 +14,64 @@
     </div>
     <!-- 题目 -->
     <div class="question-section">
-        <label>题目:</label>
-        <div>
-            <div [innerHTML]="detail.title | MarkdownPreview"></div>
+        <label>
+            题目:
+            <i class="iconfont uv-create-sharp" (click)="editFunc(1)"></i>
+        </label>
+        <div (click)="editFunc(1)">
+            <div [innerHTML]=" detail.title | MarkdownPreview"></div>
+        </div>
+    </div>
+
+    <!-- 答案 -->
+    <div class="question-section">
+        <label>
+            答案:
+            <i class="iconfont uv-create-sharp" (click)="editFunc(2)"></i>
+        </label>
+        <div (click)="editFunc(2)">
+            <div [innerHTML]="detail.answer_md | MarkdownPreview"></div>
         </div>
     </div>
     <!-- 分类 -->
     <div class="question-block">
         <label>题目标签:</label>
         <div>
-            <nz-tree-select style="width: 250px" class="margin-left-10" [nzDefaultExpandAll]="true"
-                [(ngModel)]="classification" [nzNodes]="nodes" nzShowSearch nzPlaceHolder="请选择分类">
-            </nz-tree-select>
+            <nz-select [nzMaxTagCount]="3" class="margin-left-10" style="width: 250px" nzMode="multiple"
+                [nzDropdownRender]="renderTemplate" nzPlaceHolder="请选择标签" [(ngModel)]="detail.tag" nzAllowClear>
+                <nz-option *ngFor="let item of tagList" [nzLabel]="item.tag_name" [nzValue]="item.ID"></nz-option>
+            </nz-select>
+            <ng-template #renderTemplate>
+                <nz-divider></nz-divider>
+                <div class="add-tag">
+                    <input type="text" nz-input #inputElement placeholder="请输入标签" [(ngModel)]="tagVal" />
+                    <button nz-button nzType="primary" nzShape="round" (click)="addTag()">
+                        添加标签
+                    </button>
+                </div>
+            </ng-template>
         </div>
+        <label>题目分类:</label>
+        <nz-select nzShowSearch nzAllowClear nzPlaceHolder="请选择分类" style="width: 250px"
+            [(ngModel)]="detail.classify_id">
+            <nz-option [nzLabel]="item.classify_name" [nzValue]="item.ID" *ngFor="let item of classifyList"></nz-option>
+        </nz-select>
     </div>
-    <!-- 答案 -->
-    <div class="question-section">
-        <label>答案:</label>
-        <div>
-            <div [innerHTML]="detail.answer_md | MarkdownPreview"></div>
-        </div>
+    <div style="text-align:center">
+        <button nz-button nzType="primary" (click)="saveFunc()">保存</button>
     </div>
-
     <!-- 编辑器 -->
     <nz-drawer [nzClosable]="false" [nzVisible]="visible" nzPlacement="bottom" [nzHeight]="600" nzTitle="编辑器"
-        (nzOnClose)="close()">
+        [nzFooter]="footerTpl" (nzOnClose)="close()">
         <ng-container *nzDrawerContent>
-            <app-markdown-edit [Catalog]="true" [Cache]="true"></app-markdown-edit>
+            <app-markdown-edit *ngIf="visible" [EditValue]="markdownContent" [Catalog]="false" [Cache]="false"
+                (EditValueOutput)="EditValueOutput($event)"></app-markdown-edit>
         </ng-container>
+        <ng-template #footerTpl>
+            <div style="float: right">
+                <button nz-button style="margin-right: 8px;" (click)="close()">取消</button>
+                <button nz-button nzType="primary" (click)="sureFunc()">确定</button>
+            </div>
+        </ng-template>
     </nz-drawer>
 </div>
