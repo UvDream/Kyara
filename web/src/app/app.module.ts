@@ -20,7 +20,8 @@ import { ZhihuComponent } from './components/zhihu/zhihu.component';
 import { NotFoundComponent } from './other/not-found/not-found.component';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { IconDefinition } from '@ant-design/icons-angular';
-
+import { RouteReuseStrategy } from '@angular/router';
+import { AppRouteReuseStrategy } from '@service/route-strategy.service';
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
@@ -45,7 +46,10 @@ registerLocaleData(zh);
     LoginModule,
     NzIconModule.forRoot(icons)
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [
+    { provide: NZ_I18N, useValue: zh_CN },
+    { provide: RouteReuseStrategy, useClass: AppRouteReuseStrategy }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

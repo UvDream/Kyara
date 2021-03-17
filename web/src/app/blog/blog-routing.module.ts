@@ -54,11 +54,23 @@ export const homeRoutes: Routes = [
       },
       {
         path: 'interviewDetail',
-        component: InterviewDetailComponent
+        component: InterviewDetailComponent,
+        data: {
+          title: '题库详情',
+          module: 'interviewDetail',
+          keep: false,
+          power: ''
+        }
       },
       {
         path: 'interviewList',
-        component: InterviewListComponent
+        component: InterviewListComponent,
+        data: {
+          title: '题库列表',
+          module: 'interviewList',
+          keep: true,
+          power: ''
+        }
       }
     ],
   },
