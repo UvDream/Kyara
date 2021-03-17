@@ -20,6 +20,11 @@ export const homeRoutes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        data: {
+          title: '博客首页',
+          module: '',
+          keep: true,
+        }
       },
       {
         path: 'detail',

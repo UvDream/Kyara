@@ -34,10 +34,10 @@ export class HomeComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const page = localStorage.getItem('page');
-      page ? this.form.page = Number(page) : this.form.page = 1;
-    }
+    // if (isPlatformBrowser(this.platformId)) {
+    //   const page = localStorage.getItem('page');
+    //   page ? this.form.page = Number(page) : this.form.page = 1;
+    // }
     this.getData();
     this.setTitle('汪中杰的个人博客-首页');
     this.catalog.SetCatLog([]);
@@ -70,9 +70,9 @@ export class HomeComponent implements OnInit {
       this.form.page++;
       this.getData();
     }
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('page', this.form.page.toString());
-    }
+    // if (isPlatformBrowser(this.platformId)) {
+    //   localStorage.setItem('page', this.form.page.toString());
+    // }
   }
   havePassword = (id: string) => {
     this.isVisible = true;
