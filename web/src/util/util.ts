@@ -63,7 +63,6 @@ export function toTimeDH(timeDate: string, type?: string): string {
  * @description: 复制代码
  */
 export function CopyText(): void {
-  console.log('拷贝代码');
   const copyText = document.getElementsByClassName('copyBtn');
   // tslint:disable-next-line:prefer-for-of
   for (let i = 0; i < copyText.length; i++) {
