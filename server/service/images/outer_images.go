@@ -186,5 +186,22 @@ func uploadBx(c *gin.Context, token string) (msg string, err error, list request
 		return "获取返回解析错误", err, list
 	}
 	list = bxData.Data
+	err,msg=SaveImgUrl(list,c)
+	if err!=nil {
+		return msg, nil, list
+	}
 	return "上传成功", err, list
+}
+func SaveImgUrl(list request.BxData ,c *gin.Context)(err error ,msg string){
+	db := global.GVA_DB
+	var imgList model.ExaFileUploadAndDownload
+	imgList.Url=list.URL
+	imgList.Name=list.Name
+	imgList.Tag=list.Mime
+	imgList.Type=c.PostForm("type")
+	err=db.Create(&imgList).Error
+	if err!=nil {
+		return err,"存储图片路径错误"
+	}
+	return err,"存储成功"
 }

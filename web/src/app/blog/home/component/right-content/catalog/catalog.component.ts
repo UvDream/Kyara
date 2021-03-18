@@ -22,7 +22,7 @@ export class CatalogComponent implements OnInit, DoCheck {
   public pathName = '';
   ngOnInit(): void {
     if (this.platform.isBrowser) {
-    this.pathName = location.pathname;
+      this.pathName = location.pathname;
     }
   }
 
