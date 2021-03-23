@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '@service/article.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '@service/admin.service';
 interface TreeItem {
   key: string;
@@ -17,6 +17,7 @@ interface TreeItem {
 export class EditArticleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private httpService: ArticleService,
     private message: NzMessageService,
     private httpAdmin: AdminService,
@@ -62,6 +63,7 @@ export class EditArticleComponent implements OnInit {
   tagVal = '';
   expandKeys = ['100', '1001'];
   tagList = [];
+  routerID = '';
   public nodes = [
   ];
 
@@ -71,6 +73,7 @@ export class EditArticleComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       if (params.id) {
         this.getArticleDetail(params.id);
+        this.routerID = params.id;
       }
     });
   }
@@ -126,6 +129,9 @@ export class EditArticleComponent implements OnInit {
     if (res.code === 200) {
       this.form.article_id = res.data.ID;
       this.message.info(res.msg);
+      if (this.routerID === '') {
+        this.router.navigate(['/admin/editArticle'], { queryParams: { id: res.data.ID } });
+      }
     } else {
       this.message.error(res.msg);
     }
