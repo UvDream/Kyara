@@ -3,6 +3,7 @@ import { ArticleService } from '@service/article.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '@service/admin.service';
+import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
 interface TreeItem {
   key: string;
   title: string;
@@ -135,6 +136,17 @@ export class EditArticleComponent implements OnInit {
     } else {
       this.message.error(res.msg);
     }
+  }
+  // 解析markdown文件
+
+  onFileChange(event: any): void {
+    console.log(event);
+    const input = event.target;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.form.article_content = reader.result.toString();
+    };
+    reader.readAsText(input.files[0]);
   }
   checkChange = () => {
     if (this.isTop) {

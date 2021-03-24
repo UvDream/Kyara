@@ -8,6 +8,10 @@
     <button class="margin-left-10" nz-button nzType="primary" nzShape="round" (click)="submitFunc()">
       发表
     </button>
+
+    <button class="margin-left-10 edit-upload" nz-button nzType="primary" nzShape="round" nzGhost>上传
+      <input type="file" id="file" (change)="onFileChange($event)" class="edit-upload-input" />
+    </button>
   </div>
   <!-- 编辑器 -->
   <app-markdown-edit [EditValue]="form.article_content" [Catalog]="true" [Cache]="true"
