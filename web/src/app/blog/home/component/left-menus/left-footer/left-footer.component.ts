@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
+import { adminUrl } from '../../../../../../environments/env';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class LeftFooterComponent implements OnInit {
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: object
   ) { }
-
+  url = adminUrl;
   ngOnInit(): void {
   }
   toAdmin(): void {

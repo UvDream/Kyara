@@ -2,7 +2,7 @@
  * @Author: wangzhongjie
  * @Date: 2020-04-14 13:56:51
  * @LastEditors: wangzhongjie
- * @LastEditTime: 2021-03-08 15:17:15
+ * @LastEditTime: 2021-03-26 09:06:55
  * @Description:配置文件
  * @Email: UvDream@163.com
  */
@@ -16,9 +16,12 @@ const iconfontVersion = [
 const iconfontUrl = `//at.alicdn.com/t/font_$key`;
 
 let baseUrl: string;
+let adminUrl: string;
 if (!environment.production) {
     baseUrl = `http://localhost:3000`;
+    adminUrl = `http://localhost:4200/admin`;
 } else {
     baseUrl = `http://www.uvdream.cn/api`;
+    adminUrl = `http://www.uvdream.cn/admin`;
 }
-export { iconfontUrl, iconfontVersion, baseUrl };
+export { iconfontUrl, iconfontVersion, baseUrl, adminUrl };
