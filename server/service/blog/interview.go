@@ -63,9 +63,13 @@ func GetInterview(r request.InterviewSearch) (err error, msg string, interview [
 	limit := r.PageSize
 	offset := r.PageSize * (r.Page - 1)
 	//获取面试题总数
-	err = db.Table("interviews").Count(&totalCount).Error
+	if r.Classify=="" {
+		err = db.Table("interviews").Count(&totalCount).Error
+	}else{
+		err = db.Where("classify_id = ?", r.Classify).Table("interviews").Count(&totalCount).Error
+	}
 	if err != nil {
-		return err, "获取题库", interview, 0
+		return err, "获取题库总数失败", interview, 0
 	}
 	//获取面试题
 	if r.Classify=="" {

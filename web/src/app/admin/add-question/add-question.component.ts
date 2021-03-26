@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from '@service/blog.service';
 import { ArticleService } from '@service/article.service';
 import { CopyText } from '@util/util';
@@ -24,7 +24,8 @@ export class AddQuestionComponent implements OnInit {
     private blogHttp: BlogService,
     private httpService: ArticleService,
     @Inject(PLATFORM_ID) private platformId: object,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private router: Router
   ) { }
   public detail = {
     title: '',
@@ -57,6 +58,8 @@ export class AddQuestionComponent implements OnInit {
     }
   }
   editFunc(id: number): void {
+    console.log(this.detail);
+
     this.visible = true;
     this.status = id;
     id === 1 ? this.markdownContent = this.detail.title : this.markdownContent = this.detail.answer_md;
@@ -90,12 +93,25 @@ export class AddQuestionComponent implements OnInit {
     this.cacheMarkdownContent = value;
   }
   async saveFunc(): Promise<void> {
-    console.log(this.detail);
     const res = await this.blogHttp.addInterview(this.detail);
     if (res.code === 200) {
       this.message.success('保存成功!');
-      this.detail = res.data.data;
+      this.detail = res.data;
+      this.router.navigate(['/admin/addQuestion'], { queryParams: { id: res.data.ID } });
     }
+  }
+  // 取消
+  cancelFunc(): void {
+    this.router.navigate(['/admin/addQuestion']);
+    this.detail = {
+      title: '',
+      CreateAt: '',
+      tag: [],
+      tag_arr: [],
+      answer_md: '',
+      level: '',
+      classify_id: ''
+    };
   }
   sureFunc(): void {
     this.visible = false;

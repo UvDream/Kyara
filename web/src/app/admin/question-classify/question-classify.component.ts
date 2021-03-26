@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BlogService } from '@service/blog.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 interface ClassifyItem {
@@ -15,7 +16,8 @@ export class QuestionClassifyComponent implements OnInit {
 
   constructor(
     private blogHttp: BlogService,
-    private modal: NzModalService
+    private modal: NzModalService,
+    private router: Router
   ) { }
   public interviewList = [];
   isVisible = false;
@@ -52,6 +54,10 @@ export class QuestionClassifyComponent implements OnInit {
       }
     });
 
+  }
+  // 去试题页面
+  toInterview(id: number): void {
+    this.router.navigate(['/admin/questionList'], { queryParams: { id } });
   }
   handleCancel(): void {
     this.isVisible = false;

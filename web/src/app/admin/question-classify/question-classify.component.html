@@ -4,10 +4,10 @@
     </div>
     <div class="classify-list">
         <section *ngFor="let item of interviewList" class="classify-list-block">
-            <div class="classify-list-block-img">
+            <div class="classify-list-block-img" (click)="toInterview(item.ID)">
                 <img nz-image [nzSrc]="item.classify_icon" alt="" />
             </div>
-            <div class="classify-list-block-text">
+            <div class="classify-list-block-text" (click)="toInterview(item.ID)">
                 {{item.classify_name}}
             </div>
             <div class="classify-list-block-footer">

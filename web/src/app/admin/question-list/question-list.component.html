@@ -1,4 +1,4 @@
-<div>
+<div class="list">
     <nz-collapse>
         <nz-collapse-panel *ngFor="let item of list" [nzHeader]="nzHeader" [nzExtra]="extraTpl">
             <ng-template #nzHeader>
@@ -11,4 +11,11 @@
             </div>
         </nz-collapse-panel>
     </nz-collapse>
+    <div class="list-page">
+        <nz-pagination nzShowSizeChanger [(nzPageIndex)]="form.page" [(nzPageSize)]="form.page_size"
+            [(nzTotal)]="totalCount" (nzPageIndexChange)="pageChange($event)"
+            (nzPageSizeChange)="pageSizeChange($event)">
+        </nz-pagination>
+    </div>
+
 </div>

@@ -44,7 +44,7 @@ import { NzCollapseModule } from 'ng-zorro-antd/collapse';
 import { MarkdownPreviewPipe } from '@pipes/markdown-preview.pipe';
 import { PipeModule } from '@pipes/pipe.module';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
-
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 @NgModule({
   imports: [
@@ -75,7 +75,8 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
     MarkdownEditModule,
     NzCollapseModule,
     PipeModule,
-    NzBreadCrumbModule
+    NzBreadCrumbModule,
+    NzPaginationModule
   ],
   declarations: [
     AdminComponent,
