@@ -1,5 +1,11 @@
 <div class="home">
   <!-- <app-notice></app-notice> -->
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input type="text" nz-input [(ngModel)]="form.search" placeholder="请输入搜索内容" (change)="searchFunc()" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
   <div class="home-skeleton" *ngIf="Loading">
     <nz-skeleton></nz-skeleton>
   </div>

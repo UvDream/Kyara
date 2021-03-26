@@ -47,6 +47,9 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+  searchFunc(): void {
+    this.getData();
+  }
   getData = async () => {
     this.Loading = true;
     const res = await this.articleService.articleList(this.form);
