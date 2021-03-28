@@ -22,7 +22,8 @@ export class CommentComponent implements OnInit {
   replyForm = {
     id: '',
     comment: '',
-    status: ''
+    status: '',
+    article_id: ''
   };
   ngOnInit(): void {
     this.getData();
@@ -58,6 +59,7 @@ export class CommentComponent implements OnInit {
   replyFunc(item): void {
     this.replyForm.id = item.ID.toString();
     this.replyForm.status = item.status;
+    this.replyForm.article_id = item.article_id;
     this.isVisible = true;
   }
   // 取消弹窗
