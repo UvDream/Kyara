@@ -15,7 +15,11 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 	var topArticle []model.SysArticle
 	var total int64
 	//查询总数
-	err = db.Table("sys_articles").Count(&total).Error
+	if(u.Search=="") {
+		err = db.Table("sys_articles").Count(&total).Error
+	}else{
+		err = db.Table("sys_articles").Where("title LIKE ?","%"+u.Search+"%").Or("article_content LIKE ?","%"+u.Search+"%").Count(&total).Error
+	}
 
 	// 先查询置顶文章
 	if u.ClassificationID == "" && u.Tag == "" {
