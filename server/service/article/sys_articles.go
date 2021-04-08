@@ -15,14 +15,16 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 	var topArticle []model.SysArticle
 	var total int64
 	//查询总数
-	err = db.Table("sys_articles").Count(&total).Error
+	if u.Search=="" {
+		err = db.Table("sys_articles").Count(&total).Error
+	}else{
+		err = db.Where("title LIKE ? ","%"+u.Search+"%").Or("article_content LIKE ?","%"+u.Search+"%").Table("sys_articles").Count(&total).Error
+	}
 
 	// 先查询置顶文章
 	if u.ClassificationID == "" && u.Tag == "" {
 		if(u.Search==""){
 			err = db.Where(&model.SysArticle{Top: "1"}).Find(&topArticle).Error
-		}else{
-			err = db.Where(&model.SysArticle{Top: "1"}).Where("title LIKE ?","%"+u.Search+"%").Or("article_content LIKE ?","%"+u.Search+"%").Find(&topArticle).Error
 		}
 	}
 	if u.ClassificationID != "" {
@@ -37,7 +39,14 @@ func ArticleList(u request.ArticleListStruct) (err error, list []model.SysArticl
 	limit := u.PageSize
 	offset := u.PageSize * (u.Page - 1)
 	if u.ClassificationID == "" && u.Tag == "" {
-		err = db.Where("top=? ", "0").Where("title LIKE ?","%"+u.Search+"%").Or("article_content LIKE ?","%"+u.Search+"%").Limit(limit).Offset(offset).Order("update_time desc").Find(&articleList).Error
+		if u.Search==""{
+			err = db.Where("top = ?","0").Limit(limit).Offset(offset).Order("update_time desc").Find(&articleList).Error
+		}else{
+			err = db.Where("title LIKE ? ","%"+u.Search+"%").Or("article_content LIKE ?","%"+u.Search+"%").Limit(limit).Offset(offset).Order("update_time desc").Find(&articleList).Error
+		}
+
+
+
 	}
 	if u.ClassificationID != "" {
 		err = db.Where("top=? AND classification_id=?", "0", u.ClassificationID).Where("title LIKE ?","%"+u.Search+"%").Limit(limit).Offset(offset).Order("update_time desc").Find(&articleList).Error
