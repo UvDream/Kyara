@@ -20,6 +20,14 @@ func GetBlogComment(r request.ListStruct) (err error, comment []model.BlogCommen
 		return err, comment, "查询留言失败", total
 	}
 	for i,k:=range comment{
+		if k.ArticleID!="" {
+			var  article model.SysArticle
+			err=db.Where("ID = ?",k.ArticleID).Find(&article).Error
+			if err!=nil {
+				return err, comment, "查询文章标题失败", total
+			}
+			comment[i].ArticleTitle=article.Title
+		}
 		if k.UserID!=""{
 			var user model.SysUser
 			err=db.Where("ID=?",k.UserID).Find(&user).Error
@@ -67,6 +75,7 @@ func RevertComment(c *gin.Context, r response.ReplyComment) (msg string, err err
 	var comment model.BlogComment
 	comment.CommentContent = r.Comment
 	comment.ParentID = r.ID
+	comment.ArticleID=r.ArticleID
 	comment.UserName = waitUse.NickName
 	comment.UserID = strconv.Itoa(int(waitUse.ID ))
 	comment.Status = "1"

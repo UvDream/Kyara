@@ -7,4 +7,5 @@ type CheckComment struct {
 type ReplyComment struct {
 	ID      string `json:"id"`
 	Comment string `json:"comment"`
+	ArticleID string `json:"article_id"`
 }

@@ -19,7 +19,7 @@
                 <th nzAlign="center">网站</th>
                 <th nzAlign="center">创建时间</th>
                 <th nzAlign="center">状态</th>
-                <th nzAlign="center">文章ID</th>
+                <th nzAlign="center">文章标题</th>
                 <th nzAlign="center" nzWidth="250px">操作</th>
             </tr>
         </thead>
@@ -46,7 +46,12 @@
                     <nz-tag nzColor="success" *ngIf="data.status==='1'">审核通过</nz-tag>
                     <nz-tag nzColor="warning" *ngIf="data.status==='0'">待审核</nz-tag>
                 </td>
-                <td nzAlign="center">{{ data.article_id }}</td>
+                <td nzAlign="center" nzEllipsis nz-popover [nzPopoverContent]="articleTemplate">
+                    {{ data.article_title }}
+                    <ng-template #articleTemplate>
+                        <div style="max-width: 800px;">{{data.article_title}}</div>
+                    </ng-template>
+                </td>
                 <td nzAlign="center">
                     <button nz-button nzType="primary" nzGhost style="margin-right:10px"
                         (click)="replyFunc(data)">回复</button>

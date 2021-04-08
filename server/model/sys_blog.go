@@ -18,6 +18,7 @@ type BlogComment struct {
 	Status         string        `json:"status" gorm:"comment:'审核状态0:需要审核,1:可以展示'`
 	Children       []BlogComment `json:"children" gorm:"-"`
 	ArticleID      string        `json:"article_id" gorm:"comment:'文章id';default:''"`
+	ArticleTitle   string        `json:"article_title" gorm:"-"`
 }
 
 //博客动态
