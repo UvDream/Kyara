@@ -1,4 +1,4 @@
-<div (click)="toDetail(data)" class="list">
+<a (click)="toDetail(data)" class="list">
   <!-- 置顶单图 -->
   <div class="list-img" *ngIf="data.cover_type == 2" [ngStyle]="{ 'background-image': 'url(' + data.img_url + ')' }">
     <header class="list-header">
@@ -131,4 +131,4 @@
       </div>
     </div>
   </div>
-</div>
+</a>
