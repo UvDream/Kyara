@@ -14,6 +14,7 @@ zap:
   show-line: true
   log-in-console: true
 
+# 系统设置
 system:
   env: 'public'  # Change to "develop" to skip authentication for development mode
   addr: 8888
@@ -25,3 +26,17 @@ system:
   ip-limit-count: 15000
   #  IP限制一个小时
   ip-limit-time: 3600
+
+
+#  mysql
+mysql:
+  path: ''
+  port: ''
+  config: ''
+  db-name: ''
+  username: ''
+  password: ''
+  max-idle-conns: 10
+  max-open-conns: 100
+  log-mode: ""
+  log-zap: false

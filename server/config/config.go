@@ -6,4 +6,5 @@ type Config struct {
 	System System    `mapstructure:"system" json:"system" yaml:"system"`
 	Mysql  Mysql     `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	Pgsql  Pgsql     `mapstructure:"pgsql" json:"pgsql" yaml:"pgsql"`
+	Redis  Redis     `mapstructure:"redis" json:"redis" yaml:"redis"`
 }
