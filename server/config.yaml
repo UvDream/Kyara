@@ -1,0 +1,27 @@
+host:
+  0.0.0.0
+port:
+  8090
+# 日志设置
+zap:
+  level: 'info'
+  prefix: '[ZAP] '
+  format: 'console'
+  director: 'log'
+  encode-level: 'LowercaseColorLevelEncoder'
+  stacktrace-key: 'stacktrace'
+  max-age: 30 # 默认日志留存默认以天为单位
+  show-line: true
+  log-in-console: true
+
+system:
+  env: 'public'  # Change to "develop" to skip authentication for development mode
+  addr: 8888
+  db-type: 'mysql'
+  oss-type: 'local'    # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
+  use-redis: false     # 使用redis
+  use-multipoint: false
+  # IP限制次数 一个小时15000次
+  ip-limit-count: 15000
+  #  IP限制一个小时
+  ip-limit-time: 3600
