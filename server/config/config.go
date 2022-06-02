@@ -7,4 +7,7 @@ type Config struct {
 	Mysql  Mysql     `mapstructure:"mysql" json:"mysql" yaml:"mysql"`
 	Pgsql  Pgsql     `mapstructure:"pgsql" json:"pgsql" yaml:"pgsql"`
 	Redis  Redis     `mapstructure:"redis" json:"redis" yaml:"redis"`
+	// 跨域配置
+	Cors CORS `mapstructure:"cors" json:"cors" yaml:"cors"`
+	JWT  JWT  `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
 }

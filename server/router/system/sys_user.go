@@ -7,10 +7,11 @@ import (
 
 type UserRouter struct{}
 
-func (s *UserRouter) InitUserRouter(Router *gin.RouterGroup) {
+func (s *UserRouter) InitUserRouter(Router *gin.RouterGroup) (R gin.IRouter) {
 	userRouter := Router.Group("user")
 	baseApi := v1.ApiGroupApp.SystemApiGroup.UserApi
 	{
-		userRouter.POST("login", baseApi.Login)
+		userRouter.POST("register", baseApi.Register)
 	}
+	return userRouter
 }
