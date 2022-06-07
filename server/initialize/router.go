@@ -26,6 +26,7 @@ func Routers() *gin.Engine {
 	}
 	//需要登陆才可以访问的接口
 	PrivateGroup := Router.Group("")
+	PrivateGroup.Use(middleware.JWTAuth())
 	{
 		systemRouter.InitUserRouter(PrivateGroup)
 	}
