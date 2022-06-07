@@ -5,7 +5,8 @@ import (
 	"gorm.io/gorm"
 )
 
-type User struct {
+// SysUser 用户表
+type SysUser struct {
 	gorm.Model
 	UUID     uuid.UUID `json:"uuid" gorm:"comment:用户的UUID"`
 	UserName string    `json:"user_name" gorm:"comment:用户名"`
@@ -14,6 +15,6 @@ type User struct {
 	Phone    string    `json:"phone" gorm:"comment:手机号"`
 	Email    string    `json:"email" gorm:"comment:邮箱"`
 	Avatar   string    `json:"avatar" gorm:"comment:头像"`
-	RoleID   string    `json:"role_id" gorm:"comment:角色ID"`
-	Role     string    `json:"role" gorm:"foreignKey:RoleID;references:ID;comment:角色"`
+	//关联到角色表
+	Roles []SysRole `json:"roles" gorm:"many2many:sys_user_role;"`
 }

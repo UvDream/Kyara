@@ -1,5 +1,6 @@
 package system
 
-type ServiceGroup struct {
+type SysServiceGroup struct {
 	JWTService
+	SysConfigService
 }

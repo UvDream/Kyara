@@ -12,7 +12,8 @@ type Response struct {
 }
 
 const (
-	ERROR = 7
+	ERROR   = 7
+	SUCCESS = 0
 )
 
 func Result(code int, data interface{}, msg string, c *gin.Context) {
@@ -24,4 +25,12 @@ func Result(code int, data interface{}, msg string, c *gin.Context) {
 }
 func FailWithDetailed(data interface{}, message string, c *gin.Context) {
 	Result(ERROR, data, message, c)
+}
+
+func FailWithMessage(message string, c *gin.Context) {
+	Result(ERROR, map[string]interface{}{}, message, c)
+}
+
+func OkWithDetailed(data interface{}, message string, c *gin.Context) {
+	Result(SUCCESS, data, message, c)
 }

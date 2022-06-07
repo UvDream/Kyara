@@ -2,8 +2,8 @@ package service
 
 import "server/service/system"
 
-type ServiceGroup struct {
-	SystemServiceGroup system.ServiceGroup
+type ServicesGroup struct {
+	SystemServiceGroup system.SysServiceGroup
 }
 
-var ServiceGroupApp = new(ServiceGroup)
+var ServicesGroupApp = new(ServicesGroup)

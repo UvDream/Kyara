@@ -7,6 +7,7 @@ import (
 	"os"
 	"server/global"
 	"server/initialize/internal"
+	"server/model/system"
 )
 
 func GormMysql() *gorm.DB {
@@ -31,7 +32,12 @@ func GormMysql() *gorm.DB {
 }
 
 func RegistrationTable(db *gorm.DB) {
-	err := db.AutoMigrate()
+	//初始化表注册
+	err := db.AutoMigrate(
+		system.SysUser{},
+		system.SysRole{},
+		system.SysUserRole{},
+	)
 	if err != nil {
 		global.Log.Error("注册数据表失败", zap.Error(err))
 		os.Exit(0)

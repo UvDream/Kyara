@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/gin-gonic/gin"
 	"server/global"
-	"server/model/system/response"
+	"server/model/common/response"
 	"server/utils"
 	"strconv"
 	"time"

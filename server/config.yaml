@@ -19,7 +19,7 @@ zap:
 # 系统设置
 system:
   env: 'public'  # Change to "develop" to skip authentication for development mode
-  addr: 8888
+  addr: 8989
   db-type: 'mysql'
   oss-type: 'local'    # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
   use-redis: false     # 使用redis
@@ -32,15 +32,15 @@ system:
 
 #  mysql
 mysql:
-  path: ''
-  port: ''
-  config: ''
-  db-name: ''
-  username: ''
-  password: ''
+  path: '124.223.8.237'
+  port: '3306'
+  config: 'charset=utf8&parseTime=True&loc=Local'
+  db-name: 'kyara'
+  username: 'root'
+  password: '11165wzj'
   max-idle-conns: 10
   max-open-conns: 100
-  log-mode: ""
+  log-mode: false
   log-zap: false
 
 # 跨域配置
