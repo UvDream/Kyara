@@ -10,4 +10,6 @@ type Config struct {
 	// 跨域配置
 	Cors CORS `mapstructure:"cors" json:"cors" yaml:"cors"`
 	JWT  JWT  `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
+	//	验证码
+	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
 }

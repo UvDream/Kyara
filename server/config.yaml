@@ -32,7 +32,7 @@ system:
 
 #  mysql
 mysql:
-  path: '127.0.0.1'
+  path: '124.223.8.237'
   port: '3306'
   config: 'charset=utf8&parseTime=True&loc=Local'
   db-name: 'kyara'
@@ -58,3 +58,11 @@ cors:
       allow-methods: GET, POST
       expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type
       allow-credentials: true # 布尔值
+#验证码配置
+captcha:
+  key-long: 6
+  img-width: 240
+  img-height: 80
+  type: 1
+  language: zh
+

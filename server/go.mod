@@ -21,5 +21,7 @@ require (
 require (
 	github.com/jonboulle/clockwork v0.3.0 // indirect
 	github.com/lestrrat-go/strftime v1.0.6 // indirect
+	github.com/mojocn/base64Captcha v1.3.5
 	github.com/shirou/gopsutil v3.21.11+incompatible
+	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4
 )
