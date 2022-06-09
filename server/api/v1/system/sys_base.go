@@ -2,43 +2,43 @@ package system
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
-	"server/global"
-	"server/model/system"
-	"server/utils"
+	"net/http"
+	"server/model/common/response"
+	"server/model/system/request"
 )
 
 type BaseApi struct{}
 
 func (b *BaseApi) Login(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"code": 200,
-		"msg":  "登录成功",
-	})
+	var loginRequest request.LoginRequest
+	err := c.ShouldBindJSON(&loginRequest)
+	//首先验证参数是否齐全
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"code": 400,
+			"msg":  err.Error(),
+		})
+		return
+	}
+	//其次验证验证码是否正确
+	if err := b.VerifyCaptcha(loginRequest.Captcha, loginRequest.CaptchaId); err != true {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"code": 400,
+			"msg":  "验证码错误",
+		})
+		return
+	}
+	//最后验证用户名和密码是否正确
+	if msg, err := userService.Login(loginRequest.Username, loginRequest.Password); err != nil {
+		response.FailWithMessage(msg, c)
+		return
+	} else {
+		response.OkWithMessage(msg, c)
+	}
 }
 func (b *BaseApi) Register(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"code": 200,
 		"msg":  "注册成功",
-	})
-}
-
-func (b *BaseApi) InitData(c *gin.Context) {
-	uid, _ := uuid.NewUUID()
-	initializeUser := []system.SysUser{
-		{
-			UUID:     uid,
-			UserName: "admin",
-			Password: utils.BcryptHash("123456"),
-			NickName: "admin",
-			Avatar:   "www.pic.uvdream.cn",
-			Phone:    "17621998888",
-			Email:    "22222@163.com",
-		},
-	}
-	global.DB.Create(&initializeUser)
-	c.JSON(200, gin.H{
-		"code": 200,
-		"msg":  "初始化数据成功",
 	})
 }

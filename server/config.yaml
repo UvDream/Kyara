@@ -60,9 +60,16 @@ cors:
       allow-credentials: true # 布尔值
 #验证码配置
 captcha:
-  key-long: 6
-  img-width: 240
-  img-height: 80
-  type: 1
-  language: zh
+  type: "math"
+  language: "zh"
+  height: 40
+  width: 100
+  length: 4
+  noise-count: 10
+  show-line-options: 1
+  bg-color:
+    R: 255
+    G: 255
+    B: 255
+    A: 1
 
