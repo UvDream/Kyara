@@ -21,19 +21,19 @@ func (b *BaseApi) Login(c *gin.Context) {
 		return
 	}
 	//其次验证验证码是否正确
-	if err := b.VerifyCaptcha(loginRequest.Captcha, loginRequest.CaptchaId); err != true {
-		c.JSON(http.StatusBadRequest, gin.H{
-			"code": 400,
-			"msg":  "验证码错误",
-		})
-		return
-	}
+	//if err := b.VerifyCaptcha(loginRequest.Captcha, loginRequest.CaptchaId); err != true {
+	//	c.JSON(http.StatusBadRequest, gin.H{
+	//		"code": 400,
+	//		"msg":  "验证码错误",
+	//	})
+	//	return
+	//}
 	//最后验证用户名和密码是否正确
-	if msg, err := userService.Login(loginRequest.Username, loginRequest.Password); err != nil {
+	if user, token, msg, err := userService.Login(loginRequest.Username, loginRequest.Password); err != nil {
 		response.FailWithMessage(msg, c)
 		return
 	} else {
-		response.OkWithMessage(msg, c)
+		response.OkWithDetailed(gin.H{"token": token, "user_info": user}, msg, c)
 	}
 }
 func (b *BaseApi) Register(c *gin.Context) {
