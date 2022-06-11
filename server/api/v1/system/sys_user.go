@@ -1,11 +1,25 @@
 package system
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"server/model/common/response"
+	requestModel "server/model/system/request"
+)
 
 type UserApi struct{}
 
 func (b *UserApi) UserList(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "pong",
-	})
+	var userRequest requestModel.SysUserRequest
+	//先判断参数是否合法
+	if err := c.ShouldBindJSON(&userRequest); err != nil {
+		response.FailWithMessage(err.Error(), c)
+	}
+	userList, total, msg, err := userService.GetUserListService(&userRequest)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	}
+	response.OkWithDetailed(gin.H{
+		"list":  userList,
+		"total": total,
+	}, msg, c)
 }
