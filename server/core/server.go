@@ -10,10 +10,8 @@ import (
 )
 
 func RunServer() {
-	// 判断是否使用redis
-	if global.Config.System.UseRedis || global.Config.System.UseMultipoint {
-		initialize.Redis()
-	}
+	//初始化redis
+	initialize.Redis()
 	// 初始化路由器
 	Router := initialize.Routers()
 	address := fmt.Sprintf(":%d", global.Config.System.Addr)

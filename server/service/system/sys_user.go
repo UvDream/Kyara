@@ -6,6 +6,7 @@ import (
 	"server/model/system/request"
 )
 
+//GetUserListService 获取用户列表
 func (sysUserService *SysUserService) GetUserListService(query *request.SysUserRequest) (list interface{}, total int64, mg string, err error) {
 	limit := query.PageSize
 	offset := query.PageSize * (query.Page - 1)
