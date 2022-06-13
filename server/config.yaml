@@ -4,6 +4,7 @@ jwt:
   expires-time: 604800
   buffer-time: 86400
   issuer: 'uvdream'
+
 # 日志设置
 zap:
   level: 'info'
