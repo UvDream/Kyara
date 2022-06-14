@@ -2,7 +2,7 @@ package system
 
 import "server/service"
 
-type ApiGroup struct {
+type ApiSystemGroup struct {
 	UserApi
 	BaseApi
 	SysApi
