@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"go.uber.org/zap"
 	"server/core"
 	"server/global"
@@ -20,7 +21,12 @@ func main() {
 		initialize.RegistrationTable(global.DB)
 		// 程序结束关闭数据库链接
 		db, _ := global.DB.DB()
-		defer db.Close()
+		defer func(db *sql.DB) {
+			err := db.Close()
+			if err != nil {
+				global.Log.Error("关闭数据库链接失败", zap.Error(err))
+			}
+		}(db)
 	}
 	core.RunServer()
 }
