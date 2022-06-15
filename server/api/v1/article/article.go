@@ -28,6 +28,10 @@ func (article *ArticlesApi) CreateArticle(c *gin.Context) {
 
 // DeleteArticle 删除文章
 func (article *ArticlesApi) DeleteArticle(c *gin.Context) {
+	id := c.Query("id")
+	if id == "" {
+		response.FailWithMessage("id不能为空", c)
+	}
 	c.JSON(200, gin.H{
 		"message": "pong",
 	})

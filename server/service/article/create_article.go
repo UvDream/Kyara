@@ -51,9 +51,9 @@ func (a *ToArticleService) CreateArticle(articleOpts request.ArticleRequest) (at
 func SetArticleRedis(articleContent article.Article) (msg string, err error) {
 	ctx := context.Background()
 	uuid := articleContent.UUID.String()
-	now := time.Now()
+	now := time.Now().Format("2006-01-02 15:04:05.0000")
 	//	查出文章redis的数量
-	at := make(map[time.Time]article.Article)
+	at := make(map[string]article.Article)
 	//先查询是否存在
 	if global.Redis.Exists(ctx, uuid).Val() == 1 {
 		//	存在则更新
