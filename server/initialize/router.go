@@ -9,6 +9,7 @@ import (
 func Routers() *gin.Engine {
 	Router := gin.Default()
 	systemRouter := router.RoutersGroupApp.System
+	articleRouter := router.RoutersGroupApp.Article
 	//跨域设置
 	Router.Use(middleware.Cors()) //放行所有的请求
 	//Router.Use(middleware.CorsByRules())  //按照配置规则放行跨域
@@ -30,6 +31,7 @@ func Routers() *gin.Engine {
 	{
 		systemRouter.InitUserRouter(PrivateGroup)
 		systemRouter.InitSysRouter(PrivateGroup)
+		articleRouter.InitArticleRouter(PrivateGroup)
 	}
 	return Router
 }
