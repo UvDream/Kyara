@@ -48,7 +48,7 @@ mysql:
 redis:
   db: 0
   addr: 127.0.0.1:55000
-  password: ""
+  password: "redispw"
 
 # 跨域配置
 # 需要配合 server/initialize/router.go#L32 使用

@@ -15,7 +15,8 @@ func (article *ArticlesRouter) InitArticleRouter(Router *gin.RouterGroup) (R gin
 		articleRouter.POST("/create", articleApi.CreateArticle)
 		articleRouter.DELETE("/delete", articleApi.DeleteArticle)
 		articleRouter.PUT("/update", articleApi.UpdateArticle)
-		articleRouter.GET("/list", articleApi.GetArticleList)
+		articleRouter.POST("/list", articleApi.GetArticleList)
+		articleRouter.GET("/history", articleApi.GetArticleHistory)
 	}
 	return articleRouter
 }
