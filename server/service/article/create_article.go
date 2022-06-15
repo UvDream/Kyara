@@ -39,10 +39,8 @@ func SetArticleContent(articleContent article.Article, articleOpts request.Artic
 	articleContent.MetaDescription = articleOpts.MetaDescription
 	articleContent.Summary = articleOpts.Summary
 	articleContent.Thumbnail = articleOpts.Thumbnail
-	//articleContent.Visits = articleOpts.Visits
 	articleContent.DisableComments = articleOpts.DisableComments
 	articleContent.Password = articleOpts.Password
-	//articleContent.Likes = articleOpts.Likes
 	articleContent.WordCount = articleOpts.WordCount
 	articleContent.MdContent = articleOpts.MdContent
 	articleContent.HtmlContent = articleOpts.HtmlContent

@@ -15,10 +15,8 @@ type ArticleRequest struct {
 	MetaDescription string    `json:"meta_description" gorm:"type:varchar(100);"`                  // 头部描述
 	Summary         string    `json:"summary" gorm:"type:varchar(100);"`                           // 摘要
 	Thumbnail       string    `json:"thumbnail" gorm:"type:varchar(100);"`                         // 缩略图
-	Visits          int       `json:"visits" gorm:"type:int(10);"`                                 // 访问量
 	DisableComments bool      `json:"disable_comments" gorm:"type:tinyint(1);"`                    // 禁止评论
 	Password        string    `json:"password" gorm:"type:varchar(100);"`                          // 访问密码
-	Likes           int       `json:"likes" gorm:"type:int(10);"`                                  // 点赞数
 	WordCount       int       `json:"word_count" gorm:"type:int(10);"`                             // 字数
 	MdContent       string    `json:"md_content" gorm:"type:text;"`                                // markdown内容
 	HtmlContent     string    `json:"html_content" gorm:"type:text;"`                              // html内容
