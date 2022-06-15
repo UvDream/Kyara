@@ -14,10 +14,11 @@ type ArticlesApi struct {
 func (article *ArticlesApi) CreateArticle(c *gin.Context) {
 	var articleOpts request.ArticleRequest
 	//校验必填信息
-	_ = c.ShouldBindJSON(&articleOpts)
-	//if err != nil {
-	//	response.FailWithMessage(err.Error(), c)
-	//}
+	err := c.ShouldBindJSON(&articleOpts)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
 	articleOpts.UUID = uuid.New()
 	articleContent, msg, err := articleService.CreateArticle(articleOpts)
 	if err != nil {
@@ -32,16 +33,31 @@ func (article *ArticlesApi) DeleteArticle(c *gin.Context) {
 	if id == "" {
 		response.FailWithMessage("id不能为空", c)
 	}
-	c.JSON(200, gin.H{
-		"message": "pong",
-	})
+	msg, err := articleService.DeleteArticleService(id)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	}
+	response.OkWithMessage(msg, c)
 }
 
 // UpdateArticle 修改文章
 func (article *ArticlesApi) UpdateArticle(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "pong",
-	})
+	var articleOpts request.ArticleRequest
+	//校验必填信息
+	err := c.ShouldBindJSON(&articleOpts)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	if articleOpts.UUID.String() == "" {
+		response.FailWithMessage("缺少必要参数uuid", c)
+	}
+	articleContent, msg, err := articleService.UpdateArticleService(articleOpts)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+	}
+	response.OkWithDetailed(articleContent, msg, c)
+
 }
 
 // GetArticleList 查询文章

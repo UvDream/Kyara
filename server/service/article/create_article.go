@@ -15,27 +15,7 @@ type ToArticleService struct{}
 //CreateArticle 创建文章
 func (a *ToArticleService) CreateArticle(articleOpts request.ArticleRequest) (at *article.Article, msg string, err error) {
 	var articleContent article.Article
-	articleContent.UUID = articleOpts.UUID
-	articleContent.Title = articleOpts.Title
-	articleContent.Status = articleOpts.Status
-	articleContent.Slug = articleOpts.Slug
-	articleContent.EditorType = articleOpts.EditorType
-	articleContent.MetaKeyWords = articleOpts.MetaKeyWords
-	articleContent.MetaDescription = articleOpts.MetaDescription
-	articleContent.Summary = articleOpts.Summary
-	articleContent.Thumbnail = articleOpts.Thumbnail
-	articleContent.Visits = articleOpts.Visits
-	articleContent.DisableComments = articleOpts.DisableComments
-	articleContent.Password = articleOpts.Password
-	articleContent.Likes = articleOpts.Likes
-	articleContent.WordCount = articleOpts.WordCount
-	articleContent.MdContent = articleOpts.MdContent
-	articleContent.HtmlContent = articleOpts.HtmlContent
-	articleContent.CommentCount = articleOpts.CommentCount
-	articleContent.TagsID = articleOpts.TagsID
-	articleContent.CategoryID = articleOpts.CategoryID
-	articleContent.IsTop = articleOpts.IsTop
-	articleContent.AuthID = articleOpts.AuthID
+	articleContent = SetArticleContent(articleContent, articleOpts)
 	//	存储数据库
 	if err := global.DB.Create(&articleContent).Error; err != nil {
 		return nil, "创建文章失败", err
@@ -48,6 +28,33 @@ func (a *ToArticleService) CreateArticle(articleOpts request.ArticleRequest) (at
 	return &articleContent, "创建文章成功", nil
 }
 
+//SetArticleContent 设置文章内容
+func SetArticleContent(articleContent article.Article, articleOpts request.ArticleRequest) article.Article {
+	articleContent.UUID = articleOpts.UUID
+	articleContent.Title = articleOpts.Title
+	articleContent.Status = articleOpts.Status
+	articleContent.Slug = articleOpts.Slug
+	articleContent.EditorType = articleOpts.EditorType
+	articleContent.MetaKeyWords = articleOpts.MetaKeyWords
+	articleContent.MetaDescription = articleOpts.MetaDescription
+	articleContent.Summary = articleOpts.Summary
+	articleContent.Thumbnail = articleOpts.Thumbnail
+	//articleContent.Visits = articleOpts.Visits
+	articleContent.DisableComments = articleOpts.DisableComments
+	articleContent.Password = articleOpts.Password
+	//articleContent.Likes = articleOpts.Likes
+	articleContent.WordCount = articleOpts.WordCount
+	articleContent.MdContent = articleOpts.MdContent
+	articleContent.HtmlContent = articleOpts.HtmlContent
+	articleContent.CommentCount = articleOpts.CommentCount
+	articleContent.TagsID = articleOpts.TagsID
+	articleContent.CategoryID = articleOpts.CategoryID
+	articleContent.IsTop = articleOpts.IsTop
+	articleContent.AuthID = articleOpts.AuthID
+	return articleContent
+}
+
+// SetArticleRedis 存储redis
 func SetArticleRedis(articleContent article.Article) (msg string, err error) {
 	ctx := context.Background()
 	uuid := articleContent.UUID.String()
