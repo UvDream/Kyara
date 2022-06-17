@@ -60,5 +60,12 @@ func (t *TagsApi) UpdateTag(c *gin.Context) {
 
 //GetTags 查询tag
 func (t *TagsApi) GetTags(c *gin.Context) {
+	keyword := c.Query("keyword")
+	list, msg, err := tagService.GetTagsService(keyword)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+		return
+	}
+	response.OkWithDetailed(list, msg, c)
 
 }

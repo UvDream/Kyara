@@ -52,6 +52,14 @@ func (t *ToTagService) UpdateTagService(data article.Tag) (tag article.Tag, msg 
 }
 
 //GetTagsService 获取tag列表
-func (t *ToTagService) GetTagsService() {
-
+func (t *ToTagService) GetTagsService(keyword string) (tagList []article.Tag, msg string, err error) {
+	db := global.DB
+	db = db.Model(&article.Tag{})
+	if keyword != "" {
+		db = db.Where("name LIKE ?", "%"+keyword+"%").Or("slug LIKE ?", "%"+keyword+"%")
+	}
+	if err := db.Find(&tagList).Error; err != nil {
+		return nil, "查询tag列表失败", err
+	}
+	return tagList, "查询tag列表成功", err
 }
