@@ -23,6 +23,7 @@ func (article *ArticlesApi) CreateArticle(c *gin.Context) {
 	articleContent, msg, err := articleService.CreateArticle(articleOpts)
 	if err != nil {
 		response.FailWithMessage(msg, c)
+		return
 	}
 	response.OkWithDetailed(articleContent, msg, c)
 }
@@ -36,6 +37,7 @@ func (article *ArticlesApi) DeleteArticle(c *gin.Context) {
 	msg, err := articleService.DeleteArticleService(id)
 	if err != nil {
 		response.FailWithMessage(msg, c)
+		return
 	}
 	response.OkWithMessage(msg, c)
 }
@@ -51,10 +53,12 @@ func (article *ArticlesApi) UpdateArticle(c *gin.Context) {
 	}
 	if articleOpts.UUID.String() == "" {
 		response.FailWithMessage("缺少必要参数uuid", c)
+		return
 	}
 	articleContent, msg, err := articleService.UpdateArticleService(articleOpts)
 	if err != nil {
 		response.FailWithMessage(msg, c)
+		return
 	}
 	response.OkWithDetailed(articleContent, msg, c)
 
