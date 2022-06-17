@@ -2,10 +2,12 @@ package request
 
 import (
 	"github.com/google/uuid"
+	"gorm.io/gorm"
 	"server/model/common/request"
 )
 
 type ArticleRequest struct {
+	gorm.Model
 	UUID            uuid.UUID `json:"uuid" gorm:"comment:文章的UUID"`
 	Title           string    `json:"title"  gorm:"type:varchar(100);not null" binding:"required"` // 标题
 	Status          string    `json:"status" gorm:"type:varchar(10);not null" binding:"required"`  // 状态

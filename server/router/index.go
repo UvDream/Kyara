@@ -6,8 +6,10 @@ import (
 )
 
 type RoutersGroup struct {
-	System  system.SysRouterGroup
-	Article article.ArticlesGroup
+	System   system.SysRouterGroup
+	Article  article.ArticlesGroup
+	Tag      article.TagsStruct
+	Category article.CategoriesStruct
 }
 
 var RoutersGroupApp = new(RoutersGroup)
