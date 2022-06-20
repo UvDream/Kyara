@@ -24,9 +24,15 @@ func (c *CategoryService) CreateCategoryService(category article.Category) (cat 
 func (c *CategoryService) DeleteCategoryService(id string) (msg string, err error) {
 	db := global.DB
 	var category article.Category
+	//查询是否存在
 	err = db.Where("id = ?", id).First(&category).Error
 	if err != nil {
 		return "category不存在", err
+	}
+	//查询是否有子级
+	err = db.Where("parent_id = ?", id).First(&article.Category{}).Error
+	if err == nil {
+		return "category有子级，不能删除", err
 	}
 	err = db.Where("id = ?", id).Delete(&category).Error
 	if err != nil {
