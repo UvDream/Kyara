@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/google/uuid"
 	"server/global"
 	"server/model/article"
 	"server/model/article/request"
@@ -16,16 +17,63 @@ type ToArticleService struct{}
 func (a *ToArticleService) CreateArticle(articleOpts request.ArticleRequest) (at *article.Article, msg string, err error) {
 	var articleContent article.Article
 	articleContent = SetArticleContent(articleContent, articleOpts)
-	//	存储数据库
+	//存储数据库
 	if err := global.DB.Create(&articleContent).Error; err != nil {
 		return nil, "创建文章失败", err
 	}
-	// 存储redis
+	//创建关联关系
+	//category
+	msg, err = CreateCategoryArticle(articleContent.UUID, articleOpts.CategoryID)
+	if err != nil {
+		return nil, msg, err
+	}
+	//tag
+	msg, err = CreateTagArticle(articleContent.UUID, articleOpts.TagsID)
+	if err != nil {
+		return nil, msg, err
+	}
+	//存储redis
 	msg, err = SetArticleRedis(articleContent)
 	if err != nil {
 		return nil, msg, err
 	}
 	return &articleContent, "创建文章成功", nil
+}
+
+//CreateCategoryArticle 创建文章 category关联关系
+func CreateCategoryArticle(articleUUID uuid.UUID, categoryID []uint) (msg string, err error) {
+	db := global.DB
+	for _, i := range categoryID {
+		categoryArticle := article.CategoryArticle{}
+		categoryArticle.ArticleID = articleUUID
+		categoryArticle.CategoryID = i
+		//	先查询是否存在
+		if err := db.Where("article_id = ? and category_id = ?", articleUUID, i).First(&categoryArticle).Error; err == nil {
+			return "category article关系已经存在", err
+		}
+		if err := db.Create(&categoryArticle).Error; err != nil {
+			return "创建category关联关系失败", err
+		}
+	}
+	return "创建文章分类关系成功", nil
+}
+
+//CreateTagArticle 创建文章 tag关联关系
+func CreateTagArticle(articleID uuid.UUID, tags []uint) (msg string, err error) {
+	db := global.DB
+	for _, i := range tags {
+		tagArticle := article.TagArticle{}
+		tagArticle.ArticleID = articleID
+		tagArticle.TagID = i
+		//	先查询是否存在
+		if err := db.Where("article_id = ? and tag_id = ?", articleID, i).First(&tagArticle).Error; err == nil {
+			return "tag article关系已经存在", err
+		}
+		if err := db.Create(&tagArticle).Error; err != nil {
+			return "创建关联关系失败", err
+		}
+	}
+	return "tag article关系创建成功", nil
 }
 
 //SetArticleContent 设置文章内容

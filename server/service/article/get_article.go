@@ -3,6 +3,7 @@ package article
 import (
 	"context"
 	"encoding/json"
+	"github.com/google/uuid"
 	"server/global"
 	"server/model/article"
 	"server/model/article/request"
@@ -28,15 +29,21 @@ func (a *ToArticleService) GetArticleListService(query request.ArticleListReques
 	if query.EndTime != "" {
 		db = db.Where("created_at <= ?", query.EndTime)
 	}
-
 	//查询总数
 	if err = db.Count(&total).Error; err != nil {
 		return nil, 0, "查询总数失败", err
 	}
 	//查询列表
-	if err = db.Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
+	if err = db.Preload("Tags").Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
 		return nil, 0, "查询列表失败", err
 	}
+	//查询标签
+	//for k, i := range articleList {
+	//	articleList[k].Tags, articleList[k].TagsID, msg, err = getTags(i.UUID)
+	//	if err != nil {
+	//		return nil, 0, "查询标签失败", err
+	//	}
+	//}
 	return &articleList, total, "查询成功", err
 }
 
@@ -53,4 +60,20 @@ func (a *ToArticleService) GetArticleHistoryService(id string) (list interface{}
 		return nil, "数据转换失败", err
 	}
 	return at, "查询成功", nil
+}
+
+func getTags(articleID uuid.UUID) (tags []article.Tag, tagsID []uint, msg string, err error) {
+	db := global.DB
+	var tagArticle []article.TagArticle
+	if err := db.Where("article_id = ?", articleID).Find(&tagArticle).Error; err != nil {
+		return nil, nil, "查询标签失败", err
+	}
+	for _, i := range tagArticle {
+		tagsID = append(tagsID, i.TagID)
+		//	根据tag_id查询tag
+		if err := db.Where("id = ?", i.TagID).Find(&tags).Error; err != nil {
+			return nil, nil, "查询标签内容失败", err
+		}
+	}
+	return tags, tagsID, "查询成功", nil
 }

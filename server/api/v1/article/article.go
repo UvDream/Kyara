@@ -70,10 +70,12 @@ func (article *ArticlesApi) GetArticleList(c *gin.Context) {
 	//校验必填信息
 	if err := c.ShouldBindJSON(&articleOpts); err != nil {
 		response.FailWithMessage(err.Error(), c)
+		return
 	}
 	list, total, msg, err := articleService.GetArticleListService(articleOpts)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
+		return
 	}
 	response.OkWithDetailed(gin.H{
 		"list":  list,

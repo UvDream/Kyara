@@ -1,6 +1,9 @@
 package article
 
-import "gorm.io/gorm"
+import (
+	"github.com/google/uuid"
+	"gorm.io/gorm"
+)
 
 //Category 分类
 type Category struct {
@@ -17,6 +20,6 @@ type Category struct {
 // CategoryArticle 分类和文章关联关系
 type CategoryArticle struct {
 	gorm.Model
-	CategoryID uint `gorm:"type:int(10);not null"` // 分类ID
-	ArticleID  uint `gorm:"type:int(10);not null"` // 文章ID
+	CategoryID uint      `gorm:"type:int(10);not null"` // 分类ID
+	ArticleID  uuid.UUID `gorm:"varchar(100);not null"` // 文章ID
 }
