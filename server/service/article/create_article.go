@@ -23,7 +23,7 @@ func (a *ToArticleService) CreateArticle(articleOpts request.ArticleRequest) (at
 	}
 	//创建关联关系
 	//category
-	msg, err = CreateCategoryArticle(articleContent.UUID, articleOpts.CategoryID)
+	msg, err = CreateCategoryArticle(articleContent.UUID, articleOpts.CategoriesID)
 	if err != nil {
 		return nil, msg, err
 	}
@@ -94,7 +94,7 @@ func SetArticleContent(articleContent article.Article, articleOpts request.Artic
 	articleContent.HtmlContent = articleOpts.HtmlContent
 	articleContent.CommentCount = articleOpts.CommentCount
 	articleContent.TagsID = articleOpts.TagsID
-	articleContent.CategoryID = articleOpts.CategoryID
+	articleContent.CategoriesID = articleOpts.CategoriesID
 	articleContent.IsTop = articleOpts.IsTop
 	articleContent.AuthID = articleOpts.AuthID
 	return articleContent
