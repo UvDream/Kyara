@@ -103,16 +103,16 @@ func SetArticleContent(articleContent article.Article, articleOpts request.Artic
 // SetArticleRedis 存储redis
 func SetArticleRedis(articleContent article.Article) (msg string, err error) {
 	ctx := context.Background()
-	uuid := articleContent.UUID.String()
+	id := articleContent.UUID.String()
 	now := time.Now().Format("2006-01-02 15:04:05.0000")
 	//	查出文章redis的数量
 	at := make(map[string]article.Article)
 	//先查询是否存在
-	if global.Redis.Exists(ctx, uuid).Val() == 1 {
+	if global.Redis.Exists(ctx, id).Val() == 1 {
 		//	存在则更新
 		fmt.Println("存在")
 		//	获取redis的数据
-		val, err := global.Redis.Get(ctx, uuid).Result()
+		val, err := global.Redis.Get(ctx, id).Result()
 		if err != nil {
 			return "获取redis数据失败", err
 		}
@@ -124,7 +124,7 @@ func SetArticleRedis(articleContent article.Article) (msg string, err error) {
 	}
 	at[now] = articleContent
 	atJson, err := json.Marshal(at)
-	_, err = global.Redis.Set(ctx, uuid, atJson, 0).Result()
+	_, err = global.Redis.Set(ctx, id, atJson, 0).Result()
 	if err != nil {
 		return "redis存储失败", err
 	}
