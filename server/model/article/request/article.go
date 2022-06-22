@@ -2,12 +2,10 @@ package request
 
 import (
 	"github.com/google/uuid"
-	"gorm.io/gorm"
 	"server/model/common/request"
 )
 
 type ArticleRequest struct {
-	gorm.Model
 	UUID            uuid.UUID `json:"uuid" gorm:"comment:文章的UUID"`
 	Title           string    `json:"title"  gorm:"type:varchar(100);not null" binding:"required"` // 标题
 	Status          string    `json:"status" gorm:"type:varchar(10);not null" binding:"required"`  // 状态
@@ -24,7 +22,7 @@ type ArticleRequest struct {
 	HtmlContent     string    `json:"html_content" gorm:"type:text;"`                              // html内容
 	CommentCount    int       `json:"comment_count" gorm:"type:int(10);"`                          // 评论数
 	TagsID          []uint    `json:"tags_id" gorm:"-"`                                            // tags id
-	CategoryID      []uint    `json:"category_id" gorm:"-"`                                        // 分类id
+	CategoriesID    []uint    `json:"categories_id" gorm:"-"`                                      // 分类id
 	IsTop           bool      `json:"is_top" gorm:"type:tinyint(1);"`                              // 是否置顶
 	AuthID          uuid.UUID `json:"auth_id" gorm:"comment:作者的UUID"`                              // 用户id
 }

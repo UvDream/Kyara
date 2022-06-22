@@ -32,7 +32,7 @@ func (a *ToArticleService) GetArticleListService(query request.ArticleListReques
 		return nil, 0, "查询总数失败", err
 	}
 	//查询列表
-	if err = db.Preload("Tags").Preload("Category").Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
+	if err = db.Preload("Tags").Preload("Category").Preload("Auth").Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
 		return nil, 0, "查询列表失败", err
 	}
 	return &articleList, total, "查询成功", err
