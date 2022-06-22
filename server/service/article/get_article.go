@@ -6,7 +6,6 @@ import (
 	"server/global"
 	"server/model/article"
 	"server/model/article/request"
-	"time"
 )
 
 func (a *ToArticleService) GetArticleListService(query request.ArticleListRequest) (list *[]article.Article, total int64, msg string, err error) {
@@ -44,9 +43,9 @@ func (a *ToArticleService) GetArticleHistoryService(id string) (list interface{}
 	ctx := context.Background()
 	msg, err = global.Redis.Get(ctx, id).Result()
 	if err != nil {
-		return nil, "查询失败", err
+		return nil, "查询redis失败", err
 	}
-	at := make(map[time.Time]article.Article)
+	at := make(map[string]article.Article)
 	err = json.Unmarshal([]byte(msg), &at)
 	if err != nil {
 		return nil, "数据转换失败", err

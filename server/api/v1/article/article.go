@@ -88,10 +88,12 @@ func (article *ArticlesApi) GetArticleHistory(c *gin.Context) {
 	uid := c.Query("id")
 	if uid == "" {
 		response.FailWithMessage("id不能为空", c)
+		return
 	}
 	list, msg, err := articleService.GetArticleHistoryService(uid)
 	if err != nil {
 		response.FailWithMessage(msg, c)
+		return
 	}
 	response.OkWithDetailed(gin.H{
 		"list": list,
