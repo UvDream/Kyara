@@ -3,12 +3,13 @@ package article
 import (
 	"context"
 	"encoding/json"
+	"github.com/google/uuid"
 	"server/global"
 	"server/model/article"
 	"server/model/article/request"
 )
 
-func (a *ToArticleService) GetArticleListService(query request.ArticleListRequest) (list *[]article.Article, total int64, msg string, err error) {
+func (a *ToArticleService) GetArticleListService(query request.ArticleListRequest, uuid uuid.UUID) (list *[]article.Article, total int64, msg string, err error) {
 	limit := query.PageSize
 	offset := query.PageSize * (query.Page - 1)
 	var articleList []article.Article
@@ -27,12 +28,13 @@ func (a *ToArticleService) GetArticleListService(query request.ArticleListReques
 	if query.EndTime != "" {
 		db = db.Where("created_at <= ?", query.EndTime)
 	}
+	//TODO:查询用户文章,区分出管理员和普通用户
 	//查询总数
-	if err = db.Count(&total).Error; err != nil {
+	if err = db.Where("auth_id = ?", uuid).Count(&total).Error; err != nil {
 		return nil, 0, "查询总数失败", err
 	}
 	//查询列表
-	if err = db.Preload("Tags").Preload("Category").Preload("Auth").Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
+	if err = db.Where("auth_id = ?", uuid).Preload("Tags").Preload("Categories").Preload("Auth").Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
 		return nil, 0, "查询列表失败", err
 	}
 	return &articleList, total, "查询成功", err

@@ -5,6 +5,7 @@ import (
 	"github.com/google/uuid"
 	"server/model/article/request"
 	"server/model/common/response"
+	"server/utils"
 )
 
 type ArticlesApi struct {
@@ -66,13 +67,21 @@ func (article *ArticlesApi) UpdateArticle(c *gin.Context) {
 
 // GetArticleList 查询文章
 func (article *ArticlesApi) GetArticleList(c *gin.Context) {
+	//x-token
+	xToken := c.Request.Header.Get("x-token")
+	j := utils.NewJWT()
+	claims, err := j.ParseToken(xToken)
+	if err != nil {
+		response.FailWithMessage("token验证失败", c)
+		return
+	}
 	var articleOpts request.ArticleListRequest
 	//校验必填信息
 	if err := c.ShouldBindJSON(&articleOpts); err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	list, total, msg, err := articleService.GetArticleListService(articleOpts)
+	list, total, msg, err := articleService.GetArticleListService(articleOpts, claims.UUID)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
