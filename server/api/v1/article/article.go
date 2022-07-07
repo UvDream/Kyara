@@ -6,6 +6,7 @@ import (
 	"server/model/article/request"
 	"server/model/common/response"
 	"server/utils"
+	"strconv"
 )
 
 type ArticlesApi struct {
@@ -76,11 +77,20 @@ func (article *ArticlesApi) GetArticleList(c *gin.Context) {
 		return
 	}
 	var articleOpts request.ArticleListRequest
+	articleOpts.Page, _ = strconv.Atoi(c.Query("page"))
+	articleOpts.PageSize, _ = strconv.Atoi(c.Query("page_size"))
+	articleOpts.KeyWord = c.Query("key_word")
+	articleOpts.Title = c.Query("title")
+	articleOpts.StartTime = c.Query("start_time")
+	articleOpts.EndTime = c.Query("end_time")
+	articleOpts.Status = c.Query("status")
+	articleOpts.CategoryID, _ = strconv.Atoi(c.Query("category_id"))
+	articleOpts.TagID, _ = strconv.Atoi(c.Query("tag_id"))
 	//校验必填信息
-	if err := c.ShouldBindJSON(&articleOpts); err != nil {
-		response.FailWithMessage(err.Error(), c)
-		return
-	}
+	//if err := c.ShouldBindJSON(&articleOpts); err != nil {
+	//	response.FailWithMessage(err.Error(), c)
+	//	return
+	//}
 	list, total, msg, err := articleService.GetArticleListService(articleOpts, claims.UUID)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)

@@ -11,7 +11,7 @@ func (a *ToArticleService) UpdateArticleService(articleOpts request.ArticleReque
 	var articleContent article.Article
 	articleContent = SetArticleContent(articleContent, articleOpts)
 	//	存储数据库
-	if err := global.DB.Where("uuid = ?", articleOpts.UUID).Save(&articleContent).Error; err != nil {
+	if err := global.DB.Model(article.Article{}).Where("uuid = ?", articleContent.UUID).Updates(&articleContent).Error; err != nil {
 		return nil, "修改文章失败", err
 	}
 	//存储redis

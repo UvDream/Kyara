@@ -8,7 +8,7 @@ import (
 type ArticleRequest struct {
 	UUID            uuid.UUID `json:"uuid" gorm:"comment:文章的UUID"`
 	Title           string    `json:"title"  gorm:"type:varchar(100);not null" binding:"required"` // 标题
-	Status          string    `json:"status" gorm:"type:varchar(10);not null" binding:"required"`  // 状态
+	Status          string    `json:"status" gorm:"type:varchar(10);not null" binding:"required"`  // 状态 DRAFT, PUBLISHED
 	Slug            string    `json:"slug" gorm:"type:varchar(100);"`                              // 别名
 	EditorType      string    `json:"editor_type" gorm:"type:varchar(100);"`                       // 编辑器类型
 	MetaKeyWords    string    `json:"meta_key_words" gorm:"type:varchar(100);"`                    // 头部关键字
@@ -33,6 +33,6 @@ type ArticleListRequest struct {
 	StartTime  string `form:"start_time" json:"start_time"`
 	EndTime    string `form:"end_time" json:"end_time"`
 	Status     string `form:"status" json:"status"`
-	CategoryID uint   `form:"category_id" json:"category_id"`
-	TagID      uint   `form:"tag_id" json:"tag_id"`
+	CategoryID int    `form:"category_id" json:"category_id"`
+	TagID      int    `form:"tag_id" json:"tag_id"`
 }
