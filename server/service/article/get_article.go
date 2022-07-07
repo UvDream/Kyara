@@ -54,3 +54,12 @@ func (a *ToArticleService) GetArticleHistoryService(id string) (list interface{}
 	}
 	return at, "查询成功", nil
 }
+
+//GetArticleDetailService 获取文章详情
+func (a *ToArticleService) GetArticleDetailService(id string) (list article.Article, msg string, err error) {
+	err = global.DB.Where("uuid=?", id).Preload("Tags").Preload("Categories").Preload("Auth").First(&list).Error
+	if err != nil {
+		return article.Article{}, "查询失败", err
+	}
+	return list, "查询成功", nil
+}

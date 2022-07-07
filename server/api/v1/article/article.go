@@ -118,3 +118,18 @@ func (article *ArticlesApi) GetArticleHistory(c *gin.Context) {
 		"list": list,
 	}, "查询成功", c)
 }
+
+//GetArticleDetail 查询文章详情
+func (article *ArticlesApi) GetArticleDetail(c *gin.Context) {
+	id := c.Query("id")
+	if id == "" {
+		response.FailWithMessage("id不能为空", c)
+		return
+	}
+	articleContent, msg, err := articleService.GetArticleDetailService(id)
+	if err != nil {
+		response.FailWithMessage(msg, c)
+		return
+	}
+	response.OkWithDetailed(articleContent, msg, c)
+}
