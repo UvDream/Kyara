@@ -9,10 +9,10 @@ import (
 )
 
 var (
-	TokenExpired     = errors.New("token is expired")
-	TokenNotValidYet = errors.New("token not active yet")
-	TokenMalformed   = errors.New("that's not even a token")
-	TokenInvalid     = errors.New("couldn't handle this token")
+	TokenExpired     = errors.New("令牌已过期")
+	TokenNotValidYet = errors.New("令牌尚未激活")
+	TokenMalformed   = errors.New("这不是一个token")
+	TokenInvalid     = errors.New("无法处理此token")
 )
 
 type JWT struct {
