@@ -3,6 +3,7 @@ package response
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	getCode "server/code"
 )
 
 type Response struct {
@@ -23,6 +24,17 @@ func Result(code int, data interface{}, msg string, c *gin.Context) {
 		msg,
 	})
 }
+
+// SuccessResponse 成功返回
+func SuccessResponse(data interface{}, code int, c *gin.Context) {
+	Result(code, data, getCode.Text(code), c)
+}
+
+// FailResponse 失败返回
+func FailResponse(code int, c *gin.Context) {
+	Result(code, map[string]interface{}{}, getCode.Text(code), c)
+}
+
 func FailWithDetailed(data interface{}, message string, c *gin.Context) {
 	Result(ERROR, data, message, c)
 }
