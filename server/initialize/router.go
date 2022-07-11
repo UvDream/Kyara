@@ -8,10 +8,16 @@ import (
 
 func Routers() *gin.Engine {
 	Router := gin.Default()
+	//系统相关路由
 	systemRouter := router.RoutersGroupApp.System
+	//文章相关路由
 	articleRouter := router.RoutersGroupApp.Article
+	//标签相关路由
 	tagRouter := router.RoutersGroupApp.Tag
+	//分类相关路由
 	category := router.RoutersGroupApp.Category
+	//文件相关路由
+	file := router.RoutersGroupApp.File
 	//跨域设置
 	Router.Use(middleware.Cors()) //放行所有的请求
 	//Router.Use(middleware.CorsByRules())  //按照配置规则放行跨域
@@ -36,6 +42,7 @@ func Routers() *gin.Engine {
 		articleRouter.InitArticleRouter(PrivateGroup)
 		tagRouter.InitTagRouter(PrivateGroup)
 		category.InitCategoriesRouter(PrivateGroup)
+		file.InitImageRouter(PrivateGroup)
 	}
 	return Router
 }
