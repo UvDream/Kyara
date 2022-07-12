@@ -8,6 +8,7 @@ import (
 	"server/global"
 	"server/initialize/internal"
 	"server/model/article"
+	"server/model/file"
 	"server/model/system"
 )
 
@@ -45,6 +46,8 @@ func RegistrationTable(db *gorm.DB) {
 		article.TagArticle{},
 		article.Category{},
 		article.CategoryArticle{},
+		//文件相关
+		file.File{},
 	)
 	if err != nil {
 		global.Log.Error("注册数据表失败", zap.Error(err))

@@ -17,7 +17,12 @@ func (i *ImageApi) Upload(c *gin.Context) {
 		response.FailResponse(code.ErrorImageNotFound, c)
 		return
 	}
-	imageService.UploadImageService(c * gin.Context)
+	data, ce, err := imageService.UploadImageService(c)
+	if err != nil {
+		response.FailResponse(ce, c)
+		return
+	}
+	response.SuccessResponse(data, ce, c)
 }
 
 // Delete 图片删除
