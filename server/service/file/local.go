@@ -2,6 +2,7 @@ package file
 
 import (
 	"errors"
+	"io"
 	"mime/multipart"
 	"os"
 	"path"
@@ -37,6 +38,10 @@ func (s *LocalService) UploadFile(file *multipart.FileHeader) (string, string, i
 		return "", "", code.ErrorSaveFile, err
 	}
 	defer out.Close()
+	_, err = io.Copy(out, f) //拷贝文件
+	if err != nil {
+		return "", "", code.ErrorSaveFile, err
+	}
 	return utils.SimplifyPath(filePath), fileName, code.SaveFileSuccess, nil
 }
 

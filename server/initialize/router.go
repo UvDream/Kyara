@@ -2,12 +2,16 @@ package initialize
 
 import (
 	"github.com/gin-gonic/gin"
+	"server/global"
 	"server/middleware"
 	"server/router"
 )
 
 func Routers() *gin.Engine {
 	Router := gin.Default()
+	//Router.Static("/files", "./files")
+	//设置静态文件夹
+	Router.StaticFS("/files", gin.Dir(global.Config.Local.Path, true))
 	//系统相关路由
 	systemRouter := router.RoutersGroupApp.System
 	//文章相关路由
