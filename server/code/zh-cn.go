@@ -9,4 +9,5 @@ var zhCNText = map[int]string{
 	ErrorSaveFile:      "保存文件失败",
 	ErrorSaveFileData:  "保存文件信息到数据库失败",
 	ErrorUploadQiNiu:   "七牛云上传失败",
+	ErrorOpenFile:      "打开文件失败",
 }

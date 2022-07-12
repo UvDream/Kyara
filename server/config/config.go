@@ -14,4 +14,6 @@ type Config struct {
 	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
 	//七牛云配置
 	Qiniu Qiniu `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
+	//	本地存储信息
+	Local Local `mapstructure:"local" json:"local" yaml:"local"`
 }

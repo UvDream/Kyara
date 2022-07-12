@@ -1,6 +1,9 @@
 package utils
 
-import "os"
+import (
+	"os"
+	"strings"
+)
 
 // IsDirExist 判断文件夹是否存在
 func IsDirExist(dir string) bool {
@@ -17,4 +20,18 @@ func CreateDir(dir string) (err error) {
 		}
 	}
 	return nil
+}
+
+func SimplifyPath(path string) string {
+	stack := []string{}
+	for _, name := range strings.Split(path, "/") {
+		if name == ".." {
+			if len(stack) > 0 {
+				stack = stack[:len(stack)-1]
+			}
+		} else if name != "" && name != "." {
+			stack = append(stack, name)
+		}
+	}
+	return "/" + strings.Join(stack, "/")
 }

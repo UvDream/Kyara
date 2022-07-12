@@ -9,6 +9,5 @@ type System struct {
 	//UseRedis      bool   `mapstructure:"use-redis" json:"use-redis" yaml:"use-redis"`                // 使用redis
 	LimitCountIP int    `mapstructure:"ip-limit-count" json:"ip_limit_count" yaml:"ip-limit-count"`
 	LimitTimeIP  int    `mapstructure:"ip-limit-time" json:"ip_limit_time" yaml:"ip-limit-time"`
-	FilePosition string `mapstructure:"file-position" json:"file_position" yaml:"file-position"` // 文件存储位置
-	Language     string `mapstructure:"language" json:"language" yaml:"language"`                // 语言
+	Language     string `mapstructure:"language" json:"language" yaml:"language"` // 语言
 }

@@ -11,6 +11,7 @@ const (
 	ErrorSaveFile      = 1003 //保存文件失败
 	ErrorSaveFileData  = 1004 //保存文件信息到数据库失败
 	ErrorUploadQiNiu   = 1005 //七牛云上传失败
+	ErrorOpenFile      = 1006 //打开文件失败
 )
 
 func Text(code int) string {

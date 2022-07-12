@@ -3,13 +3,12 @@ system:
   env: 'public'  # Change to "develop" to skip authentication for development mode
   addr: 8989
   db-type: 'mysql'
-  oss-type: 'qiniu'    # 控制oss选择走本地还是 七牛云等其他仓
+  oss-type: 'local'    # 控制oss选择走本地还是 七牛云等其他仓
   use-multipoint: false
   # IP限制次数 一个小时15000次
   ip-limit-count: 15000
   #  IP限制一个小时
   ip-limit-time: 3600
-  file-position: '/file'
   language: 'zh-CN'
 
 # jwt 配置
@@ -90,3 +89,7 @@ qiniu:
   path: 'your-path'
   domain-name: 'www.pic.uvdream.cn'
   domain-protocol: 'http'
+
+#本地存储
+local:
+    path: './files'

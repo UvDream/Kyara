@@ -42,7 +42,7 @@ func Routers() *gin.Engine {
 		articleRouter.InitArticleRouter(PrivateGroup)
 		tagRouter.InitTagRouter(PrivateGroup)
 		category.InitCategoriesRouter(PrivateGroup)
-		file.InitImageRouter(PrivateGroup)
+		file.InitFileRouter(PrivateGroup)
 	}
 	return Router
 }

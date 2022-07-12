@@ -8,12 +8,15 @@ import (
 	"github.com/qiniu/api.v7/v7/storage"
 	"go.uber.org/zap"
 	"mime/multipart"
+	"server/code"
 	"server/global"
 	"time"
 )
 
-// UploadQiNiu 上传到七牛
-func UploadQiNiu(file *multipart.FileHeader) (path string, key string, err error) {
+type QiniuService struct{}
+
+// UploadFile 上传到七牛
+func (*QiniuService) UploadFile(file *multipart.FileHeader) (path string, key string, c int, err error) {
 	putPolicy := storage.PutPolicy{
 		Scope: global.Config.Qiniu.Bucket,
 	}
@@ -30,15 +33,15 @@ func UploadQiNiu(file *multipart.FileHeader) (path string, key string, err error
 	f, e := file.Open()
 	if e != nil {
 		fmt.Println(e)
-		return "", "", e
+		return "", "", code.ErrorUploadQiNiu, e
 	}
 	dataLen := file.Size
 	fileKey := fmt.Sprintf("%d%s", time.Now().Unix(), file.Filename)
 	err = formUploader.Put(context.Background(), &ret, upToken, fileKey, f, dataLen, &putExtra)
 	if err != nil {
-		return "", "", err
+		return "", "", code.ErrorUploadQiNiu, err
 	}
-	return global.Config.Qiniu.DomainName + "/" + ret.Key, ret.Key, err
+	return global.Config.Qiniu.DomainName + "/" + ret.Key, ret.Key, code.SUCCESS, err
 }
 
 // GetQiniuConfig 获取七牛配置
@@ -69,8 +72,8 @@ func GetQiniuConfig() *storage.Config {
 	return &cfg
 }
 
-// DeleteQiniu 七牛云删除文件
-func DeleteQiniu(key string) error {
+// DeleteFile 七牛云删除文件
+func (*QiniuService) DeleteFile(key string) error {
 	mac := qbox.NewMac(global.Config.Qiniu.AccessKey, global.Config.Qiniu.SecretKey)
 	cfg := GetQiniuConfig()
 	bucketManager := storage.NewBucketManager(mac, cfg)
