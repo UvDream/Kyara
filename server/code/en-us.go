@@ -11,4 +11,8 @@ var enUSText = map[int]string{
 	ErrorUploadQiNiu:        "Upload to qiniu failed",
 	ErrorOpenFile:           "Open file failed",
 	ErrorUploadQiNiuSuccess: "Upload to qiniu success",
+	ErrorMissingId:          "Missing id",
+	ErrorFileNotFound:       "File not found",
+	ErrorDeleteFile:         "Delete file failed",
+	ErrorDeleteFileData:     "Delete file data failed",
 }

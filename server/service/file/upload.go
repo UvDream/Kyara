@@ -20,3 +20,14 @@ func NewOss() OSS {
 		return &LocalService{}
 	}
 }
+
+func DeleteOss(position string) OSS {
+	switch position {
+	case "local":
+		return &LocalService{}
+	case "qiniu":
+		return &QiniuService{}
+	default:
+		return &LocalService{}
+	}
+}

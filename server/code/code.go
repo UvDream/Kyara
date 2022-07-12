@@ -13,6 +13,11 @@ const (
 	ErrorUploadQiNiu        = 1005 //七牛云上传失败
 	ErrorOpenFile           = 1006 //打开文件失败
 	ErrorUploadQiNiuSuccess = 3001 //	七牛云上传成功
+	ErrorMissingId          = 4001 //缺少id
+	ErrorFileNotFound       = 404  //文件不存在
+	ErrorDeleteFile         = 5001 //删除文件失败
+	ErrorDeleteFileData     = 5002 //删除文件数据库失败
+
 )
 
 func Text(code int) string {

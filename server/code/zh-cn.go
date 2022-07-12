@@ -11,4 +11,8 @@ var zhCNText = map[int]string{
 	ErrorUploadQiNiu:        "七牛云上传失败",
 	ErrorOpenFile:           "打开文件失败",
 	ErrorUploadQiNiuSuccess: "七牛云上传成功",
+	ErrorMissingId:          "缺少id",
+	ErrorFileNotFound:       "文件不存在",
+	ErrorDeleteFile:         "删除文件失败",
+	ErrorDeleteFileData:     "删除文件数据库失败",
 }

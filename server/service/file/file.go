@@ -22,6 +22,20 @@ func (*FilesService) UploadFileService(c *gin.Context) (data file2.File, ce int,
 	data, ce, err = SaveFileData(fileHeader, url, key)
 	return data, ce, err
 }
+func (*FilesService) DeleteFileService(id string) (file file2.File, codeNumber int, err error) {
+	db := global.DB
+	if err := db.Where("id = ?", id).First(&file).Error; err != nil {
+		return file, code.ErrorFileNotFound, err
+	}
+	err = DeleteOss(file.Position).DeleteFile(file.Key)
+	if err != nil {
+		return file, code.ErrorDeleteFile, err
+	}
+	if err := db.Where("id = ?", id).Delete(&file).Error; err != nil {
+		return file, code.ErrorDeleteFileData, err
+	}
+	return file, code.SUCCESS, err
+}
 
 // SaveFileData 保存数据到数据库
 func SaveFileData(fileHeader *multipart.FileHeader, url string, key string) (data file2.File, ce int, err error) {

@@ -1,6 +1,7 @@
 package file
 
 import (
+	"errors"
 	"mime/multipart"
 	"os"
 	"path"
@@ -39,6 +40,13 @@ func (s *LocalService) UploadFile(file *multipart.FileHeader) (string, string, i
 	return utils.SimplifyPath(filePath), fileName, code.SaveFileSuccess, nil
 }
 
+// DeleteFile 删除文件
 func (s *LocalService) DeleteFile(key string) error {
+	p := global.Config.Local.Path + "/" + key
+	if strings.Contains(p, global.Config.Local.Path) {
+		if err := os.Remove(p); err != nil {
+			return errors.New("本地文件删除失败, err:" + err.Error())
+		}
+	}
 	return nil
 }

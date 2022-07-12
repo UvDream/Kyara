@@ -25,7 +25,17 @@ func (i *FilesApi) Upload(c *gin.Context) {
 
 // Delete 文件删除
 func (i *FilesApi) Delete(c *gin.Context) {
-	//TODO
+	id := c.Query("id")
+	if id == "" {
+		response.FailResponse(code.ErrorMissingId, c)
+		return
+	}
+	data, ce, err := fileService.DeleteFileService(id)
+	if err != nil {
+		response.FailResponse(ce, c)
+		return
+	}
+	response.SuccessResponse(data, ce, c)
 }
 
 // List 文件列表
