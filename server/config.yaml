@@ -3,7 +3,7 @@ system:
   env: 'public'  # Change to "develop" to skip authentication for development mode
   addr: 8989
   db-type: 'mysql'
-  oss-type: 'local'    # 控制oss选择走本地还是 七牛云等其他仓
+  oss-type: 'qiniu'    # 控制oss选择走本地还是 七牛云等其他仓
   use-multipoint: false
   # IP限制次数 一个小时15000次
   ip-limit-count: 15000
@@ -30,9 +30,6 @@ zap:
   max-age: 30 # 默认日志留存默认以天为单位
   show-line: true
   log-in-console: true
-
-
-
 
 #  mysql
 mysql:
@@ -68,6 +65,7 @@ cors:
       allow-methods: GET, POST
       expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type
       allow-credentials: true # 布尔值
+
 #验证码配置
 captcha:
   type: "math"
@@ -83,4 +81,12 @@ captcha:
     B: 255
     A: 1
 
-
+#七牛云
+qiniu:
+  access-key: 'Z3z3iRk1ar8KHMj09tKqKvyddarHG_hdh8apaEHy'
+  secret-key: 'Cv8oYw_xQlj6xWkovmLRNaIJqtWfWdIqkAtExEzX'
+  bucket: 'uvdream'
+  domain: 'HuaDong'
+  path: 'your-path'
+  domain-name: 'www.pic.uvdream.cn'
+  domain-protocol: 'http'

@@ -12,4 +12,6 @@ type Config struct {
 	JWT  JWT  `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
 	//	验证码
 	Captcha Captcha `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
+	//七牛云配置
+	Qiniu Qiniu `mapstructure:"qiniu" json:"qiniu" yaml:"qiniu"`
 }

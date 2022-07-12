@@ -11,7 +11,6 @@ type ImageApi struct {
 
 // Upload 图片上传
 func (i *ImageApi) Upload(c *gin.Context) {
-	//TODO
 	_, _, err := c.Request.FormFile("file")
 	if err != nil {
 		response.FailResponse(code.ErrorImageNotFound, c)

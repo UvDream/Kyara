@@ -8,4 +8,5 @@ var enUSText = map[int]string{
 	SaveFileSuccess:    "Save file success",
 	ErrorSaveFile:      "Save file failed",
 	ErrorSaveFileData:  "Save file data failed",
+	ErrorUploadQiNiu:   "Upload to qiniu failed",
 }

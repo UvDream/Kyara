@@ -22,6 +22,13 @@ func (i *ImageService) UploadImageService(c *gin.Context) (data file2.File, ce i
 		filePosition := global.Config.System.FilePosition
 		data, ce, err := SaveFileLocal(file, fileHeader, filePosition)
 		return data, ce, err
+	} else if ossType == "qiniu" {
+		path, key, err := UploadQiNiu(fileHeader)
+		if err != nil {
+			return data, code.ErrorUploadQiNiu, err
+		}
+		data, ce, err = SaveFileData(fileHeader, "", path, key)
+		return data, ce, err
 	}
 	return data, code.UploadImageSuccess, nil
 }
@@ -30,10 +37,6 @@ func (i *ImageService) UploadImageService(c *gin.Context) (data file2.File, ce i
 func SaveFileLocal(file multipart.File, fileHeader *multipart.FileHeader, filePosition string) (data file2.File, c int, err error) {
 	//	获取文件名
 	fileName := fileHeader.Filename
-	//	获取文件大小
-	fileSize := fileHeader.Size
-	//	获取文件类型
-	fileType := fileHeader.Header.Get("Content-Type")
 	//	获取文件内容
 	fileContent, _ := ioutil.ReadAll(file)
 	//	文件路径
@@ -49,7 +52,8 @@ func SaveFileLocal(file multipart.File, fileHeader *multipart.FileHeader, filePo
 	if err != nil {
 		return data, code.ErrorSaveFile, err
 	}
-	data, c, err = SaveFileData(fileName, filePath, url, fileSize, fileType)
+	//保存数据进数据库
+	data, c, err = SaveFileData(fileHeader, filePath, url, "")
 	if err != nil {
 		return data, c, err
 	}
@@ -57,14 +61,16 @@ func SaveFileLocal(file multipart.File, fileHeader *multipart.FileHeader, filePo
 }
 
 // SaveFileData 保存数据到数据库
-func SaveFileData(name string, path string, url string, size int64, fileType string) (data file2.File, ce int, err error) {
+func SaveFileData(fileHeader *multipart.FileHeader, path string, url string, key string) (data file2.File, ce int, err error) {
 	db := global.DB
 	var file file2.File
-	file.Name = name
+	file.Name = fileHeader.Filename
 	file.Path = path
 	file.URL = url
-	file.Size = size
-	file.Type = fileType
+	file.Size = fileHeader.Size
+	file.Type = fileHeader.Header.Get("Content-Type")
+	file.Position = global.Config.System.OssType
+	file.Key = key
 	if err := db.Create(&file).Error; err != nil {
 		return file, code.ErrorSaveFileData, err
 	}
