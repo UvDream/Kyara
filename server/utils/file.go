@@ -22,8 +22,9 @@ func CreateDir(dir string) (err error) {
 	return nil
 }
 
+// SimplifyPath 简化路径
 func SimplifyPath(path string) string {
-	stack := []string{}
+	var stack []string
 	for _, name := range strings.Split(path, "/") {
 		if name == ".." {
 			if len(stack) > 0 {
