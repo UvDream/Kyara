@@ -27,10 +27,12 @@ func (*FilesService) DeleteFileService(id string) (file file2.File, codeNumber i
 	if err := db.Where("id = ?", id).First(&file).Error; err != nil {
 		return file, code.ErrorFileNotFound, err
 	}
+	// 删除os 文件
 	err = DeleteOss(file.Position).DeleteFile(file.Key)
 	if err != nil {
 		return file, code.ErrorDeleteFile, err
 	}
+	//删除数据库文件
 	if err := db.Where("id = ?", id).Delete(&file).Error; err != nil {
 		return file, code.ErrorDeleteFileData, err
 	}
