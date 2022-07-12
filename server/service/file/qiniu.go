@@ -41,7 +41,7 @@ func (*QiniuService) UploadFile(file *multipart.FileHeader) (path string, key st
 	if err != nil {
 		return "", "", code.ErrorUploadQiNiu, err
 	}
-	return global.Config.Qiniu.DomainName + "/" + ret.Key, ret.Key, code.SUCCESS, err
+	return global.Config.Qiniu.DomainName + "/" + ret.Key, ret.Key, code.ErrorUploadQiNiuSuccess, err
 }
 
 // GetQiniuConfig 获取七牛配置

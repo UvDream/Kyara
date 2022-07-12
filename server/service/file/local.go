@@ -36,7 +36,7 @@ func (s *LocalService) UploadFile(file *multipart.FileHeader) (string, string, i
 		return "", "", code.ErrorSaveFile, err
 	}
 	defer out.Close()
-	return utils.SimplifyPath(filePath), fileName, code.SUCCESS, nil
+	return utils.SimplifyPath(filePath), fileName, code.SaveFileSuccess, nil
 }
 
 func (s *LocalService) DeleteFile(key string) error {
