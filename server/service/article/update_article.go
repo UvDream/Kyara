@@ -17,7 +17,7 @@ func (a *ToArticleService) UpdateArticleService(articleOpts request.ArticleReque
 	//存储redis
 	msg, err = SetArticleRedis(articleContent)
 	if err != nil {
-		return nil, msg, err
+		return nil, "修改文章存储redis失败", err
 	}
-	return nil, "", nil
+	return &articleContent, "修改文章成功", nil
 }
