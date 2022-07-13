@@ -15,4 +15,5 @@ var enUSText = map[int]string{
 	ErrorFileNotFound:       "File not found",
 	ErrorDeleteFile:         "Delete file failed",
 	ErrorDeleteFileData:     "Delete file data failed",
+	ErrorListFile:           "List file failed",
 }

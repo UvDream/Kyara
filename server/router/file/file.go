@@ -13,6 +13,7 @@ func (i *FilesRouter) InitFileRouter(Router *gin.RouterGroup) (R gin.IRouter) {
 	{
 		fileRouter.POST("/upload", fileApi.Upload)   //文件上传
 		fileRouter.DELETE("/delete", fileApi.Delete) //文件删除
+		fileRouter.GET("/list", fileApi.List)        //文件列表
 	}
 	return fileRouter
 }

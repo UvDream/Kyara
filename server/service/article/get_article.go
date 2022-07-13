@@ -34,7 +34,7 @@ func (a *ToArticleService) GetArticleListService(query request.ArticleListReques
 		return nil, 0, "查询总数失败", err
 	}
 	//查询列表
-	if err = db.Where("auth_id = ?", uuid).Preload("Tags").Preload("Categories").Preload("Auth").Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
+	if err = db.Where("auth_id = ?", uuid).Preload("Tags").Preload("Categories").Preload("Auth").Order("created_at desc").Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
 		return nil, 0, "查询列表失败", err
 	}
 	return &articleList, total, "查询成功", err

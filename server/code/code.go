@@ -17,6 +17,7 @@ const (
 	ErrorFileNotFound       = 404  //文件不存在
 	ErrorDeleteFile         = 5001 //删除文件失败
 	ErrorDeleteFileData     = 5002 //删除文件数据库失败
+	ErrorListFile           = 6001 //获取文件列表失败
 
 )
 

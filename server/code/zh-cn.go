@@ -15,4 +15,5 @@ var zhCNText = map[int]string{
 	ErrorFileNotFound:       "文件不存在",
 	ErrorDeleteFile:         "删除文件失败",
 	ErrorDeleteFileData:     "删除文件数据库失败",
+	ErrorListFile:           "获取文件列表失败",
 }
