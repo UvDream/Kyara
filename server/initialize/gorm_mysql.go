@@ -10,6 +10,7 @@ import (
 	"server/model/article"
 	"server/model/file"
 	"server/model/system"
+	"server/model/theme"
 )
 
 func GormMysql() *gorm.DB {
@@ -48,6 +49,8 @@ func RegistrationTable(db *gorm.DB) {
 		article.CategoryArticle{},
 		//文件相关
 		file.File{},
+		//	主题
+		theme.Theme{},
 	)
 	if err != nil {
 		global.Log.Error("注册数据表失败", zap.Error(err))

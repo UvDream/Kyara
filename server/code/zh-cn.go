@@ -16,4 +16,6 @@ var zhCNText = map[int]string{
 	ErrorDeleteFile:         "删除文件失败",
 	ErrorDeleteFileData:     "删除文件数据库失败",
 	ErrorListFile:           "获取文件列表失败",
+	ErrorCreateTheme:        "创建主题失败",
+	ErrorGetTheme:           "获取主题失败",
 }

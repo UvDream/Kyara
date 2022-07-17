@@ -16,4 +16,6 @@ var enUSText = map[int]string{
 	ErrorDeleteFile:         "Delete file failed",
 	ErrorDeleteFileData:     "Delete file data failed",
 	ErrorListFile:           "List file failed",
+	ErrorCreateTheme:        "Create theme failed",
+	ErrorGetTheme:           "Get theme failed",
 }
