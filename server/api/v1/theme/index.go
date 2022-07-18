@@ -2,6 +2,7 @@ package theme
 
 import (
 	"github.com/gin-gonic/gin"
+	code2 "server/code"
 	"server/model/common/response"
 	"server/model/theme"
 	"server/service"
@@ -62,12 +63,37 @@ func (*themeApi) Create(c *gin.Context) {
 
 // Delete 主题删除
 func (*themeApi) Delete(c *gin.Context) {
-
+	id := c.Query("id")
+	if id == "" {
+		response.FailResponse(code2.ErrorMissingId, c)
+		return
+	}
+	data, code, err := themeService.DeleteThemeService(id)
+	if err != nil {
+		response.FailResponse(code, c)
+		return
+	}
+	response.SuccessResponse(data, code, c)
 }
 
 //Update 主题更新
 func (*themeApi) Update(c *gin.Context) {
-
+	var themeRequest theme.Theme
+	err := c.ShouldBindJSON(&themeRequest)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	if themeRequest.ID == 0 {
+		response.FailResponse(code2.ErrorMissingId, c)
+		return
+	}
+	data, code, err := themeService.UpdateThemeService(themeRequest)
+	if err != nil {
+		response.FailResponse(code, c)
+		return
+	}
+	response.SuccessResponse(data, code, c)
 }
 
 // AdminList 获取所有主题列表

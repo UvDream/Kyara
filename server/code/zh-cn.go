@@ -18,4 +18,7 @@ var zhCNText = map[int]string{
 	ErrorListFile:           "获取文件列表失败",
 	ErrorCreateTheme:        "创建主题失败",
 	ErrorGetTheme:           "获取主题失败",
+	ErrorDeleteTheme:        "删除主题失败",
+	ErrorThemeNotFound:      "主题不存在",
+	ErrorUpdateTheme:        "主题更新失败",
 }

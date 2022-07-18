@@ -18,4 +18,7 @@ var enUSText = map[int]string{
 	ErrorListFile:           "List file failed",
 	ErrorCreateTheme:        "Create theme failed",
 	ErrorGetTheme:           "Get theme failed",
+	ErrorDeleteTheme:        "Delete theme failed",
+	ErrorThemeNotFound:      "Theme not found",
+	ErrorUpdateTheme:        "Update theme failed",
 }
