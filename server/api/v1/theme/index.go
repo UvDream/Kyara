@@ -96,6 +96,24 @@ func (*themeApi) Update(c *gin.Context) {
 	response.SuccessResponse(data, code, c)
 }
 
+//PublicList 查询公开主题
+func (*themeApi) PublicList(c *gin.Context) {
+	keyword := c.Query("keyword")
+	xToken := c.Request.Header.Get("x-token")
+	j := utils.NewJWT()
+	claims, err := j.ParseToken(xToken)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	data, code, err := themeService.GetPublicThemeListService(keyword, claims.UUID)
+	if err != nil {
+		response.FailResponse(code, c)
+		return
+	}
+	response.SuccessResponse(data, code, c)
+}
+
 // AdminList 获取所有主题列表
 func (*themeApi) AdminList(c *gin.Context) {
 

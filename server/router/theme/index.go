@@ -13,6 +13,7 @@ func (*ThemesGroupRouter) InitThemeRouter(Router *gin.RouterGroup) (R gin.IRoute
 	themeApi := v1.ApiGroupApp.ThemeApiGroup
 	{
 		themeRouter.GET("/list", themeApi.List)
+		themeRouter.GET("/public", themeApi.PublicList)
 		themeRouter.POST("/create", themeApi.Create)
 		themeRouter.DELETE("/delete", themeApi.Delete)
 		themeRouter.PUT("/update", themeApi.Update)

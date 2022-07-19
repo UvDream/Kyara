@@ -8,9 +8,8 @@ import (
 
 type Theme struct {
 	ResponseTheme
-	//作者
-	Auth  system.SysUser `gorm:"references:UUID" json:"author"`
-	Theme string         `json:"theme" gorm:"type:varchar(100);not null" binding:"required"` // 主题
+
+	Theme string `json:"theme" gorm:"type:varchar(100);not null" binding:"required"` // 主题
 }
 type ResponseTheme struct {
 	gorm.Model
@@ -24,4 +23,6 @@ type ResponseTheme struct {
 	AuthID uuid.UUID `json:"auth_id" gorm:"comment:作者的UUID"`
 	//是否公开
 	IsPublic bool `json:"is_public" gorm:"type:tinyint(1);"`
+	//作者
+	Auth system.SysUser `gorm:"references:UUID" json:"author"`
 }
