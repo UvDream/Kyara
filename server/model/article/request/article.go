@@ -18,8 +18,8 @@ type ArticleRequest struct {
 	DisableComments bool      `json:"disable_comments" gorm:"type:tinyint(1);"`                    // 禁止评论
 	Password        string    `json:"password" gorm:"type:varchar(100);"`                          // 访问密码
 	WordCount       int       `json:"word_count" gorm:"type:int(10);"`                             // 字数
-	MdContent       string    `json:"md_content" gorm:"type:text;"`                                // markdown内容
-	HtmlContent     string    `json:"html_content" gorm:"type:text;"`                              // html内容
+	MdContent       string    `json:"md_content" gorm:"type:longblob;"`                            // markdown内容
+	HtmlContent     string    `json:"html_content" gorm:"type:longblob;"`                          // html内容
 	CommentCount    int       `json:"comment_count" gorm:"type:int(10);"`                          // 评论数
 	TagsID          []uint    `json:"tags_id" gorm:"-"`                                            // tags id
 	CategoriesID    []uint    `json:"categories_id" gorm:"-"`                                      // 分类id

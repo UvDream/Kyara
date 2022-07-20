@@ -8,8 +8,7 @@ import (
 
 type Theme struct {
 	ResponseTheme
-
-	Theme string `json:"theme" gorm:"type:varchar(100);not null" binding:"required"` // 主题
+	Theme string `json:"theme" gorm:"type:longblob" binding:"required"` // 主题
 }
 type ResponseTheme struct {
 	gorm.Model
