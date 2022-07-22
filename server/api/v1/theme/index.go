@@ -114,6 +114,21 @@ func (*themeApi) PublicList(c *gin.Context) {
 	response.SuccessResponse(data, code, c)
 }
 
+// Detail 主题详情
+func (*themeApi) Detail(c *gin.Context) {
+	id := c.Query("id")
+	if id == "" {
+		response.FailResponse(code2.ErrorMissingId, c)
+		return
+	}
+	data, code, err := themeService.GetThemeDetailService(id)
+	if err != nil {
+		response.FailResponse(code, c)
+		return
+	}
+	response.SuccessResponse(data, code, c)
+}
+
 // AdminList 获取所有主题列表
 func (*themeApi) AdminList(c *gin.Context) {
 
