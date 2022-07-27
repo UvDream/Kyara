@@ -2,12 +2,12 @@ package article
 
 import (
 	"github.com/google/uuid"
-	"gorm.io/gorm"
+	"server/model/common"
 )
 
 //Category 分类
 type Category struct {
-	gorm.Model
+	common.Model
 	Name        string     `gorm:"type:varchar(100);" binding:"required" json:"name"` // 分类名
 	Slug        string     `gorm:"type:varchar(100);" json:"slug"`                    // 别名
 	Description string     `gorm:"type:varchar(1000);" json:"description"`            // 描述
@@ -19,7 +19,7 @@ type Category struct {
 
 // CategoryArticle 分类和文章关联关系
 type CategoryArticle struct {
-	gorm.Model
+	common.Model
 	CategoryID uint      `gorm:"type:int(10);not null"`                 // 分类ID
 	ArticleID  uuid.UUID `gorm:"varchar(100);not null;foreignKey:UUID"` // 文章ID
 }

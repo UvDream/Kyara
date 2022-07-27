@@ -1,13 +1,13 @@
 package article
 
 import (
-	"gorm.io/gorm"
 	"server/model/article/request"
+	"server/model/common"
 	"server/model/system"
 )
 
 type Article struct {
-	gorm.Model
+	common.Model
 	request.ArticleRequest
 	Tags       []Tag          `gorm:"many2many:tag_articles;foreignKey:UUID;joinForeignKey:ArticleID" json:"tags"`            // tags
 	Categories []Category     `gorm:"many2many:category_articles;foreignKey:UUID;joinForeignKey:ArticleID" json:"categories"` // 分类

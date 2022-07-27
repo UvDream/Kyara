@@ -2,12 +2,12 @@ package system
 
 import (
 	"github.com/google/uuid"
-	"gorm.io/gorm"
+	"server/model/common"
 )
 
 // SysUser 用户表
 type SysUser struct {
-	gorm.Model
+	common.Model
 	UUID     uuid.UUID `json:"uuid" gorm:"comment:用户的UUID"`
 	UserName string    `json:"user_name" gorm:"comment:用户名"`
 	NickName string    `json:"nick_name" gorm:"comment:昵称"`

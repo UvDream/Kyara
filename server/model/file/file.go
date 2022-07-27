@@ -2,11 +2,11 @@ package file
 
 import (
 	"github.com/google/uuid"
-	"gorm.io/gorm"
+	"server/model/common"
 )
 
 type File struct {
-	gorm.Model
+	common.Model
 	Name     string    `json:"name" gorm:"type:varchar(255);"`
 	URL      string    `json:"url" gorm:"type:varchar(255);"`
 	Size     int64     `json:"size" gorm:"type:int(10);"`

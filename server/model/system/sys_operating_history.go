@@ -2,11 +2,11 @@ package system
 
 import (
 	"github.com/google/uuid"
-	"gorm.io/gorm"
+	"server/model/common"
 )
 
 type SysOperatingHistory struct {
-	gorm.Model
+	common.Model
 	UUID         uuid.UUID `json:"uuid" gorm:"comment:操作的UUID"`
 	UserID       int       `json:"user_id" gorm:"comment:用户id"`
 	User         SysUser   `json:"user"`

@@ -2,7 +2,7 @@ package theme
 
 import (
 	"github.com/google/uuid"
-	"gorm.io/gorm"
+	"server/model/common"
 	"server/model/system"
 )
 
@@ -11,7 +11,7 @@ type Theme struct {
 	Theme string `json:"theme" gorm:"type:longblob" binding:"required"` // 主题
 }
 type ResponseTheme struct {
-	gorm.Model
+	common.Model
 	//名字
 	Name string `json:"name" gorm:"type:varchar(100);"`
 	//描述
