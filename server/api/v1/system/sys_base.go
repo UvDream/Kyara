@@ -3,7 +3,9 @@ package system
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"server/code"
 	"server/model/common/response"
+	"server/model/system"
 	"server/model/system/request"
 )
 
@@ -36,9 +38,19 @@ func (b *BaseApi) Login(c *gin.Context) {
 		response.OkWithDetailed(gin.H{"token": token, "user_info": user}, msg, c)
 	}
 }
+
+// Register 注册用户
 func (b *BaseApi) Register(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"code": 200,
-		"msg":  "注册成功",
-	})
+	var registerRequest system.SysUser
+	err := c.ShouldBindJSON(&registerRequest)
+	if err != nil {
+		response.FailResponse(code.ErrorRegisterMissingParam, c)
+		return
+	}
+	data, cd, err := userService.RegisterService(registerRequest)
+	if err != nil {
+		response.FailResponse(cd, c)
+		return
+	}
+	response.SuccessResponse(data, cd, c)
 }
