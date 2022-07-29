@@ -5,6 +5,7 @@ import (
 	code2 "server/code"
 	"server/global"
 	"server/model/system"
+	"server/utils"
 )
 
 // RegisterService 注册用户
@@ -27,6 +28,7 @@ func (*SysUserService) RegisterService(opts system.SysUser) (user system.SysUser
 		return opts, code2.ErrorUserExistPhone, err
 	}
 	opts.UUID = uuid.New()
+	opts.Password = utils.BcryptHash(opts.Password)
 	if err := db.Create(&opts).Error; err != nil {
 		return opts, code2.ErrorCreateUser, err
 	}
