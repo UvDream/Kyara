@@ -20,13 +20,19 @@ func (*SysUserService) RegisterService(opts system.SysUser) (user system.SysUser
 		return opts, code2.ErrorUserExist, err
 	}
 	//查询邮箱是否存在
-	if err := db.Where("email = ?", opts.Email).First(&user).Error; err == nil {
-		return opts, code2.ErrorUserExistEmail, err
+	if opts.Email != "" {
+		if err := db.Where("email = ?", opts.Email).First(&user).Error; err == nil {
+			return opts, code2.ErrorUserExistEmail, err
+		}
 	}
+
 	//查询手机号是否存在
-	if err := db.Where("phone = ?", opts.Phone).First(&user).Error; err == nil {
-		return opts, code2.ErrorUserExistPhone, err
+	if opts.Phone != "" {
+		if err := db.Where("phone = ?", opts.Phone).First(&user).Error; err == nil {
+			return opts, code2.ErrorUserExistPhone, err
+		}
 	}
+
 	opts.UUID = uuid.New()
 	opts.Password = utils.BcryptHash(opts.Password)
 	if err := db.Create(&opts).Error; err != nil {
