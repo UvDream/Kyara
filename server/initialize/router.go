@@ -9,6 +9,9 @@ import (
 
 func Routers() *gin.Engine {
 	Router := gin.Default()
+	//Router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	InitSwag(Router)
 	//Router.Static("/files", "./files")
 	//设置静态文件夹
 	Router.StaticFS("/files", gin.Dir(global.Config.Local.Path, true))
@@ -40,7 +43,7 @@ func Routers() *gin.Engine {
 		systemRouter.InitBaseRouter(PublicGroup)
 	}
 	//需要登陆才可以访问的接口
-	PrivateGroup := Router.Group("")
+	PrivateGroup := Router.Group("/")
 	PrivateGroup.Use(middleware.JWTAuth())
 	{
 		systemRouter.InitUserRouter(PrivateGroup)

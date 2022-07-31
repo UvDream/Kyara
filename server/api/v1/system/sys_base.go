@@ -11,6 +11,13 @@ import (
 
 type BaseApi struct{}
 
+// Login 登录
+// @Tags Base
+// @Summary 用户登录
+// @Produce  application/json
+// @Param data body request.LoginRequest true "用户名, 密码, 验证码"
+// @Success 200 {object} response.Response
+// @Router  /public/base/login [post]
 func (b *BaseApi) Login(c *gin.Context) {
 	var loginRequest request.LoginRequest
 	err := c.ShouldBindJSON(&loginRequest)

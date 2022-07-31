@@ -8,6 +8,13 @@ import (
 	"server/initialize"
 )
 
+// @title Swagger Example API
+// @version 0.0.1
+// @description This is a sample Server pets
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name x-token
+// @BasePath /
 func main() {
 	// 初始化配置文件
 	global.Viper = core.Viper()
