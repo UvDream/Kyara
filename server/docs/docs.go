@@ -22,7 +22,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Base"
+                    "User"
                 ],
                 "summary": "用户登录",
                 "parameters": [
@@ -40,7 +40,73 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "$ref": "#/definitions/system.SysUser"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/public/base/register": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "用户注册",
+                "parameters": [
+                    {
+                        "description": "用户名, 密码, 验证码",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/system.SysUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/response.Response"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "integer"
+                                        },
+                                        "data": {
+                                            "$ref": "#/definitions/system.SysUser"
+                                        },
+                                        "msg": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 }
@@ -79,6 +145,86 @@ const docTemplate = `{
                 },
                 "data": {},
                 "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "system.SysRole": {
+            "type": "object",
+            "properties": {
+                "children": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/system.SysRole"
+                    }
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "parent_id": {
+                    "description": "父角色ID",
+                    "type": "string"
+                },
+                "role_name": {
+                    "description": "角色名",
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "system.SysUser": {
+            "type": "object",
+            "required": [
+                "password",
+                "user_name"
+            ],
+            "properties": {
+                "avatar": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "nick_name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "roles": {
+                    "description": "关联到角色表",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/system.SysRole"
+                    }
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                },
+                "uuid": {
                     "type": "string"
                 }
             }

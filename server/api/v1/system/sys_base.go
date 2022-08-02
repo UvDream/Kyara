@@ -12,11 +12,11 @@ import (
 type BaseApi struct{}
 
 // Login 登录
-// @Tags Base
+// @Tags User
 // @Summary 用户登录
 // @Produce  application/json
 // @Param data body request.LoginRequest true "用户名, 密码, 验证码"
-// @Success 200 {object} response.Response
+// @Success 200 {object} response.Response{data=system.SysUser,code=int,msg=string}
 // @Router  /public/base/login [post]
 func (b *BaseApi) Login(c *gin.Context) {
 	var loginRequest request.LoginRequest
@@ -46,7 +46,13 @@ func (b *BaseApi) Login(c *gin.Context) {
 	}
 }
 
-// Register 注册用户
+// Register 注册
+// @Tags User
+// @Summary 用户注册
+// @Produce  application/json
+// @Param data body system.SysUser true "用户名, 密码, 验证码"
+// @Success 200 {object} response.Response{data=system.SysUser,code=int,msg=string}
+// @Router  /public/base/register [post]
 func (b *BaseApi) Register(c *gin.Context) {
 	var registerRequest system.SysUser
 	err := c.ShouldBindJSON(&registerRequest)

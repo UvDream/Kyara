@@ -23,6 +23,60 @@ definitions:
       msg:
         type: string
     type: object
+  system.SysRole:
+    properties:
+      children:
+        items:
+          $ref: '#/definitions/system.SysRole'
+        type: array
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: integer
+      parent_id:
+        description: 父角色ID
+        type: string
+      role_name:
+        description: 角色名
+        type: string
+      updated_at:
+        type: string
+    type: object
+  system.SysUser:
+    properties:
+      avatar:
+        type: string
+      created_at:
+        type: string
+      deleted_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      nick_name:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      roles:
+        description: 关联到角色表
+        items:
+          $ref: '#/definitions/system.SysRole'
+        type: array
+      updated_at:
+        type: string
+      user_name:
+        type: string
+      uuid:
+        type: string
+    required:
+    - password
+    - user_name
+    type: object
 info:
   contact: {}
   description: This is a sample Server pets
@@ -44,10 +98,47 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/response.Response'
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                code:
+                  type: integer
+                data:
+                  $ref: '#/definitions/system.SysUser'
+                msg:
+                  type: string
+              type: object
       summary: 用户登录
       tags:
-      - Base
+      - User
+  /public/base/register:
+    post:
+      parameters:
+      - description: 用户名, 密码, 验证码
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/system.SysUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/response.Response'
+            - properties:
+                code:
+                  type: integer
+                data:
+                  $ref: '#/definitions/system.SysUser'
+                msg:
+                  type: string
+              type: object
+      summary: 用户注册
+      tags:
+      - User
 securityDefinitions:
   ApiKeyAuth:
     in: header

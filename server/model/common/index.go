@@ -1,10 +1,12 @@
 package common
 
 import (
+	"database/sql"
 	"gorm.io/gorm"
 	"time"
 )
 
+type DeletedAt sql.NullTime
 type Model struct {
 	ID        uint           `gorm:"primarykey" json:"id"`
 	CreatedAt time.Time      `json:"created_at"`
