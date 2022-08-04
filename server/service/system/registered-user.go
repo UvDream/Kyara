@@ -1,7 +1,6 @@
 package system
 
 import (
-	"github.com/google/uuid"
 	code2 "server/code"
 	"server/global"
 	"server/model/system"
@@ -33,7 +32,6 @@ func (*SysUserService) RegisterService(opts system.SysUser) (user system.SysUser
 		}
 	}
 
-	opts.UUID = uuid.New()
 	opts.Password = utils.BcryptHash(opts.Password)
 	if err := db.Create(&opts).Error; err != nil {
 		return opts, code2.ErrorCreateUser, err

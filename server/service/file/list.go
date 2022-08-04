@@ -1,14 +1,13 @@
 package file
 
 import (
-	"github.com/google/uuid"
 	code2 "server/code"
 	"server/global"
 	"server/model/common/request"
 	"server/model/file"
 )
 
-func (*FilesService) ListFileService(query request.PaginationRequest, uuid uuid.UUID) (list []file.File, total int64, code int, err error) {
+func (*FilesService) ListFileService(query request.PaginationRequest, uuid string) (list []file.File, total int64, code int, err error) {
 	limit := query.PageSize
 	offset := query.PageSize * (query.Page - 1)
 	db := global.DB.Model(file.File{})

@@ -2,7 +2,6 @@ package request
 
 import (
 	"github.com/golang-jwt/jwt/v4"
-	"github.com/google/uuid"
 )
 
 type CustomClaims struct {
@@ -11,8 +10,7 @@ type CustomClaims struct {
 	jwt.StandardClaims
 }
 type BaseClaims struct {
-	UUID        uuid.UUID
-	ID          uint
+	ID          string
 	Username    string
 	NickName    string
 	AuthorityId string

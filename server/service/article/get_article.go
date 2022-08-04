@@ -3,15 +3,15 @@ package article
 import (
 	"context"
 	"encoding/json"
-	"github.com/google/uuid"
+	"github.com/gin-gonic/gin"
 	"server/global"
 	"server/model/article"
 	"server/model/article/request"
+	"server/utils"
 )
 
-func (a *ToArticleService) GetArticleListService(query request.ArticleListRequest, uuid uuid.UUID) (list *[]article.Article, total int64, msg string, err error) {
-	limit := query.PageSize
-	offset := query.PageSize * (query.Page - 1)
+func (a *ToArticleService) GetArticleListService(query request.ArticleListRequest, uuid string, c *gin.Context) (list *[]article.Article, total int64, msg string, err error) {
+
 	var articleList []article.Article
 	db := global.DB.Model(article.Article{})
 	//keyword
@@ -23,10 +23,10 @@ func (a *ToArticleService) GetArticleListService(query request.ArticleListReques
 		db = db.Where("status = ?", query.Status)
 	}
 	if query.StartTime != "" {
-		db = db.Where("created_at >= ?", query.StartTime)
+		db = db.Where("create_time >= ?", query.StartTime)
 	}
 	if query.EndTime != "" {
-		db = db.Where("created_at <= ?", query.EndTime)
+		db = db.Where("create_time <= ?", query.EndTime)
 	}
 	//TODO:查询用户文章,区分出管理员和普通用户
 	//查询总数
@@ -34,7 +34,7 @@ func (a *ToArticleService) GetArticleListService(query request.ArticleListReques
 		return nil, 0, "查询总数失败", err
 	}
 	//查询列表
-	if err = db.Where("auth_id = ?", uuid).Preload("Tags").Preload("Categories").Preload("Auth").Order("created_at desc").Limit(limit).Offset(offset).Find(&articleList).Error; err != nil {
+	if err = db.Where("auth_id = ?", uuid).Preload("Tags").Preload("Categories").Preload("Auth").Order("create_time desc").Scopes(utils.Paginator(c)).Find(&articleList).Error; err != nil {
 		return nil, 0, "查询列表失败", err
 	}
 	return &articleList, total, "查询成功", err

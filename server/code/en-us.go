@@ -28,4 +28,5 @@ var enUSText = map[int]string{
 	ErrorUserExistEmail:       "User exist email",
 	ErrorUserExistPhone:       "User exist phone",
 	ErrorCreateUser:           "Create user failed",
+	ErrorGetQueryParam:        "Get query param failed",
 }

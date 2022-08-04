@@ -27,7 +27,6 @@ func (sysUserService *SysUserService) Login(username string, password string) (u
 				SigningKey: []byte(global.Config.JWT.SigningKey),
 			}
 			claims := j.CreateClaims(request.BaseClaims{
-				UUID:     user.UUID,
 				ID:       user.ID,
 				NickName: user.NickName,
 				Username: user.UserName,

@@ -30,6 +30,7 @@ const (
 	ErrorUserExistEmail       = 10014 //邮箱已存在
 	ErrorUserExistPhone       = 10015 //手机号已存在
 	ErrorCreateUser           = 10016 //用户创建失败
+	ErrorGetQueryParam        = 10017 //获取查询参数失败
 )
 
 func Text(code int) string {

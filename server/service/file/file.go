@@ -2,7 +2,6 @@ package file
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"mime/multipart"
 	"path"
 	"server/code"
@@ -24,7 +23,7 @@ func (*FilesService) UploadFileService(c *gin.Context) (data file2.File, ce int,
 	xToken := c.Request.Header.Get("x-token")
 	j := utils.NewJWT()
 	claims, err := j.ParseToken(xToken)
-	data, ce, err = SaveFileData(fileHeader, url, key, claims.UUID)
+	data, ce, err = SaveFileData(fileHeader, url, key, claims.ID)
 	return data, ce, err
 }
 func (*FilesService) DeleteFileService(id string) (file file2.File, codeNumber int, err error) {
@@ -45,7 +44,7 @@ func (*FilesService) DeleteFileService(id string) (file file2.File, codeNumber i
 }
 
 // SaveFileData 保存数据到数据库
-func SaveFileData(fileHeader *multipart.FileHeader, url string, key string, authID uuid.UUID) (data file2.File, ce int, err error) {
+func SaveFileData(fileHeader *multipart.FileHeader, url string, key string, authID string) (data file2.File, ce int, err error) {
 	db := global.DB
 	var file file2.File
 	ext := path.Ext(fileHeader.Filename)

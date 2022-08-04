@@ -1,7 +1,6 @@
 package article
 
 import (
-	"github.com/google/uuid"
 	"server/model/common"
 )
 
@@ -17,6 +16,6 @@ type Tag struct {
 // TagArticle 标签和文章关联关系
 type TagArticle struct {
 	common.Model
-	TagID     uint      `gorm:"type:int(10);not null"`                      // 标签ID
-	ArticleID uuid.UUID `gorm:"type:varchar(100);not null;foreignKey:UUID"` // 文章ID
+	TagID     uint   `gorm:"type:int(10);not null"`                      // 标签ID
+	ArticleID string `gorm:"type:varchar(100);not null;foreignKey:UUID"` // 文章ID
 }

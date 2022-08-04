@@ -4,7 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/google/uuid"
+	"gorm.io/gorm/clause"
 	"server/global"
 	"server/model/article"
 	"server/model/article/request"
@@ -18,17 +18,17 @@ func (a *ToArticleService) CreateArticle(articleOpts request.ArticleRequest) (at
 	var articleContent article.Article
 	articleContent = SetArticleContent(articleContent, articleOpts)
 	//存储数据库
-	if err := global.DB.Create(&articleContent).Error; err != nil {
+	if err := global.DB.Preload(clause.Associations).Create(&articleContent).Error; err != nil {
 		return nil, "创建文章失败", err
 	}
 	//创建关联关系
 	//category
-	msg, err = CreateCategoryArticle(articleContent.UUID, articleOpts.CategoriesID)
+	msg, err = CreateCategoryArticle(articleContent.ID, articleOpts.CategoriesID)
 	if err != nil {
 		return nil, msg, err
 	}
 	//tag
-	msg, err = CreateTagArticle(articleContent.UUID, articleOpts.TagsID)
+	msg, err = CreateTagArticle(articleContent.ID, articleOpts.TagsID)
 	if err != nil {
 		return nil, msg, err
 	}
@@ -41,7 +41,7 @@ func (a *ToArticleService) CreateArticle(articleOpts request.ArticleRequest) (at
 }
 
 //CreateCategoryArticle 创建文章 category关联关系
-func CreateCategoryArticle(articleUUID uuid.UUID, categoryID []uint) (msg string, err error) {
+func CreateCategoryArticle(articleUUID string, categoryID []uint) (msg string, err error) {
 	db := global.DB
 	for _, i := range categoryID {
 		categoryArticle := article.CategoryArticle{}
@@ -59,7 +59,7 @@ func CreateCategoryArticle(articleUUID uuid.UUID, categoryID []uint) (msg string
 }
 
 //CreateTagArticle 创建文章 tag关联关系
-func CreateTagArticle(articleID uuid.UUID, tags []uint) (msg string, err error) {
+func CreateTagArticle(articleID string, tags []uint) (msg string, err error) {
 	db := global.DB
 	for _, i := range tags {
 		tagArticle := article.TagArticle{}
@@ -78,7 +78,6 @@ func CreateTagArticle(articleID uuid.UUID, tags []uint) (msg string, err error) 
 
 //SetArticleContent 设置文章内容
 func SetArticleContent(articleContent article.Article, articleOpts request.ArticleRequest) article.Article {
-	articleContent.UUID = articleOpts.UUID
 	articleContent.Title = articleOpts.Title
 	articleContent.Status = articleOpts.Status
 	articleContent.Slug = articleOpts.Slug
@@ -103,7 +102,7 @@ func SetArticleContent(articleContent article.Article, articleOpts request.Artic
 // SetArticleRedis 存储redis
 func SetArticleRedis(articleContent article.Article) (msg string, err error) {
 	ctx := context.Background()
-	id := articleContent.UUID.String()
+	id := articleContent.ID
 	now := time.Now().Format("2006-01-02 15:04:05.0000")
 	//	查出文章redis的数量
 	at := make(map[string]article.Article)

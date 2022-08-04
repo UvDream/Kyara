@@ -54,7 +54,7 @@ func (i *FilesApi) List(c *gin.Context) {
 		response.FailWithMessage("token验证失败", c)
 		return
 	}
-	list, total, ce, err := fileService.ListFileService(fileOpts, claims.UUID)
+	list, total, ce, err := fileService.ListFileService(fileOpts, claims.ID)
 	if err != nil {
 		response.FailResponse(ce, c)
 		return

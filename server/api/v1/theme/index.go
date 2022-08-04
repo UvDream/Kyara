@@ -29,7 +29,7 @@ func (*themeApi) List(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	data, code, err := themeService.GetThemeListService(keyword, claims.UUID)
+	data, code, err := themeService.GetThemeListService(keyword, claims.ID)
 	if err != nil {
 		response.FailResponse(code, c)
 		return
@@ -52,7 +52,7 @@ func (*themeApi) Create(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	themeRequest.AuthID = claims.UUID
+	themeRequest.ID = claims.ID
 	data, code, err := themeService.CreateThemeService(themeRequest)
 	if err != nil {
 		response.FailResponse(code, c)
@@ -84,7 +84,7 @@ func (*themeApi) Update(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	if themeRequest.ID == 0 {
+	if themeRequest.ID == "" {
 		response.FailResponse(code2.ErrorMissingId, c)
 		return
 	}
@@ -106,7 +106,7 @@ func (*themeApi) PublicList(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	data, code, err := themeService.GetPublicThemeListService(keyword, claims.UUID)
+	data, code, err := themeService.GetPublicThemeListService(keyword, claims.ID)
 	if err != nil {
 		response.FailResponse(code, c)
 		return

@@ -46,7 +46,7 @@ func (t *TagsApi) UpdateTag(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	if tag.ID == 0 {
+	if tag.ID == "" {
 		response.FailWithMessage("缺少tag id", c)
 		return
 	}

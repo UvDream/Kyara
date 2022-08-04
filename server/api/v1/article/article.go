@@ -2,11 +2,11 @@ package article
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
+	"server/code"
+	article2 "server/model/article"
 	"server/model/article/request"
 	"server/model/common/response"
 	"server/utils"
-	"strconv"
 )
 
 type ArticlesApi struct {
@@ -21,7 +21,6 @@ func (article *ArticlesApi) CreateArticle(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	articleOpts.UUID = uuid.New()
 	articleContent, msg, err := articleService.CreateArticle(articleOpts)
 	if err != nil {
 		response.FailWithMessage(msg, c)
@@ -46,14 +45,14 @@ func (article *ArticlesApi) DeleteArticle(c *gin.Context) {
 
 // UpdateArticle 修改文章
 func (article *ArticlesApi) UpdateArticle(c *gin.Context) {
-	var articleOpts request.ArticleRequest
+	var articleOpts article2.Article
 	//校验必填信息
 	err := c.ShouldBindJSON(&articleOpts)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	if articleOpts.UUID.String() == "" {
+	if articleOpts.ID == "" {
 		response.FailWithMessage("缺少必要参数uuid", c)
 		return
 	}
@@ -77,21 +76,12 @@ func (article *ArticlesApi) GetArticleList(c *gin.Context) {
 		return
 	}
 	var articleOpts request.ArticleListRequest
-	articleOpts.Page, _ = strconv.Atoi(c.Query("page"))
-	articleOpts.PageSize, _ = strconv.Atoi(c.Query("page_size"))
-	articleOpts.KeyWord = c.Query("key_word")
-	articleOpts.Title = c.Query("title")
-	articleOpts.StartTime = c.Query("start_time")
-	articleOpts.EndTime = c.Query("end_time")
-	articleOpts.Status = c.Query("status")
-	articleOpts.CategoryID, _ = strconv.Atoi(c.Query("category_id"))
-	articleOpts.TagID, _ = strconv.Atoi(c.Query("tag_id"))
-	//校验必填信息
-	//if err := c.ShouldBindJSON(&articleOpts); err != nil {
-	//	response.FailWithMessage(err.Error(), c)
-	//	return
-	//}
-	list, total, msg, err := articleService.GetArticleListService(articleOpts, claims.UUID)
+	err = c.ShouldBindQuery(&articleOpts)
+	if err != nil {
+		response.FailResponse(code.ErrorGetQueryParam, c)
+		return
+	}
+	list, total, msg, err := articleService.GetArticleListService(articleOpts, claims.ID, c)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return

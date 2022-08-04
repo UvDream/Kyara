@@ -28,4 +28,5 @@ var zhCNText = map[int]string{
 	ErrorUserExistEmail:       "邮箱已存在",
 	ErrorUserExistPhone:       "手机号已存在",
 	ErrorCreateUser:           "创建用户失败",
+	ErrorGetQueryParam:        "获取查询参数失败",
 }

@@ -47,7 +47,7 @@ func (ct *CategoriesApi) UpdateCategory(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
-	if category.ID == 0 {
+	if category.ID == "" {
 		response.FailWithMessage("id不能为空", c)
 		return
 	}
