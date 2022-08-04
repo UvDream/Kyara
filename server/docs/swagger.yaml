@@ -1,4 +1,12 @@
 definitions:
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
   request.LoginRequest:
     properties:
       captcha:
@@ -32,7 +40,7 @@ definitions:
       created_at:
         type: string
       deleted_at:
-        type: string
+        $ref: '#/definitions/gorm.DeletedAt'
       id:
         type: integer
       parent_id:
@@ -51,7 +59,7 @@ definitions:
       created_at:
         type: string
       deleted_at:
-        type: string
+        $ref: '#/definitions/gorm.DeletedAt'
       email:
         type: string
       id:

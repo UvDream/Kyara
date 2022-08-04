@@ -47,7 +47,7 @@ func Routers() *gin.Engine {
 	PrivateGroup.Use(middleware.JWTAuth())
 	{
 		systemRouter.InitUserRouter(PrivateGroup)
-		systemRouter.InitSysRouter(PrivateGroup)
+		//systemRouter.InitSysRouter(PrivateGroup)
 		articleRouter.InitArticleRouter(PrivateGroup)
 		tagRouter.InitTagRouter(PrivateGroup)
 		categoryRouter.InitCategoriesRouter(PrivateGroup)

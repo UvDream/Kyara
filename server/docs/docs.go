@@ -114,6 +114,18 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "gorm.DeletedAt": {
+            "type": "object",
+            "properties": {
+                "time": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if Time is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
         "request.LoginRequest": {
             "type": "object",
             "required": [
@@ -162,7 +174,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "deleted_at": {
-                    "type": "string"
+                    "$ref": "#/definitions/gorm.DeletedAt"
                 },
                 "id": {
                     "type": "integer"
@@ -194,7 +206,7 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "deleted_at": {
-                    "type": "string"
+                    "$ref": "#/definitions/gorm.DeletedAt"
                 },
                 "email": {
                     "type": "string"
