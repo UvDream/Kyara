@@ -23,7 +23,7 @@ func (sysUserService *SysUserService) GetUserListService(query *request.SysUserR
 	if err != nil {
 		return nil, 0, "查询用户总数失败", err
 	}
-	err = db.Limit(limit).Offset(offset).Find(&userList).Error
+	err = db.Omit("password").Limit(limit).Offset(offset).Find(&userList).Error
 	if err != nil {
 		return nil, 0, "查询用户列表失败", err
 	}

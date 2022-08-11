@@ -37,33 +37,33 @@ definitions:
         items:
           $ref: '#/definitions/system.SysRole'
         type: array
-      created_at:
+      create_time:
         type: string
-      deleted_at:
+      delete_time:
         $ref: '#/definitions/gorm.DeletedAt'
       id:
-        type: integer
+        type: string
       parent_id:
         description: 父角色ID
         type: string
       role_name:
         description: 角色名
         type: string
-      updated_at:
+      update_time:
         type: string
     type: object
   system.SysUser:
     properties:
       avatar:
         type: string
-      created_at:
+      create_time:
         type: string
-      deleted_at:
+      delete_time:
         $ref: '#/definitions/gorm.DeletedAt'
       email:
         type: string
       id:
-        type: integer
+        type: string
       nick_name:
         type: string
       password:
@@ -75,11 +75,9 @@ definitions:
         items:
           $ref: '#/definitions/system.SysRole'
         type: array
-      updated_at:
+      update_time:
         type: string
       user_name:
-        type: string
-      uuid:
         type: string
     required:
     - password
@@ -91,6 +89,93 @@ info:
   title: Swagger Example API
   version: 0.0.1
 paths:
+  /file/delete/{id}:
+    delete:
+      parameters:
+      - description: 参数
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{""code"":200,""message"":""删除成功""}'
+          schema:
+            type: string
+        "400":
+          description: '{""code"":400,""message"":""删除失败""}'
+          schema:
+            type: string
+        "500":
+          description: '{""code"":500,""message"":""服务器错误""}'
+          schema:
+            type: string
+      summary: 文件删除
+      tags:
+      - file
+  /file/list:
+    get:
+      parameters:
+      - description: 关键字
+        in: query
+        name: key_word
+        type: string
+      - in: query
+        name: page
+        required: true
+        type: integer
+      - in: query
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{""code"":200,""message"":""删除成功""}'
+          schema:
+            type: string
+        "400":
+          description: '{""code"":400,""message"":""删除失败""}'
+          schema:
+            type: string
+        "500":
+          description: '{""code"":500,""message"":""服务器错误""}'
+          schema:
+            type: string
+      summary: 文件列表
+      tags:
+      - file
+  /file/upload:
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: 文件
+        in: formData
+        name: file
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{""code"":200,""message"":""上传成功""}'
+          schema:
+            type: string
+        "400":
+          description: '{""code"":400,""message"":""上传失败""}'
+          schema:
+            type: string
+        "500":
+          description: '{""code"":500,""message"":""服务器错误""}'
+          schema:
+            type: string
+      summary: 文件上传
+      tags:
+      - file
   /public/base/login:
     post:
       parameters:

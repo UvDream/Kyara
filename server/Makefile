@@ -1,6 +1,9 @@
-all: build deploy
+all: build deploy  clean
 build:
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o server .
 deploy:
-	#scp -r /Users/wzj/Desktop/wzj/blog/Kyara/server/config.yaml root@124.223.8.237:/server
-	scp -r /Users/wzj/Desktop/wzj/blog/Kyara/server/main root@124.223.8.237:/server
+	scp -r server root@124.223.8.237:/server
+#deploy_config:
+#	scp  config.yml root@124.223.8.237:/server
+clean:
+	rm -rf server

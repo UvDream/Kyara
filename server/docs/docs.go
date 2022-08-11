@@ -16,6 +16,140 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/file/delete/{id}": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "file"
+                ],
+                "summary": "文件删除",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "参数",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"\"code\"\":200,\"\"message\"\":\"\"删除成功\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "{\"\"code\"\":400,\"\"message\"\":\"\"删除失败\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"\"code\"\":500,\"\"message\"\":\"\"服务器错误\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/file/list": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "file"
+                ],
+                "summary": "文件列表",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "关键字",
+                        "name": "key_word",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "page_size",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"\"code\"\":200,\"\"message\"\":\"\"删除成功\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "{\"\"code\"\":400,\"\"message\"\":\"\"删除失败\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"\"code\"\":500,\"\"message\"\":\"\"服务器错误\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/file/upload": {
+            "post": {
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "file"
+                ],
+                "summary": "文件上传",
+                "parameters": [
+                    {
+                        "type": "file",
+                        "description": "文件",
+                        "name": "file",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"\"code\"\":200,\"\"message\"\":\"\"上传成功\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "{\"\"code\"\":400,\"\"message\"\":\"\"上传失败\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "{\"\"code\"\":500,\"\"message\"\":\"\"服务器错误\"\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/public/base/login": {
             "post": {
                 "produces": [
@@ -170,14 +304,14 @@ const docTemplate = `{
                         "$ref": "#/definitions/system.SysRole"
                     }
                 },
-                "created_at": {
+                "create_time": {
                     "type": "string"
                 },
-                "deleted_at": {
+                "delete_time": {
                     "$ref": "#/definitions/gorm.DeletedAt"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "parent_id": {
                     "description": "父角色ID",
@@ -187,7 +321,7 @@ const docTemplate = `{
                     "description": "角色名",
                     "type": "string"
                 },
-                "updated_at": {
+                "update_time": {
                     "type": "string"
                 }
             }
@@ -202,17 +336,17 @@ const docTemplate = `{
                 "avatar": {
                     "type": "string"
                 },
-                "created_at": {
+                "create_time": {
                     "type": "string"
                 },
-                "deleted_at": {
+                "delete_time": {
                     "$ref": "#/definitions/gorm.DeletedAt"
                 },
                 "email": {
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "nick_name": {
                     "type": "string"
@@ -230,13 +364,10 @@ const docTemplate = `{
                         "$ref": "#/definitions/system.SysRole"
                     }
                 },
-                "updated_at": {
+                "update_time": {
                     "type": "string"
                 },
                 "user_name": {
-                    "type": "string"
-                },
-                "uuid": {
                     "type": "string"
                 }
             }

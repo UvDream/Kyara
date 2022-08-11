@@ -57,7 +57,7 @@ func (a *ToArticleService) GetArticleHistoryService(id string) (list interface{}
 
 //GetArticleDetailService 获取文章详情
 func (a *ToArticleService) GetArticleDetailService(id string) (list article.Article, msg string, err error) {
-	err = global.DB.Where("uuid=?", id).Preload("Tags").Preload("Categories").Preload("Auth").First(&list).Error
+	err = global.DB.Where("id=?", id).Preload("Tags").Preload("Categories").Preload("Auth").First(&list).Error
 	if err != nil {
 		return article.Article{}, "查询失败", err
 	}

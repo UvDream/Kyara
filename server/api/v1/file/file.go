@@ -12,6 +12,15 @@ import (
 type FilesApi struct{}
 
 // Upload 文件上传
+// @Tags file
+// @Summary 文件上传
+// @Accept multipart/form-data
+// @Produce json
+// @Param file formData file true "文件"
+// @Success 200 {string} string "{""code"":200,""message"":""上传成功""}"
+// @Failure 400 {string} string "{""code"":400,""message"":""上传失败""}"
+// @Failure 500 {string} string "{""code"":500,""message"":""服务器错误""}"
+// @Router /file/upload [post]
 func (i *FilesApi) Upload(c *gin.Context) {
 	_, _, err := c.Request.FormFile("file")
 	if err != nil {
@@ -27,6 +36,14 @@ func (i *FilesApi) Upload(c *gin.Context) {
 }
 
 // Delete 文件删除
+// @Tags file
+// @Summary 文件删除
+// @Produce json
+// @Param    id   query     string  true  "参数"
+// @Success 200 {string} string "{""code"":200,""message"":""删除成功""}"
+// @Failure 400 {string} string "{""code"":400,""message"":""删除失败""}"
+// @Failure 500 {string} string "{""code"":500,""message"":""服务器错误""}"
+// @Router /file/delete/{id} [delete]
 func (i *FilesApi) Delete(c *gin.Context) {
 	id := c.Query("id")
 	if id == "" {
@@ -42,6 +59,14 @@ func (i *FilesApi) Delete(c *gin.Context) {
 }
 
 // List 文件列表
+// @Tags file
+// @Summary 文件列表
+// @Produce json
+// @Param    query   query     request.PaginationRequest  false  "分页参数"
+// @Success 200 {string} string "{""code"":200,""message"":""删除成功""}"
+// @Failure 400 {string} string "{""code"":400,""message"":""删除失败""}"
+// @Failure 500 {string} string "{""code"":500,""message"":""服务器错误""}"
+// @Router /file/list [get]
 func (i *FilesApi) List(c *gin.Context) {
 	var fileOpts request.PaginationRequest
 	fileOpts.KeyWord = c.Query("key_word")

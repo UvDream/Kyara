@@ -22,7 +22,7 @@ type ArticleRequest struct {
 	TagsID          []uint `json:"tags_id" gorm:"-"`                                            // tags id
 	CategoriesID    []uint `json:"categories_id" gorm:"-"`                                      // 分类id
 	IsTop           bool   `json:"is_top" gorm:"type:tinyint(1);"`                              // 是否置顶
-	AuthID          string `json:"auth_id" gorm:"comment:作者的UUID"`                              // 用户id
+	AuthID          string `json:"auth_id" gorm:"type:varchar(100);comment:作者的UUID"`            // 用户id
 }
 
 type ArticleListRequest struct {
