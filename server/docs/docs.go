@@ -43,7 +43,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":{},\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -74,7 +74,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":{},\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -105,7 +105,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Article,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -136,7 +136,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":[]article.Article,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -176,7 +176,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":[]article.Article,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -209,7 +209,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":article2.Article,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -244,7 +244,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":{\"captcha\":string,captcha_id:string},\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -268,7 +268,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":{},\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -302,7 +302,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Category,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -334,7 +334,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Category,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -368,7 +368,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Category,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -534,7 +534,7 @@ const docTemplate = `{
                         "schema": {
                             "allOf": [
                                 {
-                                    "$ref": "#/definitions/response.Response"
+                                    "$ref": "#/definitions/models.Response"
                                 },
                                 {
                                     "type": "object",
@@ -582,7 +582,7 @@ const docTemplate = `{
                         "schema": {
                             "allOf": [
                                 {
-                                    "$ref": "#/definitions/response.Response"
+                                    "$ref": "#/definitions/models.Response"
                                 },
                                 {
                                     "type": "object",
@@ -632,7 +632,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Tag,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -664,7 +664,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Tag,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -687,7 +687,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":[]article.Tag,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -721,7 +721,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":theme.ResponseTheme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -753,7 +753,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":theme.Theme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -785,7 +785,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":theme.Theme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -816,7 +816,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":[]theme.ResponseTheme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -847,7 +847,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":[]theme.ResponseTheme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -881,7 +881,7 @@ const docTemplate = `{
                     "200": {
                         "description": "{\"code\":200,\"data\":theme.Theme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -1158,6 +1158,21 @@ const docTemplate = `{
                 }
             }
         },
+        "models.Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {},
+                "msg": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
         "request.ArticleRequest": {
             "type": "object",
             "required": [
@@ -1265,21 +1280,6 @@ const docTemplate = `{
                 },
                 "user_name": {
                     "type": "string"
-                }
-            }
-        },
-        "response.Response": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer"
-                },
-                "data": {},
-                "msg": {
-                    "type": "string"
-                },
-                "success": {
-                    "type": "boolean"
                 }
             }
         },

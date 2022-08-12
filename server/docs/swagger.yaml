@@ -191,6 +191,16 @@ definitions:
         description: Valid is true if Time is not NULL
         type: boolean
     type: object
+  models.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      msg:
+        type: string
+      success:
+        type: boolean
+    type: object
   request.ArticleRequest:
     properties:
       auth_id:
@@ -270,16 +280,6 @@ definitions:
     - captcha_id
     - password
     - user_name
-    type: object
-  response.Response:
-    properties:
-      code:
-        type: integer
-      data: {}
-      msg:
-        type: string
-      success:
-        type: boolean
     type: object
   system.SysRole:
     properties:
@@ -387,7 +387,7 @@ paths:
         "200":
           description: '{"code":200,"data":{},"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 创建文章
       tags:
       - article
@@ -407,7 +407,7 @@ paths:
         "200":
           description: '{"code":200,"data":{},"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 删除文章
       tags:
       - article
@@ -427,7 +427,7 @@ paths:
         "200":
           description: '{"code":200,"data":article.Article,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 查询文章详情
       tags:
       - article
@@ -447,7 +447,7 @@ paths:
         "200":
           description: '{"code":200,"data":[]article.Article,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 查询文章历史记录
       tags:
       - article
@@ -473,7 +473,7 @@ paths:
         "200":
           description: '{"code":200,"data":[]article.Article,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 查询文章
       tags:
       - article
@@ -494,7 +494,7 @@ paths:
         "200":
           description: '{"code":200,"data":article2.Article,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 修改文章
       tags:
       - article
@@ -517,7 +517,7 @@ paths:
         "200":
           description: '{"code":200,"data":{"captcha":string,captcha_id:string},"msg":"ok"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 图形验证码
       tags:
       - system
@@ -533,7 +533,7 @@ paths:
         "200":
           description: '{"code":200,"data":{},"msg":"ok"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 初始化数据
       tags:
       - system
@@ -555,7 +555,7 @@ paths:
         "200":
           description: '{"code":200,"data":article.Category,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 创建Category
       tags:
       - category
@@ -576,7 +576,7 @@ paths:
         "200":
           description: '{"code":200,"data":article.Category,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 删除Category
       tags:
       - category
@@ -598,7 +598,7 @@ paths:
         "200":
           description: '{"code":200,"data":article.Category,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 修改Category
       tags:
       - category
@@ -705,7 +705,7 @@ paths:
           description: OK
           schema:
             allOf:
-            - $ref: '#/definitions/response.Response'
+            - $ref: '#/definitions/models.Response'
             - properties:
                 code:
                   type: integer
@@ -733,7 +733,7 @@ paths:
           description: OK
           schema:
             allOf:
-            - $ref: '#/definitions/response.Response'
+            - $ref: '#/definitions/models.Response'
             - properties:
                 code:
                   type: integer
@@ -763,7 +763,7 @@ paths:
         "200":
           description: '{"code":200,"data":article.Tag,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 创建tag
       tags:
       - tag
@@ -784,7 +784,7 @@ paths:
         "200":
           description: '{"code":200,"data":article.Tag,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 删除tag
       tags:
       - tag
@@ -799,7 +799,7 @@ paths:
         "200":
           description: '{"code":200,"data":[]article.Tag,"msg":"操作成功"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 查询tag
       tags:
       - tag
@@ -821,7 +821,7 @@ paths:
         "200":
           description: '{"code":200,"data":theme.ResponseTheme,"msg":"ok"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 主题创建
       tags:
       - theme
@@ -842,7 +842,7 @@ paths:
         "200":
           description: '{"code":200,"data":theme.Theme,"msg":"ok"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 主题删除
       tags:
       - theme
@@ -863,7 +863,7 @@ paths:
         "200":
           description: '{"code":200,"data":theme.Theme,"msg":"ok"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 主题详情
       tags:
       - theme
@@ -883,7 +883,7 @@ paths:
         "200":
           description: '{"code":200,"data":[]theme.ResponseTheme,"msg":"ok"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 主题列表
       tags:
       - theme
@@ -903,7 +903,7 @@ paths:
         "200":
           description: '{"code":200,"data":[]theme.ResponseTheme,"msg":"ok"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 查询公开主题
       tags:
       - theme
@@ -925,7 +925,7 @@ paths:
         "200":
           description: '{"code":200,"data":theme.Theme,"msg":"ok"}'
           schema:
-            $ref: '#/definitions/response.Response'
+            $ref: '#/definitions/models.Response'
       summary: 主题更新
       tags:
       - theme

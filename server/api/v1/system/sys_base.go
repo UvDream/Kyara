@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"server/code"
-	"server/models/common/response"
+	"server/models"
 	"server/models/system"
 	"server/models/system/request"
 )
@@ -16,7 +16,7 @@ type BaseApi struct{}
 // @Summary 用户登录
 // @Produce  application/json
 // @Param data body request.LoginRequest true "用户名, 密码, 验证码"
-// @Success 200 {object} response.Response{data=system.User,code=int,msg=string}
+// @Success 200 {object} models.Response{data=system.User,code=int,msg=string}
 // @Router  /public/base/login [post]
 func (b *BaseApi) Login(c *gin.Context) {
 	var loginRequest request.LoginRequest
@@ -39,10 +39,10 @@ func (b *BaseApi) Login(c *gin.Context) {
 	//}
 	//最后验证用户名和密码是否正确
 	if user, token, msg, err := userService.Login(loginRequest.Username, loginRequest.Password); err != nil {
-		response.FailWithMessage(msg, c)
+		models.FailWithMessage(msg, c)
 		return
 	} else {
-		response.OkWithDetailed(gin.H{"token": token, "user_info": user}, msg, c)
+		models.OkWithDetailed(gin.H{"token": token, "user_info": user}, msg, c)
 	}
 }
 
@@ -51,19 +51,19 @@ func (b *BaseApi) Login(c *gin.Context) {
 // @Summary 用户注册
 // @Produce  application/json
 // @Param data body system.User true "用户名, 密码, 验证码"
-// @Success 200 {object} response.Response{data=system.User,code=int,msg=string}
+// @Success 200 {object} models.Response{data=system.User,code=int,msg=string}
 // @Router  /public/base/register [post]
 func (b *BaseApi) Register(c *gin.Context) {
 	var registerRequest system.User
 	err := c.ShouldBindJSON(&registerRequest)
 	if err != nil {
-		response.FailResponse(code.ErrorRegisterMissingParam, c)
+		models.FailResponse(code.ErrorRegisterMissingParam, c)
 		return
 	}
 	data, cd, err := userService.RegisterService(registerRequest)
 	if err != nil {
-		response.FailResponse(cd, c)
+		models.FailResponse(cd, c)
 		return
 	}
-	response.SuccessResponse(data, cd, c)
+	models.SuccessResponse(data, cd, c)
 }
