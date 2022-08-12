@@ -46,7 +46,7 @@ mysql:
 #redis 设置
 redis:
   db: 0
-  addr: 127.0.0.1:55000
+  addr: 127.0.0.1:6379
   password: "redispw"
 
 # 跨域配置
