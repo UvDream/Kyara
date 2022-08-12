@@ -5,23 +5,21 @@ import (
 	"server/code"
 	"server/models"
 	article2 "server/models/article"
-	"server/models/article/request"
 	"server/utils"
 )
 
-type ArticlesApi struct {
-}
+type ArticlesApi struct{}
 
 // CreateArticle 创建文章
 //@Summary 创建文章
 //@Tags article
 //@Accept  json
 //@Produce  json
-//@Param article body request.ArticleRequest true "创建文章"
+//@Param article body article2.Article true "创建文章"
 //@Success 200 {object} models.Response "{"code":200,"data":{},"msg":"操作成功"}"
 //@Router /article/create [post]
 func (article *ArticlesApi) CreateArticle(c *gin.Context) {
-	var articleOpts request.ArticleRequest
+	var articleOpts article2.Article
 	//校验必填信息
 	err := c.ShouldBindJSON(&articleOpts)
 	if err != nil {
@@ -92,7 +90,7 @@ func (article *ArticlesApi) UpdateArticle(c *gin.Context) {
 //@Accept  json
 //@Produce  json
 //@Param        id   query     string  true  "参数"
-//@Param article body request.ArticleRequest true "查询文章"
+//@Param article body article2.Article true "查询文章"
 //@Success 200 {object} models.Response "{"code":200,"data":[]article.Article,"msg":"操作成功"}"
 //@Router /article/list [get]
 func (article *ArticlesApi) GetArticleList(c *gin.Context) {
@@ -104,7 +102,7 @@ func (article *ArticlesApi) GetArticleList(c *gin.Context) {
 		models.FailWithMessage("token验证失败", c)
 		return
 	}
-	var articleOpts request.ArticleListRequest
+	var articleOpts article2.ListArticleRequest
 	err = c.ShouldBindQuery(&articleOpts)
 	if err != nil {
 		models.FailResponse(code.ErrorGetQueryParam, c)

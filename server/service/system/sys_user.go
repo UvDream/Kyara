@@ -3,11 +3,10 @@ package system
 import (
 	"server/global"
 	"server/models/system"
-	"server/models/system/request"
 )
 
 //GetUserListService 获取用户列表
-func (sysUserService *SysUserService) GetUserListService(query *request.SysUserRequest) (list interface{}, total int64, mg string, err error) {
+func (sysUserService *SysUserService) GetUserListService(query *system.SysUserRequest) (list interface{}, total int64, mg string, err error) {
 	limit := query.PageSize
 	offset := query.PageSize * (query.Page - 1)
 	var userList []system.User

@@ -35,7 +35,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/request.ArticleRequest"
+                            "$ref": "#/definitions/article.Article"
                         }
                     }
                 ],
@@ -168,7 +168,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/request.ArticleRequest"
+                            "$ref": "#/definitions/article.Article"
                         }
                     }
                 ],
@@ -524,7 +524,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/request.LoginRequest"
+                            "$ref": "#/definitions/system.LoginRequest"
                         }
                     }
                 ],
@@ -1173,94 +1173,7 @@ const docTemplate = `{
                 }
             }
         },
-        "request.ArticleRequest": {
-            "type": "object",
-            "required": [
-                "status",
-                "title"
-            ],
-            "properties": {
-                "auth_id": {
-                    "description": "用户id",
-                    "type": "string"
-                },
-                "categories_id": {
-                    "description": "分类id",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "comment_count": {
-                    "description": "评论数",
-                    "type": "integer"
-                },
-                "disable_comments": {
-                    "description": "禁止评论",
-                    "type": "boolean"
-                },
-                "editor_type": {
-                    "description": "编辑器类型",
-                    "type": "string"
-                },
-                "html_content": {
-                    "description": "html内容",
-                    "type": "string"
-                },
-                "is_top": {
-                    "description": "是否置顶",
-                    "type": "boolean"
-                },
-                "md_content": {
-                    "description": "markdown内容",
-                    "type": "string"
-                },
-                "meta_description": {
-                    "description": "头部描述",
-                    "type": "string"
-                },
-                "meta_key_words": {
-                    "description": "头部关键字",
-                    "type": "string"
-                },
-                "password": {
-                    "description": "访问密码",
-                    "type": "string"
-                },
-                "slug": {
-                    "description": "别名",
-                    "type": "string"
-                },
-                "status": {
-                    "description": "状态 DRAFT, PUBLISHED",
-                    "type": "string"
-                },
-                "summary": {
-                    "description": "摘要",
-                    "type": "string"
-                },
-                "tags_id": {
-                    "description": "tags id",
-                    "type": "array",
-                    "items": {
-                        "type": "integer"
-                    }
-                },
-                "thumbnail": {
-                    "description": "缩略图",
-                    "type": "string"
-                },
-                "title": {
-                    "description": "标题",
-                    "type": "string"
-                },
-                "word_count": {
-                    "description": "字数",
-                    "type": "integer"
-                }
-            }
-        },
-        "request.LoginRequest": {
+        "system.LoginRequest": {
             "type": "object",
             "required": [
                 "captcha",

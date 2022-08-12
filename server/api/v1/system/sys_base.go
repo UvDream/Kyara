@@ -6,7 +6,6 @@ import (
 	"server/code"
 	"server/models"
 	"server/models/system"
-	"server/models/system/request"
 )
 
 type BaseApi struct{}
@@ -15,11 +14,11 @@ type BaseApi struct{}
 // @Tags User
 // @Summary 用户登录
 // @Produce  application/json
-// @Param data body request.LoginRequest true "用户名, 密码, 验证码"
+// @Param data body system.LoginRequest true "用户名, 密码, 验证码"
 // @Success 200 {object} models.Response{data=system.User,code=int,msg=string}
 // @Router  /public/base/login [post]
 func (b *BaseApi) Login(c *gin.Context) {
-	var loginRequest request.LoginRequest
+	var loginRequest system.LoginRequest
 	err := c.ShouldBindJSON(&loginRequest)
 	//首先验证参数是否齐全
 	if err != nil {

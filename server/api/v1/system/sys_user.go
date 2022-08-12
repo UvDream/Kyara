@@ -3,13 +3,13 @@ package system
 import (
 	"github.com/gin-gonic/gin"
 	"server/models"
-	requestModel "server/models/system/request"
+	"server/models/system"
 )
 
 type UserApi struct{}
 
 func (b *UserApi) UserList(c *gin.Context) {
-	var userRequest requestModel.SysUserRequest
+	var userRequest system.SysUserRequest
 	//先判断参数是否合法
 	if err := c.ShouldBindJSON(&userRequest); err != nil {
 		models.FailWithMessage(err.Error(), c)

@@ -7,14 +7,13 @@ import (
 	"gorm.io/gorm/clause"
 	"server/global"
 	"server/models/article"
-	"server/models/article/request"
 	"time"
 )
 
 type ToArticleService struct{}
 
 //CreateArticle 创建文章
-func (a *ToArticleService) CreateArticle(articleOpts request.ArticleRequest) (at *article.Article, msg string, err error) {
+func (a *ToArticleService) CreateArticle(articleOpts article.Article) (at *article.Article, msg string, err error) {
 	var articleContent article.Article
 	articleContent = SetArticleContent(articleContent, articleOpts)
 	//存储数据库
@@ -77,7 +76,7 @@ func CreateTagArticle(articleID string, tags []uint) (msg string, err error) {
 }
 
 //SetArticleContent 设置文章内容
-func SetArticleContent(articleContent article.Article, articleOpts request.ArticleRequest) article.Article {
+func SetArticleContent(articleContent article.Article, articleOpts article.Article) article.Article {
 	articleContent.Title = articleOpts.Title
 	articleContent.Status = articleOpts.Status
 	articleContent.Slug = articleOpts.Slug

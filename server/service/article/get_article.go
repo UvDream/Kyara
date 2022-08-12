@@ -6,11 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"server/global"
 	"server/models/article"
-	"server/models/article/request"
 	"server/utils"
 )
 
-func (a *ToArticleService) GetArticleListService(query request.ArticleListRequest, uuid string, c *gin.Context) (list *[]article.Article, total int64, msg string, err error) {
+func (a *ToArticleService) GetArticleListService(query article.ListArticleRequest, uuid string, c *gin.Context) (list *[]article.Article, total int64, msg string, err error) {
 
 	var articleList []article.Article
 	db := global.DB.Model(article.Article{})
