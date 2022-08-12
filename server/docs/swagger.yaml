@@ -5,7 +5,7 @@ definitions:
         description: 用户id
         type: string
       author:
-        $ref: '#/definitions/system.SysUser'
+        $ref: '#/definitions/system.User'
         description: 作者
       categories:
         description: 分类
@@ -151,6 +151,38 @@ definitions:
     required:
     - name
     type: object
+  color.RGBA:
+    properties:
+      r:
+        type: integer
+    type: object
+  config.Captcha:
+    properties:
+      bg-color:
+        $ref: '#/definitions/color.RGBA'
+        description: 验证码背景颜色
+      height:
+        description: 验证码高度
+        type: integer
+      language:
+        description: 验证码语言 zh/en
+        type: string
+      length:
+        description: 验证码长度
+        type: integer
+      noise-count:
+        description: 噪点数量
+        type: integer
+      show-line-options:
+        description: 显示线条选项  2/4/8
+        type: integer
+      type:
+        description: 验证码类型 default/audio/math/string/math/chinese
+        type: string
+      width:
+        description: 验证码宽度
+        type: integer
+    type: object
   gorm.DeletedAt:
     properties:
       time:
@@ -270,7 +302,7 @@ definitions:
       update_time:
         type: string
     type: object
-  system.SysUser:
+  system.User:
     properties:
       avatar:
         type: string
@@ -300,12 +332,6 @@ definitions:
     type: object
   theme.Theme:
     properties:
-      auth_id:
-        description: 作者ID
-        type: string
-      author:
-        $ref: '#/definitions/system.SysUser'
-        description: 作者
       create_time:
         type: string
       delete_time:
@@ -328,6 +354,12 @@ definitions:
         description: 简略图
         type: string
       update_time:
+        type: string
+      user:
+        $ref: '#/definitions/system.User'
+        description: 作者
+      user_id:
+        description: 作者ID
         type: string
     required:
     - theme
@@ -466,6 +498,45 @@ paths:
       summary: 修改文章
       tags:
       - article
+  /base/captcha:
+    post:
+      consumes:
+      - application/json
+      description: 图形验证码
+      operationId: Captcha
+      parameters:
+      - description: 图形验证码
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/config.Captcha'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{"captcha":string,captcha_id:string},"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 图形验证码
+      tags:
+      - system
+  /base/init_data:
+    get:
+      consumes:
+      - application/json
+      description: 初始化数据
+      operationId: InitData
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 初始化数据
+      tags:
+      - system
   /category/create:
     post:
       consumes:
@@ -639,7 +710,7 @@ paths:
                 code:
                   type: integer
                 data:
-                  $ref: '#/definitions/system.SysUser'
+                  $ref: '#/definitions/system.User'
                 msg:
                   type: string
               type: object
@@ -654,7 +725,7 @@ paths:
         name: data
         required: true
         schema:
-          $ref: '#/definitions/system.SysUser'
+          $ref: '#/definitions/system.User'
       produces:
       - application/json
       responses:
@@ -667,7 +738,7 @@ paths:
                 code:
                   type: integer
                 data:
-                  $ref: '#/definitions/system.SysUser'
+                  $ref: '#/definitions/system.User'
                 msg:
                   type: string
               type: object

@@ -215,6 +215,65 @@ const docTemplate = `{
                 }
             }
         },
+        "/base/captcha": {
+            "post": {
+                "description": "图形验证码",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "system"
+                ],
+                "summary": "图形验证码",
+                "operationId": "Captcha",
+                "parameters": [
+                    {
+                        "description": "图形验证码",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/config.Captcha"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\":200,\"data\":{\"captcha\":string,captcha_id:string},\"msg\":\"ok\"}",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/base/init_data": {
+            "get": {
+                "description": "初始化数据",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "system"
+                ],
+                "summary": "初始化数据",
+                "operationId": "InitData",
+                "responses": {
+                    "200": {
+                        "description": "{\"code\":200,\"data\":{},\"msg\":\"ok\"}",
+                        "schema": {
+                            "$ref": "#/definitions/response.Response"
+                        }
+                    }
+                }
+            }
+        },
         "/category/create": {
             "post": {
                 "description": "创建Category",
@@ -484,7 +543,7 @@ const docTemplate = `{
                                             "type": "integer"
                                         },
                                         "data": {
-                                            "$ref": "#/definitions/system.SysUser"
+                                            "$ref": "#/definitions/system.User"
                                         },
                                         "msg": {
                                             "type": "string"
@@ -513,7 +572,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/system.SysUser"
+                            "$ref": "#/definitions/system.User"
                         }
                     }
                 ],
@@ -532,7 +591,7 @@ const docTemplate = `{
                                             "type": "integer"
                                         },
                                         "data": {
-                                            "$ref": "#/definitions/system.SysUser"
+                                            "$ref": "#/definitions/system.User"
                                         },
                                         "msg": {
                                             "type": "string"
@@ -843,7 +902,7 @@ const docTemplate = `{
                 },
                 "author": {
                     "description": "作者",
-                    "$ref": "#/definitions/system.SysUser"
+                    "$ref": "#/definitions/system.User"
                 },
                 "categories": {
                     "description": "分类",
@@ -1042,6 +1101,51 @@ const docTemplate = `{
                 }
             }
         },
+        "color.RGBA": {
+            "type": "object",
+            "properties": {
+                "r": {
+                    "type": "integer"
+                }
+            }
+        },
+        "config.Captcha": {
+            "type": "object",
+            "properties": {
+                "bg-color": {
+                    "description": "验证码背景颜色",
+                    "$ref": "#/definitions/color.RGBA"
+                },
+                "height": {
+                    "description": "验证码高度",
+                    "type": "integer"
+                },
+                "language": {
+                    "description": "验证码语言 zh/en",
+                    "type": "string"
+                },
+                "length": {
+                    "description": "验证码长度",
+                    "type": "integer"
+                },
+                "noise-count": {
+                    "description": "噪点数量",
+                    "type": "integer"
+                },
+                "show-line-options": {
+                    "description": "显示线条选项  2/4/8",
+                    "type": "integer"
+                },
+                "type": {
+                    "description": "验证码类型 default/audio/math/string/math/chinese",
+                    "type": "string"
+                },
+                "width": {
+                    "description": "验证码宽度",
+                    "type": "integer"
+                }
+            }
+        },
         "gorm.DeletedAt": {
             "type": "object",
             "properties": {
@@ -1210,7 +1314,7 @@ const docTemplate = `{
                 }
             }
         },
-        "system.SysUser": {
+        "system.User": {
             "type": "object",
             "properties": {
                 "avatar": {
@@ -1258,14 +1362,6 @@ const docTemplate = `{
                 "theme"
             ],
             "properties": {
-                "auth_id": {
-                    "description": "作者ID",
-                    "type": "string"
-                },
-                "author": {
-                    "description": "作者",
-                    "$ref": "#/definitions/system.SysUser"
-                },
                 "create_time": {
                     "type": "string"
                 },
@@ -1296,6 +1392,14 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "update_time": {
+                    "type": "string"
+                },
+                "user": {
+                    "description": "作者",
+                    "$ref": "#/definitions/system.User"
+                },
+                "user_id": {
+                    "description": "作者ID",
                     "type": "string"
                 }
             }

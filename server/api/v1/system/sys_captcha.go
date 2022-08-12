@@ -12,6 +12,15 @@ import (
 var store = base64Captcha.DefaultMemStore
 
 //	Captcha 图形验证码
+// @Summary 图形验证码
+// @Description 图形验证码
+// @Tags system
+// @ID Captcha
+// @Accept  json
+// @Produce  json
+// @Param data body config.Captcha true "图形验证码"
+// @Success 200 {object} response.Response "{"code":200,"data":{"captcha":string,captcha_id:string},"msg":"ok"}"
+// @Router /base/captcha [post]
 func (b *BaseApi) Captcha(c *gin.Context) {
 	var captchaRequest config.Captcha
 	_ = c.ShouldBindJSON(&captchaRequest)

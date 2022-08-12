@@ -7,6 +7,15 @@ import (
 	"server/utils"
 )
 
+// InitData 初始化数据
+// @Summary 初始化数据
+// @Description 初始化数据
+// @Tags system
+// @ID InitData
+// @Accept  json
+// @Produce  json
+// @Success 200 {object} response.Response"{"code":200,"data":{},"msg":"ok"}"
+// @Router /base/init_data [get]
 func (b *BaseApi) InitData(c *gin.Context) {
 	initializeUser := []system.User{
 		{
