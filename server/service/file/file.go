@@ -6,7 +6,7 @@ import (
 	"path"
 	"server/code"
 	"server/global"
-	file2 "server/model/file"
+	file2 "server/models/file"
 	"server/utils"
 	"strings"
 )

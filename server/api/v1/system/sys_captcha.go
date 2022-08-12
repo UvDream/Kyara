@@ -6,7 +6,7 @@ import (
 	"go.uber.org/zap"
 	"server/config"
 	"server/global"
-	"server/model/common/response"
+	"server/models"
 )
 
 var store = base64Captcha.DefaultMemStore
@@ -19,7 +19,7 @@ var store = base64Captcha.DefaultMemStore
 // @Accept  json
 // @Produce  json
 // @Param data body config.Captcha true "图形验证码"
-// @Success 200 {object} response.Response "{"code":200,"data":{"captcha":string,captcha_id:string},"msg":"ok"}"
+// @Success 200 {object} models.Response "{"code":200,"data":{"captcha":string,captcha_id:string},"msg":"ok"}"
 // @Router /base/captcha [post]
 func (b *BaseApi) Captcha(c *gin.Context) {
 	var captchaRequest config.Captcha
@@ -57,10 +57,10 @@ func (b *BaseApi) Captcha(c *gin.Context) {
 	id, image, err := base64Captcha.NewCaptcha(driver, store).Generate()
 	if err != nil {
 		global.Log.Error("验证码获取失败!", zap.Error(err))
-		response.FailWithMessage("验证码获取失败", c)
+		models.FailWithMessage("验证码获取失败", c)
 		return
 	}
-	response.OkWithDetailed(gin.H{
+	models.OkWithDetailed(gin.H{
 		"captcha":    image,
 		"captcha_id": id,
 	}, "验证码获取成功", c)

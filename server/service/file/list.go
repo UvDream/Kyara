@@ -3,8 +3,8 @@ package file
 import (
 	code2 "server/code"
 	"server/global"
-	"server/model/common/request"
-	"server/model/file"
+	"server/models/common/request"
+	"server/models/file"
 )
 
 func (*FilesService) ListFileService(query request.PaginationRequest, uuid string) (list []file.File, total int64, code int, err error) {

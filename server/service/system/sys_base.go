@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"go.uber.org/zap"
 	"server/global"
-	"server/model/common/request"
-	"server/model/system"
+	"server/models"
+	"server/models/system"
 	"server/utils"
 )
 
@@ -26,7 +26,7 @@ func (sysUserService *SysUserService) Login(username string, password string) (u
 			j := &utils.JWT{
 				SigningKey: []byte(global.Config.JWT.SigningKey),
 			}
-			claims := j.CreateClaims(request.BaseClaims{
+			claims := j.CreateClaims(models.BaseClaims{
 				ID:       user.ID,
 				NickName: user.NickName,
 				Username: user.UserName,

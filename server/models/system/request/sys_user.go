@@ -1,6 +1,6 @@
 package request
 
-import "server/model/common/request"
+import "server/models/common/request"
 
 //LoginRequest 登陆请求参数
 type LoginRequest struct {

@@ -1,12 +1,12 @@
 package theme
 
 import (
-	"server/model/common"
-	"server/model/system"
+	"server/models"
+	"server/models/system"
 )
 
 type Theme struct {
-	common.Model
+	models.Model
 	//名字
 	Name string `json:"name" gorm:"type:varchar(100);"`
 	//描述

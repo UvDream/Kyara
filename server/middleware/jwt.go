@@ -3,7 +3,7 @@ package middleware
 import (
 	"github.com/gin-gonic/gin"
 	"server/global"
-	"server/model/common/response"
+	"server/models"
 	"server/utils"
 	"strconv"
 	"time"
@@ -14,7 +14,7 @@ func JWTAuth() gin.HandlerFunc {
 		token := c.Request.Header.Get("x-token")
 		//未获取到登陆令牌
 		if token == "" {
-			response.FailWithDetailed(gin.H{"reload": true}, "未登录或非法访问", c)
+			models.FailWithDetailed(gin.H{"reload": true}, "未登录或非法访问", c)
 			c.Abort()
 			return
 		}
@@ -23,11 +23,11 @@ func JWTAuth() gin.HandlerFunc {
 		claims, err := j.ParseToken(token)
 		if err != nil {
 			if err == utils.TokenExpired {
-				response.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
+				models.FailWithDetailed(gin.H{"reload": true}, "授权已过期", c)
 				c.Abort()
 				return
 			}
-			response.FailWithDetailed(gin.H{"reload": true}, err.Error(), c)
+			models.FailWithDetailed(gin.H{"reload": true}, err.Error(), c)
 			c.Abort()
 			return
 		}

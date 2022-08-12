@@ -2,8 +2,8 @@ package article
 
 import (
 	"github.com/gin-gonic/gin"
-	"server/model/article"
-	"server/model/common/response"
+	"server/models"
+	"server/models/article"
 )
 
 type TagsApi struct {
@@ -16,20 +16,20 @@ type TagsApi struct {
 //@Accept json
 //@Produce json
 //@Param body body article.Tag true "创建tag"
-//@Success 200 {object} response.Response"{"code":200,"data":article.Tag,"msg":"操作成功"}"
+//@Success 200 {object} models.Response"{"code":200,"data":article.Tag,"msg":"操作成功"}"
 //@Router /tag/create [post]
 func (t *TagsApi) CreateTag(c *gin.Context) {
 	var tag article.Tag
 	err := c.ShouldBindJSON(&tag)
 	if err != nil {
-		response.FailWithMessage(err.Error(), c)
+		models.FailWithMessage(err.Error(), c)
 	}
 	list, msg, err := tagService.CreateTagService(tag)
 	if err != nil {
-		response.FailWithMessage(msg, c)
+		models.FailWithMessage(msg, c)
 		return
 	}
-	response.OkWithDetailed(list, msg, c)
+	models.OkWithDetailed(list, msg, c)
 }
 
 //DeleteTag 删除tag
@@ -39,19 +39,19 @@ func (t *TagsApi) CreateTag(c *gin.Context) {
 //@Accept  json
 //@Produce  json
 //@Param id path string true "删除tag"
-//@Success 200 {object} response.Response"{"code":200,"data":article.Tag,"msg":"操作成功"}"
+//@Success 200 {object} models.Response"{"code":200,"data":article.Tag,"msg":"操作成功"}"
 //@Router /tag/delete [delete]
 func (t *TagsApi) DeleteTag(c *gin.Context) {
 	id := c.Query("id")
 	if id == "" {
-		response.FailWithMessage("id必填", c)
+		models.FailWithMessage("id必填", c)
 	}
 	msg, err := tagService.DeleteTagService(id)
 	if err != nil {
-		response.FailWithMessage(msg, c)
+		models.FailWithMessage(msg, c)
 		return
 	}
-	response.OkWithMessage(msg, c)
+	models.OkWithMessage(msg, c)
 }
 
 //UpdateTag 修改tag
@@ -61,24 +61,24 @@ func (t *TagsApi) DeleteTag(c *gin.Context) {
 //@Accept  json
 //@Produce  json
 //@Param body body article.Tag true "修改tag"
-//@Success 200 {object} response.Response"{"code":200,"data":article.Tag,"msg":"操作成功"}"
+//@Success 200 {object} models.Response"{"code":200,"data":article.Tag,"msg":"操作成功"}"
 func (t *TagsApi) UpdateTag(c *gin.Context) {
 	var tag article.Tag
 	err := c.ShouldBindJSON(&tag)
 	if err != nil {
-		response.FailWithMessage(err.Error(), c)
+		models.FailWithMessage(err.Error(), c)
 		return
 	}
 	if tag.ID == "" {
-		response.FailWithMessage("缺少tag id", c)
+		models.FailWithMessage("缺少tag id", c)
 		return
 	}
 	data, msg, err := tagService.UpdateTagService(tag)
 	if err != nil {
-		response.FailWithMessage(msg, c)
+		models.FailWithMessage(msg, c)
 		return
 	}
-	response.OkWithDetailed(data, msg, c)
+	models.OkWithDetailed(data, msg, c)
 }
 
 //GetTags 查询tag
@@ -87,15 +87,15 @@ func (t *TagsApi) UpdateTag(c *gin.Context) {
 //@Tags tag
 //@Accept  json
 //@Produce  json
-//@Success 200 {object} response.Response"{"code":200,"data":[]article.Tag,"msg":"操作成功"}"
+//@Success 200 {object} models.Response"{"code":200,"data":[]article.Tag,"msg":"操作成功"}"
 //@Router /tag/list [get]
 func (t *TagsApi) GetTags(c *gin.Context) {
 	keyword := c.Query("keyword")
 	list, msg, err := tagService.GetTagsService(keyword)
 	if err != nil {
-		response.FailWithMessage(msg, c)
+		models.FailWithMessage(msg, c)
 		return
 	}
-	response.OkWithDetailed(list, msg, c)
+	models.OkWithDetailed(list, msg, c)
 
 }

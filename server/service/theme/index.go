@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm/clause"
 	code2 "server/code"
 	"server/global"
-	"server/model/theme"
+	"server/models/theme"
 )
 
 type ThemesServiceGroup struct{}

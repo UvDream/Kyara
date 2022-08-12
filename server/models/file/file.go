@@ -1,11 +1,11 @@
 package file
 
 import (
-	"server/model/common"
+	"server/models"
 )
 
 type File struct {
-	common.Model
+	models.Model
 	Name     string `json:"name" gorm:"type:varchar(255);"`
 	URL      string `json:"url" gorm:"type:varchar(255);"`
 	Size     int64  `json:"size" gorm:"type:int(10);"`

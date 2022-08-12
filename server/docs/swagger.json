@@ -34,7 +34,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":{},\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -65,7 +65,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":{},\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -96,7 +96,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Article,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -127,7 +127,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":[]article.Article,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -167,7 +167,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":[]article.Article,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -200,7 +200,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":article2.Article,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -235,7 +235,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":{\"captcha\":string,captcha_id:string},\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -259,7 +259,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":{},\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -293,7 +293,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Category,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -325,7 +325,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Category,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -359,7 +359,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Category,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -525,7 +525,7 @@
                         "schema": {
                             "allOf": [
                                 {
-                                    "$ref": "#/definitions/response.Response"
+                                    "$ref": "#/definitions/models.Response"
                                 },
                                 {
                                     "type": "object",
@@ -573,7 +573,7 @@
                         "schema": {
                             "allOf": [
                                 {
-                                    "$ref": "#/definitions/response.Response"
+                                    "$ref": "#/definitions/models.Response"
                                 },
                                 {
                                     "type": "object",
@@ -623,7 +623,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Tag,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -655,7 +655,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":article.Tag,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -678,7 +678,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":[]article.Tag,\"msg\":\"操作成功\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -712,7 +712,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":theme.ResponseTheme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -744,7 +744,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":theme.Theme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -776,7 +776,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":theme.Theme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -807,7 +807,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":[]theme.ResponseTheme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -838,7 +838,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":[]theme.ResponseTheme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -872,7 +872,7 @@
                     "200": {
                         "description": "{\"code\":200,\"data\":theme.Theme,\"msg\":\"ok\"}",
                         "schema": {
-                            "$ref": "#/definitions/response.Response"
+                            "$ref": "#/definitions/models.Response"
                         }
                     }
                 }
@@ -1149,6 +1149,21 @@
                 }
             }
         },
+        "models.Response": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {},
+                "msg": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
         "request.ArticleRequest": {
             "type": "object",
             "required": [
@@ -1256,21 +1271,6 @@
                 },
                 "user_name": {
                     "type": "string"
-                }
-            }
-        },
-        "response.Response": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "integer"
-                },
-                "data": {},
-                "msg": {
-                    "type": "string"
-                },
-                "success": {
-                    "type": "boolean"
                 }
             }
         },

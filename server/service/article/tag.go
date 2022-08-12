@@ -2,7 +2,7 @@ package article
 
 import (
 	"server/global"
-	"server/model/article"
+	"server/models/article"
 )
 
 type TagService struct{}

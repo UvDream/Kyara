@@ -3,7 +3,7 @@ package system
 import (
 	"github.com/gin-gonic/gin"
 	"server/global"
-	"server/model/system"
+	"server/models/system"
 	"server/utils"
 )
 
@@ -14,7 +14,7 @@ import (
 // @ID InitData
 // @Accept  json
 // @Produce  json
-// @Success 200 {object} response.Response"{"code":200,"data":{},"msg":"ok"}"
+// @Success 200 {object} models.Response"{"code":200,"data":{},"msg":"ok"}"
 // @Router /base/init_data [get]
 func (b *BaseApi) InitData(c *gin.Context) {
 	initializeUser := []system.User{

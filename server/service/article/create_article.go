@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"gorm.io/gorm/clause"
 	"server/global"
-	"server/model/article"
-	"server/model/article/request"
+	"server/models/article"
+	"server/models/article/request"
 	"time"
 )
 

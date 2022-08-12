@@ -1,4 +1,4 @@
-package common
+package models
 
 import (
 	"database/sql"
@@ -32,4 +32,10 @@ func (m *Model) BeforeUpdate(tx *gorm.DB) (err error) {
 	m.CreateTime = nil
 	m.UpdateTime = nil
 	return
+}
+
+type PaginationRequest struct {
+	KeyWord  string `json:"key_word" form:"key_word"` // 关键字
+	Page     int    `json:"page" binding:"required" form:"page"`
+	PageSize int    `json:"page_size" binding:"required" form:"page_size"`
 }

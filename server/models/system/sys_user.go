@@ -1,12 +1,12 @@
 package system
 
 import (
-	"server/model/common"
+	"server/models"
 )
 
 // User 用户表
 type User struct {
-	common.Model
+	models.Model
 	UserName string `json:"user_name" gorm:"comment:用户名"`
 	NickName string `json:"nick_name" gorm:"comment:昵称"`
 	Password string `json:"password" gorm:"comment:密码"`

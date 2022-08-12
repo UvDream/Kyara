@@ -2,8 +2,8 @@ package system
 
 import (
 	"server/global"
-	"server/model/system"
-	"server/model/system/request"
+	"server/models/system"
+	"server/models/system/request"
 )
 
 //GetUserListService 获取用户列表

@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"server/global"
-	"server/model/article"
-	"server/model/article/request"
+	"server/models/article"
+	"server/models/article/request"
 	"server/utils"
 )
 

@@ -1,12 +1,12 @@
 package article
 
 import (
-	"server/model/common"
+	"server/models"
 )
 
 //Category 分类
 type Category struct {
-	common.Model
+	models.Model
 	Name        string     `gorm:"type:varchar(100);" binding:"required" json:"name"` // 分类名
 	Slug        string     `gorm:"type:varchar(100);" json:"slug"`                    // 别名
 	Description string     `gorm:"type:varchar(1000);" json:"description"`            // 描述
@@ -18,7 +18,7 @@ type Category struct {
 
 // CategoryArticle 分类和文章关联关系
 type CategoryArticle struct {
-	common.Model
+	models.Model
 	CategoryID uint   `gorm:"type:int(10);not null"`                 // 分类ID
 	ArticleID  string `gorm:"varchar(100);not null;foreignKey:UUID"` // 文章ID
 }

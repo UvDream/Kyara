@@ -3,7 +3,7 @@ package theme
 import (
 	code2 "server/code"
 	"server/global"
-	"server/model/theme"
+	"server/models/theme"
 )
 
 //CreateThemeService 创建主题
