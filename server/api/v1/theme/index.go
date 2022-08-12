@@ -3,8 +3,8 @@ package theme
 import (
 	"github.com/gin-gonic/gin"
 	code2 "server/code"
-	"server/model/common/response"
-	"server/model/theme"
+	"server/models/common/response"
+	"server/models/theme"
 	"server/service"
 	"server/utils"
 )

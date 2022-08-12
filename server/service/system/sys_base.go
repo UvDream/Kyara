@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"go.uber.org/zap"
 	"server/global"
-	"server/model/common/request"
-	"server/model/system"
+	"server/models/common/request"
+	"server/models/system"
 	"server/utils"
 )
 

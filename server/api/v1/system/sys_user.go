@@ -2,8 +2,8 @@ package system
 
 import (
 	"github.com/gin-gonic/gin"
-	"server/model/common/response"
-	requestModel "server/model/system/request"
+	"server/models/common/response"
+	requestModel "server/models/system/request"
 )
 
 type UserApi struct{}

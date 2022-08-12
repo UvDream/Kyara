@@ -3,7 +3,7 @@ package article
 import (
 	"context"
 	"server/global"
-	"server/model/article"
+	"server/models/article"
 )
 
 func (a *ToArticleService) DeleteArticleService(id string) (msg string, err error) {

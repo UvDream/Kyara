@@ -2,8 +2,8 @@ package article
 
 import (
 	"github.com/gin-gonic/gin"
-	"server/model/article"
-	"server/model/common/response"
+	"server/models/article"
+	"server/models/common/response"
 )
 
 type CategoriesApi struct{}

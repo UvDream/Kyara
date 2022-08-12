@@ -2,7 +2,7 @@ package article
 
 import (
 	"server/global"
-	"server/model/article"
+	"server/models/article"
 )
 
 func (a *ToArticleService) UpdateArticleService(articleOpts article.Article) (ac *article.Article, msg string, err error) {

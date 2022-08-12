@@ -6,7 +6,7 @@ import (
 	"go.uber.org/zap"
 	"server/config"
 	"server/global"
-	"server/model/common/response"
+	"server/models/common/response"
 )
 
 var store = base64Captcha.DefaultMemStore

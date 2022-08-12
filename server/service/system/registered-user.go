@@ -3,7 +3,7 @@ package system
 import (
 	code2 "server/code"
 	"server/global"
-	"server/model/system"
+	"server/models/system"
 	"server/utils"
 )
 

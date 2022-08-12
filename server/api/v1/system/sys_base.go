@@ -4,9 +4,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"server/code"
-	"server/model/common/response"
-	"server/model/system"
-	"server/model/system/request"
+	"server/models/common/response"
+	"server/models/system"
+	"server/models/system/request"
 )
 
 type BaseApi struct{}

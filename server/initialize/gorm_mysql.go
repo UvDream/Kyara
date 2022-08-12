@@ -7,10 +7,10 @@ import (
 	"os"
 	"server/global"
 	"server/initialize/internal"
-	"server/model/article"
-	"server/model/file"
-	"server/model/system"
-	"server/model/theme"
+	"server/models/article"
+	"server/models/file"
+	"server/models/system"
+	"server/models/theme"
 )
 
 func GormMysql() *gorm.DB {

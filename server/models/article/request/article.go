@@ -1,7 +1,7 @@
 package request
 
 import (
-	"server/model/common/request"
+	"server/models/common/request"
 )
 
 type ArticleRequest struct {

@@ -3,9 +3,9 @@ package article
 import (
 	"github.com/gin-gonic/gin"
 	"server/code"
-	article2 "server/model/article"
-	"server/model/article/request"
-	"server/model/common/response"
+	article2 "server/models/article"
+	"server/models/article/request"
+	"server/models/common/response"
 	"server/utils"
 )
 

@@ -3,7 +3,7 @@ package system
 import (
 	"github.com/gin-gonic/gin"
 	"server/global"
-	"server/model/system"
+	"server/models/system"
 	"server/utils"
 )
 

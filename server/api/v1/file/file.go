@@ -3,8 +3,8 @@ package file
 import (
 	"github.com/gin-gonic/gin"
 	"server/code"
-	"server/model/common/request"
-	"server/model/common/response"
+	"server/models/common/request"
+	"server/models/common/response"
 	"server/utils"
 	"strconv"
 )
