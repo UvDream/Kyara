@@ -3,7 +3,7 @@ package file
 import (
 	"github.com/gin-gonic/gin"
 	"server/code"
-	"server/models/common/request"
+	"server/models"
 	"server/models/common/response"
 	"server/utils"
 	"strconv"
@@ -62,13 +62,13 @@ func (i *FilesApi) Delete(c *gin.Context) {
 // @Tags file
 // @Summary 文件列表
 // @Produce json
-// @Param    query   query     request.PaginationRequest  false  "分页参数"
+// @Param    query   query     models.PaginationRequest  false  "分页参数"
 // @Success 200 {string} string "{""code"":200,""message"":""删除成功""}"
 // @Failure 400 {string} string "{""code"":400,""message"":""删除失败""}"
 // @Failure 500 {string} string "{""code"":500,""message"":""服务器错误""}"
 // @Router /file/list [get]
 func (i *FilesApi) List(c *gin.Context) {
-	var fileOpts request.PaginationRequest
+	var fileOpts models.PaginationRequest
 	fileOpts.KeyWord = c.Query("key_word")
 	fileOpts.Page, _ = strconv.Atoi(c.Query("page"))
 	fileOpts.PageSize, _ = strconv.Atoi(c.Query("page_size"))

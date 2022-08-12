@@ -1,8 +1,6 @@
 package request
 
-import (
-	"server/models/common/request"
-)
+import "server/models"
 
 type ArticleRequest struct {
 	Title           string `json:"title"  gorm:"type:varchar(100);not null" binding:"required"` // 标题
@@ -26,7 +24,7 @@ type ArticleRequest struct {
 }
 
 type ArticleListRequest struct {
-	request.PaginationRequest
+	models.PaginationRequest
 	Title      string `json:"title"` // 标题
 	StartTime  string `form:"start_time" json:"start_time"`
 	EndTime    string `form:"end_time" json:"end_time"`

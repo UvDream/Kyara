@@ -1,6 +1,6 @@
 package request
 
-import "server/models/common/request"
+import "server/models"
 
 //LoginRequest 登陆请求参数
 type LoginRequest struct {
@@ -12,7 +12,7 @@ type LoginRequest struct {
 
 // SysUserRequest 用户列表请求参数
 type SysUserRequest struct {
-	request.PaginationRequest
+	models.PaginationRequest
 	Username string `form:"username" json:"user_name"`
 	Nickname string `form:"nickname" json:"nick_name"`
 }
