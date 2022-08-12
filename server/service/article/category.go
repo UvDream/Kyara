@@ -8,7 +8,7 @@ import (
 type CategoryService struct{}
 
 //CreateCategoryService 增加category
-func (c *CategoryService) CreateCategoryService(category article.Category) (cat *article.Category, msg string, err error) {
+func (*CategoryService) CreateCategoryService(category article.Category) (cat *article.Category, msg string, err error) {
 	db := global.DB
 	err = db.Where("name = ?", category.Name).First(&article.Category{}).Error
 	if err == nil {
@@ -21,7 +21,7 @@ func (c *CategoryService) CreateCategoryService(category article.Category) (cat 
 }
 
 //DeleteCategoryService 删除category
-func (c *CategoryService) DeleteCategoryService(id string) (msg string, err error) {
+func (*CategoryService) DeleteCategoryService(id string) (msg string, err error) {
 	db := global.DB
 	var category article.Category
 	//查询是否存在
@@ -42,7 +42,7 @@ func (c *CategoryService) DeleteCategoryService(id string) (msg string, err erro
 }
 
 //UpdateCategoryService 更新category
-func (c *CategoryService) UpdateCategoryService(category article.Category) (msg string, err error) {
+func (*CategoryService) UpdateCategoryService(category article.Category) (msg string, err error) {
 	db := global.DB
 	err = db.Where("id = ?", category.ID).First(&article.Category{}).Error
 	if err != nil {
@@ -55,7 +55,7 @@ func (c *CategoryService) UpdateCategoryService(category article.Category) (msg 
 }
 
 //GetCategoryService 获取category
-func (c *CategoryService) GetCategoryService() (categoryList []article.Category, msg string, err error) {
+func (*CategoryService) GetCategoryService() (categoryList []article.Category, msg string, err error) {
 	db := global.DB
 	//if keyword != "" {
 	//	db = db.Where("name LIKE ?", "%"+keyword+"%").Or("slug LIKE ?", "%"+keyword+"%")

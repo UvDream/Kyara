@@ -6,7 +6,7 @@ import (
 	"server/models/article"
 )
 
-func (a *ToArticleService) DeleteArticleService(id string) (msg string, err error) {
+func (*ToArticleService) DeleteArticleService(id string) (msg string, err error) {
 	db := global.DB
 	//查询文章是否存在
 	err = db.Where("uuid = ?", id).First(&article.Article{}).Error

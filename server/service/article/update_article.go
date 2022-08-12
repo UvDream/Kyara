@@ -5,7 +5,7 @@ import (
 	"server/models/article"
 )
 
-func (a *ToArticleService) UpdateArticleService(articleOpts article.Article) (ac *article.Article, msg string, err error) {
+func (*ToArticleService) UpdateArticleService(articleOpts article.Article) (ac *article.Article, msg string, err error) {
 	//修改文章
 	//	存储数据库
 	if err := global.DB.Model(article.Article{}).Where("id = ?", articleOpts.ID).Updates(&articleOpts).Error; err != nil {

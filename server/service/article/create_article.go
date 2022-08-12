@@ -13,7 +13,7 @@ import (
 type ToArticleService struct{}
 
 //CreateArticle 创建文章
-func (a *ToArticleService) CreateArticle(articleOpts article.Article) (at *article.Article, msg string, err error) {
+func (*ToArticleService) CreateArticle(articleOpts article.Article) (at *article.Article, msg string, err error) {
 	var articleContent article.Article
 	articleContent = SetArticleContent(articleContent, articleOpts)
 	//存储数据库

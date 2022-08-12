@@ -9,7 +9,7 @@ import (
 	"server/utils"
 )
 
-func (a *ToArticleService) GetArticleListService(query article.ListArticleRequest, uuid string, c *gin.Context) (list *[]article.Article, total int64, msg string, err error) {
+func (*ToArticleService) GetArticleListService(query article.ListArticleRequest, uuid string, c *gin.Context) (list *[]article.Article, total int64, msg string, err error) {
 
 	var articleList []article.Article
 	db := global.DB.Model(article.Article{})
@@ -40,7 +40,7 @@ func (a *ToArticleService) GetArticleListService(query article.ListArticleReques
 }
 
 //GetArticleHistoryService 获取文章历史
-func (a *ToArticleService) GetArticleHistoryService(id string) (list interface{}, msg string, err error) {
+func (*ToArticleService) GetArticleHistoryService(id string) (list interface{}, msg string, err error) {
 	ctx := context.Background()
 	msg, err = global.Redis.Get(ctx, id).Result()
 	if err != nil {
@@ -55,7 +55,7 @@ func (a *ToArticleService) GetArticleHistoryService(id string) (list interface{}
 }
 
 //GetArticleDetailService 获取文章详情
-func (a *ToArticleService) GetArticleDetailService(id string) (list article.Article, msg string, err error) {
+func (*ToArticleService) GetArticleDetailService(id string) (list article.Article, msg string, err error) {
 	err = global.DB.Where("id=?", id).Preload("Tags").Preload("Categories").Preload("Auth").First(&list).Error
 	if err != nil {
 		return article.Article{}, "查询失败", err

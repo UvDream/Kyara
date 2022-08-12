@@ -8,7 +8,7 @@ import (
 type TagService struct{}
 
 //CreateTagService 创建tag
-func (t *TagService) CreateTagService(data article.Tag) (tag *article.Tag, msg string, err error) {
+func (*TagService) CreateTagService(data article.Tag) (tag *article.Tag, msg string, err error) {
 	db := global.DB
 	//首先查询是否重复
 	var tagItem article.Tag
@@ -23,7 +23,7 @@ func (t *TagService) CreateTagService(data article.Tag) (tag *article.Tag, msg s
 }
 
 //DeleteTagService 删除tag
-func (t *TagService) DeleteTagService(id string) (msg string, err error) {
+func (*TagService) DeleteTagService(id string) (msg string, err error) {
 	//查询是否存在
 	db := global.DB
 	var tag article.Tag
@@ -39,7 +39,7 @@ func (t *TagService) DeleteTagService(id string) (msg string, err error) {
 }
 
 //UpdateTagService 更新tag
-func (t *TagService) UpdateTagService(data article.Tag) (tag article.Tag, msg string, err error) {
+func (*TagService) UpdateTagService(data article.Tag) (tag article.Tag, msg string, err error) {
 	db := global.DB
 	//	查询是否存在
 	if err := db.Where("id = ?", data.ID).First(&article.Tag{}).Error; err != nil {
@@ -52,7 +52,7 @@ func (t *TagService) UpdateTagService(data article.Tag) (tag article.Tag, msg st
 }
 
 //GetTagsService 获取tag列表
-func (t *TagService) GetTagsService(keyword string) (tagList []article.Tag, msg string, err error) {
+func (*TagService) GetTagsService(keyword string) (tagList []article.Tag, msg string, err error) {
 	db := global.DB
 	db = db.Model(&article.Tag{})
 	if keyword != "" {

@@ -15,7 +15,7 @@ import (
 
 type LocalService struct{}
 
-func (s *LocalService) UploadFile(file *multipart.FileHeader) (string, string, int, error) {
+func (*LocalService) UploadFile(file *multipart.FileHeader) (string, string, int, error) {
 	//	读取文件后缀
 	ext := path.Ext(file.Filename)
 	//拼接文件名
@@ -46,7 +46,7 @@ func (s *LocalService) UploadFile(file *multipart.FileHeader) (string, string, i
 }
 
 // DeleteFile 删除文件
-func (s *LocalService) DeleteFile(key string) error {
+func (*LocalService) DeleteFile(key string) error {
 	p := global.Config.Local.Path + "/" + key
 	if strings.Contains(p, global.Config.Local.Path) {
 		if err := os.Remove(p); err != nil {
