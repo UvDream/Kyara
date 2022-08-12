@@ -1,4 +1,156 @@
 definitions:
+  article.Article:
+    properties:
+      auth_id:
+        description: 用户id
+        type: string
+      author:
+        $ref: '#/definitions/system.SysUser'
+        description: 作者
+      categories:
+        description: 分类
+        items:
+          $ref: '#/definitions/article.Category'
+        type: array
+      categories_id:
+        description: 分类id
+        items:
+          type: integer
+        type: array
+      comment_count:
+        description: 评论数
+        type: integer
+      create_time:
+        type: string
+      delete_time:
+        $ref: '#/definitions/gorm.DeletedAt'
+      disable_comments:
+        description: 禁止评论
+        type: boolean
+      editor_type:
+        description: 编辑器类型
+        type: string
+      html_content:
+        description: html内容
+        type: string
+      id:
+        type: string
+      is_top:
+        description: 是否置顶
+        type: boolean
+      likes:
+        description: 点赞数
+        type: integer
+      md_content:
+        description: markdown内容
+        type: string
+      meta_description:
+        description: 头部描述
+        type: string
+      meta_key_words:
+        description: 头部关键字
+        type: string
+      password:
+        description: 访问密码
+        type: string
+      slug:
+        description: 别名
+        type: string
+      status:
+        description: 状态 DRAFT, PUBLISHED
+        type: string
+      summary:
+        description: 摘要
+        type: string
+      tags:
+        description: tags
+        items:
+          $ref: '#/definitions/article.Tag'
+        type: array
+      tags_id:
+        description: tags id
+        items:
+          type: integer
+        type: array
+      thumbnail:
+        description: 缩略图
+        type: string
+      title:
+        description: 标题
+        type: string
+      update_time:
+        type: string
+      visits:
+        description: 访问量
+        type: integer
+      word_count:
+        description: 字数
+        type: integer
+    required:
+    - status
+    - title
+    type: object
+  article.Category:
+    properties:
+      children:
+        description: 子类
+        items:
+          $ref: '#/definitions/article.Category'
+        type: array
+      create_time:
+        type: string
+      delete_time:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        description: 描述
+        type: string
+      id:
+        type: string
+      name:
+        description: 分类名
+        type: string
+      parent_id:
+        description: 父级ID
+        type: integer
+      password:
+        description: 访问密码
+        type: string
+      slug:
+        description: 别名
+        type: string
+      thumbnail:
+        description: 缩略图
+        type: string
+      update_time:
+        type: string
+    required:
+    - name
+    type: object
+  article.Tag:
+    properties:
+      color:
+        description: 颜色
+        type: string
+      create_time:
+        type: string
+      delete_time:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: string
+      name:
+        description: 标签名
+        type: string
+      slug:
+        description: 别名
+        type: string
+      thumbnail:
+        description: 缩略图
+        type: string
+      update_time:
+        type: string
+    required:
+    - name
+    type: object
   gorm.DeletedAt:
     properties:
       time:
@@ -6,6 +158,70 @@ definitions:
       valid:
         description: Valid is true if Time is not NULL
         type: boolean
+    type: object
+  request.ArticleRequest:
+    properties:
+      auth_id:
+        description: 用户id
+        type: string
+      categories_id:
+        description: 分类id
+        items:
+          type: integer
+        type: array
+      comment_count:
+        description: 评论数
+        type: integer
+      disable_comments:
+        description: 禁止评论
+        type: boolean
+      editor_type:
+        description: 编辑器类型
+        type: string
+      html_content:
+        description: html内容
+        type: string
+      is_top:
+        description: 是否置顶
+        type: boolean
+      md_content:
+        description: markdown内容
+        type: string
+      meta_description:
+        description: 头部描述
+        type: string
+      meta_key_words:
+        description: 头部关键字
+        type: string
+      password:
+        description: 访问密码
+        type: string
+      slug:
+        description: 别名
+        type: string
+      status:
+        description: 状态 DRAFT, PUBLISHED
+        type: string
+      summary:
+        description: 摘要
+        type: string
+      tags_id:
+        description: tags id
+        items:
+          type: integer
+        type: array
+      thumbnail:
+        description: 缩略图
+        type: string
+      title:
+        description: 标题
+        type: string
+      word_count:
+        description: 字数
+        type: integer
+    required:
+    - status
+    - title
     type: object
   request.LoginRequest:
     properties:
@@ -30,6 +246,8 @@ definitions:
       data: {}
       msg:
         type: string
+      success:
+        type: boolean
     type: object
   system.SysRole:
     properties:
@@ -79,9 +297,40 @@ definitions:
         type: string
       user_name:
         type: string
+    type: object
+  theme.Theme:
+    properties:
+      auth_id:
+        description: 作者ID
+        type: string
+      author:
+        $ref: '#/definitions/system.SysUser'
+        description: 作者
+      create_time:
+        type: string
+      delete_time:
+        $ref: '#/definitions/gorm.DeletedAt'
+      description:
+        description: 描述
+        type: string
+      id:
+        type: string
+      is_public:
+        description: 是否公开
+        type: boolean
+      name:
+        description: 名字
+        type: string
+      theme:
+        description: 主题
+        type: string
+      thumbnail:
+        description: 简略图
+        type: string
+      update_time:
+        type: string
     required:
-    - password
-    - user_name
+    - theme
     type: object
 info:
   contact: {}
@@ -89,6 +338,199 @@ info:
   title: Swagger Example API
   version: 0.0.1
 paths:
+  /article/create:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 创建文章
+        in: body
+        name: article
+        required: true
+        schema:
+          $ref: '#/definitions/request.ArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 创建文章
+      tags:
+      - article
+  /article/delete:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: 参数
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":{},"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 删除文章
+      tags:
+      - article
+  /article/detail:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 参数
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":article.Article,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 查询文章详情
+      tags:
+      - article
+  /article/history:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 参数
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":[]article.Article,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 查询文章历史记录
+      tags:
+      - article
+  /article/list:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 参数
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: 查询文章
+        in: body
+        name: article
+        required: true
+        schema:
+          $ref: '#/definitions/request.ArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":[]article.Article,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 查询文章
+      tags:
+      - article
+  /article/update:
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: 修改文章
+        in: body
+        name: article
+        required: true
+        schema:
+          $ref: '#/definitions/article.Article'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":article2.Article,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 修改文章
+      tags:
+      - article
+  /category/create:
+    post:
+      consumes:
+      - application/json
+      description: 创建Category
+      parameters:
+      - description: 创建Category
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/article.Category'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":article.Category,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 创建Category
+      tags:
+      - category
+  /category/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除Category
+      parameters:
+      - description: 删除Category
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":article.Category,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 删除Category
+      tags:
+      - category
+  /category/update:
+    put:
+      consumes:
+      - application/json
+      description: 修改Category
+      parameters:
+      - description: 创建Category
+        in: body
+        name: category
+        required: true
+        schema:
+          $ref: '#/definitions/article.Category'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":article.Category,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 修改Category
+      tags:
+      - category
   /file/delete/{id}:
     delete:
       parameters:
@@ -232,6 +674,190 @@ paths:
       summary: 用户注册
       tags:
       - User
+  /tag/create:
+    post:
+      consumes:
+      - application/json
+      description: 创建tag
+      parameters:
+      - description: 创建tag
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/article.Tag'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":article.Tag,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 创建tag
+      tags:
+      - tag
+  /tag/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除tag
+      parameters:
+      - description: 删除tag
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":article.Tag,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 删除tag
+      tags:
+      - tag
+  /tag/list:
+    get:
+      consumes:
+      - application/json
+      description: 查询tag
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":[]article.Tag,"msg":"操作成功"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 查询tag
+      tags:
+      - tag
+  /theme/create:
+    post:
+      consumes:
+      - application/json
+      description: 主题创建
+      parameters:
+      - description: 主题
+        in: body
+        name: theme
+        required: true
+        schema:
+          $ref: '#/definitions/theme.Theme'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":theme.ResponseTheme,"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 主题创建
+      tags:
+      - theme
+  /theme/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 主题删除
+      parameters:
+      - description: 主题id
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":theme.Theme,"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 主题删除
+      tags:
+      - theme
+  /theme/detail:
+    get:
+      consumes:
+      - application/json
+      description: 主题详情
+      parameters:
+      - description: 主题id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":theme.Theme,"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 主题详情
+      tags:
+      - theme
+  /theme/list:
+    get:
+      consumes:
+      - application/json
+      description: 主题列表
+      parameters:
+      - description: 关键词
+        in: query
+        name: keyword
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":[]theme.ResponseTheme,"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 主题列表
+      tags:
+      - theme
+  /theme/public:
+    get:
+      consumes:
+      - application/json
+      description: 查询公开主题
+      parameters:
+      - description: 关键词
+        in: query
+        name: keyword
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":[]theme.ResponseTheme,"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 查询公开主题
+      tags:
+      - theme
+  /theme/update:
+    put:
+      consumes:
+      - application/json
+      description: 主题更新
+      parameters:
+      - description: 主题
+        in: body
+        name: theme
+        required: true
+        schema:
+          $ref: '#/definitions/theme.Theme'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":200,"data":theme.Theme,"msg":"ok"}'
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 主题更新
+      tags:
+      - theme
 securityDefinitions:
   ApiKeyAuth:
     in: header

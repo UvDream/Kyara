@@ -11,7 +11,7 @@ import (
 
 type SysUserService struct{}
 
-func (sysUserService *SysUserService) Login(username string, password string) (user *system.SysUser, token string, msg string, err error) {
+func (sysUserService *SysUserService) Login(username string, password string) (user *system.User, token string, msg string, err error) {
 	//先判定数据库是否存在
 	if global.DB == nil {
 		return nil, "", "数据库不存在", fmt.Errorf("数据库未初始化")

@@ -11,5 +11,5 @@ type SysRole struct {
 	ParentID string     `json:"parent_id" gorm:"comment:父角色ID"`                                   // 父角色ID
 	Children []*SysRole `json:"children" gorm:"-"`
 	// 关联下面的用户表
-	Users []*SysUser `json:"-" gorm:"many2many:sys_user_role;"`
+	Users []*User `json:"-" gorm:"many2many:sys_user_role;"`
 }

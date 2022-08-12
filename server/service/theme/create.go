@@ -7,12 +7,12 @@ import (
 )
 
 //CreateThemeService 创建主题
-func (*ThemesServiceGroup) CreateThemeService(theme theme.Theme) (t theme.Theme, code int, err error) {
+func (*ThemesServiceGroup) CreateThemeService(theme theme.Theme) (theme.Theme, int, error) {
 	db := global.DB
-	if err = db.Create(&theme).Error; err != nil {
-		return t, code2.ErrorCreateTheme, err
+	if err := db.Create(&theme).Error; err != nil {
+		return theme, code2.ErrorCreateTheme, err
 	}
-	return t, code2.SUCCESS, err
+	return theme, code2.SUCCESS, nil
 }
 
 // DeleteThemeService 删除主题

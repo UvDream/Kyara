@@ -10,8 +10,8 @@ import (
 func (sysUserService *SysUserService) GetUserListService(query *request.SysUserRequest) (list interface{}, total int64, mg string, err error) {
 	limit := query.PageSize
 	offset := query.PageSize * (query.Page - 1)
-	var userList []system.SysUser
-	db := global.DB.Model(system.SysUser{})
+	var userList []system.User
+	db := global.DB.Model(system.User{})
 	if query.Username != "" {
 		db = db.Where("user_name LIKE ?", "%"+query.Username+"%")
 	}

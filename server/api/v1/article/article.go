@@ -13,6 +13,13 @@ type ArticlesApi struct {
 }
 
 // CreateArticle 创建文章
+//@Summary 创建文章
+//@Tags article
+//@Accept  json
+//@Produce  json
+//@Param article body request.ArticleRequest true "创建文章"
+//@Success 200 {object} response.Response "{"code":200,"data":{},"msg":"操作成功"}"
+//@Router /article/create [post]
 func (article *ArticlesApi) CreateArticle(c *gin.Context) {
 	var articleOpts request.ArticleRequest
 	//校验必填信息
@@ -30,6 +37,13 @@ func (article *ArticlesApi) CreateArticle(c *gin.Context) {
 }
 
 // DeleteArticle 删除文章
+//@Summary 删除文章
+//@Tags article
+//@Accept  json
+//@Produce  json
+//@Param        id   query     string  true  "参数"
+//@Success 200 {object} response.Response "{"code":200,"data":{},"msg":"操作成功"}"
+//@Router /article/delete [delete]
 func (article *ArticlesApi) DeleteArticle(c *gin.Context) {
 	id := c.Query("id")
 	if id == "" {
@@ -44,6 +58,13 @@ func (article *ArticlesApi) DeleteArticle(c *gin.Context) {
 }
 
 // UpdateArticle 修改文章
+//@Summary 修改文章
+//@Tags article
+//@Accept  json
+//@Produce  json
+//@Param article body article2.Article true "修改文章"
+//@Success 200 {object} response.Response "{"code":200,"data":article2.Article,"msg":"操作成功"}"
+//@Router /article/update [put]
 func (article *ArticlesApi) UpdateArticle(c *gin.Context) {
 	var articleOpts article2.Article
 	//校验必填信息
@@ -66,6 +87,14 @@ func (article *ArticlesApi) UpdateArticle(c *gin.Context) {
 }
 
 // GetArticleList 查询文章
+//@Summary 查询文章
+//@Tags article
+//@Accept  json
+//@Produce  json
+//@Param        id   query     string  true  "参数"
+//@Param article body request.ArticleRequest true "查询文章"
+//@Success 200 {object} response.Response "{"code":200,"data":[]article.Article,"msg":"操作成功"}"
+//@Router /article/list [get]
 func (article *ArticlesApi) GetArticleList(c *gin.Context) {
 	//x-token
 	xToken := c.Request.Header.Get("x-token")
@@ -93,6 +122,13 @@ func (article *ArticlesApi) GetArticleList(c *gin.Context) {
 }
 
 //GetArticleHistory 查询文章历史记录
+//@Summary 查询文章历史记录
+//@Tags article
+//@Accept  json
+//@Produce  json
+//@Param        id   query     string  true  "参数"
+//@Success 200 {object} response.Response "{"code":200,"data":[]article.Article,"msg":"操作成功"}"
+//@Router /article/history [get]
 func (article *ArticlesApi) GetArticleHistory(c *gin.Context) {
 	uid := c.Query("id")
 	if uid == "" {
@@ -110,6 +146,13 @@ func (article *ArticlesApi) GetArticleHistory(c *gin.Context) {
 }
 
 //GetArticleDetail 查询文章详情
+//@Summary 查询文章详情
+//@Tags article
+//@Accept  json
+//@Produce  json
+//@Param        id   query     string  true  "参数"
+//@Success 200 {object} response.Response "{"code":200,"data":article.Article,"msg":"操作成功"}"
+//@Router /article/detail [get]
 func (article *ArticlesApi) GetArticleDetail(c *gin.Context) {
 	id := c.Query("id")
 	if id == "" {

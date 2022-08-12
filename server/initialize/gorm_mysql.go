@@ -38,7 +38,7 @@ func RegistrationTable(db *gorm.DB) {
 	//初始化表注册
 	err := db.AutoMigrate(
 		//系统内置表
-		system.SysUser{},
+		system.User{},
 		system.SysRole{},
 		system.SysUserRole{},
 		//文章相关

@@ -8,7 +8,7 @@ import (
 )
 
 // RegisterService 注册用户
-func (*SysUserService) RegisterService(opts system.SysUser) (user system.SysUser, code int, err error) {
+func (*SysUserService) RegisterService(opts system.User) (user system.User, code int, err error) {
 	db := global.DB
 	//首先查询账号是否存在
 	if err := db.Where("user_name = ?", opts.UserName).First(&user).Error; err == nil {

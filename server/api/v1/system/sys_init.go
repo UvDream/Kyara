@@ -8,7 +8,7 @@ import (
 )
 
 func (b *BaseApi) InitData(c *gin.Context) {
-	initializeUser := []system.SysUser{
+	initializeUser := []system.User{
 		{
 			UserName: "admin",
 			Password: utils.BcryptHash("123456"),

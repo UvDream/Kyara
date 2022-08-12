@@ -54,7 +54,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 // @Success 200 {object} response.Response{data=system.SysUser,code=int,msg=string}
 // @Router  /public/base/register [post]
 func (b *BaseApi) Register(c *gin.Context) {
-	var registerRequest system.SysUser
+	var registerRequest system.User
 	err := c.ShouldBindJSON(&registerRequest)
 	if err != nil {
 		response.FailResponse(code.ErrorRegisterMissingParam, c)

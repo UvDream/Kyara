@@ -6,10 +6,6 @@ import (
 )
 
 type Theme struct {
-	ResponseTheme
-	Theme string `json:"theme" gorm:"type:longblob" binding:"required"` // 主题
-}
-type ResponseTheme struct {
 	common.Model
 	//名字
 	Name string `json:"name" gorm:"type:varchar(100);"`
@@ -17,10 +13,11 @@ type ResponseTheme struct {
 	Description string `json:"description" gorm:"type:varchar(100);"`
 	//简略图
 	Thumbnail string `json:"thumbnail" gorm:"type:varchar(100);"`
-	//作者ID
-	AuthID string `json:"auth_id" gorm:"type:varchar(100);comment:作者的UUID"`
 	//是否公开
 	IsPublic bool `json:"is_public" gorm:"type:tinyint(1);"`
+	//作者ID
+	UserID string `json:"user_id" gorm:"type:varchar(100);comment:作者的UUID"`
 	//作者
-	Auth system.SysUser `json:"author"`
+	User  system.User `json:"user"`
+	Theme string      `json:"theme" gorm:"type:longblob" binding:"required"` // 主题
 }
