@@ -9,7 +9,6 @@ import (
 
 func Routers() *gin.Engine {
 	Router := gin.Default()
-	//Router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	InitSwag(Router)
 	//Router.Static("/files", "./files")
@@ -42,7 +41,7 @@ func Routers() *gin.Engine {
 	{
 		systemRouter.InitBaseRouter(PublicGroup)
 	}
-	//需要登陆才可以访问的接口
+	//web端路由
 	PrivateGroup := Router.Group("/")
 	PrivateGroup.Use(middleware.JWTAuth())
 	{
@@ -54,5 +53,8 @@ func Routers() *gin.Engine {
 		fileRouter.InitFileRouter(PrivateGroup)
 		themeRouter.InitThemeRouter(PrivateGroup)
 	}
+	//管理端路由
+	AdminGroup := Router.Group("/admin")
+	AdminGroup.Use(middleware.JWTAuth())
 	return Router
 }
